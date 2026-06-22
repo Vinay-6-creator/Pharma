@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innovation Hub - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --orange: #f97316;
+      --purple: #a855f7;
+      --gold: #fbbf24;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --orange: #fb923c;
+      --purple: #d084d0;
+      --gold: #fcd34d;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      font-weight: 600;
+      color: var(--blue);
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #f97316, #a855f7);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    main {
+      margin-top: 32px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0 0 24px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .section-divider {
+      margin: 48px 0;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .category-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .category-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .category-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .category-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .project-header {
+      padding: 24px;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--purple) 100%);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .project-card.research .project-header {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+    }
+
+    .project-card.prototype .project-header {
+      background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+    }
+
+    .project-card.workflow .project-header {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    }
+
+    .project-card.solution .project-header {
+      background: linear-gradient(135deg, #a855f7 0%, #7e22ce 100%);
+    }
+
+    .project-body {
+      padding: 24px;
+    }
+
+    .project-category {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--blue);
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .project-card.prototype .project-category {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+    }
+
+    .project-card.workflow .project-category {
+      background: rgba(249, 115, 22, 0.1);
+      color: var(--orange);
+    }
+
+    .project-card.solution .project-category {
+      background: rgba(168, 85, 247, 0.1);
+      color: var(--purple);
+    }
+
+    .project-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .project-description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .project-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .author-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .project-stats {
+      display: flex;
+      gap: 12px;
+    }
+
+    .stats-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .cta-banner {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--blue) 100%);
+      padding: 40px;
+      border-radius: 24px;
+      text-align: center;
+      color: #fff;
+      margin: 48px 0;
+    }
+
+    .cta-banner h2 {
+      margin: 0 0 16px;
+      font-size: 1.8rem;
+    }
+
+    .cta-banner p {
+      margin: 0 0 24px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.05rem;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .resource-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.2s ease;
+    }
+
+    .resource-card:hover {
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .resource-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .resource-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .resource-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--blue);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    footer {
+      margin-top: 64px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--blue);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--blue-dark);
+    }
+
+    .profile-icon {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .profile-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .featured-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-banner {
+        padding: 24px;
+      }
+
+      .cta-banner h2 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="back-link">← Back Home</a>
+        <div class="brand">
+          <div class="brand-icon">💡</div>
+          <span>Innovation Hub</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>Build, Share & Collaborate on Pharmaceutical Innovations</h1>
+        <p>Showcase your research concepts, prototype workflows, develop healthcare solutions, and collaborate with pharmacy students worldwide. From ideation to implementation, PharmaX Innovation Hub is your launchpad for the future of pharmacy.</p>
+      </div>
+
+      <section class="section-divider">
+        <h2 class="section-title">🚀 Innovation Categories</h2>
+        <div class="category-grid">
+          <div class="category-card">
+            <div class="category-icon">📊</div>
+            <h3>Research Concepts</h3>
+            <p>Submit your clinical research ideas, case studies, and pharmaceutical research proposals. Get feedback from the community and potential research partners.</p>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">🔧</div>
+            <h3>Prototypes & Tools</h3>
+            <p>Build and showcase prototype applications, diagnostic tools, or automation solutions for pharmacy practice and healthcare delivery.</p>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">⚙️</div>
+            <h3>Process Workflows</h3>
+            <p>Design and present improved pharmacy workflows, medication management systems, or clinical practice optimization solutions.</p>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">💊</div>
+            <h3>Healthcare Solutions</h3>
+            <p>Develop innovative solutions addressing real-world pharmacy challenges - from patient counseling to drug interactions management.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-divider">
+        <h2 class="section-title">⭐ Featured Innovations</h2>
+        <div class="featured-grid">
+          <div class="project-card research">
+            <div class="project-header">Research Concept</div>
+            <div class="project-body">
+              <span class="project-category">Clinical Research</span>
+              <h3>Drug Efficacy Study in Indian Population</h3>
+              <p class="project-description">A comprehensive clinical research concept exploring drug metabolism variations in Indian populations. Aims to bridge the gap between global and local pharmaceutical guidelines.</p>
+              <div class="project-meta">
+                <div class="project-author">
+                  <div class="author-avatar">PR</div>
+                  <span>Priya Saxena</span>
+                </div>
+                <div class="project-stats">
+                  <div class="stats-item">❤️ 245</div>
+                  <div class="stats-item">💬 32</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card prototype">
+            <div class="project-header">Prototype & Tool</div>
+            <div class="project-body">
+              <span class="project-category">Mobile App</span>
+              <h3>Drug Interaction Checker App</h3>
+              <p class="project-description">An intelligent mobile application that checks real-time drug interactions and provides clinical recommendations. Built with machine learning for accuracy.</p>
+              <div class="project-meta">
+                <div class="project-author">
+                  <div class="author-avatar">AK</div>
+                  <span>Aman Kumar</span>
+                </div>
+                <div class="project-stats">
+                  <div class="stats-item">❤️ 512</div>
+                  <div class="stats-item">💬 68</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card workflow">
+            <div class="project-header">Process Workflow</div>
+            <div class="project-body">
+              <span class="project-category">Hospital Pharmacy</span>
+              <h3>Automated Dispensing Workflow System</h3>
+              <p class="project-description">Streamlined process workflow for hospital pharmacy dispensing with automated verification steps, reducing errors by 87% in pilot testing.</p>
+              <div class="project-meta">
+                <div class="project-author">
+                  <div class="author-avatar">NJ</div>
+                  <span>Neha Jain</span>
+                </div>
+                <div class="project-stats">
+                  <div class="stats-item">❤️ 389</div>
+                  <div class="stats-item">💬 45</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card solution">
+            <div class="project-header">Healthcare Solution</div>
+            <div class="project-body">
+              <span class="project-category">Patient Care</span>
+              <h3>Personalized Patient Counseling Platform</h3>
+              <p class="project-description">AI-powered platform providing personalized medication counseling and adherence tracking. Improves patient compliance and health outcomes significantly.</p>
+              <div class="project-meta">
+                <div class="project-author">
+                  <div class="author-avatar">RV</div>
+                  <span>Rohit Verma</span>
+                </div>
+                <div class="project-stats">
+                  <div class="stats-item">❤️ 478</div>
+                  <div class="stats-item">💬 56</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="cta-banner">
+        <h2>Ready to Share Your Innovation? 🌟</h2>
+        <p>Turn your pharmaceutical ideas into reality. Submit your project and get valuable feedback from experts and peers.</p>
+        <button class="btn btn-primary" onclick="alert('Submit Project feature coming soon! Be the first to innovate.')">Submit Your Project</button>
+      </div>
+
+      <section class="section-divider">
+        <h2 class="section-title">📚 Innovation Resources</h2>
+        <div class="resources-grid">
+          <div class="resource-card">
+            <div class="resource-icon">📖</div>
+            <h3>Innovation Guide</h3>
+            <p>Step-by-step guide on developing and documenting your pharmaceutical innovation with best practices.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">🎓</div>
+            <h3>Research Methodology</h3>
+            <p>Learn proper research design, data collection, and analysis techniques for pharmacy innovation projects.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">📋</div>
+            <h3>Project Templates</h3>
+            <p>Download pre-designed templates for research proposals, prototype documentation, and workflow presentations.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">👥</div>
+            <h3>Mentorship Program</h3>
+            <p>Connect with experienced mentors in pharmaceutical research and industry to guide your innovation journey.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">💼</div>
+            <h3>Funding Opportunities</h3>
+            <p>Explore grants, scholarships, and funding programs specifically for pharmacy student innovations.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">🌐</div>
+            <h3>Industry Connections</h3>
+            <p>Get your innovation noticed by pharmaceutical companies and research institutions looking for fresh talent.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-divider">
+        <h2 class="section-title">🏆 Innovation Challenges</h2>
+        <div class="category-grid">
+          <div class="category-card">
+            <div class="category-icon">🎯</div>
+            <h3>Q2 2026 Challenge: Medication Adherence</h3>
+            <p>Design an innovative solution to improve patient medication adherence. Winners get recognition, funding, and industry mentorship. Deadline: June 30.</p>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">🔬</div>
+            <h3>Research Thesis Competition</h3>
+            <p>Submit your best research work for this month's competition. Top submissions published in PharmaX Journal with cash prizes.</p>
+          </div>
+
+          <div class="category-card">
+            <div class="category-icon">💻</div>
+            <h3>Digital Health Hackathon</h3>
+            <p>Build healthcare technology solutions in teams. 48-hour intensive hackathon with prizes, mentorship, and job opportunities.</p>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">💡 Why Innovate Here?</h2>
+        <div class="resources-grid">
+          <div class="resource-card">
+            <div class="resource-icon">🌟</div>
+            <h3>Build Your Portfolio</h3>
+            <p>Showcase your innovations to potential employers, investors, and academic institutions globally.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">🤝</div>
+            <h3>Collaborate & Learn</h3>
+            <p>Connect with like-minded pharmacy students and professionals to co-create and iterate on ideas together.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">🚀</div>
+            <h3>Real-World Impact</h3>
+            <p>Your innovations can solve real pharmacy challenges and improve patient care on a meaningful scale.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">🎁</div>
+            <h3>Recognition & Rewards</h3>
+            <p>Get recognized by the community, earn badges, and win prizes for your innovative contributions.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">📈</div>
+            <h3>Career Acceleration</h3>
+            <p>Innovations on PharmaX often lead to internship offers, job opportunities, and entrepreneurial ventures.</p>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">🌍</div>
+            <h3>Global Community</h3>
+            <p>Be part of a global movement of pharmacy innovators creating the future of healthcare.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 PharmaX - Innovation Hub</span>
+      <div>
+        <a href="index.html">Home</a>
+        <a href="study-hub.html" style="margin-left: 20px;">Study</a>
+        <a href="community.html" style="margin-left: 20px;">Community</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="profile-icon" id="profileIcon">👤</div>
+
+  <script>
+    document.getElementById('profileIcon').addEventListener('click', function() {
+      alert('Profile feature coming soon! Navigate back to home to manage your account.');
+    });
+  </script>
+</body>
+</html>

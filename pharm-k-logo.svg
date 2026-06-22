@@ -1,0 +1,28 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue square background -->
+  <rect x="90" y="35" width="120" height="120" fill="#3B5998" rx="10"/>
+  
+  <!-- Atom/orbital design -->
+  <g fill="none" stroke="white" stroke-width="8" stroke-linecap="round">
+    <!-- Center circle -->
+    <circle cx="150" cy="95" r="8" fill="white"/>
+    
+    <!-- Horizontal ellipse -->
+    <ellipse cx="150" cy="95" rx="35" ry="15"/>
+    
+    <!-- Vertical ellipse -->
+    <ellipse cx="150" cy="95" rx="15" ry="35"/>
+    
+    <!-- Diagonal ellipse 1 -->
+    <ellipse cx="150" cy="95" rx="30" ry="25" transform="rotate(45 150 95)"/>
+    
+    <!-- Diagonal ellipse 2 -->
+    <ellipse cx="150" cy="95" rx="30" ry="25" transform="rotate(-45 150 95)"/>
+  </g>
+  
+  <!-- Text: PHARM-K -->
+  <text x="150" y="200" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#3B5998" text-anchor="middle">PHARM-K</text>
+  
+  <!-- Text: SINCE 2026 -->
+  <text x="150" y="235" font-family="Arial, sans-serif" font-size="16" fill="#3B5998" text-anchor="middle" letter-spacing="2">SINCE 2026</text>
+</svg>

@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B Pharm Semester 2 - Notes & PYQs</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --orange: #f97316;
+      --red: #ef4444;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: gap 0.2s ease;
+    }
+
+    .back-link:hover {
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin: 40px 0 24px;
+      color: var(--blue);
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--blue);
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin: 20px 0 16px;
+      color: var(--text);
+    }
+
+    .unit-section {
+      background: var(--surface);
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      margin-bottom: 32px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .unit-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--blue);
+    }
+
+    .unit-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .unit-title {
+      flex: 1;
+    }
+
+    .unit-title h2 {
+      margin: 0;
+      border: none;
+      padding: 0;
+      color: var(--text);
+      font-size: 1.25rem;
+    }
+
+    .topics-list {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .topic-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 16px;
+      background: var(--surface-strong);
+      border-radius: 12px;
+      border-left: 4px solid var(--green);
+      transition: all 0.3s ease;
+    }
+
+    .topic-item:hover {
+      background: rgba(34, 197, 94, 0.1);
+      transform: translateX(4px);
+    }
+
+    .topic-bullet {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-top: -4px;
+    }
+
+    .topic-text {
+      flex: 1;
+      line-height: 1.6;
+    }
+
+    .pyq-section {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 2px solid var(--border);
+    }
+
+    .pyq-section h3 {
+      color: var(--red);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pyq-card {
+      background: var(--surface-strong);
+      border-left: 4px solid var(--red);
+      border-radius: 12px;
+      padding: 18px;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .pyq-card:hover {
+      box-shadow: 0 12px 32px rgba(239, 68, 68, 0.15);
+    }
+
+    .pyq-question {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .q-number {
+      color: var(--red);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .pyq-options {
+      margin: 12px 0;
+      padding-left: 24px;
+    }
+
+    .option {
+      margin: 8px 0;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .option:hover {
+      border-color: var(--blue);
+      background: rgba(37, 99, 235, 0.05);
+    }
+
+    .option.answer {
+      border-color: var(--green);
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .answer-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      margin-top: 8px;
+      background: rgba(37, 99, 235, 0.1);
+      border: none;
+      border-radius: 8px;
+      color: var(--blue);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .answer-toggle:hover {
+      background: rgba(37, 99, 235, 0.15);
+    }
+
+    .answer-text {
+      margin-top: 12px;
+      padding: 12px;
+      background: rgba(34, 197, 94, 0.1);
+      border-left: 3px solid var(--green);
+      border-radius: 8px;
+      color: var(--text);
+      display: none;
+    }
+
+    .answer-text.show {
+      display: block;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      display: flex;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      gap: 14px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 16px 0 32px;
+      }
+
+      .unit-section {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.1rem;
+        margin: 24px 0 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="study-hub.html" class="back-link">← Back to Study Hub</a>
+        <div class="brand">
+          <div style="font-size: 1.8rem;">📚</div>
+          <span>B Pharm - Semester 2</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div>
+        <h1>Organic Chemistry Fundamentals</h1>
+        <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 24px;">Learn organic nomenclature, functional groups, isomerism, and basic reactions essential for pharmaceutical chemistry.</p>
+
+        <!-- Unit 1 -->
+        <div class="unit-section">
+          <div class="unit-header">
+            <div class="unit-number">I</div>
+            <div class="unit-title">
+              <h2>Organic Chemistry Introduction & Structure</h2>
+            </div>
+          </div>
+
+          <div class="topics-list">
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Scope of Organic Chemistry:</strong> Definition, importance in pharmacy, organic molecules in drugs
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Structure of Atom & Chemical Bonding:</strong> Covalent bonds, ionic bonds, coordinate covalent bonds, hydrogen bonding
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Hybridization:</strong> sp, sp², sp³ hybridization and molecular geometry
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Alkanes, Alkenes & Alkynes:</strong> Structure, nomenclature, and reactivity patterns
+              </div>
+            </div>
+          </div>
+
+          <div class="pyq-section">
+            <h3>❓ Important Previous Year Questions</h3>
+
+            <div class="pyq-card">
+              <div class="pyq-question"><span class="q-number">Q1.</span> Draw the structure and explain sp³ hybridization in methane (CH₄)</div>
+              <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+              <div class="answer-text">
+                <strong>Answer:</strong> In methane, carbon undergoes sp³ hybridization forming 4 sigma bonds with hydrogen atoms in a tetrahedral geometry. Each C-H bond is formed by overlap of sp³ hybrid orbital with 1s orbital of hydrogen.
+              </div>
+            </div>
+
+            <div class="pyq-card">
+              <div class="pyq-question"><span class="q-number">Q2.</span> Name the compound: CH₃-CH₂-CH₂-CH₃</div>
+              <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+              <div class="answer-text">
+                <strong>Answer:</strong> This is a 4-carbon straight chain alkane = <strong>Butane (n-butane)</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unit 2 -->
+        <div class="unit-section">
+          <div class="unit-header">
+            <div class="unit-number">II</div>
+            <div class="unit-title">
+              <h2>Functional Groups & Nomenclature</h2>
+            </div>
+          </div>
+
+          <div class="topics-list">
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>IUPAC Nomenclature Rules:</strong> Parent chain selection, numbering, substituent naming
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Hydroxyl & Ether Groups:</strong> Alcohols, phenols, ethers - structure and properties
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Carbonyl Compounds:</strong> Aldehyde, ketone, carboxylic acid groups
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Nitrogen-containing Groups:</strong> Amines, amides, nitriles
+              </div>
+            </div>
+          </div>
+
+          <div class="pyq-section">
+            <h3>❓ Important Previous Year Questions</h3>
+
+            <div class="pyq-card">
+              <div class="pyq-question"><span class="q-number">Q1.</span> Give IUPAC name for: CH₃-CHOH-CH₂-CHO</div>
+              <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+              <div class="answer-text">
+                <strong>Answer:</strong> 3-hydroxybutanal (Number from aldehyde end to give lowest number to CHO group)
+              </div>
+            </div>
+
+            <div class="pyq-card">
+              <div class="pyq-question"><span class="q-number">Q2.</span> Identify the functional group in aspirin and explain its role</div>
+              <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+              <div class="answer-text">
+                <strong>Answer:</strong> Aspirin contains carboxylic acid (-COOH) and ester (-COO-) groups. The carboxylic acid group enhances water solubility, while the ester group provides analgesic action.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unit 3 -->
+        <div class="unit-section">
+          <div class="unit-header">
+            <div class="unit-number">III</div>
+            <div class="unit-title">
+              <h2>Isomerism in Organic Compounds</h2>
+            </div>
+          </div>
+
+          <div class="topics-list">
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Structural Isomerism:</strong> Chain, position, and functional group isomerism
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Stereoisomerism:</strong> Geometrical (cis-trans) and optical (D-L, R-S) isomerism
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Chirality:</strong> Chiral centers, enantiomers, racemic mixtures
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Biological Importance:</strong> How isomerism affects drug activity and pharmaceutical effectiveness
+              </div>
+            </div>
+          </div>
+
+          <div class="pyq-section">
+            <h3>❓ Important Previous Year Questions</h3>
+
+            <div class="pyq-card">
+              <div class="pyq-question"><span class="q-number">Q1.</span> Draw structural isomers of C₄H₁₀O</div>
+              <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+              <div class="answer-text">
+                <strong>Answer:</strong> Four isomers possible: 1-butanol, 2-butanol, 2-methyl-1-propanol, diethyl ether
+              </div>
+            </div>
+
+            <div class="pyq-card">
+              <div class="pyq-question"><span class="q-number">Q2.</span> Explain why D-glucose and L-glucose have different biological activities</div>
+              <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+              <div class="answer-text">
+                <strong>Answer:</strong> The stereochemistry (3D spatial arrangement) affects how glucose molecules fit into enzyme active sites. Only D-glucose can fit properly into human enzyme binding sites for metabolism.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unit 4 -->
+        <div class="unit-section">
+          <div class="unit-header">
+            <div class="unit-number">IV</div>
+            <div class="unit-title">
+              <h2>Basic Organic Reactions</h2>
+            </div>
+          </div>
+
+          <div class="topics-list">
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Substitution Reactions:</strong> SN1, SN2 mechanisms and reaction conditions
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Elimination Reactions:</strong> E1, E2 mechanisms, Zaitsev's rule
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Addition Reactions:</strong> Electrophilic and nucleophilic additions to alkenes and alkynes
+              </div>
+            </div>
+            <div class="topic-item">
+              <div class="topic-bullet">•</div>
+              <div class="topic-text">
+                <strong>Oxidation & Reduction:</strong> Oxidizing agents, reducing agents, pharmaceutical applications
+              </div>
+            </div>
+          </div>
+
+          <div class="pyq-section">
+            <h3>❓ Important Previous Year Questions</h3>
+
+            <div class="pyq-card">
+              <div class="pyq-question"><span class="q-number">Q1.</span> Compare SN1 and SN2 mechanisms with examples</div>
+              <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+              <div class="answer-text">
+                <strong>Answer:</strong><br>
+                <strong>SN1:</strong> Two-step mechanism, carbocation intermediate, unimolecular rate law, racemic mixture formation<br>
+                <strong>SN2:</strong> One-step mechanism, no intermediate, bimolecular rate law, inversion of configuration, requires good nucleophile
+              </div>
+            </div>
+
+            <div class="pyq-card">
+              <div class="pyq-question"><span class="q-number">Q2.</span> What product forms when ethene reacts with HBr? Apply Markovnikov's rule</div>
+              <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+              <div class="answer-text">
+                <strong>Answer:</strong> Product is bromoethane (CH₃-CH₂Br). According to Markovnikov's rule, H adds to the carbon with more H atoms and Br adds to the carbon with fewer H atoms.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer>
+      <span>📚 PharmaX Study Hub</span>
+      <span>•</span>
+      <span>© 2026 All Rights Reserved</span>
+    </footer>
+  </div>
+
+  <script>
+    function toggleAnswer(button) {
+      const answerText = button.nextElementSibling;
+      answerText.classList.toggle('show');
+      button.textContent = answerText.classList.contains('show') ? 'Hide Answer ▲' : 'Show Answer ▼';
+    }
+  </script>
+</body>
+</html>

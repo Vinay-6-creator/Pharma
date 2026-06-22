@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.Pharm 2026 Updated Syllabus - All 8 Semesters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.7;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+        
+        .program-info {
+            background: rgba(255,255,255,0.1);
+            padding: 15px 30px;
+            border-radius: 10px;
+            margin-top: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav {
+            background: #f8f9fa;
+            padding: 25px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        
+        .nav button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .nav button.active {
+            background: #764ba2;
+            box-shadow: 0 8px 25px rgba(118, 75, 162, 0.5);
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .semester {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        .semester.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        .sem-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px 30px;
+            font-size: 2em;
+            font-weight: bold;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .sem-credits {
+            background: rgba(255,255,255,0.3);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            backdrop-filter: blur(10px);
+        }
+        
+        .course-card {
+            background: #f9f9f9;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .course-card:hover {
+            background: #f0f4ff;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+            border-left-color: #764ba2;
+        }
+        
+        .course-code {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .course-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #1d314f;
+            margin-bottom: 10px;
+        }
+        
+        .course-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .topics {
+            margin-top: 15px;
+        }
+        
+        .topics-title {
+            font-weight: bold;
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+        
+        .topics ul {
+            list-style-position: inside;
+            margin-left: 10px;
+        }
+        
+        .topics li {
+            margin-bottom: 8px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .outcomes {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .outcomes-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .outcomes ol {
+            margin-left: 20px;
+        }
+        
+        .outcomes li {
+            margin-bottom: 8px;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .practical-section {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            border-left: 5px solid #22c55e;
+        }
+        
+        .practical-title {
+            font-weight: bold;
+            color: #22c55e;
+            font-size: 1.15em;
+            margin-bottom: 15px;
+        }
+        
+        .practical-card {
+            background: white;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border-left: 3px solid #22c55e;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .practical-card:hover {
+            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.15);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        .summary {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border-left: 5px solid #22c55e;
+        }
+        
+        .summary h3 {
+            color: #1b5e20;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .summary-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #22c55e;
+        }
+        
+        .summary-item strong {
+            color: #667eea;
+        }
+        
+        footer {
+            background: #1d314f;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 40px;
+        }
+        
+        .search-box {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+        
+        .search-box button {
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: #764ba2;
+        }
+        
+        .print-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: 0.3s;
+        }
+        
+        .print-btn:hover {
+            background: #764ba2;
+        }
+        
+        @media print {
+            .nav, .print-btn, .search-box {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .sem-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .course-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 B.PHARM SYLLABUS 2026</h1>
+            <div class="program-info">
+                <p><strong>NEP 2020 Framework | Pharmacy Council of India</strong></p>
+                <p>8 Semesters | 4 Academic Years | 208 Credits</p>
+                <p>✅ Updated & Comprehensive Course Structure</p>
+            </div>
+        </header>
+        
+        <div class="nav">
+            <button onclick="showSemester(1)" class="active">Sem I</button>
+            <button onclick="showSemester(2)">Sem II</button>
+            <button onclick="showSemester(3)">Sem III</button>
+            <button onclick="showSemester(4)">Sem IV</button>
+            <button onclick="showSemester(5)">Sem V</button>
+            <button onclick="showSemester(6)">Sem VI</button>
+            <button onclick="showSemester(7)">Sem VII</button>
+            <button onclick="showSemester(8)">Sem VIII</button>
+            <button onclick="showSummary()">Overview</button>
+        </div>
+        
+        <div class="content">
+            <button class="print-btn" onclick="window.print()">🖨️ Print This Page</button>
+            
+            <!-- SEMESTER I -->
+            <div id="sem1" class="semester active">
+                <div class="sem-header">
+                    SEMESTER I
+                    <div class="sem-credits">27-30 Credits | 45 Hours/Course</div>
+                </div>
+                
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Theory Courses</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Practical Courses</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">27-30</div>
+                        <div class="stat-label">Total Credits</div>
+                    </div>
+                </div>
+                
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <span class="course-code">BP101T</span>
+                    <div class="course-title">Human Anatomy and Physiology I</div>
+                    <div class="course-info">
+                        <div class="info-item"><span class="info-label">Credits:</span> 4</div>
+                        <div class="info-item"><span class="info-label">L-T:</span> 3-1</div>
+                        <div class="info-item"><span class="info-label">Hours:</span> 45</div>
+                    </div>
+                    <div class="outcomes">
+                        <div class="outcomes-title">🎯 Course Outcomes:</div>
+                        <ol>
+                            <li>Explain anatomical and physiological concepts of human body systems</li>
+                            <li>Describe homeostasis and its mechanisms</li>
+                            <li>Apply anatomical knowledge in pharmaceutical practice</li>
+                        </ol>
+                    </div>
+                    <div class="topics">
+                        <div class="topics-title">📖 Key Topics:</div>
+                        <ul>
+                            <li>Cell biology: structure, function, cell division</li>
+                            <li>Tissues: epithelial, connective, muscle, nervous</li>
+                            <li>Integumentary system</li>
+                            <li>Skeletal system: bones and joints</li>
+                            <li>Muscular system: types and contraction</li>
+                            <li>Cardiovascular system: heart and blood vessels</li>
+                            <li>Respiratory system: anatomy and gas exchange</li>
+                            <li>Nervous system: CNS, PNS, and reflex arc</li>
+                            <li>Sensory organs: eye, ear, taste, smell</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <span class="course-code">BP102T</span>
+                    <div class="course-title">Pharmaceutical Analysis I</div>
+                    <div class="course-info">
+                        <div class="info-item"><span class="info-label">Credits:</span> 4</div>
+                        <div class="info-item"><span class="info-label">L-T:</span> 3-1</div>
+                        <div class="info-item"><span class="info-label">Hours:</span> 45</div>
+                    </div>
+                    <div class="outcomes">
+                        <div class="outcomes-title">🎯 Course Outcomes:</div>
+                        <ol>
+                            <li>Explain principles of pharmaceutical analysis</li>
+                            <li>Apply analytical techniques for quality control</li>
+                            <li>Interpret analytical data</li>
+                        </ol>
+                    </div>
+                    <div class="topics">
+                        <div class="topics-title">📖 Key Topics:</div>
+                        <ul>
+                            <li>Gravimetric analysis principles</li>
+                            <li>Volumetric analysis and titrimetry</li>
+                            <li>Acid-base titrations</li>
+                            <li>Redox titrations</li>
+                            <li>Complexometric titrations (EDTA)</li>
+                            <li>Precipitation titrations</li>
+                            <li>Official analysis methods: IP, BP, USP</li>
+                            <li>Quality control applications</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- More courses... -->
+                <div class="course-card">
+                    <span class="course-code">BP103T</span>
+                    <div class="course-title">Pharmaceutics I</div>
+                    <div class="course-info">
+                        <div class="info-item"><span class="info-label">Credits:</span> 4</div>
+                        <div class="info-item"><span class="info-label">L-T:</span> 3-1</div>
+                        <div class="info-item"><span class="info-label">Hours:</span> 45</div>
+                    </div>
+                    <div class="topics">
+                        <div class="topics-title">📖 Key Topics:</div>
+                        <ul>
+                            <li>Pharmaceutical processes: size reduction, mixing</li>
+                            <li>Particle size and distribution</li>
+                            <li>Powders: properties and flow</li>
+                            <li>Granulation: wet and dry methods</li>
+                            <li>Drying principles and equipment</li>
+                            <li>Extraction methods</li>
+                            <li>Filtration and sterilization</li>
+                            <li>GMP fundamentals</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <span class="course-code">BP104T</span>
+                    <div class="course-title">Pharmaceutical Inorganic Chemistry</div>
+                    <div class="course-info">
+                        <div class="info-item"><span class="info-label">Credits:</span> 4</div>
+                        <div class="info-item"><span class="info-label">L-T:</span> 3-1</div>
+                        <div class="info-item"><span class="info-label">Hours:</span> 45</div>
+                    </div>
+                    <div class="topics">
+                        <div class="topics-title">📖 Key Topics:</div>
+                        <ul>
+                            <li>Atomic structure and electronic configuration</li>
+                            <li>Chemical bonding: ionic, covalent</li>
+                            <li>Periodic table and trends</li>
+                            <li>Inorganic pharmaceuticals</li>
+                            <li>Alkalies and alkaline earth metals</li>
+                            <li>Halogens and pharmaceutical applications</li>
+                            <li>Complexes and coordination compounds</li>
+                            <li>Dosage forms of inorganic drugs</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <span class="course-code">BP105T</span>
+                    <div class="course-title">Communication Skills</div>
+                    <div class="course-info">
+                        <div class="info-item"><span class="info-label">Credits:</span> 2</div>
+                        <div class="info-item"><span class="info-label">L:</span> 2</div>
+                        <div class="info-item"><span class="info-label">Hours:</span> 30</div>
+                    </div>
+                    <div class="topics">
+                        <div class="topics-title">📖 Key Topics:</div>
+                        <ul>
+                            <li>Communication fundamentals and barriers</li>
+                            <li>Professional communication</li>
+                            <li>Written communication skills</li>
+                            <li>Oral presentation and public speaking</li>
+                            <li>Interpersonal communication</li>
+                            <li>Patient counselling techniques</li>
+                            <li>Digital communication</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="practical-section">
+                    <div class="practical-title">🔬 PRACTICAL COURSES</div>
+                    <div class="practical-card">
+                        <div>BP107P - Human Anatomy and Physiology I Practical</div>
+                        <div><strong>2 Credits | 4P | 60 Hours</strong></div>
+                    </div>
+                    <div class="practical-card">
+                        <div>BP108P - Pharmaceutical Analysis I Practical</div>
+                        <div><strong>2 Credits | 4P | 60 Hours</strong></div>
+                    </div>
+                    <div class="practical-card">
+                        <div>BP109P - Pharmaceutics I Practical</div>
+                        <div><strong>2 Credits | 4P | 60 Hours</strong></div>
+                    </div>
+                    <div class="practical-card">
+                        <div>BP110P - Pharmaceutical Inorganic Chemistry Practical</div>
+                        <div><strong>2 Credits | 4P | 60 Hours</strong></div>
+                    </div>
+                    <div class="practical-card">
+                        <div>BP111P - Communication Skills Practical</div>
+                        <div><strong>1 Credit | 2P | 30 Hours</strong></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEMESTER II -->
+            <div id="sem2" class="semester">
+                <div class="sem-header">
+                    SEMESTER II
+                    <div class="sem-credits">30 Credits</div>
+                </div>
+                <p style="font-size: 1.1em; margin: 20px 0;"><strong>📚 Courses:</strong> Human Anatomy and Physiology II, Pharmaceutical Analysis II, Pharmaceutics II, Pharmaceutical Organic Chemistry I, Biochemistry</p>
+                <p style="margin: 15px 0;"><strong>Key Features:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Advanced spectroscopic methods (UV-Visible, Fluorimetry)</li>
+                    <li>Chromatography: TLC, Paper, Gas Chromatography</li>
+                    <li>Introduction to HPLC</li>
+                    <li>Semi-solid dosage forms: ointments, creams, gels</li>
+                    <li>Organic chemistry: nomenclature, isomerism, reactions</li>
+                    <li>Biochemistry: metabolic pathways, enzyme kinetics</li>
+                </ul>
+                <div class="practical-section" style="margin-top: 30px;">
+                    <div class="practical-title">🔬 5 PRACTICAL COURSES</div>
+                    <p style="margin: 10px 0;">BP206P - BP210P covering analytical, biochemical, and formulation practicals</p>
+                </div>
+            </div>
+            
+            <!-- SEMESTER III -->
+            <div id="sem3" class="semester">
+                <div class="sem-header">
+                    SEMESTER III
+                    <div class="sem-credits">30 Credits</div>
+                </div>
+                <p style="font-size: 1.1em; margin: 20px 0;"><strong>📚 Courses:</strong> Pathophysiology, Pharmaceutical Organic Chemistry II, Biochemistry II, Pharmacology I, Social Pharmacy</p>
+                <p style="margin: 15px 0;"><strong>Key Features:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Disease mechanisms and pathophysiology</li>
+                    <li>Heterocyclic compounds and drug synthesis</li>
+                    <li>Advanced enzyme kinetics and signal transduction</li>
+                    <li>Pharmacokinetics and pharmacodynamics fundamentals</li>
+                    <li>Autonomic nervous system pharmacology</li>
+                    <li>Healthcare systems and epidemiology</li>
+                </ul>
+            </div>
+            
+            <!-- SEMESTER IV -->
+            <div id="sem4" class="semester">
+                <div class="sem-header">
+                    SEMESTER IV
+                    <div class="sem-credits">30 Credits</div>
+                </div>
+                <p style="font-size: 1.1em; margin: 20px 0;"><strong>📚 Courses:</strong> Medicinal Chemistry I, Pharmacology II, Pharmaceutics III, Pharmacognosy I, Pharmaceutical Jurisprudence</p>
+                <p style="margin: 15px 0;"><strong>Key Features:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Structure-Activity Relationships (SAR)</li>
+                    <li>Drug metabolism: Phase I, II, III reactions</li>
+                    <li>Solid dosage forms: tablets, capsules</li>
+                    <li>Natural products and phytochemistry</li>
+                    <li>Pharmaceutical laws and regulations</li>
+                    <li>Intellectual Property Rights (IPR)</li>
+                </ul>
+            </div>
+            
+            <!-- SEMESTER V -->
+            <div id="sem5" class="semester">
+                <div class="sem-header">
+                    SEMESTER V
+                    <div class="sem-credits">30 Credits</div>
+                </div>
+                <p style="font-size: 1.1em; margin: 20px 0;"><strong>📚 Courses:</strong> Pharmacology III, Medicinal Chemistry II, Pharmacognosy II, Pharmaceutical Microbiology, Advanced Analytical Methods</p>
+                <p style="margin: 15px 0;"><strong>Key Features:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>CNS pharmacology and psychotropic drugs</li>
+                    <li>Drug metabolism and bioactivation</li>
+                    <li>Medicinal plants and herbal medicines</li>
+                    <li>Microbiological techniques and sterilization</li>
+                    <li>HPLC, LC-MS, GC-MS methods</li>
+                    <li>Analytical method validation (ICH Q2)</li>
+                </ul>
+            </div>
+            
+            <!-- SEMESTER VI -->
+            <div id="sem6" class="semester">
+                <div class="sem-header">
+                    SEMESTER VI
+                    <div class="sem-credits">30 Credits</div>
+                </div>
+                <p style="font-size: 1.1em; margin: 20px 0;"><strong>📚 Courses:</strong> Biopharmaceutics & Pharmacokinetics, Clinical Pharmacy, Pharmaceutics IV (NDDS), Pharmacology IV, Advanced Formulation Design</p>
+                <p style="margin: 15px 0;"><strong>Key Features:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Bioavailability and bioequivalence</li>
+                    <li>Pharmacokinetic models and dosing</li>
+                    <li>Clinical pharmacy and therapeutic management</li>
+                    <li>Novel drug delivery systems (NDDS)</li>
+                    <li>Liposomes, nanoparticles, hydrogels</li>
+                    <li>Quality by Design (QbD) principles</li>
+                </ul>
+            </div>
+            
+            <!-- SEMESTER VII -->
+            <div id="sem7" class="semester">
+                <div class="sem-header">
+                    SEMESTER VII
+                    <div class="sem-credits">22 Credits</div>
+                </div>
+                <p style="font-size: 1.1em; margin: 20px 0;"><strong>📚 Courses:</strong> Social Pharmacy, Pharmaceutical Biotechnology, Research & Development, Hospital/Clinical Pharmacy, Regulatory Affairs</p>
+                <p style="margin: 15px 0;"><strong>Key Features:</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>Public health and health promotion</li>
+                    <li>Biotechnology: cell culture, recombinant DNA</li>
+                    <li>Drug discovery and development</li>
+                    <li>Clinical trials and GCP guidelines</li>
+                    <li>Hospital pharmacy operations</li>
+                    <li>Regulatory compliance and GMP</li>
+                    <li>Research projects: 6 Credits</li>
+                    <li>Advanced elective courses available</li>
+                </ul>
+            </div>
+            
+            <!-- SEMESTER VIII -->
+            <div id="sem8" class="semester">
+                <div class="sem-header">
+                    SEMESTER VIII (FINAL)
+                    <div class="sem-credits">22-24 Credits</div>
+                </div>
+                <p style="font-size: 1.1em; margin: 20px 0;"><strong>📚 Courses:</strong> AI in Pharmacy, Clinical Pharmacotherapeutics, Industrial Pharmacy, Management, Sterile Dosage Forms</p>
+                <p style="margin: 15px 0;"><strong>Key Features - NEW (2026 UPDATES):</strong></p>
+                <ul style="margin-left: 20px; line-height: 1.8; background: #fff3cd; padding: 15px; border-radius: 8px;">
+                    <li>🤖 <strong>Artificial Intelligence in Pharmacy:</strong> AI lifecycle, ML models, ethical considerations</li>
+                    <li>📊 <strong>Pharma 4.0 Technologies:</strong> AR/VR, digital twins, automation</li>
+                    <li>🏥 <strong>Clinical Pharmacotherapeutics:</strong> Disease management, drug therapy</li>
+                    <li>🏭 <strong>Industrial Pharmacy:</strong> Facility design, technology transfer</li>
+                    <li>🎯 <strong>Precision Medicine:</strong> Pharmacogenomics, personalized therapy</li>
+                    <li>💊 <strong>Sterile & Novel Delivery:</strong> Parenteral, NDDS, advanced systems</li>
+                    <li>📚 <strong>Research Project:</strong> 6 Credits - Independent research work</li>
+                </ul>
+                
+                <div class="practical-section" style="margin-top: 30px;">
+                    <div class="practical-title">🔬 ELECTIVE COURSES (Choose One Each)</div>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Advanced Electives:</strong> Pharmaceutical Packaging, Supply Chain Management, Industrial Safety, Traditional Healing, AR/VR Pharma 4.0, Herbal Cosmetics</li>
+                        <li><strong>Validation Courses:</strong> Cleaning Validation, Aseptic Handling, Impurity Profiling</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- OVERVIEW -->
+            <div id="overview" class="semester" style="display: none;">
+                <div class="sem-header" style="background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);">
+                    📊 PROGRAM OVERVIEW
+                    <div class="sem-credits">Complete B.Pharm Structure</div>
+                </div>
+                
+                <div class="stats" style="margin: 30px 0;">
+                    <div class="stat-card" style="background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Semesters</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);">
+                        <div class="stat-number">208</div>
+                        <div class="stat-label">Total Credits</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #ec4899 0%, #be185d 100%);">
+                        <div class="stat-number">1200+</div>
+                        <div class="stat-label">Lecture Hours</div>
+                    </div>
+                    <div class="stat-card" style="background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);">
+                        <div class="stat-number">900+</div>
+                        <div class="stat-label">Practical Hours</div>
+                    </div>
+                </div>
+                
+                <div class="summary">
+                    <h3>✅ KEY FEATURES OF 2026 SYLLABUS (NEP 2020)</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <strong>🤖 Emerging Technologies</strong>
+                            <p>AI, Machine Learning, AR/VR, Pharma 4.0, Digital Twin concepts integrated throughout</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>🔬 Research Focus</strong>
+                            <p>Extensive research projects, innovation labs, and practical research experience</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>💼 Industry Relevance</strong>
+                            <p>QbD, continuous manufacturing, automation, and real-world pharmaceutical operations</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>🌱 Sustainability</strong>
+                            <p>Green chemistry, waste management, environmental concerns, sustainable pharmacy practices</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>⚕️ Clinical Excellence</strong>
+                            <p>Clinical pharmacy, patient care, therapeutic management, evidence-based medicine</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>🎓 Professional Ethics</strong>
+                            <p>Ethics, regulatory compliance, IPR, professional responsibilities, community health</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary" style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-left-color: #3b82f6;">
+                    <h3 style="color: #1e40af;">📚 CURRICULUM STRUCTURE BY YEAR</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <strong>Year 1 (Semesters I-II)</strong>
+                            <p><strong>Fundamentals:</strong> Anatomy, Chemistry, Pharmaceutics, Analysis - Building scientific foundation</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>Year 2 (Semesters III-IV)</strong>
+                            <p><strong>Core Pharmacy:</strong> Pharmacology, Medicinal Chemistry, Pharmacognosy - Applied pharmacy knowledge</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>Year 3 (Semesters V-VI)</strong>
+                            <p><strong>Advanced Specialization:</strong> Biopharmaceutics, Clinical Pharmacy, NDDS - Specialized skills</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>Year 4 (Semesters VII-VIII)</strong>
+                            <p><strong>Professional Practice:</strong> Research, Hospital, Industry, Management - Final integration & specialization</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="summary" style="background: linear-gradient(135deg, #fecaca 0%, #fca5a5 100%); border-left-color: #ef4444;">
+                    <h3 style="color: #991b1b;">🎯 CAREER OPPORTUNITIES</h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <strong>1. Community Pharmacist</strong>
+                            <p>Retail pharmacy, OTC counselling, community health services</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>2. Hospital Pharmacist</strong>
+                            <p>Inpatient/outpatient services, clinical operations, drug therapy management</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>3. Clinical Pharmacist</strong>
+                            <p>Drug therapy monitoring, patient counselling, clinical rounds, case management</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>4. Regulatory Affairs</strong>
+                            <p>Drug approval processes, compliance, documentation, regulatory submissions</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>5. Research & Development</strong>
+                            <p>Drug discovery, formulation development, analytical research, innovation</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>6. Quality Assurance/Control</strong>
+                            <p>Quality systems, testing, validation, compliance, process improvement</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>7. Pharmaceutical Marketing</strong>
+                            <p>Medical representative, sales management, product marketing, strategy</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>8. Pharmacovigilance</strong>
+                            <p>Drug safety monitoring, adverse event reporting, post-marketing surveillance</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>9. Government Services</strong>
+                            <p>CDSCO, Health Ministry, Public health programs, policy making</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>10. Academics & Teaching</strong>
+                            <p>College faculty, research supervision, educational content development</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>11. Entrepreneurship</strong>
+                            <p>Start-ups, pharmacy business, pharmaceutical consulting, healthcare innovation</p>
+                        </div>
+                        <div class="summary-item">
+                            <strong>12. Emerging Fields</strong>
+                            <p>AI/ML in pharmacy, digital health, biotechnology, precision medicine</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>B.Pharm Updated Syllabus 2026 | NEP 2020 Framework | Pharmacy Council of India</strong></p>
+            <p>Last Updated: May 16, 2026 | Comprehensive 8-Semester Program</p>
+            <p>📧 For detailed information, visit your institution or contact the Pharmacy Council of India</p>
+        </footer>
+    </div>
+    
+    <script>
+        function showSemester(semNumber) {
+            // Hide all semesters
+            const semesters = document.querySelectorAll('.semester');
+            semesters.forEach(sem => sem.classList.remove('active'));
+            
+            // Show selected semester
+            const selectedSem = document.getElementById('sem' + semNumber);
+            if (selectedSem) {
+                selectedSem.classList.add('active');
+            }
+            
+            // Update button styling
+            const buttons = document.querySelectorAll('.nav button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        function showSummary() {
+            document.querySelectorAll('.semester').forEach(sem => sem.classList.remove('active'));
+            document.getElementById('overview').classList.add('active');
+            document.querySelectorAll('.nav button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>

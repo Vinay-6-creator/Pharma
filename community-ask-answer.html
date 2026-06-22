@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask & Answer - Community - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      font-weight: 600;
+      color: var(--blue);
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    main {
+      margin-top: 32px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0 0 24px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .section-divider {
+      margin: 48px 0;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .question-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .question-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .question-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--blue-dark);
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .question-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .question-card p {
+      margin: 0 0 18px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-size: 0.95rem;
+    }
+
+    .question-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .answer-count {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--blue) 0%, #1d4ed8 100%);
+      padding: 40px;
+      border-radius: 24px;
+      text-align: center;
+      color: #fff;
+      margin-top: 48px;
+    }
+
+    .cta-section h2 {
+      margin: 0 0 16px;
+      font-size: 1.8rem;
+    }
+
+    .cta-section p {
+      margin: 0 0 24px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: var(--blue);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.15);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .step-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .step-card p {
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    footer {
+      margin-top: 64px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--blue);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--blue-dark);
+    }
+
+    .profile-icon {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .profile-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .question-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-section {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="community.html" class="back-link">← Back to Community</a>
+        <div class="brand">
+          <div class="brand-icon">💬</div>
+          <span>Ask & Answer</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>Ask Questions & Get Expert Answers</h1>
+        <p>Post your pharmacy doubts and get quick answers from experienced students, mentors, and industry experts. Our community is here to help you master every concept!</p>
+      </div>
+
+      <section class="section-divider">
+        <h2 class="section-title">🔥 Trending Questions</h2>
+        <div class="question-grid">
+          <div class="question-card">
+            <span class="question-badge">Pharmacology</span>
+            <h3>What's the difference between agonists and antagonists?</h3>
+            <p>How do I distinguish between different types of drug actions and their mechanisms? Struggling to understand the fundamental concepts.</p>
+            <div class="question-meta">
+              <span class="meta-item">👤 Answered by: Dr. Sharma</span>
+              <span class="answer-count">12 Answers</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <span class="question-badge">Pharmaceutical Chemistry</span>
+            <h3>How to balance chemical equations in drug synthesis?</h3>
+            <p>Need help understanding stoichiometry in pharmaceutical chemistry. What are the best techniques to master this?</p>
+            <div class="question-meta">
+              <span class="meta-item">👤 Answered by: Prof. Gupta</span>
+              <span class="answer-count">8 Answers</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <span class="question-badge">Clinical Practice</span>
+            <h3>How to approach medication counseling in practice?</h3>
+            <p>What are the key points to remember when counseling patients about their medications and potential side effects?</p>
+            <div class="question-meta">
+              <span class="meta-item">👤 Answered by: Riya Patel</span>
+              <span class="answer-count">15 Answers</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <span class="question-badge">Exam Prep</span>
+            <h3>Best strategies for pharmacology exams?</h3>
+            <p>What study techniques work best for memorizing drug classes, mechanisms, and side effects?</p>
+            <div class="question-meta">
+              <span class="meta-item">👤 Answered by: Akshay Singh</span>
+              <span class="answer-count">20 Answers</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <span class="question-badge">Microbiology</span>
+            <h3>Understanding antibiotic resistance mechanisms?</h3>
+            <p>How do bacteria develop resistance to antibiotics and what are the current strategies to combat this issue?</p>
+            <div class="question-meta">
+              <span class="meta-item">👤 Answered by: Dr. Verma</span>
+              <span class="answer-count">11 Answers</span>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <span class="question-badge">Career</span>
+            <h3>How to prepare for clinical internships?</h3>
+            <p>What should I do to make the most of my internship? Any tips for getting placed directly from internship?</p>
+            <div class="question-meta">
+              <span class="meta-item">👤 Answered by: Seniors</span>
+              <span class="answer-count">18 Answers</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-divider">
+        <h2 class="section-title">💡 How to Ask Great Questions</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Be Specific</h3>
+            <p>Clearly describe what you don't understand. Include the exact topic, context, and what you've tried so far.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Provide Context</h3>
+            <p>Share relevant information like the chapter number, textbook reference, or exam type to help mentors guide you better.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Use Tags</h3>
+            <p>Tag your question with relevant subjects like Pharmacology, Chemistry, Pathology to reach the right experts.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3>Show Your Work</h3>
+            <p>If applicable, show what steps you've already taken. This helps mentors understand where you're stuck exactly.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">5</div>
+            <h3>Follow Up</h3>
+            <p>Thank helpful answerers and provide feedback. This creates a positive community culture for everyone.</p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">6</div>
+            <h3>Mark Best Answer</h3>
+            <p>Once you understand, mark the most helpful answer. This guides others and rewards the answerer with badges.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-divider">
+        <h2 class="section-title">📊 Community Stats</h2>
+        <div class="steps-grid">
+          <div class="step-card">
+            <h3>25K+</h3>
+            <p style="margin: 8px 0 0 0; font-weight: 600;">Questions Answered</p>
+          </div>
+
+          <div class="step-card">
+            <h3>50K+</h3>
+            <p style="margin: 8px 0 0 0; font-weight: 600;">Active Participants</p>
+          </div>
+
+          <div class="step-card">
+            <h3>1000+</h3>
+            <p style="margin: 8px 0 0 0; font-weight: 600;">Expert Mentors</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="cta-section">
+        <h2>Ready to Ask Your First Question?</h2>
+        <p>Join thousands of pharmacy students getting help from the community every day!</p>
+        <button class="btn btn-primary" onclick="alert('Question posting feature coming soon! Check back later.')">Post a Question</button>
+      </div>
+    </main>
+
+    <footer>
+      <span>© 2026 PharmaX - Community</span>
+      <div>
+        <a href="community.html">Back to Community</a>
+        <a href="index.html" style="margin-left: 20px;">Home</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="profile-icon" id="profileIcon">👤</div>
+
+  <script>
+    document.getElementById('profileIcon').addEventListener('click', function() {
+      alert('Profile feature coming soon! Navigate back to home to manage your account.');
+    });
+  </script>
+</body>
+</html>

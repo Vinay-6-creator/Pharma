@@ -1,0 +1,1683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Study Hub - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-weight: 600;
+      cursor: pointer;
+      transition: gap 0.2s ease;
+    }
+
+    .back-link:hover {
+      gap: 12px;
+    }
+
+    main {
+      margin-top: 32px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      line-height: 1.8;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 36px;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 14px 20px;
+      border: none;
+      background: none;
+      color: var(--text-muted);
+      font-weight: 600;
+      cursor: pointer;
+      position: relative;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      color: var(--blue);
+    }
+
+    .tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--blue);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .study-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .study-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .study-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 60px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--blue-dark);
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .study-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .study-card p {
+      margin: 0 0 18px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 16px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .section-divider {
+      margin: 48px 0;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0 0 24px;
+      color: var(--text);
+    }
+
+    .program-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .program-card {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-strong) 100%);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .program-card.active {
+      background: linear-gradient(135deg, var(--blue), #1d4ed8);
+      border-color: var(--blue);
+      color: #fff;
+    }
+
+    .program-card.active .program-icon,
+    .program-card.active .program-title,
+    .program-card.active .program-duration {
+      color: #fff;
+    }
+
+    .program-icon {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .program-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 12px 0;
+      color: var(--text);
+    }
+
+    .program-duration {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .program-content {
+      display: none;
+    }
+
+    .program-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .pyq-container {
+      display: grid;
+      gap: 24px;
+    }
+
+    .pyq-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .pyq-card:hover {
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.08);
+      transform: translateX(4px);
+    }
+
+    .pyq-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      gap: 12px;
+    }
+
+    .pyq-subject {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .pyq-difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .difficulty-easy {
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+    }
+
+    .difficulty-medium {
+      background: rgba(251, 146, 60, 0.15);
+      color: #f97316;
+    }
+
+    .difficulty-hard {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+    }
+
+    .pyq-question {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    .pyq-options {
+      display: grid;
+      gap: 10px;
+      margin: 16px 0;
+    }
+
+    .option {
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .option:hover {
+      border-color: var(--blue);
+      background: rgba(37, 99, 235, 0.05);
+    }
+
+    .option.correct {
+      border-color: var(--green);
+      background: rgba(34, 197, 94, 0.08);
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .expand-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: rgba(37, 99, 235, 0.1);
+      border: none;
+      color: var(--blue);
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      margin-top: 12px;
+    }
+
+    .expand-btn:hover {
+      background: rgba(37, 99, 235, 0.15);
+      transform: translateX(2px);
+    }
+
+    .revision-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .revision-card {
+      background: linear-gradient(135deg, #ffffff, #f8fbff);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .revision-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 50px rgba(15, 23, 42, 0.08);
+    }
+
+    .revision-topic {
+      font-size: 0.85rem;
+      color: var(--blue);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
+
+    .revision-card h3 {
+      margin: 0 0 14px;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .revision-points {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .revision-points li {
+      margin-bottom: 8px;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      display: flex;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      gap: 14px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+
+    .profile-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
+      z-index: 100;
+    }
+
+    .profile-icon:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(37, 99, 235, 0.3);
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 16px 0 32px;
+      }
+
+      .study-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .revision-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs {
+        margin-bottom: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <div class="brand">
+          <div class="brand-icon">📚</div>
+          <span>Study Hub</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>Master Your Pharmacy Studies</h1>
+        <p>Access comprehensive study materials, revision notes, and past year questions curated by expert pharmacists to help you ace your exams.</p>
+      </div>
+
+      <!-- Program Content -->
+      <div class="program-selector">
+        <div class="program-card active" onclick="switchProgram('bpharm', this)">
+          <div class="program-icon">🎓</div>
+          <div class="program-title">B Pharm</div>
+          <div class="program-duration">8 Semesters</div>
+        </div>
+        <div class="program-card" onclick="switchProgram('dpharm', this)">
+          <div class="program-icon">💊</div>
+          <div class="program-title">D Pharm</div>
+          <div class="program-duration">2 Years Program</div>
+        </div>
+        <div class="program-card" onclick="switchProgram('mpharm', this)">
+          <div class="program-icon">🏆</div>
+          <div class="program-title">M Pharm</div>
+          <div class="program-duration">4 Semesters</div>
+        </div>
+      </div>
+
+            <!-- B Pharm Content -->
+      <div id="bpharm" class="program-content active">
+        <!-- Semester Tabs -->
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab(event, 'sem1-bpharm')">📖 Sem 1</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem2-bpharm')">📖 Sem 2</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem3-bpharm')">📖 Sem 3</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem4-bpharm')">📖 Sem 4</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem5-bpharm')">📖 Sem 5</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem6-bpharm')">📖 Sem 6</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem7-bpharm')">📖 Sem 7</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem8-bpharm')">📖 Sem 8</button>
+        </div>
+
+        <!-- Semester 1 -->
+        <div id="sem1-bpharm" class="tab-content active">
+          <h2 class="section-title">B Pharm - Semester 1</h2>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='bpharm-sem1-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 1 Notes</span>
+                <h3>B Pharm Semester 1 Notes</h3>
+                <p>Open detailed notes, revision questions, and syllabus-aligned summaries for Semester 1.</p>
+                <div class="card-meta">
+                  <span class="meta-item">➡️ Open Notes</span>
+                  <span class="meta-item">📌 Syllabus Matched</span>
+                </div>
+              </div> 
+            </div>
+          </div>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">📘</div>
+                <span class="card-badge">Practical</span>
+                <h3>General Pharmacy Practical</h3>
+                <p>Practical skills for pharmacy operations, dosage calculations, and drug preparation techniques.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🗣️</div>
+                <span class="card-badge">Practical</span>
+                <h3>Communication & Psychology Practical</h3>
+                <p>Healthcare psychology, communication skills, and patient interaction practice.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🌿</div>
+                <span class="card-badge">Practical</span>
+                <h3>Pharmacognosy & Inorganic Chemistry Practical</h3>
+                <p>Hands-on laboratory work for pharmacognosy, anatomy, and inorganic pharmaceutical chemistry.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 2 -->
+        <div id="sem2-bpharm" class="tab-content">
+          <h2 class="section-title">B Pharm - Semester 2</h2>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='bpharm-sem2-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 2 Notes</span>
+                <h3>B Pharm Semester 2 Notes</h3>
+                <p>Open detailed notes, revision questions, and syllabus-aligned summaries for Semester 2.</p>
+                <div class="card-meta">
+                  <span class="meta-item">➡️ Open Notes</span>
+                  <span class="meta-item">📌 Syllabus Matched</span>
+                </div>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">📊</div>
+                <span class="card-badge">Semester 2</span>
+                <h3>Applied Biostatistics & Data Analytics</h3>
+                <p>Statistical methods and data analysis techniques for pharmaceutical research and decision-making.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🧬</div>
+                <span class="card-badge">Semester 2</span>
+                <h3>Organic Chemistry, Biochemistry & Phytochemistry</h3>
+                <p>Pharmaceutical organic chemistry, biochemistry, pharmacognosy, and phytochemistry foundations.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">⚗️</div>
+                <span class="card-badge">Semester 2</span>
+                <h3>Physical Pharmaceutics</h3>
+                <p>Study physical pharmaceutics principles, dosage form stability, and drug delivery basics.</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">🧪</div>
+                <span class="card-badge">Practical</span>
+                <h3>Analytical & Biochemistry Lab</h3>
+                <p>Lab exercises in biochemistry, physical pharmaceutics, and organic chemical analysis.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🧫</div>
+                <span class="card-badge">Practical</span>
+                <h3>Pharmacognosy & HAPPI II Practical</h3>
+                <p>Practical training in pharmacognosy, anatomy, physiology, and communication skills applications.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">💻</div>
+                <span class="card-badge">Practical</span>
+                <h3>Skills Electives & Computer Basics</h3>
+                <p>Communication, well-being, and computer operations skills aligned with SEC course requirements.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 3 -->
+        <div id="sem3-bpharm" class="tab-content">
+          <h2 class="section-title">B Pharm - Semester 3</h2>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='bpharm-sem3-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 3 Notes</span>
+                <h3>B Pharm Semester 3 Notes</h3>
+                <p>Open detailed notes, revision questions, and syllabus-aligned summaries for Semester 3.</p>
+                <div class="card-meta">
+                  <span class="meta-item">➡️ Open Notes</span>
+                  <span class="meta-item">📌 Syllabus Matched</span>
+                </div>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🤖</div>
+                <span class="card-badge">Semester 3</span>
+                <h3>Machine Learning & Environmental Science</h3>
+                <p>Introduction to machine learning applications in pharmaceutical sciences and environmental sustainability.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🧪</div>
+                <span class="card-badge">Semester 3</span>
+                <h3>General Pharmacology & Microbiology</h3>
+                <p>Drug action, pharmacology principles, and pharmaceutical microbiology for professional practice.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">⚙️</div>
+                <span class="card-badge">Semester 3</span>
+                <h3>Dosage Forms & Pharmaceutical Engineering</h3>
+                <p>Formulation design, pharmaceutical engineering, and dosage form development fundamentals.</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">🔬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Pharmacology & Dosage Forms Practical</h3>
+                <p>Hands-on training for general pharmacology, dosage form preparation, and analysis.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🧬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Heterocyclic Chemistry Practical</h3>
+                <p>Laboratory work in heterocyclic compounds, stereochemistry, and synthetic techniques.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🌿</div>
+                <span class="card-badge">Practical</span>
+                <h3>Clinical Electives Workshop</h3>
+                <p>Elective exposure to nutraceuticals, food analysis, and yoga/life sciences to complement pharmacy studies.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 4 -->
+        <div id="sem4-bpharm" class="tab-content">
+          <h2 class="section-title">B Pharm - Semester 4</h2>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='bpharm-sem4-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 4 Notes</span>
+                <h3>B Pharm Semester 4 Notes</h3>
+                <p>Open detailed notes, revision questions, and syllabus-aligned summaries for Semester 4.</p>
+                <div class="card-meta">
+                  <span class="meta-item">➡️ Open Notes</span>
+                  <span class="meta-item">📌 Syllabus Matched</span>
+                </div>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🌿</div>
+                <span class="card-badge">Semester 4</span>
+                <h3>Herbal Drug Technology</h3>
+                <p>Study herbal drug processing, formulation, and standardization methods for botanical medicines.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🧬</div>
+                <span class="card-badge">Semester 4</span>
+                <h3>Pharmaceutical Biotechnology</h3>
+                <p>Explore biotechnology applications, biopharmaceutical products, and modern drug development processes.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🏥</div>
+                <span class="card-badge">Semester 4</span>
+                <h3>Social Pharmacy & Systemic Pharmacology I</h3>
+                <p>Learn public health, pharmacy practice, and systemic pharmacology relevant to patient care.</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">🌿</div>
+                <span class="card-badge">Practical</span>
+                <h3>Herbal Drug & Biotech Practical</h3>
+                <p>Hands-on training with herbal formulations, biotechnology methods, and product evaluation.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🏥</div>
+                <span class="card-badge">Practical</span>
+                <h3>Social Pharmacy & Public Health Practical</h3>
+                <p>Practical awareness projects in public health, pharmacy outreach, and patient counselling.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">📚</div>
+                <span class="card-badge">Practical</span>
+                <h3>Systemic Pharmacology I Practical & Internship</h3>
+                <p>Apply pharmacology concepts in practical learning and prepare for mandatory internship exposure.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 5 -->
+        <div id="sem5-bpharm" class="tab-content">
+          <h2 class="section-title">B Pharm - Semester 5</h2>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='bpharm-sem5-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 5 Notes</span>
+                <h3>B Pharm Semester 5 Notes</h3>
+                <p>Open detailed notes, revision questions, and syllabus-aligned summaries for Semester 5.</p>
+                <div class="card-meta">
+                  <span class="meta-item">➡️ Open Notes</span>
+                  <span class="meta-item">📌 Syllabus Matched</span>
+                </div>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🧪</div>
+                <span class="card-badge">Semester 5</span>
+                <h3>Biomedicinal Chemistry</h3>
+                <p>Study biochemical drug design, mechanisms, and structure-function relationships of medicinal compounds.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🌿</div>
+                <span class="card-badge">Semester 5</span>
+                <h3>Industrial Pharmacognosy & Innovation</h3>
+                <p>Learn industrial processing of natural products and the startup ecosystem for pharmaceutical innovation.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">⚙️</div>
+                <span class="card-badge">Semester 5</span>
+                <h3>Dosage Form II & Quality Assurance</h3>
+                <p>Advance pharmaceutical dosage form development and quality assurance systems for drug products.</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">🧫</div>
+                <span class="card-badge">Practical</span>
+                <h3>Biomedicinal Chemistry Practical</h3>
+                <p>Lab experiments in medicinal chemistry and active pharmaceutical ingredient evaluation.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🌿</div>
+                <span class="card-badge">Practical</span>
+                <h3>Industrial Pharmacognosy Practical</h3>
+                <p>Hands-on processing, analysis, and standardization of herbal and phytopharmaceutical products.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🧪</div>
+                <span class="card-badge">Practical</span>
+                <h3>Dosage Form II & Pharmacology Practical</h3>
+                <p>Practical preparation and evaluation of advanced dosage forms and systemic pharmacology experiments.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 6 -->
+        <div id="sem6-bpharm" class="tab-content">
+          <h2 class="section-title">B Pharm - Semester 6</h2>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='bpharm-sem6-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 6 Notes</span>
+                <h3>B Pharm Semester 6 Notes</h3>
+                <p>Open detailed notes, revision questions, and syllabus-aligned summaries for Semester 6.</p>
+                <div class="card-meta">
+                  <span class="meta-item">➡️ Open Notes</span>
+                  <span class="meta-item">📌 Syllabus Matched</span>
+                </div>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🌿</div>
+                <span class="card-badge">Semester 6</span>
+                <h3>Advanced Pharmacognosy</h3>
+                <p>Study advanced natural product chemistry, herbal drug technology, and phytochemical analysis.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">📈</div>
+                <span class="card-badge">Semester 6</span>
+                <h3>Biopharmaceutics & Pharmacokinetics</h3>
+                <p>Focus on drug absorption, distribution, metabolism, excretion, and bioavailability principles.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🤖</div>
+                <span class="card-badge">Semester 6</span>
+                <h3>AI Applications, IPR & Jurisprudence</h3>
+                <p>Learn AI in pharmaceutical sciences, intellectual property rights, and pharmacy law.</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">🧪</div>
+                <span class="card-badge">Practical</span>
+                <h3>Biopharmaceutics & Pharmacokinetics Practical</h3>
+                <p>Conduct practical studies in bioavailability, dissolution, and pharmacokinetic modeling.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🔬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Analytical Chemistry Practical</h3>
+                <p>Advanced analytical method development, validation, and pharmaceutical analysis techniques.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">📚</div>
+                <span class="card-badge">Practical</span>
+                <h3>Emerging Electives & Soft Skills</h3>
+                <p>Explore green chemistry, materiovigilance, scientific writing, business management, and related electives.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 7 -->
+        <div id="sem7-bpharm" class="tab-content">
+          <h2 class="section-title">B Pharm - Semester 7</h2>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='bpharm-sem7-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 7 Notes</span>
+                <h3>B Pharm Semester 7 Notes</h3>
+                <p>Open detailed notes, revision questions, and syllabus-aligned summaries for Semester 7.</p>
+                <div class="card-meta">
+                  <span class="meta-item">➡️ Open Notes</span>
+                  <span class="meta-item">📌 Syllabus Matched</span>
+                </div>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">📊</div>
+                <span class="card-badge">Semester 7</span>
+                <h3>Biostatistics & Analytical Techniques</h3>
+                <p>Research methodology, modern analytical techniques, and quality monitoring for pharmaceutical research.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">💊</div>
+                <span class="card-badge">Semester 7</span>
+                <h3>Pharmacovigilance & Pharmacy Practice</h3>
+                <p>Study drug safety monitoring, clinical applications of AI, and contemporary pharmacy practice.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">⚖️</div>
+                <span class="card-badge">Semester 7</span>
+                <h3>Regulatory Affairs & Research Project</h3>
+                <p>Learn regulatory compliance, cGMP, automation, and complete a research project.</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">🧪</div>
+                <span class="card-badge">Practical</span>
+                <h3>Modern Analytical Techniques Practical</h3>
+                <p>Practical applications of advanced analytical methods for drug testing and monitoring.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🧬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Research Project Practical</h3>
+                <p>Hands-on research, data collection, and project report preparation for professional presentation.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🏭</div>
+                <span class="card-badge">Practical</span>
+                <h3>Industry & Biotech Electives</h3>
+                <p>Learn cGMP, automation, medical devices, biosimilars, and other industrial biotech electives.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 8 -->
+        <div id="sem8-bpharm" class="tab-content">
+          <h2 class="section-title">B Pharm - Semester 8</h2>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='bpharm-sem8-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 8 Notes</span>
+                <h3>B Pharm Semester 8 Notes</h3>
+                <p>Open detailed notes, revision questions, and syllabus-aligned summaries for Semester 8.</p>
+                <div class="card-meta">
+                  <span class="meta-item">➡️ Open Notes</span>
+                  <span class="meta-item">📌 Syllabus Matched</span>
+                </div>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🤖</div>
+                <span class="card-badge">Semester 8</span>
+                <h3>Ethical AI & Translational Pharmacy</h3>
+                <p>Study ethical considerations and applications of AI in translational pharmacy and healthcare.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🏥</div>
+                <span class="card-badge">Semester 8</span>
+                <h3>Clinical Pharmacotherapeutics</h3>
+                <p>Advance clinical drug therapy knowledge, personalized treatment, and evidence-based prescribing.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🏭</div>
+                <span class="card-badge">Semester 8</span>
+                <h3>Industrial Pharmacy & Sterile Delivery</h3>
+                <p>Learn industrial pharmacy design, facility planning, sterile dosage forms, and novel drug delivery systems.</p>
+              </div>
+            </div>
+          </div>
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">📦</div>
+                <span class="card-badge">Practical</span>
+                <h3>Pharmaceutical Marketing Skills</h3>
+                <p>Practical training in pharmaceutical marketing, product management, and business strategy.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">⚗️</div>
+                <span class="card-badge">Practical</span>
+                <h3>Sterile Dosage Forms Practical</h3>
+                <p>Hands-on sterile technique, aseptic handling, and novel drug delivery system preparation.</p>
+              </div>
+              <div class="study-card">
+                <div class="card-icon">🔬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Validation & Research Project</h3>
+                <p>Validation training in cleaning, aseptic handling, impurity profiling, and final research project work.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- D Pharm Content -->
+      <div id="dpharm" class="program-content">
+        <!-- Year Tabs -->
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab(event, 'year1-dpharm')">📖 Year 1</button>
+          <button class="tab-btn" onclick="switchTab(event, 'year2-dpharm')">📖 Year 2</button>
+        </div>
+
+        <!-- Year 1 -->
+        <div id="year1-dpharm" class="tab-content active">
+          <h2 class="section-title">D Pharm - Year 1</h2>
+          
+          <!-- Notes Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='dpharm-year1-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Year 1</span>
+                <h3>Pharmaceutical Calculations & Weights</h3>
+                <p>Essential calculations for pharmacy, measurement units, percentage, ratio, and proportion for accurate dispensing.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Foundation Important</span>
+                  <span class="meta-item">📊 High Weightage</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">💊</div>
+                <span class="card-badge">Year 1</span>
+                <h3>Pharmacology - Drug Classes & Actions</h3>
+                <p>Understand drug classification, mechanism of action, and therapeutic uses of common pharmaceutical agents.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Must Know</span>
+                  <span class="meta-item">📚 Core Subject</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">⚕️</div>
+                <span class="card-badge">Year 1</span>
+                <h3>Prescription Handling & Dispensing</h3>
+                <p>5 Rs check, prescription verification, drug interactions, and professional dispensing practices.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Lab Work</span>
+                  <span class="meta-item">🧬 Practical Oriented</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practicals Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">⚗️</div>
+                <span class="card-badge">Practical</span>
+                <h3>Calculation Exercises & Measurements</h3>
+                <p>Hands-on practice with pharmaceutical calculations, conversions, and accurate weight measurements.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 3 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">🔬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Prescription Reading & Analysis</h3>
+                <p>Practice reading prescriptions, identifying dosage, route, and potential interactions.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 3 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">📊</div>
+                <span class="card-badge">Practical</span>
+                <h3>Drug Identification & Storage</h3>
+                <p>Learn to identify common drugs, their storage conditions, and shelf-life considerations.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 2 Hours/Session</span>
+                  <span class="meta-item">📊 15% Evaluation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Year 2 -->
+        <div id="year2-dpharm" class="tab-content">
+          <h2 class="section-title">D Pharm - Year 2</h2>
+          
+          <!-- Notes Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card" onclick="window.location.href='dpharm-year2-notes.html'" style="cursor: pointer;">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Year 2</span>
+                <h3>Community Pharmacy Management</h3>
+                <p>Pharmacy operations, inventory management, regulatory compliance, and retail pharmacy management.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Important Subject</span>
+                  <span class="meta-item">📊 High Weightage</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">💊</div>
+                <span class="card-badge">Year 2</span>
+                <h3>Patient Counseling & Communication</h3>
+                <p>Patient counseling techniques, medication adherence, side effects discussion, and communication skills.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Must Know</span>
+                  <span class="meta-item">📚 Core Subject</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">📋</div>
+                <span class="card-badge">Year 2</span>
+                <h3>Pharmaceutical Jurisprudence & Ethics</h3>
+                <p>Pharmacy acts, drug regulations, licensing, and professional ethics in pharmacy practice.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Lab Work</span>
+                  <span class="meta-item">🧬 Practical Oriented</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practicals Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">⚗️</div>
+                <span class="card-badge">Practical</span>
+                <h3>Community Pharmacy Internship</h3>
+                <p>Work in community pharmacy settings, learn operations, customer service, and inventory management.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 5 Hours/Session</span>
+                  <span class="meta-item">📊 25% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">🔬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Patient Counseling Simulation</h3>
+                <p>Practice patient counseling with role-plays, develop communication and empathy skills.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 3 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">📊</div>
+                <span class="card-badge">Practical</span>
+                <h3>OTC & Drug Recommendation Training</h3>
+                <p>Learn to recommend over-the-counter medications and educate customers on proper usage.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 3 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- M Pharm Content -->
+      <div id="mpharm" class="program-content">
+        <!-- Semester Tabs -->
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchTab(event, 'sem1-mpharm')">📖 Sem 1</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem2-mpharm')">📖 Sem 2</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem3-mpharm')">📖 Sem 3</button>
+          <button class="tab-btn" onclick="switchTab(event, 'sem4-mpharm')">📖 Sem 4</button>
+        </div>
+
+        <!-- Semester 1 -->
+        <div id="sem1-mpharm" class="tab-content active">
+          <h2 class="section-title">M Pharm - Semester 1</h2>
+          
+          <!-- Notes Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 1</span>
+                <h3>Advanced Pharmacology & Receptor Theory</h3>
+                <p>Molecular pharmacology, receptor classification, signal transduction pathways, and advanced drug mechanisms.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Important Subject</span>
+                  <span class="meta-item">📊 High Weightage</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">💊</div>
+                <span class="card-badge">Semester 1</span>
+                <h3>Biostatistics & Research Methods</h3>
+                <p>Statistical analysis, hypothesis testing, study design, and data interpretation for pharmaceutical research.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Must Know</span>
+                  <span class="meta-item">📚 Core Subject</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">🧬</div>
+                <span class="card-badge">Semester 1</span>
+                <h3>Pharmaceutical Chemistry - Organic Synthesis</h3>
+                <p>Advanced organic reactions, synthesis strategies, and drug molecule design principles.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Lab Work</span>
+                  <span class="meta-item">🧬 Practical Oriented</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practicals Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">⚗️</div>
+                <span class="card-badge">Practical</span>
+                <h3>Pharmacology Lab - Receptor Binding Assays</h3>
+                <p>Conduct receptor binding assays, dose-response curves, and molecular docking studies.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 4 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">🔬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Organic Synthesis Lab</h3>
+                <p>Perform complex organic synthesis, purification, and characterization of pharmaceutical compounds.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 4 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">📊</div>
+                <span class="card-badge">Practical</span>
+                <h3>Statistical Data Analysis</h3>
+                <p>Analyze research data using statistical software and prepare research reports.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 3 Hours/Session</span>
+                  <span class="meta-item">📊 15% Evaluation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 2 -->
+        <div id="sem2-mpharm" class="tab-content">
+          <h2 class="section-title">M Pharm - Semester 2</h2>
+          
+          <!-- Notes Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 2</span>
+                <h3>Advanced Formulation Technology</h3>
+                <p>Novel drug delivery systems, nanotechnology, targeted delivery, and advanced formulation strategies.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Important Subject</span>
+                  <span class="meta-item">📊 High Weightage</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">💊</div>
+                <span class="card-badge">Semester 2</span>
+                <h3>Clinical Pharmacokinetics</h3>
+                <p>Advanced ADME, drug interactions, bioequivalence, and personalized dosing regimens.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Must Know</span>
+                  <span class="meta-item">📚 Core Subject</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">⚗️</div>
+                <span class="card-badge">Semester 2</span>
+                <h3>Regulatory Affairs & Quality Management</h3>
+                <p>FDA guidelines, ICH guidelines, GMP, quality assurance, and regulatory compliance.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Lab Work</span>
+                  <span class="meta-item">🧬 Practical Oriented</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practicals Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">⚗️</div>
+                <span class="card-badge">Practical</span>
+                <h3>Formulation Development Lab</h3>
+                <p>Develop and optimize nanoformulations, liposomal systems, and advanced delivery platforms.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 5 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">🔬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Bioavailability & Bioequivalence Studies</h3>
+                <p>Conduct in vitro and in vivo bioavailability studies, IVIVC analysis.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 4 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">📊</div>
+                <span class="card-badge">Practical</span>
+                <h3>Quality Control & Stability Analysis</h3>
+                <p>Perform stability studies following ICH guidelines and prepare regulatory documentation.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 3 Hours/Session</span>
+                  <span class="meta-item">📊 15% Evaluation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 3 -->
+        <div id="sem3-mpharm" class="tab-content">
+          <h2 class="section-title">M Pharm - Semester 3</h2>
+          
+          <!-- Notes Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 3</span>
+                <h3>Clinical Research & Drug Development</h3>
+                <p>Clinical trial design (Phase I-IV), clinical pharmacology, investigational new drugs, and case management.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Important Subject</span>
+                  <span class="meta-item">📊 High Weightage</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">💊</div>
+                <span class="card-badge">Semester 3</span>
+                <h3>Pharmacovigilance & Drug Safety</h3>
+                <p>Adverse drug reactions, pharmacovigilance programs, risk management, and signal detection.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Must Know</span>
+                  <span class="meta-item">📚 Core Subject</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">🧬</div>
+                <span class="card-badge">Semester 3</span>
+                <h3>Pharmacogenomics & Precision Medicine</h3>
+                <p>Genetic biomarkers, personalized medicine, and individualized therapeutic strategies.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Lab Work</span>
+                  <span class="meta-item">🧬 Practical Oriented</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practicals Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">⚗️</div>
+                <span class="card-badge">Practical</span>
+                <h3>Clinical Trial Protocol Development</h3>
+                <p>Design clinical trial protocols, RCTC forms, and ethical considerations.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 4 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">🔬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Pharmacovigilance Project Work</h3>
+                <p>Conduct ADR monitoring, prepare pharmacovigilance reports, and safety analysis.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 4 Hours/Session</span>
+                  <span class="meta-item">📊 20% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">📊</div>
+                <span class="card-badge">Practical</span>
+                <h3>Genetic Analysis & Biomarker Studies</h3>
+                <p>Perform pharmacogenomics analysis and develop personalized treatment recommendations.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 3 Hours/Session</span>
+                  <span class="meta-item">📊 15% Evaluation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Semester 4 -->
+        <div id="sem4-mpharm" class="tab-content">
+          <h2 class="section-title">M Pharm - Semester 4</h2>
+          
+          <!-- Notes Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">📚 Notes</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">📖</div>
+                <span class="card-badge">Semester 4</span>
+                <h3>Advanced Research Topics & Specializations</h3>
+                <p>Contemporary research areas, emerging pharmaceutical challenges, and innovative solutions in pharmacy.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Important Subject</span>
+                  <span class="meta-item">📊 High Weightage</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">💊</div>
+                <span class="card-badge">Semester 4</span>
+                <h3>Professional Practice & Entrepreneurship</h3>
+                <p>Pharmacy business development, entrepreneurial skills, and professional career advancement.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Must Know</span>
+                  <span class="meta-item">📚 Core Subject</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">🧬</div>
+                <span class="card-badge">Semester 4</span>
+                <h3>Thesis Research & Scholarly Work</h3>
+                <p>Comprehensive thesis preparation, research dissemination, and academic publication.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Lab Work</span>
+                  <span class="meta-item">🧬 Practical Oriented</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Practicals Section -->
+          <div class="section-divider">
+            <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🔬 Practicals</h3>
+            <div class="study-grid">
+              <div class="study-card">
+                <div class="card-icon">⚗️</div>
+                <span class="card-badge">Practical</span>
+                <h3>Research Thesis Work</h3>
+                <p>Conduct comprehensive research project with data collection, analysis, and manuscript preparation.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ Full Time</span>
+                  <span class="meta-item">📊 40% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">🔬</div>
+                <span class="card-badge">Practical</span>
+                <h3>Seminar & Research Presentation</h3>
+                <p>Present research findings, participate in seminars, and prepare for thesis defense.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 3 Hours/Session</span>
+                  <span class="meta-item">📊 30% Evaluation</span>
+                </div>
+              </div>
+
+              <div class="study-card">
+                <div class="card-icon">📊</div>
+                <span class="card-badge">Practical</span>
+                <h3>Thesis Viva & Final Defense</h3>
+                <p>Prepare thesis manuscript and defend before the examination committee.</p>
+                <div class="card-meta">
+                  <span class="meta-item">⏱️ 2 Hours</span>
+                  <span class="meta-item">📊 30% Evaluation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span>© 2026 PharmaX - Study Hub</span>
+      <a href="#about">About</a>
+      <a href="#contact">Contact Us</a>
+    </footer>
+  </div>
+
+  <div class="profile-icon" id="profileIcon">👤</div>
+
+  <script>
+    function switchProgram(programName, element) {
+      // Hide all program contents
+      const programContents = document.querySelectorAll('.program-content');
+      programContents.forEach(content => content.classList.remove('active'));
+
+      // Deactivate all program cards
+      const programCards = document.querySelectorAll('.program-card');
+      programCards.forEach(card => card.classList.remove('active'));
+
+      // Show selected program content
+      document.getElementById(programName).classList.add('active');
+
+      // Activate clicked card
+      element.classList.add('active');
+
+      // Reset tabs for the selected program
+      resetTabsForProgram(programName);
+    }
+
+    function resetTabsForProgram(programName) {
+      // Get all tab contents for this program
+      const tabContents = document.querySelectorAll(`#${programName} .tab-content`);
+      tabContents.forEach(content => content.classList.remove('active'));
+
+      // Get all tab buttons for this program
+      const tabButtons = document.querySelectorAll(`#${programName} .tab-btn`);
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+
+      // Activate first tab and button
+      if (tabContents.length > 0) {
+        tabContents[0].classList.add('active');
+      }
+      if (tabButtons.length > 0) {
+        tabButtons[0].classList.add('active');
+      }
+    }
+
+    function switchTab(event, tabName) {
+      // Find the parent program container
+      const programContent = event.target.closest('.program-content');
+      
+      // Hide all tabs within this program
+      const tabs = programContent.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+
+      // Deactivate all buttons within this program
+      const buttons = programContent.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      // Show selected tab
+      document.getElementById(tabName).classList.add('active');
+
+      // Activate clicked button
+      event.target.classList.add('active');
+    }
+
+    function toggleAnswer(button) {
+      const answerDiv = button.nextElementSibling;
+      if (answerDiv.style.display === 'none') {
+        answerDiv.style.display = 'block';
+        button.textContent = '🔼 Hide Answer';
+      } else {
+        answerDiv.style.display = 'none';
+        button.textContent = '🔽 Show Answer';
+      }
+    }
+
+    document.getElementById('profileIcon').addEventListener('click', function() {
+      alert('Profile feature coming soon! Navigate back to home to manage your account.');
+    });
+  </script>
+</body>
+</html>

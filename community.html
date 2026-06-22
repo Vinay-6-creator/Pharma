@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Community - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-link {
+      transition: color 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .nav-link.active {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: none;
+      padding: 14px 22px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(148,163,184,0.3);
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(34, 197, 94, 0.24);
+    }
+
+    .btn-secondary {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--blue);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(37, 99, 235, 0.15);
+    }
+
+    main {
+      margin-top: 20px;
+    }
+
+    .hero-section {
+      margin-bottom: 60px;
+      padding: 40px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      border-radius: 24px;
+      color: white;
+      text-align: center;
+    }
+
+    .hero-section h1 {
+      margin: 0 0 16px;
+      font-size: 2.5rem;
+      font-weight: 700;
+    }
+
+    .hero-section p {
+      margin: 0 0 24px;
+      font-size: 1.1rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      gap: 16px;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .section-header a {
+      color: var(--blue);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .section-header a:hover {
+      color: var(--blue-dark);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .discussion-thread {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .discussion-thread:hover {
+      border-color: var(--blue);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    }
+
+    .thread-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .thread-title {
+      font-weight: 600;
+      color: var(--text);
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .thread-tag {
+      display: inline-flex;
+      padding: 4px 12px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--blue);
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .thread-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .thread-replies {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      margin-left: auto;
+    }
+
+    .thread-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .replies-preview {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .reply-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .reply-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #22c55e, #2563eb);
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 600;
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .reply-content {
+      flex: 1;
+    }
+
+    .reply-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .reply-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .reply-time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .reply-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin: 0 0 8px;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 1.8rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        gap: 16px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="brand">
+          <span class="brand-icon">P</span>
+          PharmaX
+        </a>
+
+        <nav>
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="study-hub.html" class="nav-link">Study Hub</a>
+          <a href="virtual-lab.html" class="nav-link">Virtual Lab</a>
+          <a href="career-guide.html" class="nav-link">Career Guide</a>
+          <a href="community.html" class="nav-link active">Community</a>
+        </nav>
+
+        <div class="actions" id="userActions">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <h1>🤝 Student Community</h1>
+        <p>Connect with thousands of pharmacy students. Ask doubts, share insights, discuss cases, and grow together in your pharmaceutical journey.</p>
+        <button class="btn btn-primary" onclick="document.getElementById('newDiscussion').scrollIntoView({behavior: 'smooth'})">Start a Discussion</button>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2>Community Highlights</h2>
+        </div>
+
+        <div class="grid">
+          <a href="community-ask-answer.html" class="card card-link">
+            <div class="card-icon">💬</div>
+            <h3>Ask & Answer</h3>
+            <p>Post your doubts and get answers from experienced students and mentors. Resolve concepts quickly with expert guidance.</p>
+          </a>
+
+          <a href="community-study-groups.html" class="card card-link">
+            <div class="card-icon">📚</div>
+            <h3>Study Groups</h3>
+            <p>Join subject-specific study groups, share resources, and collaborate on complex topics for better understanding.</p>
+          </a>
+
+          <a href="community-case-discussions.html" class="card card-link">
+            <div class="card-icon">🎯</div>
+            <h3>Case Discussions</h3>
+            <p>Engage in real-world pharmaceutical case studies and clinical scenarios with your peers and mentors.</p>
+          </a>
+
+          <a href="community-achievements.html" class="card card-link">
+            <div class="card-icon">🏆</div>
+            <h3>Achievements & Badges</h3>
+            <p>Earn badges for helpful answers, active participation, and contributions to the community.</p>
+          </a>
+
+          <a href="community-notes.html" class="card card-link">
+            <div class="card-icon">📖</div>
+            <h3>Shared Notes</h3>
+            <p>Access community-curated notes, summaries, and study materials shared by top performers.</p>
+          </a>
+
+          <a href="community-career.html" class="card card-link">
+            <div class="card-icon">🌐</div>
+            <h3>Career Advice</h3>
+            <p>Get career guidance from seniors, discuss internships, job opportunities, and professional development.</p>
+          </a>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2>Community Stats</h2>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">50K+</div>
+            <div class="stat-label">Active Students</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">25K+</div>
+            <div class="stat-label">Discussions Resolved</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">100+</div>
+            <div class="stat-label">Study Groups</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">1K+</div>
+            <div class="stat-label">Expert Mentors</div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-header">
+          <h2>Recent Discussions</h2>
+          <a href="#" onclick="alert('View all discussions feature coming soon!')">View All →</a>
+        </div>
+
+        <div class="discussion-thread">
+          <div class="thread-header">
+            <h3 class="thread-title">How to approach Pharmacology paper for university exams?</h3>
+            <span class="thread-tag">Exam Prep</span>
+          </div>
+          <div class="thread-meta">
+            <div class="avatar">AR</div>
+            <div class="thread-meta-item">
+              <span>Arun (B. Pharm Student)</span>
+              <span>•</span>
+              <span>2 days ago</span>
+            </div>
+            <span class="thread-replies">💬 48 Replies</span>
+          </div>
+          <div class="replies-preview">
+            <div class="reply-item">
+              <div class="reply-avatar">PK</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <span class="reply-name">Priya Kapoor</span>
+                  <span class="reply-time">1 day ago</span>
+                </div>
+                <p class="reply-text">Focus on mechanism of action for each drug class. Make flowcharts for drug interactions...</p>
+              </div>
+            </div>
+            <div class="reply-item">
+              <div class="reply-avatar">RJ</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <span class="reply-name">Rajesh Joshi</span>
+                  <span class="reply-time">1 day ago</span>
+                </div>
+                <p class="reply-text">I followed the "drugs of the year" approach and it helped me score 95% in pharmacology...</p>
+              </div>
+            </div>
+            <div class="reply-item">
+              <div class="reply-avatar">SM</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <span class="reply-name">Dr. Sharma</span>
+                  <span class="reply-time">12h ago</span>
+                </div>
+                <p class="reply-text">Great question! Don't memorize, understand the concepts. Practice PYQs regularly...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="discussion-thread">
+          <div class="thread-header">
+            <h3 class="thread-title">Best internship opportunities for 2nd year pharmacy students</h3>
+            <span class="thread-tag">Internships</span>
+          </div>
+          <div class="thread-meta">
+            <div class="avatar">PR</div>
+            <div class="thread-meta-item">
+              <span>Priya (B. Pharm Student)</span>
+              <span>•</span>
+              <span>3 days ago</span>
+            </div>
+            <span class="thread-replies">💬 35 Replies</span>
+          </div>
+          <div class="replies-preview">
+            <div class="reply-item">
+              <div class="reply-avatar">VK</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <span class="reply-name">Vikram Kumar</span>
+                  <span class="reply-time">2 days ago</span>
+                </div>
+                <p class="reply-text">Apollo Pharmacy and Cipla are offering great 2-month internships. Check their career portals...</p>
+              </div>
+            </div>
+            <div class="reply-item">
+              <div class="reply-avatar">AJ</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <span class="reply-name">Anjali Jain</span>
+                  <span class="reply-time">2 days ago</span>
+                </div>
+                <p class="reply-text">I did mine at a local clinic. Really helped me understand patient counseling. Highly recommended!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="discussion-thread">
+          <div class="thread-header">
+            <h3 class="thread-title">Case Study Discussion: Hypertension Management in Elderly Patients</h3>
+            <span class="thread-tag">Case Studies</span>
+          </div>
+          <div class="thread-meta">
+            <div class="avatar">VK</div>
+            <div class="thread-meta-item">
+              <span>Vikram (Pharmacy Expert)</span>
+              <span>•</span>
+              <span>5 days ago</span>
+            </div>
+            <span class="thread-replies">💬 62 Replies</span>
+          </div>
+          <div class="replies-preview">
+            <div class="reply-item">
+              <div class="reply-avatar">MK</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <span class="reply-name">Dr. Mehra</span>
+                  <span class="reply-time">4 days ago</span>
+                </div>
+                <p class="reply-text">Excellent case! The ACE inhibitor + CCB combination was the right choice here. ACE inhibitors...</p>
+              </div>
+            </div>
+            <div class="reply-item">
+              <div class="reply-avatar">NP</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <span class="reply-name">Nidhi Patel</span>
+                  <span class="reply-time">4 days ago</span>
+                </div>
+                <p class="reply-text">What about monitoring parameters? Baseline BP, renal function tests are crucial...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="discussion-thread">
+          <div class="thread-header">
+            <h3 class="thread-title">Understanding Drug Metabolism and CYP450 Enzyme Interactions</h3>
+            <span class="thread-tag">Pharmacology</span>
+          </div>
+          <div class="thread-meta">
+            <div class="avatar">NS</div>
+            <div class="thread-meta-item">
+              <span>Neha (M. Pharm Student)</span>
+              <span>•</span>
+              <span>1 week ago</span>
+            </div>
+            <span class="thread-replies">💬 27 Replies</span>
+          </div>
+          <div class="replies-preview">
+            <div class="reply-item">
+              <div class="reply-avatar">MG</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <span class="reply-name">Madhav Gupta</span>
+                  <span class="reply-time">6 days ago</span>
+                </div>
+                <p class="reply-text">CYP3A4 is the most important enzyme. Remember: grapefruit inhibits it! Classic exam question...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="discussion-thread">
+          <div class="thread-header">
+            <h3 class="thread-title">Tips for cracking GPAT and other competitive exams</h3>
+            <span class="thread-tag">Competitive Exams</span>
+          </div>
+          <div class="thread-meta">
+            <div class="avatar">SK</div>
+            <div class="thread-meta-item">
+              <span>Sanjay (GPAT Cleared)</span>
+              <span>•</span>
+              <span>1 week ago</span>
+            </div>
+            <span class="thread-replies">💬 41 Replies</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="newDiscussion">
+        <div class="section-header">
+          <h2>Start a New Discussion</h2>
+        </div>
+
+        <div class="card" style="padding: 32px; max-width: 600px;">
+          <form onsubmit="handleNewDiscussion(event)" id="discussionForm">
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Discussion Title</label>
+              <input type="text" id="discussionTitle" placeholder="What's your question or topic?" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem;" required>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Category</label>
+              <select id="discussionCategory" style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem;">
+                <option value="General Discussion">General Discussion</option>
+                <option value="Exam Preparation">Exam Preparation</option>
+                <option value="Pharmacology">Pharmacology</option>
+                <option value="Case Studies">Case Studies</option>
+                <option value="Internships & Careers">Internships & Careers</option>
+                <option value="Study Resources">Study Resources</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: 20px;">
+              <label style="display: block; margin-bottom: 8px; font-weight: 600;">Description</label>
+              <textarea id="discussionDescription" placeholder="Share your question or topic details..." style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; min-height: 120px; font-family: inherit;" required></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Post Discussion</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 PharmaX</span>
+      <a href="index.html">Home</a>
+      <a href="#">About</a>
+      <a href="#">Contact Us</a>
+      <a href="#">Privacy Policy</a>
+    </footer>
+  </div>
+
+  <script>
+    function handleNewDiscussion(event) {
+      event.preventDefault();
+      
+      // Get form values
+      const title = document.getElementById('discussionTitle').value;
+      const category = document.getElementById('discussionCategory').value;
+      const description = document.getElementById('discussionDescription').value;
+      
+      // Generate random initials (in a real app, you'd use the logged-in user's name)
+      const names = ['Rajesh', 'Priya', 'Amit', 'Sneha', 'Vikram', 'Neha', 'Sanjay', 'Ananya', 'Arjun', 'Divya'];
+      const randomName = names[Math.floor(Math.random() * names.length)];
+      const initials = randomName.substring(0, 2).toUpperCase();
+      
+      // Create new discussion thread HTML
+      const newThread = document.createElement('div');
+      newThread.className = 'discussion-thread';
+      newThread.style.animation = 'fadeIn 0.5s ease';
+      
+      // Map category to tag (using first word of category)
+      let categoryTag = category;
+      if (category.includes('Exam')) categoryTag = 'Exam Prep';
+      if (category.includes('Intern')) categoryTag = 'Internships';
+      if (category.includes('Case')) categoryTag = 'Case Studies';
+      if (category.includes('Study')) categoryTag = 'Study Tips';
+      
+      newThread.innerHTML = `
+        <div class="thread-header">
+          <h3 class="thread-title">${escapeHtml(title)}</h3>
+          <span class="thread-tag">${escapeHtml(categoryTag)}</span>
+        </div>
+        <div class="thread-meta">
+          <div class="avatar">${initials}</div>
+          <div class="thread-meta-item">
+            <span>${randomName} (Student)</span>
+            <span>•</span>
+            <span>Just now</span>
+          </div>
+          <span class="thread-replies">💬 0 Replies</span>
+        </div>
+      `;
+      
+      // Find the discussions container (first discussion thread's parent)
+      const firstThread = document.querySelector('.discussion-thread');
+      const discussionContainer = firstThread.parentElement;
+      
+      // Insert new thread at the beginning
+      discussionContainer.insertBefore(newThread, firstThread);
+      
+      // Show success message
+      alert('✅ Your discussion has been posted! It now appears in the Recent Discussions list.');
+      
+      // Reset form
+      event.target.reset();
+      
+      // Scroll to new discussion
+      setTimeout(() => {
+        newThread.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    }
+    
+    // Helper function to escape HTML
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, m => map[m]);
+    }
+    
+    // Add fade-in animation if not already defined
+    if (!document.querySelector('style[data-custom-anim]')) {
+      const style = document.createElement('style');
+      style.setAttribute('data-custom-anim', 'true');
+      style.textContent = `
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  </script>
+</body>
+</html>

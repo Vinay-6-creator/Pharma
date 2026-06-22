@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B Pharm Semester 8 - Notes & PYQs</title>
+  <style>
+    :root { --bg: #eef6ff; --surface: #ffffff; --surface-strong: #f7fbff; --text: #1d314f; --text-muted: #64748b; --blue: #2563eb; --blue-dark: #1d4ed8; --green: #22c55e; --red: #ef4444; --border: rgba(148, 163, 184, 0.16); }
+    html.dark-mode { --bg: #0f172a; --surface: #1e293b; --surface-strong: #172038; --text: #f1f5f9; --text-muted: #cbd5e1; --blue: #3b82f6; --green: #10b981; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%); }
+    .page { width: min(1200px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 64px; }
+    header { padding: 24px 0; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; }
+    .back-link { color: var(--blue); font-weight: 600; text-decoration: none; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 12px; }
+    h2 { font-size: 1.4rem; margin: 40px 0 24px; color: var(--blue); padding-bottom: 12px; border-bottom: 3px solid var(--blue); }
+    .unit-section { background: var(--surface); border: 2px solid var(--border); border-radius: 20px; padding: 28px; margin-bottom: 32px; }
+    .unit-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--blue); }
+    .unit-number { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); color: white; font-weight: 700; }
+    .unit-title h2 { margin: 0; border: none; padding: 0; font-size: 1.25rem; }
+    .topics-list { display: grid; gap: 12px; margin-bottom: 24px; }
+    .topic-item { display: flex; gap: 12px; padding: 12px 16px; background: var(--surface-strong); border-radius: 12px; border-left: 4px solid var(--green); }
+    .topic-bullet { color: var(--green); font-weight: 700; }
+    .pyq-section { margin-top: 24px; padding-top: 24px; border-top: 2px solid var(--border); }
+    .pyq-section h3 { color: var(--red); }
+    .pyq-card { background: var(--surface-strong); border-left: 4px solid var(--red); border-radius: 12px; padding: 18px; margin-bottom: 16px; }
+    .pyq-question { font-weight: 600; margin-bottom: 12px; display: flex; gap: 8px; }
+    .q-number { color: var(--red); font-weight: 700; }
+    .answer-toggle { padding: 8px 12px; margin-top: 8px; background: rgba(37, 99, 235, 0.1); border: none; border-radius: 8px; color: var(--blue); font-weight: 600; cursor: pointer; }
+    .answer-text { margin-top: 12px; padding: 12px; background: rgba(34, 197, 94, 0.1); border-left: 3px solid var(--green); display: none; }
+    .answer-text.show { display: block; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="study-hub.html" class="back-link">← Back to Study Hub</a>
+        <div class="brand"><div style="font-size: 1.8rem;">📚</div><span>B Pharm - Semester 8</span></div>
+      </div>
+    </header>
+    <main>
+      <h1>Comprehensive Pharmacy Review & Innovations</h1>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Emerging therapeutic areas, new drug delivery systems, and professional practice management.</p>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">I</div>
+          <div class="unit-title"><h2>Advanced Drug Delivery Systems</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Nanotechnology:</strong> Nanoparticles, liposomes, micelles in drug delivery</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Targeted Delivery:</strong> Ligand-based targeting, antibody conjugates</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Modified Release:</strong> Extended-release, sustained-release formulations</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> Discuss advantages of nanoparticle-based drug delivery</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> Enhanced solubility of poorly soluble drugs, targeted delivery to specific tissues, reduced side effects, prolonged circulation time, better cellular uptake, biodegradable options available.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">II</div>
+          <div class="unit-title"><h2>Biopharmaceuticals & Biotechnology Drugs</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Recombinant Proteins:</strong> Insulin, interferons, growth factors production</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Monoclonal Antibodies:</strong> Therapeutic antibodies, humanized versions</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Gene Therapy:</strong> Gene editing, CAR-T cells, CRISPR applications</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> Explain how monoclonal antibodies are produced and their therapeutic applications</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> Produced using hybridoma technology or recombinant DNA methods. Applications: cancer immunotherapy (trastuzumab), autoimmune diseases (infliximab), inflammation (adalimumab) management.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">III</div>
+          <div class="unit-title"><h2>Pharmacy Practice & Professional Development</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Pharmacy Roles:</strong> Clinical pharmacy, hospital pharmacy, community pharmacy responsibilities</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Business Management:</strong> Inventory, financial management, pricing strategies</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Entrepreneurship:</strong> Starting pharmacy business, regulatory compliance</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> Discuss the role of clinical pharmacist in hospital settings</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> Drug therapy optimization, adverse effect monitoring, dosage adjustment, drug interaction prevention, patient education, clinical rounds participation, formulary management, quality assurance.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">IV</div>
+          <div class="unit-title"><h2>Emerging Trends & Future of Pharmacy</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Personalized Medicine:</strong> Pharmacogenomics, biomarker-guided therapy</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Digital Health:</strong> Telepharmacy, AI in drug discovery, e-health integration</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Sustainability:</strong> Green pharmacy, waste management, environmental responsibility</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> What is pharmacogenomics and its clinical significance?</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> Study of genetic factors affecting drug response. Enables personalized dosing (e.g., warfarin CYP2C9 variants), predicts adverse reactions, improves therapeutic outcomes by tailoring treatments to individual genetics.</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer><span>📚 PharmaX Study Hub</span><span>•</span><span>© 2026 All Rights Reserved</span></footer>
+  </div>
+  <script>
+    function toggleAnswer(button) {
+      const answerText = button.nextElementSibling;
+      answerText.classList.toggle('show');
+      button.textContent = answerText.classList.contains('show') ? 'Hide Answer ▲' : 'Show Answer ▼';
+    }
+  </script>
+</body>
+</html>

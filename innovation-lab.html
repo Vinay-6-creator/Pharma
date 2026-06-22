@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Innovation Lab - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: none;
+      padding: 14px 22px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(148,163,184,0.3);
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(34, 197, 94, 0.24);
+    }
+
+    main {
+      margin-top: 32px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 36px 0;
+    }
+
+    .hero-copy {
+      max-width: 590px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.1);
+      color: #1d4ed8;
+      font-weight: 600;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 20px;
+      font-size: clamp(3rem, 4vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+
+    .hero-copy p {
+      margin: 0 0 30px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .feature-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 20px;
+      display: grid;
+      gap: 14px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+    }
+
+    .feature-card h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .feature-card-link {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: grid;
+    }
+
+    .feature-card-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .slider.dark:before {
+      content: "🌙";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .slider.light:before {
+      content: "☀️";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="brand">
+          <div class="brand-icon">PX</div>
+          PharmaX
+        </a>
+        <nav>
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="study-hub.html" class="nav-link">Study Hub</a>
+          <a href="virtual-lab.html" class="nav-link">Virtual Lab</a>
+          <a href="career-guide.html" class="nav-link">Career Guide</a>
+          <a href="innovation-lab.html" class="nav-link">Innovation Lab</a>
+          <a href="ai-chat.html" class="nav-link">AI Chat</a>
+        </nav>
+        <div class="actions">
+          <label class="toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider light"></span>
+          </label>
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Innovation Lab</div>
+          <h1>Explore Cutting-Edge Pharmacy Innovations</h1>
+          <p>Dive into the latest advancements in pharmaceutical technology, research methodologies, and innovative solutions shaping the future of healthcare.</p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View Projects</a>
+            <a href="#tools" class="btn btn-outline">Innovation Tools</a>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Innovation Lab" style="border-radius: 24px; box-shadow: var(--shadow);">
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-header">
+          <h2 class="section-title">Innovation Projects</h2>
+          <p class="section-subtitle">Discover groundbreaking projects and research initiatives in pharmacy innovation.</p>
+        </div>
+        <div class="feature-grid">
+          <a href="#" class="feature-card feature-card-link">
+            <div class="feature-icon">🧬</div>
+            <h3>Drug Discovery AI</h3>
+            <p>AI-powered drug discovery platforms accelerating pharmaceutical research and development.</p>
+          </a>
+          <a href="#" class="feature-card feature-card-link">
+            <div class="feature-icon">💊</div>
+            <h3>Personalized Medicine</h3>
+            <p>Tailored treatment approaches using genetic profiling and advanced analytics.</p>
+          </a>
+          <a href="#" class="feature-card feature-card-link">
+            <div class="feature-icon">🔬</div>
+            <h3>Nanotechnology</h3>
+            <p>Nano-scale drug delivery systems for improved efficacy and reduced side effects.</p>
+          </a>
+          <a href="#" class="feature-card feature-card-link">
+            <div class="feature-icon">🌿</div>
+            <h3>Herbal Innovation</h3>
+            <p>Modern applications of traditional herbal medicine with scientific validation.</p>
+          </a>
+          <a href="#" class="feature-card feature-card-link">
+            <div class="feature-icon">📱</div>
+            <h3>Digital Health</h3>
+            <p>Mobile apps and digital tools for medication management and patient monitoring.</p>
+          </a>
+          <a href="#" class="feature-card feature-card-link">
+            <div class="feature-icon">🧪</div>
+            <h3>Biotech Breakthroughs</h3>
+            <p>Latest developments in biotechnology and their applications in pharmacy.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" id="tools">
+        <div class="section-header">
+          <h2 class="section-title">Innovation Tools</h2>
+          <p class="section-subtitle">Access cutting-edge tools and resources for pharmaceutical innovation.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🖥️</div>
+            <h3>Molecular Modeling Software</h3>
+            <p>Advanced computational tools for drug design and molecular simulation.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Data Analytics Platform</h3>
+            <p>Powerful analytics tools for pharmaceutical research data analysis.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI Research Assistant</h3>
+            <p>AI-powered assistant for literature review and research hypothesis generation.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🔗</div>
+            <h3>Collaboration Network</h3>
+            <p>Connect with researchers and innovators worldwide in pharmacy and healthcare.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    themeToggle.addEventListener('change', () => {
+      html.classList.toggle('dark-mode');
+      localStorage.setItem('theme', html.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark-mode');
+      themeToggle.checked = true;
+    }
+  </script>
+</body>
+</html>

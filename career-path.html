@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Path - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --orange: #f97316;
+      --purple: #a855f7;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --orange: #fb923c;
+      --purple: #d946ef;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 32px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      font-weight: 600;
+      color: var(--blue);
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    main {
+      margin-top: 32px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .program-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .program-card {
+      background: linear-gradient(135deg, var(--surface) 0%, var(--surface-strong) 100%);
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .program-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--green));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+
+    .program-card.active::before {
+      transform: scaleX(1);
+    }
+
+    .program-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .program-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+    }
+
+    .program-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin: 12px 0 8px;
+      color: var(--text);
+    }
+
+    .program-duration {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .program-card.active {
+      border-color: var(--blue);
+      box-shadow: 0 20px 50px rgba(37, 99, 235, 0.2);
+    }
+
+    .program-content {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .program-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0 0 24px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .section-divider {
+      margin: 48px 0;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .step-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.15);
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+    }
+
+    .step-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .step-card p {
+      margin: 0 0 18px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .step-action {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--blue);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .step-action:hover {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .skill-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0 0;
+    }
+
+    .skill-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    .skill-item:last-child {
+      border-bottom: none;
+    }
+
+    .skill-item::before {
+      content: '✓';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(34, 197, 94, 0.15);
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .modal.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: var(--surface);
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      max-width: 500px;
+      width: 90%;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      gap: 16px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-btn:hover {
+      color: var(--text);
+    }
+
+    .modal-body {
+      margin-bottom: 24px;
+    }
+
+    .modal-body p {
+      margin: 0 0 12px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      border: none;
+      padding: 12px 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), #1d4ed8);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--border);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(148, 163, 184, 0.3);
+    }
+
+    footer {
+      margin-top: 64px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--blue);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--blue-dark);
+    }
+
+    .profile-icon {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .profile-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .program-selector {
+        grid-template-columns: 1fr;
+      }
+
+      .step-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        padding: 24px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        <div class="brand">
+          <div class="brand-icon">🚀</div>
+          <span>Career Path</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>Build Your Pharmacy Career</h1>
+        <p>Transform your pharmacy education into a rewarding career. Learn skills, gain real-world experience through internships, and land your dream job with our guided career progression.</p>
+      </div>
+
+      <!-- Career Path Programs -->
+      <div class="program-selector">
+        <div class="program-card active" onclick="switchProgram('learn-skills', this)">
+          <div class="program-icon">📚</div>
+          <div class="program-title">Learn Skills</div>
+          <div class="program-duration">Foundation & Growth</div>
+        </div>
+        <div class="program-card" onclick="switchProgram('internship', this)">
+          <div class="program-icon">💼</div>
+          <div class="program-title">Do Internship</div>
+          <div class="program-duration">Hands-on Experience</div>
+        </div>
+        <div class="program-card" onclick="switchProgram('dream-job', this)">
+          <div class="program-icon">🎯</div>
+          <div class="program-title">Get Your Dream Job</div>
+          <div class="program-duration">Career Success</div>
+        </div>
+      </div>
+
+      <!-- Learn Skills Content -->
+      <div id="learn-skills" class="program-content active">
+        <h2 class="section-title">Learn Essential Pharmacy Skills</h2>
+        <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1rem;">Master the core competencies needed to excel in the pharmacy industry. Build a strong foundation with technical and soft skills.</p>
+
+        <div class="section-divider">
+          <h3 style="font-size: 1.2rem; color: var(--blue); margin-top: 0;">🎯 Core Skills to Master</h3>
+          <div class="step-grid">
+            <div class="step-card" onclick="openModal('clinical-skills')">
+              <div class="step-number">1</div>
+              <h3>Clinical Pharmacy</h3>
+              <p>Learn patient counseling, medication therapy management, and clinical decision-making in pharmaceutical practice.</p>
+              <span class="step-action">Explore Courses →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('compounding')">
+              <div class="step-number">2</div>
+              <h3>Pharmaceutical Compounding</h3>
+              <p>Master the art and science of preparing customized medication formulations and specialized pharmaceutical preparations.</p>
+              <span class="step-action">Learn More →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('regulatory')">
+              <div class="step-number">3</div>
+              <h3>Regulatory & Compliance</h3>
+              <p>Understand pharmaceutical regulations, quality assurance, and compliance standards required in the industry.</p>
+              <span class="step-action">Explore →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('research')">
+              <div class="step-number">4</div>
+              <h3>Pharmaceutical Research</h3>
+              <p>Explore drug discovery, development, clinical trials, and advanced research methodologies in pharmacy.</p>
+              <span class="step-action">Start Learning →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('soft-skills')">
+              <div class="step-number">5</div>
+              <h3>Professional Development</h3>
+              <p>Develop communication, leadership, project management, and other essential soft skills for career advancement.</p>
+              <span class="step-action">Get Started →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('it-skills')">
+              <div class="step-number">6</div>
+              <h3>Technology & IT Skills</h3>
+              <p>Learn pharmacy management systems, data analysis, and digital health technologies shaping modern pharmacy.</p>
+              <span class="step-action">Discover →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider">
+          <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">📊 Your Learning Milestones</h3>
+          <div class="step-grid">
+            <div class="step-card">
+              <div class="step-number" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">✓</div>
+              <h3>Month 1-2: Foundations</h3>
+              <p>Complete foundational courses in pharmacy practice and get certified in basic skills.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">✓</div>
+              <h3>Month 3-4: Specialization</h3>
+              <p>Choose your specialization area and complete advanced courses relevant to your goals.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">✓</div>
+              <h3>Month 5-6: Projects & Certifications</h3>
+              <p>Work on real-world projects and earn industry-recognized certifications to boost your profile.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Internship Content -->
+      <div id="internship" class="program-content">
+        <h2 class="section-title">Gain Real-World Experience Through Internships</h2>
+        <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1rem;">Connect with leading pharmaceutical organizations and gain hands-on experience in your chosen specialization.</p>
+
+        <div class="section-divider">
+          <h3 style="font-size: 1.2rem; color: #f97316; margin-top: 0;">🏢 Internship Opportunities</h3>
+          <div class="step-grid">
+            <div class="step-card" onclick="openModal('hospital-internship')">
+              <div class="step-number" style="background: rgba(249, 115, 22, 0.15); color: #f97316;">🏥</div>
+              <h3>Hospital Pharmacy</h3>
+              <p>Work in hospital pharmacy departments, engage in clinical patient care, and learn hospital operations.</p>
+              <span class="step-action">View Positions →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('retail-internship')">
+              <div class="step-number" style="background: rgba(249, 115, 22, 0.15); color: #f97316;">🛍️</div>
+              <h3>Retail Pharmacy</h3>
+              <p>Gain customer service experience, learn dispensing practices, and understand retail pharmacy operations.</p>
+              <span class="step-action">Explore →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('pharma-internship')">
+              <div class="step-number" style="background: rgba(249, 115, 22, 0.15); color: #f97316;">🏭</div>
+              <h3>Pharmaceutical Company</h3>
+              <p>Work in drug manufacturing, quality control, research & development, or regulatory affairs departments.</p>
+              <span class="step-action">Learn More →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('clinic-internship')">
+              <div class="step-number" style="background: rgba(249, 115, 22, 0.15); color: #f97316;">⚕️</div>
+              <h3>Clinical Research</h3>
+              <p>Participate in clinical trials, learn research protocols, and contribute to pharmaceutical innovation.</p>
+              <span class="step-action">Discover →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('regulatory-internship')">
+              <div class="step-number" style="background: rgba(249, 115, 22, 0.15); color: #f97316;">📋</div>
+              <h3>Regulatory Affairs</h3>
+              <p>Understand drug approval processes, compliance requirements, and regulatory documentation.</p>
+              <span class="step-action">Apply Now →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('consulting-internship')">
+              <div class="step-number" style="background: rgba(249, 115, 22, 0.15); color: #f97316;">💡</div>
+              <h3>Pharmacy Consulting</h3>
+              <p>Work with consulting firms advising pharmaceutical clients on strategy, operations, and business development.</p>
+              <span class="step-action">Explore →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider">
+          <h3 style="font-size: 1.2rem; color: #f97316; margin-top: 0;">📈 Internship Timeline & Benefits</h3>
+          <div class="step-grid">
+            <div class="step-card">
+              <h3 style="margin-top: 0;">Timeline</h3>
+              <ul class="skill-list">
+                <li class="skill-item">3-6 months internship duration</li>
+                <li class="skill-item">Flexible schedule options available</li>
+                <li class="skill-item">Summer, winter, and semester internships</li>
+              </ul>
+            </div>
+
+            <div class="step-card">
+              <h3 style="margin-top: 0;">Benefits</h3>
+              <ul class="skill-list">
+                <li class="skill-item">Mentorship from industry experts</li>
+                <li class="skill-item">Real work experience & certificate</li>
+                <li class="skill-item">Professional networking opportunities</li>
+              </ul>
+            </div>
+
+            <div class="step-card">
+              <h3 style="margin-top: 0;">Placement Support</h3>
+              <ul class="skill-list">
+                <li class="skill-item">Resume & cover letter guidance</li>
+                <li class="skill-item">Interview preparation sessions</li>
+                <li class="skill-item">Direct company connections</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dream Job Content -->
+      <div id="dream-job" class="program-content">
+        <h2 class="section-title">Land Your Dream Pharmacy Job</h2>
+        <p style="color: var(--text-muted); margin-bottom: 32px; font-size: 1rem;">Get placed in your ideal role with our comprehensive job placement and career guidance support.</p>
+
+        <div class="section-divider">
+          <h3 style="font-size: 1.2rem; color: var(--purple); margin-top: 0;">💼 Career Paths Available</h3>
+          <div class="step-grid">
+            <div class="step-card" onclick="openModal('clinical-pharmacist')">
+              <div class="step-number" style="background: rgba(168, 85, 247, 0.15); color: var(--purple);">👨‍⚕️</div>
+              <h3>Clinical Pharmacist</h3>
+              <p>Provide direct patient care, optimize medication therapy, and work in healthcare teams.</p>
+              <span class="step-action">View Jobs →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('hospital-pharmacist')">
+              <div class="step-number" style="background: rgba(168, 85, 247, 0.15); color: var(--purple);">🏥</div>
+              <h3>Hospital Pharmacist</h3>
+              <p>Lead hospital pharmacy operations, manage inventory, and ensure quality patient care.</p>
+              <span class="step-action">Explore →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('retail-pharmacist')">
+              <div class="step-number" style="background: rgba(168, 85, 247, 0.15); color: var(--purple);">🛍️</div>
+              <h3>Retail Pharmacist</h3>
+              <p>Manage pharmacy stores, lead customer service, and ensure medication safety in retail settings.</p>
+              <span class="step-action">Browse →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('research-scientist')">
+              <div class="step-number" style="background: rgba(168, 85, 247, 0.15); color: var(--purple);">🔬</div>
+              <h3>Research Scientist</h3>
+              <p>Conduct pharmaceutical research, lead projects, and contribute to drug discovery and development.</p>
+              <span class="step-action">Discover →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('regulatory-specialist')">
+              <div class="step-number" style="background: rgba(168, 85, 247, 0.15); color: var(--purple);">📋</div>
+              <h3>Regulatory Specialist</h3>
+              <p>Manage regulatory compliance, drug approvals, and ensure adherence to industry standards.</p>
+              <span class="step-action">Apply →</span>
+            </div>
+
+            <div class="step-card" onclick="openModal('pharmaceutical-manager')">
+              <div class="step-number" style="background: rgba(168, 85, 247, 0.15); color: var(--purple);">📊</div>
+              <h3>Pharmaceutical Manager</h3>
+              <p>Lead teams, manage operations, drive business strategy, and ensure organizational excellence.</p>
+              <span class="step-action">Learn More →</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider">
+          <h3 style="font-size: 1.2rem; color: var(--purple); margin-top: 0;">🎯 Our Placement Success</h3>
+          <div class="step-grid">
+            <div class="step-card">
+              <h3 style="margin-top: 0;">✓ 85% Placement Rate</h3>
+              <ul class="skill-list">
+                <li class="skill-item">Successful placements in top companies</li>
+                <li class="skill-item">Average salary ₹4-8 LPA for entry level</li>
+                <li class="skill-item">Growth opportunities in 12 months</li>
+              </ul>
+            </div>
+
+            <div class="step-card">
+              <h3 style="margin-top: 0;">✓ Placement Support</h3>
+              <ul class="skill-list">
+                <li class="skill-item">Resume optimization workshops</li>
+                <li class="skill-item">Mock interviews & feedback sessions</li>
+                <li class="skill-item">Salary negotiation guidance</li>
+              </ul>
+            </div>
+
+            <div class="step-card">
+              <h3 style="margin-top: 0;">✓ Career Growth</h3>
+              <ul class="skill-list">
+                <li class="skill-item">Ongoing mentorship & support</li>
+                <li class="skill-item">Professional development resources</li>
+                <li class="skill-item">Alumni network & industry connections</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider">
+          <h3 style="font-size: 1.2rem; color: var(--green); margin-top: 0;">🚀 Quick Steps to Your Dream Job</h3>
+          <div class="step-grid">
+            <div class="step-card">
+              <div class="step-number" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">1</div>
+              <h3>Complete Skill Training</h3>
+              <p>Finish all required courses and certifications to be job-ready.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">2</div>
+              <h3>Build Your Profile</h3>
+              <p>Create a compelling resume and LinkedIn profile with achievements.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">3</div>
+              <h3>Interview Preparation</h3>
+              <p>Get interview-ready with our mock sessions and expert guidance.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">4</div>
+              <h3>Apply & Interview</h3>
+              <p>Apply for curated jobs and attend interviews with top companies.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">5</div>
+              <h3>Get Placed</h3>
+              <p>Receive your offer and start your rewarding pharmacy career!</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number" style="background: rgba(34, 197, 94, 0.15); color: var(--green);">6</div>
+              <h3>Continuous Growth</h3>
+              <p>Grow your career with ongoing support and advancement opportunities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <span>© 2026 PharmaX - Career Path</span>
+      <div>
+        <a href="#about">About</a>
+        <a href="#contact" style="margin-left: 20px;">Contact Us</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="profile-icon" id="profileIcon">👤</div>
+
+  <!-- Modal -->
+  <div id="detailsModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Details</h2>
+        <button class="close-btn" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <p>Loading details...</p>
+      </div>
+      <div class="modal-actions">
+        <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+        <button class="btn btn-primary" onclick="enrollProgram()">Learn More</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const programDetails = {
+      'clinical-skills': {
+        title: 'Clinical Pharmacy',
+        content: 'Learn patient counseling, medication therapy management, and clinical decision-making. This course covers:<br><ul><li>Patient consultation techniques</li><li>Drug interactions and contraindications</li><li>Medication therapy optimization</li><li>Clinical documentation</li></ul>'
+      },
+      'compounding': {
+        title: 'Pharmaceutical Compounding',
+        content: 'Master the art of preparing customized medications and specialized pharmaceutical preparations:<br><ul><li>Compounding techniques</li><li>Formulation development</li><li>Quality assurance in compounding</li><li>Specialized preparations</li></ul>'
+      },
+      'regulatory': {
+        title: 'Regulatory & Compliance',
+        content: 'Understand pharmaceutical regulations and compliance standards:<br><ul><li>Drug approval processes</li><li>Quality assurance standards</li><li>Regulatory documentation</li><li>Industry compliance</li></ul>'
+      },
+      'research': {
+        title: 'Pharmaceutical Research',
+        content: 'Explore drug discovery and development:<br><ul><li>Research methodologies</li><li>Clinical trials</li><li>Data analysis</li><li>Innovation in pharmacy</li></ul>'
+      },
+      'soft-skills': {
+        title: 'Professional Development',
+        content: 'Develop essential soft skills for career advancement:<br><ul><li>Communication skills</li><li>Leadership training</li><li>Project management</li><li>Team collaboration</li></ul>'
+      },
+      'it-skills': {
+        title: 'Technology & IT Skills',
+        content: 'Learn digital technologies shaping modern pharmacy:<br><ul><li>Pharmacy management systems</li><li>Data analysis tools</li><li>Digital health technologies</li><li>ERP systems</li></ul>'
+      },
+      'hospital-internship': {
+        title: 'Hospital Pharmacy Internship',
+        content: 'Work in hospital pharmacy departments with real patient care:<br><ul><li>Clinical pharmacy rounds</li><li>Hospital operations</li><li>Drug dispensing systems</li><li>Patient interaction</li></ul><strong>Duration:</strong> 3-6 months<br><strong>Stipend:</strong> As per organization policy'
+      },
+      'retail-internship': {
+        title: 'Retail Pharmacy Internship',
+        content: 'Gain customer service and retail pharmacy experience:<br><ul><li>Dispensing practices</li><li>Customer counseling</li><li>Inventory management</li><li>Retail operations</li></ul><strong>Duration:</strong> 3-6 months<br><strong>Stipend:</strong> As per organization policy'
+      },
+      'pharma-internship': {
+        title: 'Pharmaceutical Company Internship',
+        content: 'Work in manufacturing, R&D, or QC departments:<br><ul><li>Drug manufacturing processes</li><li>Quality control testing</li><li>Research projects</li><li>Regulatory compliance</li></ul><strong>Duration:</strong> 3-6 months<br><strong>Stipend:</strong> ₹5,000-15,000/month'
+      },
+      'clinic-internship': {
+        title: 'Clinical Research Internship',
+        content: 'Participate in clinical trials and research projects:<br><ul><li>Clinical trial protocols</li><li>Patient recruitment</li><li>Data collection</li><li>Research documentation</li></ul><strong>Duration:</strong> 3-6 months<br><strong>Stipend:</strong> ₹8,000-12,000/month'
+      },
+      'regulatory-internship': {
+        title: 'Regulatory Affairs Internship',
+        content: 'Learn drug approval and regulatory processes:<br><ul><li>Drug approval pathways</li><li>Regulatory documentation</li><li>Compliance monitoring</li><li>Quality standards</li></ul><strong>Duration:</strong> 3-6 months<br><strong>Stipend:</strong> ₹6,000-10,000/month'
+      },
+      'consulting-internship': {
+        title: 'Pharmacy Consulting Internship',
+        content: 'Work with consulting firms on pharmaceutical strategy:<br><ul><li>Market analysis</li><li>Business strategy</li><li>Operations consulting</li><li>Client presentations</li></ul><strong>Duration:</strong> 3-6 months<br><strong>Stipend:</strong> ₹8,000-15,000/month'
+      },
+      'clinical-pharmacist': {
+        title: 'Clinical Pharmacist Career',
+        content: '<strong>Role Overview:</strong> Provide direct patient care and optimize medication therapy<br><br><strong>Responsibilities:</strong><ul><li>Patient medication counseling</li><li>Therapy optimization</li><li>Healthcare team collaboration</li><li>Clinical documentation</li></ul><strong>Salary Range:</strong> ₹4-7 LPA<br><strong>Growth Potential:</strong> Senior Clinical Pharmacist, Pharmacy Manager'
+      },
+      'hospital-pharmacist': {
+        title: 'Hospital Pharmacist Career',
+        content: '<strong>Role Overview:</strong> Lead hospital pharmacy operations and ensure quality patient care<br><br><strong>Responsibilities:</strong><ul><li>Pharmacy operations management</li><li>Inventory control</li><li>Staff supervision</li><li>Quality assurance</li></ul><strong>Salary Range:</strong> ₹4.5-8 LPA<br><strong>Growth Potential:</strong> Chief Pharmacist, Director'
+      },
+      'retail-pharmacist': {
+        title: 'Retail Pharmacist Career',
+        content: '<strong>Role Overview:</strong> Manage pharmacy stores and lead customer service<br><br><strong>Responsibilities:</strong><ul><li>Store management</li><li>Customer counseling</li><li>Sales optimization</li><li>Medication safety</li></ul><strong>Salary Range:</strong> ₹3.5-6 LPA<br><strong>Growth Potential:</strong> Area Manager, Regional Head'
+      },
+      'research-scientist': {
+        title: 'Research Scientist Career',
+        content: '<strong>Role Overview:</strong> Conduct pharmaceutical research and lead projects<br><br><strong>Responsibilities:</strong><ul><li>Research project management</li><li>Data analysis</li><li>Publication writing</li><li>Team collaboration</li></ul><strong>Salary Range:</strong> ₹5-10 LPA<br><strong>Growth Potential:</strong> Senior Scientist, Research Lead'
+      },
+      'regulatory-specialist': {
+        title: 'Regulatory Specialist Career',
+        content: '<strong>Role Overview:</strong> Manage regulatory compliance and drug approvals<br><br><strong>Responsibilities:</strong><ul><li>Regulatory documentation</li><li>Drug approval management</li><li>Compliance monitoring</li><li>Quality standards</li></ul><strong>Salary Range:</strong> ₹4.5-9 LPA<br><strong>Growth Potential:</strong> Senior Manager, Head of Regulatory'
+      },
+      'pharmaceutical-manager': {
+        title: 'Pharmaceutical Manager Career',
+        content: '<strong>Role Overview:</strong> Lead teams and drive pharmaceutical business strategy<br><br><strong>Responsibilities:</strong><ul><li>Team management</li><li>Business strategy</li><li>Operations oversight</li><li>Performance management</li></ul><strong>Salary Range:</strong> ₹6-12 LPA<br><strong>Growth Potential:</strong> Senior Manager, Director, VP'
+      }
+    };
+
+    function switchProgram(programName, element) {
+      // Hide all program contents
+      const programContents = document.querySelectorAll('.program-content');
+      programContents.forEach(content => content.classList.remove('active'));
+
+      // Deactivate all program cards
+      const programCards = document.querySelectorAll('.program-card');
+      programCards.forEach(card => card.classList.remove('active'));
+
+      // Show selected program content
+      document.getElementById(programName).classList.add('active');
+
+      // Activate clicked card
+      element.classList.add('active');
+
+      // Scroll to content
+      setTimeout(() => {
+        document.querySelector('.program-content.active').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+    }
+
+    function openModal(detailKey) {
+      const details = programDetails[detailKey];
+      if (details) {
+        document.getElementById('modalTitle').textContent = details.title;
+        document.getElementById('modalBody').innerHTML = `<p>${details.content}</p>`;
+        document.getElementById('detailsModal').classList.add('active');
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('detailsModal').classList.remove('active');
+    }
+
+    function enrollProgram() {
+      alert('Thank you for your interest! Enrollment feature will be available soon. Please contact us for more details.');
+      closeModal();
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('detailsModal').addEventListener('click', function(event) {
+      if (event.target === this) {
+        closeModal();
+      }
+    });
+
+    document.getElementById('profileIcon').addEventListener('click', function() {
+      alert('Profile feature coming soon! Navigate back to home to manage your account.');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1466 @@
+📚 B.PHARM SYLLABUS 2026 (NEP 2020) - COMPREHENSIVE NOTES
+=====================================================================
+Pharmacy Council of India (Regulations 2014, CBCS & NEP 2020)
+Updated Syllabus: 2026 | All 8 Semesters
+=====================================================================
+
+🎯 PROGRAM STRUCTURE:
+- Duration: 8 Semesters (4 Academic Years)
+- Total Credits: 208
+- Board: Pharmacy Council of India (PCI)
+- Minimum Attendance: 80% in each course
+- Medium of Instruction: English
+- Implementation: NEP 2020 Framework
+
+=====================================================================
+SEMESTER I (Odd Semester - June/July to November/December)
+=====================================================================
+
+📖 COURSE STRUCTURE: 27-30 Total Credits
+
+1. BP101T - HUMAN ANATOMY AND PHYSIOLOGY I (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain anatomical and physiological concepts of human body systems
+   • Describe homeostasis and its mechanisms
+   • Apply anatomical knowledge in pharmaceutical practice
+   
+   KEY TOPICS:
+   • Introduction to anatomy and physiology, homeostasis concept
+   • Cell biology: structure, function, cell division
+   • Tissues: epithelial, connective, muscle, nervous tissues
+   • Integumentary system: structure and functions
+   • Skeletal system: bones, joints, skeletal anatomy
+   • Muscular system: types of muscles, muscle contraction
+   • Cardiovascular system: heart anatomy, blood vessels, circulation
+   • Respiratory system: anatomy, gas exchange, breathing mechanics
+   • Nervous system: CNS, PNS, neuronal structure, reflex arc
+   • Sensory organs: eye, ear, taste, smell receptors
+
+2. BP102T - PHARMACEUTICAL ANALYSIS I (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain principles of pharmaceutical analysis
+   • Apply analytical techniques for quality control
+   • Interpret analytical data
+   
+   KEY TOPICS:
+   • Analytical chemistry fundamentals: classification, significance
+   • Errors in analysis: types, calculation, statistical analysis
+   • Gravimetric analysis: principles, calculations, applications
+   • Volumetric analysis: titrimetry, indicators, end-point detection
+   • Acid-base titrations: theory, calculations, standardization
+   • Redox titrations: principles, applications in pharmacy
+   • Complexometric titrations: EDTA titrations, masking agents
+   • Precipitation titrations: Mohr, Volhard, Fajans methods
+   • Official analysis methods: IP, BP, USP standards
+   • Pharmaceutical applications and quality control
+
+3. BP103T - PHARMACEUTICS I (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain pharmaceutical processes and unit operations
+   • Design pharmaceutical formulations
+   • Apply GMP and quality principles
+   
+   KEY TOPICS:
+   • Introduction to pharmaceutics: definition, scope, role in pharmacy
+   • Pharmaceutical processes: size reduction, size separation, mixing
+   • Particle size and distribution: measurement, significance in formulation
+   • Powders: characteristics, flow properties, density, porosity
+   • Granulation: principles, methods (wet, dry), equipment
+   • Drying: principles, types of dryers, drying kinetics
+   • Extraction: principles, methods (maceration, percolation, distillation)
+   • Filtration: types, equipment, filter media, sterile filtration
+   • Introduction to dosage forms: classification and characteristics
+   • GMP fundamentals for pharmaceutical manufacturing
+
+4. BP104T - PHARMACEUTICAL INORGANIC CHEMISTRY (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain properties of inorganic pharmaceutical substances
+   • Apply chemical principles to pharmaceutical inorganic compounds
+   • Ensure quality and stability of inorganic drugs
+   
+   KEY TOPICS:
+   • Atomic structure: Bohr's model, orbitals, electronic configuration
+   • Chemical bonding: ionic, covalent, coordinate, hydrogen bonds
+   • Periodic table: periodicity, trends in properties, classification
+   • Inorganic pharmaceuticals: calcium salts, iron preparations, iodides
+   • Alkalies and alkaline earth metals: properties, pharmaceutical uses
+   • Halogens: pharmaceutical applications of fluorine, chlorine, iodine
+   • Electrolytes and non-electrolytes: colligative properties
+   • Complexes and coordination compounds: pharmaceutical applications
+   • Dosage forms of inorganic drugs: solutions, suspensions, injections
+   • Quality control and standardization of inorganic pharmaceuticals
+
+5. BP105T - COMMUNICATION SKILLS (Theory)
+   Credits: 2 | L: 2 | Max Hours: 30
+   COURSE OUTCOMES (CO):
+   • Develop professional communication skills
+   • Apply effective written and oral communication
+   • Enhance interpersonal and presentation skills
+   
+   KEY TOPICS:
+   • Communication fundamentals: process, barriers, types
+   • Professional communication in pharmacy
+   • Written communication: reports, letters, emails, documentation
+   • Oral communication: presentation, public speaking, group discussion
+   • Interpersonal communication: active listening, empathy
+   • Nonverbal communication: body language, eye contact
+   • Patient counselling: techniques, communication with prescribers
+   • Business communication and pharmacist-patient relationship
+   • Communication in healthcare teams
+   • Digital communication and professional etiquette
+
+6. BP106RBT/RMT - REMEDIAL BIOLOGY/MATHEMATICS (Theory) *Optional
+   Credits: 2 | L: 2 | Max Hours: 30
+   • For students requiring remedial support
+
+PRACTICAL COURSES:
+
+BP107P - HUMAN ANATOMY AND PHYSIOLOGY I PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP108P - PHARMACEUTICAL ANALYSIS I PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP109P - PHARMACEUTICS I PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP110P - PHARMACEUTICAL INORGANIC CHEMISTRY PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP111P - COMMUNICATION SKILLS PRACTICAL
+Credits: 1 | P: 2 | Max Hours: 30
+
+SEMESTER I TOTAL: 27-30 Credits
+
+=====================================================================
+SEMESTER II (Even Semester - December/January to May/June)
+=====================================================================
+
+📖 COURSE STRUCTURE: 30 Total Credits
+
+1. BP201T - HUMAN ANATOMY AND PHYSIOLOGY II (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain GI, endocrine, urinary, and reproductive systems
+   • Describe immune system and homeostasis mechanisms
+   • Correlate anatomy with pharmacological interventions
+   
+   KEY TOPICS:
+   • Gastrointestinal system: anatomy, digestion, absorption
+   • Liver: structure, functions, detoxification
+   • Endocrine system: glands, hormones, regulation
+   • Pancreas: structure, functions, glucose regulation
+   • Urinary system: kidneys, nephron, filtration, urine formation
+   • Reproductive system: anatomy and physiology (male/female)
+   • Mammary glands and lactation
+   • Immune system: innate and adaptive immunity
+   • Lymphoid organs: spleen, lymph nodes, thymus
+   • Coagulation and hemostasis mechanisms
+
+2. BP202T - PHARMACEUTICAL ANALYSIS II (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Apply optical and chromatographic methods for analysis
+   • Develop and validate analytical methods
+   • Interpret spectroscopic data
+   
+   KEY TOPICS:
+   • UV-Visible spectroscopy: principles, applications, Beer's law
+   • Fluorimetry: principles, phosphorescence, chemiluminescence
+   • Atomic absorption spectroscopy: flame and flameless techniques
+   • Emission spectroscopy: flame photometry, ICP-AES
+   • Infrared spectroscopy: principles, functional group analysis
+   • Chromatography fundamentals: classification, principle
+   • Thin layer chromatography (TLC): principles, applications
+   • Paper chromatography: techniques, Rf values
+   • Gas chromatography (GC): principles, detection methods, applications
+   • High performance liquid chromatography (HPLC): instrumentation
+   • HPLC applications: method development, validation
+   • Pharmaceutical applications and quality control
+
+3. BP203T - PHARMACEUTICS II (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Design and formulate liquid and semi-solid dosage forms
+   • Evaluate physicochemical properties
+   • Apply stability principles in formulation
+   
+   KEY TOPICS:
+   • Liquid dosage forms: classification, formulation principles
+   • Solutions: preparation, stability, isotonicity, tonicity
+   • Suspensions: classification, preparation, evaluation
+   • Emulsions: types, preparation, stability, evaluation
+   • Colloids: properties, coagulation, flocculation
+   • Semi-solid dosage forms: bases, classification
+   • Ointments: formulation, application, stability
+   • Creams: preparation, types (O/W, W/O), evaluation
+   • Gels: types, formulation, rheological properties
+   • Pastes: formulation, characteristics
+   • Evaluation of semi-solids: spread-ability, consistency, appearance
+   • Stability studies and shelf-life determination
+
+4. BP204T - PHARMACEUTICAL ORGANIC CHEMISTRY I (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Apply organic chemistry principles to drug design
+   • Explain reaction mechanisms relevant to pharmacy
+   • Correlate structure with pharmacological activity
+   
+   KEY TOPICS:
+   • Nomenclature: IUPAC rules, common names
+   • Isomerism: structural, geometric, optical isomerism
+   • Reaction mechanisms: SN1, SN2, E1, E2 reactions
+   • Alkanes and cycloalkanes: properties, reactions
+   • Alkenes and alkynes: properties, addition reactions, polymerization
+   • Aromatic compounds: benzene structure, aromaticity
+   • Electrophilic aromatic substitution: mechanism, directing effects
+   • Nucleophilic aromatic substitution: mechanisms
+   • Alcohols: classification, properties, reactions, oxidation
+   • Aldehydes and ketones: properties, reactions, condensation
+   • Carboxylic acids and derivatives: preparation, reactions
+   • Pharmaceutical applications of organic compounds
+
+5. BP205T - BIOCHEMISTRY (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain biochemical processes and metabolic pathways
+   • Apply biochemical knowledge in pharmaceutical sciences
+   • Understand enzyme kinetics and regulation
+   
+   KEY TOPICS:
+   • Proteins: structure, amino acids, peptide bonds, classification
+   • Protein folding and structure determination
+   • Carbohydrates: classification, monosaccharides, disaccharides
+   • Polysaccharides: starch, glycogen, cellulose
+   • Carbohydrate metabolism: glycolysis, citric acid cycle, gluconeogenesis
+   • Pentose phosphate pathway: significance, products
+   • Lipids: classification, fatty acids, triglycerides, phospholipids
+   • Lipid metabolism: β-oxidation, fatty acid synthesis
+   • Ketone body metabolism and utilization
+   • Cholesterol synthesis and regulation
+   • Nucleic acids: DNA, RNA, structure, replication
+   • Gene expression: transcription, translation, genetic code
+   • Enzyme kinetics: Michaelis-Menten equation
+   • Enzyme regulation: allosteric, covalent modification, feedback inhibition
+   • Bioenergetics: ATP, energy coupling, oxidative phosphorylation
+
+PRACTICAL COURSES:
+
+BP206P - HUMAN ANATOMY AND PHYSIOLOGY II PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP207P - PHARMACEUTICAL ANALYSIS II PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP208P - PHARMACEUTICS II PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP209P - PHARMACEUTICAL ORGANIC CHEMISTRY I PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP210P - BIOCHEMISTRY PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+SEMESTER II TOTAL: 30 Credits
+
+=====================================================================
+SEMESTER III (Odd Semester)
+=====================================================================
+
+📖 COURSE STRUCTURE: 30 Total Credits
+
+1. BP301T - PATHOPHYSIOLOGY (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain disease mechanisms and pathological processes
+   • Correlate pathophysiology with drug therapy
+   • Apply knowledge for therapeutic interventions
+   
+   KEY TOPICS:
+   • Pathophysiology fundamentals: homeostasis, adaptation
+   • Cell injury: causes, types, reversible and irreversible damage
+   • Inflammation: acute and chronic, mediators, resolution
+   • Fever: pyrexia, pyrogens, mechanism, consequences
+   • Hypersensitivity reactions: types I-IV
+   • Immune response: primary, secondary, memory
+   • Immunodeficiency: AIDS, combined immunodeficiency
+   • Neoplasia: benign vs malignant, classification, carcinogenesis
+   • Atherosclerosis: pathogenesis, risk factors, progression
+   • Hypertension: etiology, mechanisms, complications
+   • Heart failure: systolic and diastolic, compensatory mechanisms
+   • Respiratory diseases: COPD, asthma, pneumonia pathophysiology
+   • Renal pathophysiology: acute kidney injury, chronic kidney disease
+   • Diabetes mellitus: type 1 and 2, pathophysiology, complications
+   • Liver diseases: cirrhosis, hepatitis, failure
+   • Neurological disorders: stroke, Alzheimer's, Parkinson's
+
+2. BP302T - PHARMACEUTICAL ORGANIC CHEMISTRY II (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Synthesize and analyze pharmaceutical organic compounds
+   • Apply structure-activity relationships in drug design
+   • Explain metabolic transformations of drugs
+   
+   KEY TOPICS:
+   • Heterocyclic compounds: five and six-membered rings
+   • Aromatic heterocycles: pyrrole, pyridine, indole, benzofuran
+   • Pyrimidines and purines: structure, reactivity, nucleoside analogs
+   • Reduction reactions: LiAlH4, NaBH4, hydrogenation
+   • Oxidation reactions: permanganate, chromic acid, Jones oxidation
+   • Grignard reactions and organometallic compounds
+   • Wittig reaction and olefination
+   • Friedel-Crafts reactions: acylation, alkylation
+   • Synthesis of aromatic compounds: aniline derivatives
+   • Synthesis of pharmaceutical compounds: acetaminophen, aspirin
+   • Stereoselective synthesis and asymmetric synthesis
+   • Structure-activity relationships (SAR) in drug design
+   • Conformational analysis and drug design
+
+3. BP303T - BIOCHEMISTRY II (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain advanced biochemical processes
+   • Apply molecular biology techniques
+   • Understand gene expression and regulation
+   
+   KEY TOPICS:
+   • Advanced enzyme kinetics: competitive inhibition, non-competitive
+   • Regulatory enzymes and allosteric regulation
+   • Bioenergetics: free energy, entropy, thermodynamics
+   • Oxidative phosphorylation: electron transport chain, ATP synthesis
+   • Photosynthesis: light and dark reactions
+   • Amino acid metabolism: transamination, decarboxylation, catabolism
+   • Urea cycle: nitrogen disposal, disorders
+   • Porphyrin metabolism: heme synthesis, degradation
+   • Integration of metabolic pathways: fed and fasted states
+   • Hormonal regulation of metabolism: insulin, glucagon, cortisol
+   • Signal transduction: G-proteins, tyrosine kinase, second messengers
+   • Gene expression: chromatin structure, transcription factors
+   • Regulation of transcription and translation
+   • Recombinant DNA technology: cloning, PCR, expression vectors
+   • DNA sequencing and genome analysis
+   • Biotechnology applications in pharmacy
+
+4. BP304T - PHARMACOLOGY I (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain pharmacokinetics and pharmacodynamics
+   • Apply principles of drug action to therapeutic use
+   • Understand adverse effects and drug interactions
+   
+   KEY TOPICS:
+   • Pharmacology fundamentals: definition, scope, history
+   • Routes of administration: oral, parenteral, inhalation, topical
+   • Drug absorption: mechanisms, factors affecting absorption
+   • Distribution: protein binding, volume of distribution, barriers
+   • Metabolism: phase I, II, III reactions, enzyme induction, inhibition
+   • Elimination: renal clearance, hepatic metabolism, half-life
+   • Bioavailability and bioequivalence
+   • Pharmacokinetic models: one and two compartment models
+   • Drug-receptor interactions: agonists, antagonists, partial agonists
+   • Dose-response relationships: EC50, TD50, therapeutic index
+   • Autonomic nervous system: sympathetic, parasympathetic
+   • Adrenergic drugs: α and β agonists, antagonists, clinical uses
+   • Cholinergic drugs: muscarinic, nicotinic agents
+   • Adverse effects: types, mechanisms, toxicity
+   • Drug interactions: pharmacokinetic and pharmacodynamic
+   • Individual variation in drug response
+
+5. BP305T - SOCIAL PHARMACY (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain healthcare systems and pharmacy practice
+   • Apply social pharmacy principles in community health
+   • Understand epidemiology and drug utilization
+   
+   KEY TOPICS:
+   • Pharmacy practice: history, scope, professional roles
+   • Healthcare systems: primary, secondary, tertiary care
+   • Community pharmacy: organization, services, patient care
+   • Hospital pharmacy: functions, drug distribution systems
+   • Clinical pharmacy: drug therapy monitoring, patient counselling
+   • Pharmaceutical care: principles, implementation, outcomes
+   • Public health and pharmacy: epidemiology, disease prevention
+   • Epidemiology basics: disease patterns, transmission, control
+   • Communicable diseases: TB, malaria, dengue, COVID-19
+   • Non-communicable diseases: diabetes, hypertension, obesity
+   • Drug utilization studies: patterns, appropriateness, outcomes
+   • Pharmacoeconomics: cost-effectiveness, QALY, cost-benefit analysis
+   • Health policy and regulation in pharmacy
+   • Pharmacy and society: roles in healthcare delivery
+   • Ethics in pharmacy practice
+   • Patient education and counselling services
+
+PRACTICAL COURSES:
+
+BP306P - PATHOPHYSIOLOGY PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP307P - PHARMACEUTICAL ORGANIC CHEMISTRY II PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP308P - BIOCHEMISTRY II PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP309P - PHARMACOLOGY I PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+SEMESTER III TOTAL: 30 Credits
+
+=====================================================================
+SEMESTER IV (Even Semester)
+=====================================================================
+
+📖 COURSE STRUCTURE: 30 Total Credits
+
+1. BP401T - MEDICINAL CHEMISTRY I (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain structure-activity relationships
+   • Design pharmaceutical molecules
+   • Apply medicinal chemistry principles in drug discovery
+   
+   KEY TOPICS:
+   • Medicinal chemistry fundamentals: drug design approaches
+   • Molecular modifications: isosteric replacement, bioisosteres
+   • Physicochemical properties: lipophilicity, pKa, solubility
+   • Drug metabolism: phase I reactions (oxidation, reduction, hydrolysis)
+   • Drug metabolism: phase II reactions (conjugation)
+   • Phase III transporters: uptake and efflux mechanisms
+   • Drug-receptor interactions: binding affinity, selectivity
+   • Antacids and antiulcer agents: mechanism, SAR
+   • H2-receptor antagonists and proton pump inhibitors
+   • Nonsteroidal anti-inflammatory drugs: mechanism, SAR
+   • Antimicrobial agents: antibacterial, antifungal, antivirals
+   • Antiemetics and antidiarrheal agents
+   • Analgesics and antipyretics: narcotic and non-narcotic
+   • Antihistamines: H1 and H2 antagonists
+   • Cardiovascular agents: vasodilators, antihypertensives
+   • Structure-activity relationships for drug classes
+
+2. BP402T - PHARMACOLOGY II (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain pharmacology of cardiovascular and respiratory drugs
+   • Apply pharmacological principles to therapeutics
+   • Understand adverse effects and drug interactions
+   
+   KEY TOPICS:
+   • Cardiovascular drugs: cardiac glycosides, mechanism, uses
+   • Antiarrhythmic drugs: classification, mechanisms
+   • Antihypertensive drugs: ACE inhibitors, ARBs, calcium channel blockers
+   • Antianginal drugs: nitrates, β-blockers mechanism
+   • Antithrombotic agents: anticoagulants, antiplatelets, thrombolytics
+   • Hypolipidemic agents: statins, fibrates, niacin
+   • Respiratory system drugs: bronchodilators, corticosteroids
+   • Asthma management: acute and chronic therapy
+   • COPD management: therapeutic approaches
+   • Cough suppressants and expectorants
+   • Decongestants and nasal preparations
+   • Gastrointestinal drugs: antacids, H2 blockers, PPIs
+   • Antiemetics: mechanism and therapeutic use
+   • Antidiarrheal agents and laxatives
+   • Antiulcer agents and wound healing
+   • Appetite stimulants and suppressants
+
+3. BP403T - PHARMACEUTICS III (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Design solid dosage forms
+   • Apply formulation principles to tablets and capsules
+   • Evaluate dosage form quality
+   
+   KEY TOPICS:
+   • Solid dosage forms: tablets, capsules, powders
+   • Tablets: classification, advantages, disadvantages
+   • Tablet formulation: active ingredient, excipients, additives
+   • Binders: function, types, properties
+   • Diluents/fillers: types, selection criteria
+   • Disintegrants: mechanism of action, types
+   • Lubricants and glidants: function, types
+   • Tablet manufacturing: wet granulation, dry granulation
+   • Direct compression: advantages, requirements
+   • Tablet compression: forces, density, hardness
+   • Tablet coating: film coating, sugar coating, enteric coating
+   • Capsules: hard gelatin capsules, soft gelatin capsules
+   • Capsule filling: process, equipment, formulation
+   • Powders: bulk powders, divided powders
+   • Evaluation of solid dosage forms: hardness, friability, disintegration
+   • Dissolution testing: methods, specifications
+   • In vitro and in vivo correlation (IVIVC)
+   • Quality control of tablets and capsules
+
+4. BP404T - PHARMACOGNOSY I (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Identify and classify natural products
+   • Extract and standardize herbal medicines
+   • Apply phytochemistry knowledge in formulation
+   
+   KEY TOPICS:
+   • Pharmacognosy: definition, scope, history
+   • Plant taxonomy: plant classification, nomenclature
+   • Morphology: plant organs, identification features
+   • Anatomy: internal plant structure, microscopy
+   • Plant tissue culture: applications in pharmacy
+   • Phytochemistry: classification of natural products
+   • Carbohydrates: gums, mucilages, polysaccharides in plants
+   • Lipids and volatile oils: extraction, composition, uses
+   • Alkaloids: classification, extraction, detection
+   • Glycosides: types, pharmacological importance, detection
+   • Phenolic compounds: flavonoids, tannins, coumarins
+   • Terpenoids and essential oils: composition, uses
+   • Plant metabolites: primary, secondary metabolism
+   • Herbal drugs: cultivation, collection, drying, storage
+   • Standardization: active constituent determination
+   • Quality control of crude drugs: physical, chemical, biological
+   • Botanical sources of pharmaceutical compounds
+   • Adulteration and sophistication in herbal products
+
+5. BP405T - PHARMACEUTICAL JURISPRUDENCE (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain pharmaceutical laws and regulations
+   • Apply legal principles in pharmacy practice
+   • Understand ethical and professional responsibilities
+   
+   KEY TOPICS:
+   • Pharmaceutical jurisprudence: definition, scope, importance
+   • Pharmacy Act: history, scope, provisions, amendments
+   • Drugs and Cosmetics Act (DCA) 1940: objectives, scope
+   • DCA rules 1945: classification of drugs, labelling requirements
+   • Pharmacy and Therapeutic (P&T) committee: functions, role
+   • Licensing: pharmacy registration, license renewal, cancellation
+   • Good Pharmacy Practice (GPP): principles, implementation
+   • Intellectual Property Rights (IPR): patents, trademarks, copyrights
+   • Patent law in pharmaceuticals: protection, duration, infringement
+   • Schedule of Drugs: scheduling classification (X, Y, Z, etc.)
+   • Controlled substances: narcotic, psychotropic drugs regulation
+   • Food Safety and Standards Act (FSSA) 2006
+   • Biomedical waste management: rules, classification, disposal
+   • Clinical trial regulations: Schedule Y, ethics, informed consent
+   • Pharmacovigilance: ADR monitoring, reporting, post-marketing surveillance
+   • Advertising regulations: code of ethics for pharmaceutical promotion
+   • Professional ethics in pharmacy
+   • Consumer protection and pharmacy
+   • Poison laws and regulations
+
+PRACTICAL COURSES:
+
+BP406P - MEDICINAL CHEMISTRY I PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP407P - PHARMACOLOGY II PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP408P - PHARMACEUTICS III PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP409P - PHARMACOGNOSY I PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+SEMESTER IV TOTAL: 30 Credits
+
+=====================================================================
+SEMESTER V (Odd Semester)
+=====================================================================
+
+📖 COURSE STRUCTURE: 30 Total Credits
+
+1. BP501T - PHARMACOLOGY III (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain CNS pharmacology and psychotropic drugs
+   • Apply pharmacological knowledge in mental health therapy
+   • Understand neuropharmacology principles
+   
+   KEY TOPICS:
+   • Central nervous system: neurotransmitters, receptors
+   • Neurochemistry: dopamine, serotonin, norepinephrine, GABA
+   • Hypnotics and sedatives: barbiturates, benzodiazepines, non-barbiturates
+   • Antipsychotics: typical, atypical, mechanism, side effects
+   • Antidepressants: SSRIs, TCAs, MAOIs, mechanism
+   • Anxiolytics: benzodiazepines, buspirone, mechanism
+   • Anticonvulsants: phenytoin, valproate, carbamazepine
+   • Antiparkinsonian agents: L-DOPA, dopamine agonists, anticholinergics
+   • Analgesics: opioid mechanisms, tolerance, dependence
+   • Local anesthetics: mechanism, types, toxicity
+   • General anesthetics: inhalational, intravenous agents
+   • Muscle relaxants: central and peripheral action
+   • Nootropic agents: cognitive enhancers
+   • Neurotoxicity and drug effects on nervous system
+   • Substance abuse: mechanisms, dependence, treatment
+
+2. BP502T - MEDICINAL CHEMISTRY II (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain drug metabolism and bioactivation
+   • Apply SAR principles to CNS and antimicrobial drugs
+   • Understand drug-drug interactions
+   
+   KEY TOPICS:
+   • Drug metabolism: Phase I oxidation reactions
+   • Phase II conjugation reactions: glucuronidation, sulfation
+   • Phase III transport: efflux and influx mechanisms
+   • Cytochrome P450 enzymes: types, substrates, inhibitors, inducers
+   • Prodrugs: concept, activation, examples
+   • Bioactivation: metabolite toxicity, carcinogenicity
+   • Drug-drug interactions: mechanisms, clinical significance
+   • Antipsychotic drugs: phenothiazines, butyrophenones, atypicals
+   • Antidepressant drugs: mechanism, SAR, therapeutic use
+   • Anti-anxiety agents: mechanism, structure modification
+   • Anticonvulsant drugs: mechanism, SAR modifications
+   • Antimicrobial agents: mechanism, SAR, resistance
+   • Beta-lactam antibiotics: penicillins, cephalosporins
+   • Macrolide antibiotics: structure, mechanism, spectrum
+   • Aminoglycoside antibiotics: mechanism, toxicity
+   • Quinolone antibiotics: mechanism, SAR
+   • Antifungal agents: azoles, polyenes, mechanism
+   • Antiviral agents: nucleoside analogs, protease inhibitors
+   • Antiprotozoal agents: antimalarial, antitrypanosomal drugs
+   • Structure-activity relationships: predictive models
+
+3. BP503T - PHARMACOGNOSY II (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Identify and use medicinal plants therapeutically
+   • Standardize herbal formulations
+   • Validate traditional medicines scientifically
+   
+   KEY TOPICS:
+   • Medicinal plants: classification, therapeutic uses
+   • Cardiovascular drugs from plants: digitalis, rauwolfia
+   • CNS active plants: belladonna alkaloids, cannabis
+   • Gastrointestinal plants: cascara, senna, ginger
+   • Respiratory system plants: ephedra, thyme
+   • Immunomodulatory plants: echinacea, ginseng, withania
+   • Anti-inflammatory plants: turmeric (curcumin), boswellia
+   • Antimicrobial plants: neem, garlic, oregano
+   • Antidiabetic plants: fenugreek, bitter melon
+   • Anticancer plants: podophyllum, etoposide precursors
+   • Adaptogenic plants: ginseng, ashwagandha
+   • Ayurvedic and traditional medicine preparations
+   • Siddha and Unani medicine systems
+   • Herbal drug interactions and contraindications
+   • Safety evaluation and toxicology of herbal products
+   • Herbal formulae: preparation, standardization, quality control
+   • Regulatory aspects of herbal products
+   • Authentication and identification of medicinal plants
+
+4. BP504T - PHARMACEUTICAL MICROBIOLOGY (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain microbiology fundamentals and pharmaceutical applications
+   • Apply microbiological techniques in quality control
+   • Understand antimicrobial principles
+   
+   KEY TOPICS:
+   • Microbiology: history, scope, classification of microorganisms
+   • Bacterial morphology: shape, size, structure (cell wall, membrane)
+   • Gram positive and gram negative bacteria: differences
+   • Bacterial growth: phases, factors affecting growth
+   • Sterilization: physical methods (heat, radiation, filtration)
+   • Sterilization: chemical methods (ethylene oxide, formaldehyde)
+   • Disinfection and antisepsis: differences, agents
+   • Media preparation: culture media types, composition
+   • Culture techniques: inoculation, incubation, isolation
+   • Microbial identification: morphology, biochemical tests
+   • Fungal morphology and classification
+   • Yeasts: characteristics, pharmaceutical importance
+   • Molds: characteristics, contamination in products
+   • Viruses: classification, replication, oncogenic viruses
+   • Prions and prion diseases
+   • Antimicrobial agents: antibiotic resistance mechanisms
+   • Antibiotic sensitivity testing: Kirby-Bauer method
+   • Microbiological assays: antibiotic potency determination
+   • Bioburden testing and microbial limits
+   • Environmental monitoring in pharmaceutical facilities
+   • Water system microbiology
+   • Sterilizing filters: validation, integrity testing
+
+5. BP505T - ADVANCED PHARMACEUTICAL ANALYSIS/INSTRUMENTAL METHODS (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Apply advanced analytical techniques
+   • Develop analytical methods for complex compounds
+   • Validate analytical methods using ICH guidelines
+   
+   KEY TOPICS:
+   • Chromatography: advanced techniques, method development
+   • HPLC advanced methods: reversed-phase, normal-phase
+   • HPLC: gradient elution, detection methods, optimization
+   • UHPLC: advantages, applications in pharmaceutical analysis
+   • Gas chromatography: capillary GC, multidimensional GC
+   • Liquid chromatography-mass spectrometry (LC-MS)
+   • Gas chromatography-mass spectrometry (GC-MS)
+   • Mass spectrometry: ionization techniques, fragmentation
+   • Nuclear magnetic resonance (NMR): 1H, 13C NMR
+   • NMR applications: structure determination, quantification
+   • Infrared spectroscopy: advanced applications, FTIR
+   • Raman spectroscopy: principles, pharmaceutical applications
+   • X-ray crystallography: protein structure determination
+   • Differential scanning calorimetry (DSC): thermograms
+   • Thermal gravimetric analysis (TGA): stability assessment
+   • Analytical method validation: ICH Q2(R2) guidelines
+   • Specificity, selectivity, accuracy, precision of methods
+   • Robustness and ruggedness testing
+   • Quality by design (QbD) in analytical methods
+   • Green analytical chemistry approaches
+
+PRACTICAL COURSES:
+
+BP506P - PHARMACOLOGY III PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP507P - MEDICINAL CHEMISTRY II PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP508P - PHARMACOGNOSY II PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP509P - PHARMACEUTICAL MICROBIOLOGY PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+SEMESTER V TOTAL: 30 Credits
+
+=====================================================================
+SEMESTER VI (Even Semester)
+=====================================================================
+
+📖 COURSE STRUCTURE: 30 Total Credits
+
+1. BP601T - BIOPHARMACEUTICS AND PHARMACOKINETICS (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain biopharmaceutic principles affecting drug absorption
+   • Apply pharmacokinetic concepts to dosing regimens
+   • Design bioequivalent formulations
+   
+   KEY TOPICS:
+   • Biopharmaceutics: definition, scope, classification
+   • Factors affecting drug absorption: pH, motility, surface area
+   • Gastrointestinal absorption: passive, active, specialized transport
+   • First-pass metabolism: significance, strategies to overcome
+   • Bioavailability: definition, determination, factors
+   • Bioequivalence: definition, requirements, statistical analysis
+   • Pharmacokinetics: one compartment model
+   • Two-compartment model: distribution, elimination
+   • Non-compartmental analysis: AUC, MRT, clearance
+   • Protein binding: significance, clinical implications
+   • Drug distribution: volume of distribution, tissue accumulation
+   • Drug elimination: renal clearance, hepatic metabolism
+   • Half-life: definition, calculation, clinical significance
+   • Steady-state kinetics: time to reach, accumulation factor
+   • Dosage regimens: maintenance dose, loading dose
+   • Multiple dose pharmacokinetics: accumulation, dosing intervals
+   • Special populations: pediatrics, geriatrics, hepatic/renal impairment
+   • Nonlinear pharmacokinetics: saturation kinetics
+   • Population pharmacokinetics: variability, predictability
+   • PBPK (Physiologically Based Pharmacokinetic) modeling
+
+2. BP602T - CLINICAL PHARMACY AND THERAPEUTICS (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Apply clinical pharmacy principles to patient care
+   • Monitor drug therapy and outcomes
+   • Counsel patients on medication use
+   
+   KEY TOPICS:
+   • Clinical pharmacy: scope, definition, objectives
+   • Pharmaceutical care: patient-centered approach
+   • Clinical pharmacist: roles and responsibilities
+   • Drug information: sources, services, evaluation
+   • Medication therapy management: assessment, intervention
+   • Adverse drug events: identification, prevention, reporting
+   • Drug utilization review: appropriateness, outcomes
+   • Medication errors: causes, prevention, management
+   • Drug-disease interactions: management strategies
+   • Drug interactions: identification, significance, management
+   • Polypharmacy: risks, deprescribing strategies
+   • Patient counselling: techniques, communication
+   • Therapeutic drug monitoring: indications, timing, interpretation
+   • Pediatric considerations: dosing, formulations
+   • Geriatric pharmacotherapy: age-related changes, medication review
+   • Pregnancy and lactation: drug safety, lactation risk
+   • Renal impairment: dose adjustment, drug selection
+   • Hepatic impairment: metabolism alterations, dosing
+   • Cardiovascular disease therapeutics
+   • Diabetes management: therapeutic options, monitoring
+   • Respiratory disease: asthma, COPD management
+   • Infectious disease therapeutics: antibiotic selection
+   • Oncology therapeutics: chemotherapy principles
+   • Neuropsychiatric therapeutics: depression, anxiety, psychosis
+   • Pain management: acute and chronic pain strategies
+   • Palliative care: symptom management
+   • Evidence-based medicine: literature evaluation
+   • Therapeutic guidelines and protocols
+
+3. BP603T - PHARMACEUTICS IV - NOVEL DRUG DELIVERY SYSTEMS (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Design novel drug delivery systems
+   • Apply biocompatible materials in formulation
+   • Overcome drug delivery limitations
+   
+   KEY TOPICS:
+   • Novel drug delivery systems (NDDS): classification, advantages
+   • Oral NDDS: gastro-retentive systems, site-specific delivery
+   • Transdermal delivery: permeation enhancement, patch technology
+   • Transdermal: iontophoresis, sonophoresis, microneedles
+   • Mucosal delivery: buccal, nasal, pulmonary routes
+   • Parenteral NDDS: microparticles, nanoparticles, implants
+   • Liposomes: composition, preparation, encapsulation, applications
+   • Niosomes: structure, preparation, advantages over liposomes
+   • Microspheres and microcapsules: preparation, release mechanisms
+   • Nanoparticles: types, preparation, characterization
+   • Nanospheres and nanocapsules: differences, applications
+   • Polymeric NDDS: natural, synthetic polymers
+   • Polyesters: polylactic acid, polyglycolide, PLGA
+   • Polycaprolactone and other biodegradable polymers
+   • Hydrogels: composition, swelling, controlled release
+   • In-situ gels: thermogelling, pH-triggered, ion-triggered
+   • Ocular delivery: solutions, suspensions, inserts, gels
+   • Olfactory drug delivery: intranasal administration
+   • Pulmonary delivery: dry powder inhalers, nebulizers
+   • Gene delivery: vectors, viral, non-viral systems
+   • Dendrimers: architecture, drug loading, applications
+   • Targeted drug delivery: antibody-based, ligand-based
+   • Stimuli-responsive delivery: pH, temperature, enzyme-triggered
+   • Evaluation and characterization of NDDS
+
+4. BP604T - PHARMACOLOGY IV (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain immune and endocrine pharmacology
+   • Apply pharmacology to immunological diseases
+   • Understand hormonal therapeutic interventions
+   
+   KEY TOPICS:
+   • Immunosuppressive agents: mechanism, clinical uses
+   • Corticosteroids: immunosuppression, inflammatory disease
+   • Immunostimulants: interferons, interleukins, vaccines
+   • Monoclonal antibodies: production, mechanisms, uses
+   • Tumor necrosis factor inhibitors: mechanism, indications
+   • Autoimmune disease therapy: rheumatoid arthritis, SLE
+   • Allergic reactions: management, antihistamines
+   • Endocrine system: hormone synthesis and regulation
+   • Thyroid hormones: mechanism, therapeutic use, hypothyroidism
+   • Antithyroid agents: mechanism, uses, side effects
+   • Glucocorticoids: physiology, pharmacology, uses
+   • Mineralocorticoids: aldosterone, therapeutic applications
+   • Androgens: physiological role, therapeutic applications
+   • Anabolic steroids: mechanism, abuse, side effects
+   • Estrogens and progestins: physiological roles, contraceptives
+   • Hormone replacement therapy: indications, risks
+   • Insulin: types, pharmacokinetics, therapeutic use
+   • Oral hypoglycemic agents: mechanism, classes
+   • GLP-1 agonists and DPP-4 inhibitors
+   • Pancreatic hormones: glucagon, somatostatin
+   • Pituitary hormones: anterior, posterior hormones
+   • Antidiuretic hormone: physiology, therapeutic use
+   • Gonadotropin-releasing hormone analogs
+   • Bone metabolism: calcium, phosphate, vitamin D
+   • Parathyroid hormone and calcitonin
+   • Hypoparathyroidism and hyperparathyroidism management
+
+5. BP605T - ADVANCED PHARMACEUTICAL FORMULATION DESIGN & TECHNOLOGY (Theory)
+   Credits: 4 | L-T: 3-1 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Apply QbD principles to formulation development
+   • Develop robust pharmaceutical formulations
+   • Implement technology transfer processes
+   
+   KEY TOPICS:
+   • Quality by Design (QbD): ICH Q8 guidelines
+   • QTPP (Quality Target Product Profile): definition, establishment
+   • Critical quality attributes (CQAs): identification
+   • Critical process parameters (CPPs): definition, control
+   • Design space: development, exploration, validation
+   • Formulation development strategies
+   • Pre-formulation studies: drug characterization
+   • Compatibility studies: excipient interactions
+   • Stability studies: ICH guidelines, protocols
+   • Stress testing: photostability, thermal stability
+   • Accelerated stability testing: prediction of shelf-life
+   • Design of experiments (DoE): factorial, response surface
+   • Optimization techniques: Simplex, evolutionary strategies
+   • Scale-up considerations: pilot plant operations
+   • Technology transfer: documentation, execution
+   • Process analytical technology (PAT): real-time monitoring
+   • Spectroscopy in PAT: NIR, Raman, FTIR applications
+   • Continuous manufacturing concepts
+   • Lean manufacturing: waste elimination, efficiency
+   • Six Sigma in pharmaceutical manufacturing
+   • Risk management: FMEA, HAZOP analysis
+   • Regulatory compliance: Schedule M, cGMP requirements
+
+PRACTICAL COURSES:
+
+BP606P - BIOPHARMACEUTICS AND PHARMACOKINETICS PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP607P - CLINICAL PHARMACY PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP608P - PHARMACEUTICS IV PRACTICAL (NDDS)
+Credits: 2 | P: 4 | Max Hours: 60
+
+BP609P - PHARMACOLOGY IV PRACTICAL
+Credits: 2 | P: 4 | Max Hours: 60
+
+ELECTIVE COURSE:
+
+BP610T - ADVANCED INSTRUMENT & ANALYSIS/OTHER ELECTIVE
+Credits: 2 | L-T: 2 | Max Hours: 30
+
+SEMESTER VI TOTAL: 30 Credits
+
+=====================================================================
+SEMESTER VII (Odd Semester)
+=====================================================================
+
+📖 COURSE STRUCTURE: 22 Total Credits
+
+1. BP701T - SOCIAL PHARMACY AND HEALTH EDUCATION (Theory)
+   Credits: 2 | L-T: 2 | Max Hours: 30
+   COURSE OUTCOMES (CO):
+   • Explain healthcare systems and public health
+   • Apply pharmaceutical care in community settings
+   • Understand epidemiology and health promotion
+   
+   KEY TOPICS:
+   • Public health: definition, scope, objectives
+   • Healthcare delivery systems: primary, secondary, tertiary
+   • Community health centers: organization, services
+   • PHC, CHC, District Hospitals: role of pharmacist
+   • Epidemiology: disease patterns, transmission, investigation
+   • Epidemic management: control measures, prevention
+   • Communicable diseases: TB, malaria, dengue, COVID-19
+   • Non-communicable diseases: prevention, management
+   • Health promotion: education, awareness programs
+   • Disease prevention: primary, secondary, tertiary
+   • Vaccination: immunization schedules, importance
+   • Health screening services: role of pharmacist
+   • Mental health: prevalence, treatment, stigma
+   • Substance abuse: prevention, rehabilitation
+   • Pharmacoeconomics: cost-effectiveness, drug pricing
+   • Drug utilization: appropriateness, outcomes
+   • Healthcare access: equity, rural pharmacy
+   • Health policy and pharmaceutical regulations
+   • WHO guidelines: pharmacy practice, medicines
+   • Professional ethics: responsibilities, confidentiality
+   • Patient education and counselling
+   • Health informatics: e-health, telemedicine
+   • Community pharmacy services: OTC counselling
+   • Hospital pharmacy: services, drug distribution
+   • Clinical pharmacy in healthcare delivery
+
+2. BP702T - PHARMACEUTICAL TECHNOLOGY AND BIOTECHNOLOGY (Theory)
+   Credits: 2 | L-T: 2 | Max Hours: 30
+   COURSE OUTCOMES (CO):
+   • Explain biotechnology applications in pharmacy
+   • Apply recombinant DNA technology to drug production
+   • Understand biopharmaceutical manufacturing
+   
+   KEY TOPICS:
+   • Biotechnology: definition, scope, applications
+   • Cell culture: types, media, growth conditions
+   • Recombinant DNA technology: genes, vectors, cloning
+   • Expression systems: bacterial, yeast, mammalian cell expression
+   • Protein production: fermentation, purification
+   • Monoclonal antibodies: hybridoma technology, production
+   • Recombinant insulin: production, clinical use
+   • Growth hormones: production, therapeutic applications
+   • Interferon production: types, therapeutic use
+   • Interleukins: production, immunological applications
+   • Vaccines: viral, bacterial, recombinant vaccines
+   • Thrombolytic agents: tissue plasminogen activator (tPA)
+   • Blood factors: clotting factors, production
+   • Enzyme replacement therapy: applications
+   • Gene therapy: approaches, vectors, clinical trials
+   • RNA interference: siRNA, miRNA therapeutic applications
+   • CRISPR-Cas9: gene editing applications in medicine
+   • Biopharmaceutical formulation: stability, storage
+   • Peptide and protein drugs: manufacturing challenges
+   • Bioequivalence of biopharmaceuticals
+   • Regulatory considerations for biologics
+   • Biosimilars: development, regulatory pathways
+
+3. BP703T - PHARMACEUTICAL RESEARCH AND DEVELOPMENT (Theory)
+   Credits: 2 | L-T: 2 | Max Hours: 30
+   COURSE OUTCOMES (CO):
+   • Explain drug discovery and development processes
+   • Apply research methodologies in pharmacy
+   • Understand clinical trial design and execution
+   
+   KEY TOPICS:
+   • Drug discovery: lead identification, screening
+   • Natural product-based drug discovery
+   • Synthetic drug design: rational design, combinatorial chemistry
+   • High-throughput screening: techniques, automation
+   • Structure-activity relationships: computational approaches
+   • Lead optimization: pharmacodynamics, pharmacokinetics
+   • ADME properties: prediction, modification
+   • Drug development process: preclinical to commercial
+   • Preclinical testing: in vitro, in vivo models
+   • Investigational New Drug (IND) application: requirements
+   • Clinical trials: phases I-IV, objectives, design
+   • Phase I trials: safety, pharmacokinetics
+   • Phase II trials: efficacy, optimal dose
+   • Phase III trials: efficacy, safety, monitoring
+   • Phase IV trials: post-marketing surveillance
+   • Clinical trial design: RCT, observational studies
+   • Biostatistics: sample size, power analysis
+   • Data management: electronic data capture, databases
+   • Regulatory documentation: Case Report Forms (CRFs)
+   • Ethics in research: Institutional Review Board (IRB), consent
+   • Good Clinical Practice (GCP): principles, implementation
+   • Data analysis: statistical methods, interpretation
+   • Pharmacovigilance: adverse event monitoring, reporting
+   • Marketing authorization application (MAA): preparation
+   • Post-marketing surveillance: Phase IV monitoring
+   • Drug safety: pharmacovigilance systems, risk management
+   • Research ethics: informed consent, confidentiality
+
+4. BP704T - HOSPITAL AND CLINICAL PHARMACY (Theory)
+   Credits: 2 | L-T: 2 | Max Hours: 30
+   COURSE OUTCOMES (CO):
+   • Explain hospital pharmacy operations and services
+   • Apply clinical pharmacy principles in hospitals
+   • Manage drug therapy and patient safety
+   
+   KEY TOPICS:
+   • Hospital pharmacy: definition, scope, services
+   • Hospital organization: structure, healthcare professionals
+   • Hospital formulary: development, management, updates
+   • Pharmacy and Therapeutics Committee: functions, drug selection
+   • Drug procurement: tendering, purchasing, inventory control
+   • Drug storage: security, organization, expiry management
+   • Dispensing systems: distribution systems, DEWs
+   • Inpatient dispensing: prescription verification, counselling
+   • Outpatient dispensing: OPD pharmacy operations
+   • Narcotic and controlled drug management: handling, records
+   • Emergency drug cart: drugs, maintenance, checks
+   • Medication errors: types, prevention, reporting
+   • Adverse drug events: monitoring, prevention, management
+   • Drug interactions: identification, significance, management
+   • Therapeutic drug monitoring: indicators, interpretation
+   • Dosage adjustments: renal, hepatic impairment
+   • Pediatric dosing: weight-based, age-based calculations
+   • Geriatric pharmacotherapy: age-related changes, medication review
+   • Pregnancy and lactation: safe drug selection
+   • Clinical rounds: role of clinical pharmacist
+   • Ward-based services: medication history, therapy monitoring
+   • Intensive care pharmacotherapy: critical care management
+   • Surgical pharmacy: perioperative drug management
+   • Oncology pharmacy: chemotherapy handling, patient monitoring
+   • Infectious disease pharmacy: antibiotic stewardship
+   • Drug information services: resources, query management
+   • Patient counselling: techniques, documentation
+   • Medication compliance: monitoring, improvement strategies
+   • Quality assurance in hospital pharmacy
+
+5. BP705T - REGULATORY AFFAIRS AND PHARMACEUTICAL MANAGEMENT (Theory)
+   Credits: 2 | L-T: 2 | Max Hours: 30
+   COURSE OUTCOMES (CO):
+   • Explain pharmaceutical regulations and compliance
+   • Apply management principles in pharmacy
+   • Understand business and marketing strategies
+   
+   KEY TOPICS:
+   • Regulatory affairs: definition, scope, importance
+   • Regulatory authorities: FDA, EMA, CDSCO
+   • Good Manufacturing Practices (GMP): principles, requirements
+   • Schedule M: requirements for pharmaceutical manufacturing
+   • cGMP: compliance, documentation, inspection
+   • Drug Master Files (DMF): contents, submission
+   • Common Technical Document (CTD): structure, content
+   • Dossier preparation: regulatory submissions
+   • Licensing and registration: procedure, requirements
+   • Marketing authorization: procedures in various countries
+   • Labelling requirements: content, format, regulations
+   • Packaging materials: regulations, qualification
+   • Stability testing: guidelines, protocols, shelf-life determination
+   • Post-approval changes: major, moderate, minor changes
+   • Patent law: pharmaceutical patents, protection
+   • Intellectual Property Rights: trade secrets, copyrights
+   • Advertising regulations: code of ethics, compliance
+   • Business management: planning, organizing, controlling
+   • Financial management: budgeting, cost control, pricing
+   • Human resource management: recruitment, training, performance
+   • Marketing mix: product, price, place, promotion
+   • Pharmaceutical marketing: strategies, medical representatives
+   • Digital marketing: e-commerce, online pharmacies
+   • Supply chain management: distribution, logistics
+   • Quality assurance: QC, QA, quality systems
+   • Documentation: SOPs, records, audit trails
+   • Auditing and inspection: internal, regulatory audits
+   • Compliance: regulatory requirements, GMP standards
+   • Risk management: FMEA, HAZOP, mitigation strategies
+   • Sustainability: environmental impact, green pharmacy
+
+PRACTICAL COURSES:
+
+BP706P - HOSPITAL AND CLINICAL PHARMACY PRACTICAL
+Credits: 2 | P: 2 | Max Hours: 30
+
+ELECTIVE COURSES (Select One):
+
+BP707T - PHARMACEUTICAL MARKETING AND MANAGEMENT (Theory)
+BP707T - REGULATORY AFFAIRS (Theory)
+BP707T - OTHER ELECTIVE
+Credits: 2 | L-T: 2 | Max Hours: 30
+
+BP708T - ADVANCED ELECTIVE COURSE (AEC) (Select One):
+BP708T AEC1 - Current Good Manufacturing Practices (cGMP)
+BP708T AEC2 - Pharmaceutical Automation
+BP708T AEC3 - Modern Techniques in Cellular Biology
+BP708T AEC4 - Medical Devices
+BP708T AEC5 - Transformation of Food Waste into Medicinal Products
+BP708T AEC6 - Biosimilars, Vaccines & Macromolecules
+BP708T AEC7 - Precision Medicine
+Credits: 1 | L-T: 1 | Max Hours: 15
+
+BP709P - ADVANCED INSTRUMENTAL METHODS PRACTICAL
+Credits: 3 | P: 3 | Max Hours: 45
+
+BP710RP - RESEARCH PROJECT
+Credits: 6 | Max Hours: 180
+
+SEMESTER VII TOTAL: 22 Credits
+
+=====================================================================
+SEMESTER VIII (Even Semester - Final Semester)
+=====================================================================
+
+📖 COURSE STRUCTURE: 22-24 Total Credits
+
+1. BP801T - ETHICAL CONSIDERATIONS & AI IN PHARMACY (Theory)
+   Credits: 2 | L-T: 2 | Max Hours: 30
+   COURSE OUTCOMES (CO):
+   • Explain AI lifecycle and healthcare ethics
+   • Apply ethical frameworks to AI implementation
+   • Understand regulatory guidance on AI systems
+   
+   KEY TOPICS:
+   • Artificial Intelligence: definition, scope in pharmacy
+   • AI lifecycle: data collection, preprocessing, modeling, deployment
+   • Machine Learning: supervised, unsupervised, reinforcement learning
+   • Data quality: importance, management, privacy
+   • Model development: training, validation, testing
+   • Model performance: accuracy, precision, recall, F1-score
+   • Bias in AI: sources, detection, mitigation
+   • Validation requirements: regulatory, clinical
+   • Model drift: performance degradation, monitoring
+   • Explainable AI (XAI): interpretability, transparency
+   • Regulatory framework: EU AI Act, FDA guidance, CDSCO guidelines
+   • Accountability: responsible AI, governance
+   • Risk-based classification: AI system categorization
+   • AI in pharmacy automation: dispensing, inventory prediction
+   • Medication adherence monitoring: AI applications
+   • Supply chain management: demand forecasting, optimization
+   • Public health analytics: outbreak prediction, vaccination forecasting
+   • Clinical decision support: diagnosis aids, treatment optimization
+   • ADR detection: adverse event identification
+   • Ethics: patient privacy, data security, informed consent
+   • Regulatory submissions: AI/ML algorithms in products
+   • Documentation: reproducibility, validation records
+   • Guided projects: implementation, validation, ethical assessment
+
+2. BP802T - CLINICAL PHARMACOTHERAPEUTICS (Theory)
+   Credits: 2 | L-T: 2 | Max Hours: 30
+   COURSE OUTCOMES (CO):
+   • Explain pathophysiology and drug therapy
+   • Design individualized therapeutic plans
+   • Monitor and modify drug therapy
+   
+   KEY TOPICS:
+   • Cardiovascular diseases:
+     - Ischemic heart disease: pathogenesis, management
+     - Myocardial infarction: acute management, secondary prevention
+     - Heart failure: systolic, diastolic, therapeutic approach
+     - Arrhythmias: classification, management
+     - Hypertension: pathophysiology, therapeutic guidelines
+     - Hyperlipidemia: risk factors, drug therapy
+   • Respiratory system:
+     - Asthma: pathophysiology, acute and chronic management
+     - COPD: etiology, therapeutic approach, monitoring
+   • Renal system:
+     - Acute renal failure: etiology, management
+     - Chronic kidney disease: progression, therapy
+     - Renal replacement therapy: dialysis, transplantation
+   • Endocrine system:
+     - Diabetes mellitus: type 1 and 2, therapeutic management
+     - Thyroid disorders: hypo and hyperthyroidism
+     - Adrenal disorders: insufficiency, excess
+   • Nervous system:
+     - Epilepsy: seizure types, antiepileptic drugs
+     - Stroke: ischemic, hemorrhagic, management
+     - Parkinsonism: pathophysiology, therapeutic options
+   • Gastrointestinal system:
+     - Peptic ulcer disease: etiology, management
+     - GERD: pathophysiology, drug therapy
+     - Inflammatory bowel disease: management
+   • Musculoskeletal system:
+     - Rheumatoid arthritis: DMARDs, biologics
+     - Osteoarthritis: management strategies
+   • Infectious diseases:
+     - Tuberculosis: drug regimens, monitoring
+     - Pneumonia: community-acquired, hospital-acquired
+     - Urinary tract infections: treatment
+     - Malaria: drug therapy, resistance
+     - HIV: antiretroviral therapy, monitoring
+   • Hematological diseases:
+     - Anemia: types, iron therapy, B12, folate
+   • Patient-specific parameters: age, organ function, genetics
+   • Non-pharmacological management: lifestyle modifications
+
+3. BP803T - INDUSTRIAL PHARMACY & FACILITY DESIGN (Theory)
+   Credits: 3 | L-T: 3 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Explain regulatory guidelines for manufacturing
+   • Design pharmaceutical facilities
+   • Apply technology transfer principles
+   
+   KEY TOPICS:
+   • Regulatory guidelines:
+     - ICH Q8: QbD concepts
+     - ICH Q9: Risk management
+     - ICH Q10: Pharmaceutical quality system
+     - ICH Q11: Drug substance and drug product
+     - WHO guidelines: technology transfer
+     - Schedule M: Indian GMP requirements
+     - SUPAC guidelines: scale-up, post-approval changes
+   • Drug development:
+     - Discovery to commercialization
+     - Formulation development strategies
+     - Pilot plant operations: solid, liquid, semi-solid dosage forms
+     - Scale-up considerations: batch size, equipment changes
+   • Technology transfer:
+     - Definition, documentation
+     - Transfer from R&D to production
+     - Quality risk management
+     - Cleaning validation protocols
+     - API, excipient, finished product transfer
+   • Facility design (Non-sterile):
+     - Schedule M requirements
+     - Layout for different dosage forms
+     - Process flow: tablets, capsules, liquids
+     - Water system: purification, distribution, validation
+     - Compressed air: quality, system design
+     - Waste management: disposal, treatment
+   • Facility design (Sterile):
+     - Cleanroom concept: ISO classification
+     - Layout and process flow
+     - Material and personnel flow
+     - HVAC: design, testing, validation
+     - Environmental monitoring: air, surface, personnel
+     - Sterilization: steam, dry heat, gas, filtration
+   • Advanced technologies:
+     - Modular facilities
+     - Isolators: technology, applications
+     - Automation: robotic systems
+     - Continuous manufacturing: principles, advantages
+
+4. BP804T - PHARMACEUTICAL MANAGEMENT (Theory)
+   Credits: 2 | L-T: 2 | Max Hours: 30
+   COURSE OUTCOMES (CO):
+   • Understand pharmaceutical industry dynamics
+   • Apply management principles in pharmacy
+   • Develop pharmaceutical business strategies
+   
+   KEY TOPICS:
+   • Pharmaceutical industry: overview, structure, segments
+   • Global vs Indian pharmaceutical market
+   • Drug development: timelines, costs, approval
+   • Manufacturing: processes, technology, scale-up
+   • Quality and regulatory affairs: compliance
+   • Marketing and sales: strategies, distribution
+   • Market entry strategies: partnerships, M&A
+   • Key management functions:
+     - Planning: strategic, tactical, operational
+     - Organizing: structure, roles, responsibilities
+     - Leading: motivation, communication, teams
+     - Controlling: monitoring, quality assurance
+   • Decision-making: rational, bounded rationality
+   • Time management: priorities, efficiency
+   • Marketing management:
+     - Pharmaceutical marketing: uniqueness
+     - Marketing mix: 4Ps and extended Ps
+     - Medical representatives: role, training
+     - Digital marketing: strategies, platforms
+     - Ethical considerations: code of ethics
+     - E-pharmacies: regulation, advantages
+   • Product management:
+     - Product lifecycle: introduction to decline
+     - Branding: positioning, identity
+     - Market segmentation: targeting, positioning
+     - Market research: techniques, analysis
+   • Financial management:
+     - Budgeting: preparation, monitoring
+     - Financial forecasting: sales, expenses
+     - Cost control: optimization, efficiency
+     - Pricing: DPCO regulations, margins
+   • Human resources:
+     - Recruitment and selection
+     - Training and development
+     - Performance appraisal
+     - Employee motivation: theories, strategies
+     - Leadership: styles, impact
+     - Team building: group dynamics
+     - Conflict resolution: techniques
+   • Operations management:
+     - Production planning and control
+     - Inventory management: optimization
+     - Lean manufacturing: waste elimination
+     - Six Sigma: quality improvement
+   • Supply chain management:
+     - Distribution channels: retail, wholesale
+     - Logistics: transportation, warehousing
+     - Cold chain management
+     - Risk management: disruptions
+     - Sustainability: environmental concerns
+
+5. BP805T - STERILE DOSAGE FORMS & NOVEL DRUG DELIVERY (Theory)
+   Credits: 3 | L-T: 3 | Max Hours: 45
+   COURSE OUTCOMES (CO):
+   • Design sterile parenteral formulations
+   • Apply advanced drug delivery technologies
+   • Understand precision medicine approaches
+   
+   KEY TOPICS:
+   • Sterile dosage forms:
+     - Parenteral: SVP, LVP, vehicles
+     - Water for injection: types, preparation
+     - Formulation components: buffers, co-solvents
+     - Manufacturing: aseptic, terminal sterilization
+     - Containers: glass, plastic, elastomers
+     - Quality control: sterility, pyrogens, particulates
+   • Ophthalmic preparations:
+     - Solutions, suspensions, ointments
+     - Physiological factors: pH, tonicity
+     - Special requirements: sterility, preservatives
+   • Novel drug delivery systems:
+     - Limitations of conventional forms
+     - Classification: targeted, sustained-release, etc.
+     - Biodegradable polymers: PLA, PLGA, PCL
+     - Liposomes: composition, preparation, applications
+     - Niosomes, transferosomes: structure, preparation
+     - Nanoparticles: types, fabrication
+     - Dendrimers: architecture, applications
+     - Hydrogels: composition, swelling
+     - Oral NDDS: gastro-retentive, colon-targeted
+     - Transdermal: patches, permeation enhancers
+     - Pulmonary: inhalers, nebulizers
+     - Nasal delivery: advantages, formulations
+     - Ocular: inserts, gels, solutions
+     - Gene delivery: viral, non-viral vectors
+   • Precision medicine:
+     - Definition: personalized pharmacotherapy
+     - Pharmacogenomics: genetic variation
+     - Biomarkers: predictive, prognostic
+     - Companion diagnostics: drug selection
+     - Therapeutic drug monitoring: optimization
+     - Population genetics: ethnic variation
+     - Future perspectives: tailored medicine
+
+ELECTIVE COURSES (Select One):
+
+BP806T AEC - ADVANCED ELECTIVE (Select One):
+BP806T AEC1 - Pharmaceutical Packaging
+BP806T AEC2 - Supply Chain Management
+BP806T AEC3 - Industrial Safety and Waste Management
+BP806T AEC4 - Traditional Healing Practices of India
+BP806T AEC5 - Futuristic Pharma through AR/VR (Pharma 4.0)
+BP806T AEC6 - Herbal Cosmetics for Industry Perspective
+Credits: 2 | L-T: 2 | Max Hours: 30
+
+PRACTICAL COURSES:
+
+BP807P - PHARMACEUTICAL MARKETING SKILLS PRACTICAL
+Credits: 1 | L-T: 1 | Max Hours: 15
+
+BP808P - STERILE DOSAGE FORMS & NDDS PRACTICAL
+Credits: 2 | L-T: 4 | Max Hours: 60
+
+BP809P - VALIDATION PRACTICAL (VAC - Select One):
+BP809P VAC1 - Cleaning Validation
+BP809P VAC2 - Aseptic Handling Techniques
+BP809P VAC3 - Impurity Profiling
+Credits: 1 | L-T: 2 | Max Hours: 30
+
+BP810RP - RESEARCH PROJECT
+Credits: 6 (Full semester project)
+
+SEMESTER VIII TOTAL: 22-24 Credits
+
+=====================================================================
+FINAL NOTES & IMPORTANT INFORMATION
+=====================================================================
+
+✅ OVERALL PROGRAM STATISTICS:
+- Total Semesters: 8
+- Total Credits: 208
+- Total Lecture Hours: ~1200 hours
+- Total Practical Hours: ~900 hours
+- Duration: 4 Academic Years
+
+✅ KEY FEATURES OF 2026 SYLLABUS (NEP 2020):
+1. Inclusion of emerging fields: AI, Precision Medicine, AR/VR
+2. Focus on research and innovation
+3. Industry relevance and skill development
+4. Emphasis on ethics and regulatory compliance
+5. Integration of traditional and modern medicine
+6. Quality by Design (QbD) principles
+7. Sustainability and green pharmacy concepts
+8. Digital transformation: Pharma 4.0
+
+✅ COMPETENCIES DEVELOPED:
+- Technical expertise in pharmaceutical sciences
+- Clinical knowledge and patient care skills
+- Research and innovation abilities
+- Regulatory and compliance knowledge
+- Managerial and entrepreneurial skills
+- Professional ethics and communication
+- Adaptability to emerging technologies
+
+✅ ASSESSMENT METHODS:
+- Continuous evaluation (50-70%)
+- Sessional exams (SE): 20-30%
+- End semester exam (ESE): 30%
+- Practical examinations: Project work
+- Research projects: Individual contributions
+
+✅ ELIGIBILITY FOR REGISTRATION:
+- 80% attendance in each course
+- Passing marks in all theory and practical courses
+- Completion of internships and projects
+- Fulfillment of credit requirements
+
+✅ CAREER OPPORTUNITIES AFTER B.PHARM:
+1. Community Pharmacist
+2. Hospital Pharmacist
+3. Clinical Pharmacist
+4. Drug Regulatory Affairs
+5. Pharmaceutical R&D
+6. Quality Assurance/Control
+7. Pharmaceutical Sales/Marketing
+8. Pharmacovigilance Professional
+9. Pharmaceutical Technology
+10. Teaching and Research
+11. Government Health Services
+12. Entrepreneurship/Start-ups
+
+✅ FURTHER STUDIES:
+- M.Pharm (2 years): Specializations available
+- Ph.D. in Pharmacy
+- MBA, MPA, other professional courses
+- Certificate programs in specialized areas
+
+=====================================================================
+Last Updated: May 16, 2026 | B.Pharm NEP 2020 Curriculum
+=====================================================================

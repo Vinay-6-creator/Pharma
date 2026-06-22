@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internships - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 14px;
+      display: block;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: none;
+      padding: 14px 22px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(148,163,184,0.3);
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(34, 197, 94, 0.24);
+    }
+
+    main {
+      margin-top: 32px;
+    }
+
+    .content-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    .content-section h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+      line-height: 1.2;
+    }
+
+    .content-section h2 {
+      font-size: 2rem;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: var(--blue-dark);
+    }
+
+    .content-section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .internship-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .internship-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+    }
+
+    .internship-card h3 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+    }
+
+    .internship-card .company {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .internship-card .duration {
+      display: inline-block;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--blue);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+    }
+
+    .internship-card p {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+
+    .internship-card .btn {
+      margin-top: 15px;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--blue);
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--blue-dark);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="brand">
+          <img src="Screenshot_2026-05-11_204705-removebg-preview.png" alt="PharmaX Logo" class="brand-logo">
+          PharmaX
+        </a>
+
+        <nav>
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="index.html#study" class="nav-link">Study</a>
+          <a href="virtual-lab.html" class="nav-link">Virtual Lab</a>
+          <a href="career-guide.html" class="nav-link">Career Guide</a>
+          <a href="innovation-lab.html" class="nav-link">Innovation Lab</a>
+          <a href="community.html" class="nav-link">Community</a>
+        </nav>
+
+        <div class="actions">
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="content-section">
+        <h1>Internship Opportunities</h1>
+        
+        <p>PharmaX connects pharmacy students with leading pharmaceutical companies, research institutions, and healthcare organizations. Build valuable industry experience while studying!</p>
+
+        <h2>Featured Internships</h2>
+
+        <div class="internship-card">
+          <h3>Research Intern - Drug Development</h3>
+          <div class="company">PharmaCorp India | Mumbai</div>
+          <span class="duration">3 Months | Paid</span>
+          <p>Join our R&D team to work on innovative drug formulation projects. You'll gain hands-on experience in pharmaceutical research, quality assurance, and regulatory compliance.</p>
+          <a href="#" class="btn btn-primary" onclick="alert('Apply functionality coming soon!')">Apply Now</a>
+        </div>
+
+        <div class="internship-card">
+          <h3>Clinical Pharmacy Intern</h3>
+          <div class="company">National Medical Institute | Delhi</div>
+          <span class="duration">6 Weeks | Unpaid + Certificate</span>
+          <p>Work directly with clinical pharmacists in hospital settings. Gain experience in patient counseling, medication therapy management, and clinical documentation.</p>
+          <a href="#" class="btn btn-primary" onclick="alert('Apply functionality coming soon!')">Apply Now</a>
+        </div>
+
+        <div class="internship-card">
+          <h3>Regulatory Affairs Intern</h3>
+          <div class="company">MedTech Solutions | Bangalore</div>
+          <span class="duration">2 Months | Paid</span>
+          <p>Learn about pharmaceutical regulations, documentation, and approval processes. Ideal for students interested in regulatory career paths.</p>
+          <a href="#" class="btn btn-primary" onclick="alert('Apply functionality coming soon!')">Apply Now</a>
+        </div>
+
+        <div class="internship-card">
+          <h3>Marketing & Sales Intern</h3>
+          <div class="company">Global Pharma Ltd | Pune</div>
+          <span class="duration">3 Months | Paid</span>
+          <p>Explore pharmaceutical marketing, territory management, and healthcare business development with experienced professionals.</p>
+          <a href="#" class="btn btn-primary" onclick="alert('Apply functionality coming soon!')">Apply Now</a>
+        </div>
+
+        <h2>Why Internships Matter</h2>
+        <p>Internships are crucial for pharmacy students as they provide:</p>
+        <ul style="list-style-type: disc; padding-left: 20px;">
+          <li>Practical experience in real pharmaceutical environments</li>
+          <li>Networking opportunities with industry professionals</li>
+          <li>Enhanced resume for job applications</li>
+          <li>Potential job offers from internship hosts</li>
+          <li>Understanding of career preferences and specializations</li>
+          <li>Development of professional skills and confidence</li>
+        </ul>
+
+        <h2>How to Apply</h2>
+        <p>1. Create/Update your PharmaX profile with your resume and achievements</p>
+        <p>2. Browse internship opportunities matching your interests</p>
+        <p>3. Click "Apply Now" and complete the application</p>
+        <p>4. Connect with mentors for interview preparation</p>
+        <p>5. Get placement support from our career team</p>
+      </section>
+    </main>
+
+    <footer>
+      <span>© 2026 PharmaX</span>
+      <a href="about.html">About</a>
+      <a href="internships.html">Internships</a>
+      <a href="contact-us.html">Contact Us</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+    </footer>
+  </div>
+</body>
+</html>

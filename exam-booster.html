@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exam Booster - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: none;
+      padding: 14px 22px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(148,163,184,0.3);
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(34, 197, 94, 0.24);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 36px 0;
+    }
+
+    .hero-copy {
+      max-width: 590px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.1);
+      color: #1d4ed8;
+      font-weight: 600;
+      margin-bottom: 22px;
+      font-size: 0.95rem;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 20px;
+      font-size: clamp(3rem, 4vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      max-width: 12ch;
+    }
+
+    .hero-copy p {
+      margin: 0 0 30px;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .feature-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      display: grid;
+      gap: 14px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+    }
+
+    .feature-card h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .feature-card p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .feature-card-link {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: grid;
+    }
+
+    .feature-card-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(37, 99, 235, 0.1);
+      font-size: 1.5rem;
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-title {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+
+    .toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .4s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    .slider.dark:before {
+      content: "🌙";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .slider.light:before {
+      content: "☀️";
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .tips-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .tip-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .tip-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(15, 23, 42, 0.1);
+      border-color: var(--blue);
+    }
+
+    .tip-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .tip-item h4 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .tip-item p {
+      margin: 0;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        gap: 16px;
+        font-size: 0.9rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="brand">
+          <div class="brand-icon">PX</div>
+          PharmaX
+        </a>
+        <nav>
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="study-hub.html" class="nav-link">Study Hub</a>
+          <a href="virtual-lab.html" class="nav-link">Virtual Lab</a>
+          <a href="career-guide.html" class="nav-link">Career Guide</a>
+          <a href="innovation-lab.html" class="nav-link">Innovation Lab</a>
+          <a href="ai-chat.html" class="nav-link">AI Chat</a>
+        </nav>
+        <div class="actions">
+          <label class="toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="slider light"></span>
+          </label>
+          <a href="login.html" class="btn btn-outline">Login</a>
+          <a href="signup.html" class="btn btn-primary">Sign Up</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">Exam Booster</div>
+          <h1>Ace Your Pharmacy Exams</h1>
+          <p>Master proven techniques, strategies, and insider tips to maximize your exam performance and build lasting confidence in your pharmacy knowledge.</p>
+          <div class="hero-actions">
+            <a href="#tips" class="btn btn-primary">View Tips & Tricks</a>
+            <a href="#practice" class="btn btn-outline">Practice Tests</a>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1434582881033-add18278d7d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Exam Booster" style="border-radius: 24px; box-shadow: var(--shadow);">
+        </div>
+      </section>
+
+      <section class="section">
+        <div style="text-align: center; margin-bottom: 48px;">
+          <img src="https://images.unsplash.com/photo-1516534775068-bb57100d4169?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Exam Preparation" style="border-radius: 24px; box-shadow: var(--shadow); max-width: 100%; height: auto;">
+        </div>
+      </section>
+
+      <section class="section" id="tips">
+        <div class="section-header">
+          <h2 class="section-title">Essential Exam Tips & Tricks</h2>
+          <p class="section-subtitle">Proven strategies to help you succeed in your pharmacy exams.</p>
+        </div>
+        <div class="tips-list">
+          <div class="tip-item">
+            <div class="tip-number">1</div>
+            <h4>Master Mnemonics & Memory Techniques</h4>
+            <p>Create memorable acronyms and visualization techniques for drug names, mechanisms, and side effects. Example: "SIADH causes DIE" (Decreased serum sodium, Increased urine osmolality, Decreased urine output). Practice active recall regularly.</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">2</div>
+            <h4>Study in Active Mode, Not Passive Reading</h4>
+            <p>Don't just read textbooks. Instead, teach concepts to someone else, solve practice problems, and explain drug mechanisms aloud. Active learning increases retention by 50-70% compared to passive reading.</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">3</div>
+            <h4>Use Spaced Repetition & Flashcards</h4>
+            <p>Review material at increasing intervals: 1 day, 3 days, 1 week, 2 weeks, etc. Use tools like Anki or Quizlet to automate spaced repetition for pharmacy terms and drug information.</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">4</div>
+            <h4>Create Concept Maps & Connection Chains</h4>
+            <p>Link related information visually. Connect disease states → pathophysiology → drug targets → specific medications. This helps you understand relationships and improves retrieval during exams.</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">5</div>
+            <h4>Practice With Actual Exam Questions</h4>
+            <p>Solve previous years' exam papers and NAPLEX-style questions. Understand not just answers but WHY each option is correct or incorrect. This builds question-solving intuition.</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">6</div>
+            <h4>Master Time Management During Exams</h4>
+            <p>Allocate time per question based on total exam duration. Read questions carefully to avoid silly mistakes. For multiple choice: eliminate obvious wrong answers first, then reason between remaining options.</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">7</div>
+            <h4>Focus on High-Yield Topics First</h4>
+            <p>Identify topics that appear frequently in exams (cardiovascular drugs, antibiotics, pain management). Master these first for maximum score improvement. Use 80/20 principle: 20% of topics give 80% of questions.</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">8</div>
+            <h4>Understand Mechanisms, Not Just Facts</h4>
+            <p>Know WHY a drug works, its side effects, and drug interactions. Understanding mechanisms helps you answer unfamiliar questions by reasoning through concepts. Memorization alone leads to quick forgetting.</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">9</div>
+            <h4>Form Study Groups for Discussion</h4>
+            <p>Teach peers and learn from them. Discussion strengthens weak areas, reveals knowledge gaps, and makes studying less monotonous. Aim for 2-3 highly focused study sessions per week.</p>
+          </div>
+          <div class="tip-item">
+            <div class="tip-number">10</div>
+            <h4>Maintain Exam Day Wellness Routine</h4>
+            <p>Get 7-8 hours of sleep the night before. Eat a balanced breakfast. Avoid new study material 24 hours before. Stay hydrated. A calm, well-rested mind performs significantly better than an exhausted one.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="practice">
+        <div class="section-header">
+          <h2 class="section-title">Practice Resources</h2>
+          <p class="section-subtitle">Use these resources to prepare effectively for your exams.</p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Practice Quizzes</h3>
+            <p>Topic-wise quizzes covering pharmacology, pharmaceutics, medicinal chemistry, and clinical pharmacy with detailed explanations.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">⏱️</div>
+            <h3>Timed Exams</h3>
+            <p>Full-length mock exams simulating actual exam conditions. Get real-time performance metrics and detailed answer explanations.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Progress Tracking</h3>
+            <p>Monitor your scores, identify weak topics, and get personalized study recommendations based on your performance.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Topic Deep Dives</h3>
+            <p>Comprehensive video lessons and interactive modules for challenging pharmacy topics explained with real-world examples.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    themeToggle.addEventListener('change', () => {
+      html.classList.toggle('dark-mode');
+      localStorage.setItem('theme', html.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+
+    // Load saved theme
+    if (localStorage.getItem('theme') === 'dark') {
+      html.classList.add('dark-mode');
+      themeToggle.checked = true;
+    }
+  </script>
+</body>
+</html>

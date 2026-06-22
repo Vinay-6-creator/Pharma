@@ -1,0 +1,259 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PharmaX Login</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --text: #1f2937;
+      --muted: #64748b;
+      --blue: #2563eb;
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(520px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    .card {
+      background: var(--surface);
+      border-radius: 32px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--blue);
+    }
+
+    .logo-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #22c55e, #2563eb);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+    }
+
+    .headline {
+      margin: 0 0 10px;
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+
+    .subtext {
+      margin: 0 0 28px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .form-group {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    label {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: #f8fbff;
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus {
+      border-color: rgba(37, 99, 235, 0.5);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 16px 18px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .secondary {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .secondary a {
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    .footnote {
+      margin-top: 30px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .error-msg {
+      background-color: #fee2e2;
+      color: #991b1b;
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border-left: 4px solid #dc2626;
+      font-size: 0.95rem;
+    }
+
+    .success-msg {
+      background-color: #dcfce7;
+      color: #166534;
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      border-left: 4px solid #22c55e;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 540px) {
+      .page {
+        padding: 24px 0;
+      }
+
+      .card {
+        padding: 28px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card">
+      <div class="logo">
+        <span class="logo-icon">P</span>
+        PharmaX
+      </div>
+      <h1 class="headline">Welcome Back</h1> 
+      <p class="subtext">Sign in to access your study hub, virtual lab, career guidance, and community tools.</p>
+
+      <form id="loginForm">
+        <div id="errorMsg" class="error-msg" style="display:none;"></div>
+        <div class="form-group">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required />
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+
+      <p class="secondary">Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+
+    <p class="footnote">By continuing, you agree to PharmaX Terms of Service and Privacy Policy.</p>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const errorMsg = document.getElementById('errorMsg');
+      
+      // Clear previous messages
+      errorMsg.style.display = 'none';
+      errorMsg.textContent = '';
+      
+      // Validation
+      if (!email || !password) {
+        errorMsg.textContent = '⚠️ Please enter email and password';
+        errorMsg.style.display = 'block';
+        return;
+      }
+      
+      // Get all users from localStorage
+      let users = JSON.parse(localStorage.getItem('users')) || [];
+      
+      // Find user with matching email
+      const user = users.find(u => u.email === email);
+      
+      if (!user) {
+        errorMsg.textContent = '❌ Email not registered. Please sign up first.';
+        errorMsg.style.display = 'block';
+        return;
+      }
+      
+      // Check password
+      if (user.password !== password) {
+        errorMsg.textContent = '❌ Incorrect password. Please try again.';
+        errorMsg.style.display = 'block';
+        return;
+      }
+      
+      // Login successful
+      localStorage.setItem('userLoggedIn', 'true');
+      localStorage.setItem('userEmail', email);
+      localStorage.setItem('userName', user.name);
+      localStorage.setItem('userPhone', user.phone);
+      
+      errorMsg.textContent = '✅ Login successful! Redirecting...';
+      errorMsg.className = 'success-msg';
+      errorMsg.style.display = 'block';
+      
+      setTimeout(() => {
+        window.location.href = 'profile.html';
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

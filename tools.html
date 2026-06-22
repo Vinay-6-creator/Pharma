@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PharmaX - Tools Hub</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --red: #ef4444;
+      --yellow: #eab308;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --red: #f87171;
+      --yellow: #fbbf24;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: none;
+      padding: 10px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(34, 197, 94, 0.2);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: var(--text);
+      box-shadow: 0 5px 15px rgba(15, 23, 42, 0.05);
+    }
+
+    .page-title {
+      margin: 0 0 12px;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+
+    .page-subtitle {
+      margin: 0 0 32px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    html.dark-mode .tool-card {
+      background: linear-gradient(180deg, #1e293b, #172038);
+      border-color: rgba(148, 163, 184, 0.2);
+    }
+
+    .tool-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .tool-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(37, 99, 235, 0.15);
+      color: var(--blue);
+      font-size: 1.5rem;
+    }
+
+    .tool-title {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .tool-description {
+      margin: 0 0 20px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: var(--surface-strong);
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    html.dark-mode input,
+    html.dark-mode select,
+    html.dark-mode textarea {
+      background: rgba(37, 99, 235, 0.08);
+      border-color: rgba(148, 163, 184, 0.2);
+    }
+
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn-calculate {
+      width: 100%;
+      padding: 12px 16px;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn-calculate:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    }
+
+    .result-box {
+      background: rgba(37, 99, 235, 0.08);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      border-left: 3px solid var(--blue);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-top: 16px;
+      font-size: 0.95rem;
+    }
+
+    html.dark-mode .result-box {
+      background: rgba(37, 99, 235, 0.1);
+      border-color: rgba(37, 99, 235, 0.3);
+    }
+
+    .result-label {
+      font-weight: 600;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 4px;
+    }
+
+    .result-value {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .tab-btn {
+      padding: 12px 16px;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+    }
+
+    .tab-btn:hover {
+      color: var(--text);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .drug-reference-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 1200px) {
+      .drug-reference-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 1600px) {
+      .drug-reference-list {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .drug-item {
+      background: rgba(37, 99, 235, 0.06);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+      border-radius: 12px;
+      padding: 14px;
+      border-left: 4px solid var(--blue);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      height: 100%;
+    }
+
+    .drug-item:hover {
+      background: rgba(37, 99, 235, 0.1);
+      border-left-color: var(--green);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+    }
+
+    .drug-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--blue);
+      margin-bottom: 4px;
+    }
+
+    .drug-use {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-style: italic;
+      line-height: 1.3;
+    }
+
+    .drug-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .drug-advantage,
+    .drug-disadvantage {
+      font-size: 0.8rem;
+      padding: 6px;
+      border-radius: 6px;
+      line-height: 1.3;
+    }
+
+    .drug-advantage {
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      color: var(--text);
+    }
+
+    .drug-advantage::before {
+      content: '✓ ';
+      font-weight: 700;
+      color: var(--green);
+    }
+
+    .drug-disadvantage {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: var(--text);
+    }
+
+    .drug-disadvantage::before {
+      content: '✗ ';
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    @media (max-width: 1200px) {
+      .drug-details {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .drug-details {
+        grid-template-columns: 1fr;
+      }
+
+      .drug-item {
+        padding: 12px;
+      }
+    }
+
+    .search-box {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .section-heading {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .input-row {
+        grid-template-columns: 1fr;
+      }
+
+      .page-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="brand">
+          <span class="brand-icon">P</span>
+          PharmaX
+        </a>
+
+        <nav>
+          <a href="index.html#home" class="nav-link">Home</a>
+          <a href="study-hub.html" class="nav-link">Study</a>
+          <a href="virtual-lab.html" class="nav-link">Virtual Lab</a>
+          <a href="career-guide.html" class="nav-link">Career Guide</a>
+          <a href="innovation-lab.html" class="nav-link">Innovation Lab</a>
+          <a href="community.html" class="nav-link">Community</a>
+        </nav>
+
+        <div class="actions">
+          <button id="darkModeToggle" class="btn btn-outline">🌙 Dark Mode</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <h1 class="page-title">⚙️ Pharmacy Tools Hub</h1>
+      <p class="page-subtitle">Essential calculators and reference tools for pharmaceutical calculations and drug information</p>
+
+      <div class="tools-grid">
+        <!-- Unit Converter -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📏</div>
+            <h2 class="tool-title">Unit Converter</h2>
+          </div>
+          <p class="tool-description">Convert pharmaceutical units and measurements easily</p>
+          
+          <div class="form-group">
+            <label>Conversion Type</label>
+            <select id="conversionType" onchange="updateConversionUnits()">
+              <option value="mg-mcg">Milligram ↔ Microgram</option>
+              <option value="ml-l">Milliliter ↔ Liter</option>
+              <option value="lb-kg">Pound ↔ Kilogram</option>
+              <option value="F-C">Fahrenheit ↔ Celsius</option>
+            </select>
+          </div>
+
+          <div class="input-row">
+            <div class="form-group">
+              <label id="fromLabel">Value (mg)</label>
+              <input type="number" id="conversionInput" placeholder="Enter value" onchange="performConversion()">
+            </div>
+            <div class="form-group">
+              <label id="toLabel">Result (mcg)</label>
+              <input type="number" id="conversionResult" placeholder="Result" readonly>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dosage Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">💊</div>
+            <h2 class="tool-title">Dosage Calculator</h2>
+          </div>
+          <p class="tool-description">Calculate drug dosages based on weight and concentration</p>
+          
+          <div class="form-group">
+            <label>Body Weight (kg)</label>
+            <input type="number" id="weight" placeholder="e.g., 70">
+          </div>
+
+          <div class="form-group">
+            <label>Dose per kg (mg/kg)</label>
+            <input type="number" id="dosePerKg" placeholder="e.g., 10">
+          </div>
+
+          <div class="form-group">
+            <label>Drug Concentration (mg/ml)</label>
+            <input type="number" id="concentration" placeholder="e.g., 50">
+          </div>
+
+          <button class="btn-calculate" onclick="calculateDosage()">Calculate Dose</button>
+
+          <div id="dosageResult"></div>
+        </div>
+
+        <!-- BMI Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">⚖️</div>
+            <h2 class="tool-title">BMI Calculator</h2>
+          </div>
+          <p class="tool-description">Calculate Body Mass Index and dosage adjustments</p>
+          
+          <div class="input-row">
+            <div class="form-group">
+              <label>Height (cm)</label>
+              <input type="number" id="height" placeholder="e.g., 170">
+            </div>
+            <div class="form-group">
+              <label>Weight (kg)</label>
+              <input type="number" id="bmiWeight" placeholder="e.g., 70">
+            </div>
+          </div>
+
+          <button class="btn-calculate" onclick="calculateBMI()">Calculate BMI</button>
+
+          <div id="bmiResult"></div>
+        </div>
+
+        <!-- Molarity Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">🧬</div>
+            <h2 class="tool-title">Molarity Calculator</h2>
+          </div>
+          <p class="tool-description">Calculate molar concentration of pharmaceutical solutions</p>
+          
+          <div class="form-group">
+            <label>Moles of Solute (mol)</label>
+            <input type="number" id="moles" placeholder="e.g., 0.5" step="0.001">
+          </div>
+
+          <div class="form-group">
+            <label>Volume of Solution (L)</label>
+            <input type="number" id="volume" placeholder="e.g., 1" step="0.001">
+          </div>
+
+          <button class="btn-calculate" onclick="calculateMolarity()">Calculate Molarity</button>
+
+          <div id="molarityResult"></div>
+        </div>
+
+        <!-- pH Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">⚗️</div>
+            <h2 class="tool-title">pH Calculator</h2>
+          </div>
+          <p class="tool-description">Calculate pH from H+ concentration or vice versa</p>
+          
+          <div class="form-group">
+            <label>Choose Calculation</label>
+            <select id="phType" onchange="togglePhInputs()">
+              <option value="h-to-ph">H+ Concentration → pH</option>
+              <option value="ph-to-h">pH → H+ Concentration</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>H+ Concentration (mol/L) - use scientific notation (e.g., 1e-7)</label>
+            <input type="number" id="hConcentration" placeholder="e.g., 1e-7" step="1e-9">
+          </div>
+
+          <div class="form-group" id="phInputGroup" style="display: none;">
+            <label>pH Value</label>
+            <input type="number" id="phValue" placeholder="e.g., 7" step="0.1">
+          </div>
+
+          <button class="btn-calculate" onclick="calculatePH()">Calculate</button>
+
+          <div id="phResult"></div>
+        </div>
+
+        <!-- Half-life Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">⏱️</div>
+            <h2 class="tool-title">Half-Life Calculator</h2>
+          </div>
+          <p class="tool-description">Calculate drug concentration after elimination half-life</p>
+          
+          <div class="form-group">
+            <label>Initial Drug Amount (mg)</label>
+            <input type="number" id="initialAmount" placeholder="e.g., 100">
+          </div>
+
+          <div class="form-group">
+            <label>Half-Life (hours)</label>
+            <input type="number" id="halfLife" placeholder="e.g., 5.5">
+          </div>
+
+          <div class="form-group">
+            <label>Time Elapsed (hours)</label>
+            <input type="number" id="timeElapsed" placeholder="e.g., 11">
+          </div>
+
+          <button class="btn-calculate" onclick="calculateHalfLife()">Calculate Remaining Amount</button>
+
+          <div id="halfLifeResult"></div>
+        </div>
+
+        <!-- Drug Interaction Checker -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">⚠️</div>
+            <h2 class="tool-title">Drug Interaction Checker</h2>
+          </div>
+          <p class="tool-description">Check for potential drug interactions (common examples). Each result includes a source reference for the interaction.</p>
+          
+          <div class="form-group">
+            <label>Drug 1</label>
+            <select id="drug1">
+              <option value="">Select drug...</option>
+              <option value="warfarin">Warfarin</option>
+              <option value="aspirin">Aspirin</option>
+              <option value="ibuprofen">Ibuprofen</option>
+              <option value="metformin">Metformin</option>
+              <option value="lisinopril">Lisinopril</option>
+              <option value="atorvastatin">Atorvastatin</option>
+              <option value="amoxicillin">Amoxicillin</option>
+              <option value="ciprofloxacin">Ciprofloxacin</option>
+              <option value="omeprazole">Omeprazole</option>
+              <option value="paracetamol">Paracetamol</option>
+              <option value="metoprolol">Metoprolol</option>
+              <option value="amlodipine">Amlodipine</option>
+              <option value="fluoxetine">Fluoxetine</option>
+              <option value="sertraline">Sertraline</option>
+              <option value="clopidogrel">Clopidogrel</option>
+              <option value="digoxin">Digoxin</option>
+              <option value="simvastatin">Simvastatin</option>
+              <option value="losartan">Losartan</option>
+              <option value="glibenclamide">Glibenclamide</option>
+              <option value="insulin">Insulin</option>
+              <option value="doxycycline">Doxycycline</option>
+              <option value="ranitidine">Ranitidine</option>
+              <option value="sildenafil">Sildenafil</option>
+              <option value="levothyroxine">Levothyroxine</option>
+              <option value="ketoconazole">Ketoconazole</option>
+              <option value="phenytoin">Phenytoin</option>
+              <option value="erythromycin">Erythromycin</option>
+              <option value="diltiazem">Diltiazem</option>
+              <option value="verapamil">Verapamil</option>
+              <option value="metronidazole">Metronidazole</option>
+              <option value="amiodarone">Amiodarone</option>
+              <option value="spironolactone">Spironolactone</option>
+              <option value="lithium">Lithium</option>
+              <option value="clarithromycin">Clarithromycin</option>
+              <option value="theophylline">Theophylline</option>
+              <option value="carbamazepine">Carbamazepine</option>
+              <option value="rifampicin">Rifampicin</option>
+              <option value="methotrexate">Methotrexate</option>
+              <option value="valproic_acid">Valproic Acid</option>
+              <option value="lamotrigine">Lamotrigine</option>
+              <option value="antiretrovirals">Antiretrovirals</option>
+              <option value="contrast_agents">Contrast Agents</option>
+              <option value="tramadol">Tramadol</option>
+              <option value="sympathomimetics">Sympathomimetics</option>
+              <option value="smoking">Smoking</option>
+              <option value="allopurinol">Allopurinol</option>
+              <option value="tacrolimus">Tacrolimus</option>
+              <option value="midazolam">Midazolam</option>
+              <option value="linezolid">Linezolid</option>
+              <option value="isoniazid">Isoniazid</option>
+              <option value="trimethoprim">Trimethoprim</option>
+              <option value="sulfamethoxazole">Sulfamethoxazole</option>
+              <option value="fluconazole">Fluconazole</option>
+              <option value="st_johns_wort">St. John's Wort</option>
+              <option value="prednisone">Prednisone</option>
+              <option value="iron">Iron Supplements</option>
+              <option value="grapefruit">Grapefruit Juice</option>
+              <option value="hydrochlorothiazide">Hydrochlorothiazide</option>
+              <option value="clonidine">Clonidine</option>
+              <option value="oral_contraceptive">Oral Contraceptive</option>
+              <option value="maoi">MAOI</option>
+              <option value="tyramine">Tyramine</option>
+              <option value="alcohol">Alcohol</option>
+              <option value="azathioprine">Azathioprine</option>
+              <option value="ciclosporin">Ciclosporin</option>
+              <option value="antacid">Antacid (Al/Mg)</option>
+              <option value="cholestyramine">Cholestyramine</option>
+              <option value="furosemide">Furosemide</option>
+              <option value="gentamicin">Gentamicin</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Drug 2</label>
+            <select id="drug2">
+              <option value="">Select drug...</option>
+              <option value="warfarin">Warfarin</option>
+              <option value="aspirin">Aspirin</option>
+              <option value="ibuprofen">Ibuprofen</option>
+              <option value="metformin">Metformin</option>
+              <option value="lisinopril">Lisinopril</option>
+              <option value="atorvastatin">Atorvastatin</option>
+              <option value="amoxicillin">Amoxicillin</option>
+              <option value="ciprofloxacin">Ciprofloxacin</option>
+              <option value="omeprazole">Omeprazole</option>
+              <option value="paracetamol">Paracetamol</option>
+              <option value="metoprolol">Metoprolol</option>
+              <option value="amlodipine">Amlodipine</option>
+              <option value="fluoxetine">Fluoxetine</option>
+              <option value="sertraline">Sertraline</option>
+              <option value="clopidogrel">Clopidogrel</option>
+              <option value="digoxin">Digoxin</option>
+              <option value="simvastatin">Simvastatin</option>
+              <option value="losartan">Losartan</option>
+              <option value="glibenclamide">Glibenclamide</option>
+              <option value="insulin">Insulin</option>
+              <option value="doxycycline">Doxycycline</option>
+              <option value="ranitidine">Ranitidine</option>
+              <option value="sildenafil">Sildenafil</option>
+              <option value="levothyroxine">Levothyroxine</option>
+              <option value="ketoconazole">Ketoconazole</option>
+              <option value="phenytoin">Phenytoin</option>
+              <option value="erythromycin">Erythromycin</option>
+              <option value="diltiazem">Diltiazem</option>
+              <option value="verapamil">Verapamil</option>
+              <option value="metronidazole">Metronidazole</option>
+              <option value="amiodarone">Amiodarone</option>
+              <option value="spironolactone">Spironolactone</option>
+              <option value="lithium">Lithium</option>
+              <option value="clarithromycin">Clarithromycin</option>
+              <option value="theophylline">Theophylline</option>
+              <option value="carbamazepine">Carbamazepine</option>
+              <option value="rifampicin">Rifampicin</option>
+              <option value="methotrexate">Methotrexate</option>
+              <option value="allopurinol">Allopurinol</option>
+              <option value="tacrolimus">Tacrolimus</option>
+              <option value="midazolam">Midazolam</option>
+              <option value="linezolid">Linezolid</option>
+              <option value="isoniazid">Isoniazid</option>
+              <option value="trimethoprim">Trimethoprim</option>
+              <option value="sulfamethoxazole">Sulfamethoxazole</option>
+              <option value="fluconazole">Fluconazole</option>
+              <option value="st_johns_wort">St. John's Wort</option>
+              <option value="prednisone">Prednisone</option>
+              <option value="iron">Iron Supplements</option>
+              <option value="grapefruit">Grapefruit Juice</option>
+              <option value="hydrochlorothiazide">Hydrochlorothiazide</option>
+              <option value="clonidine">Clonidine</option>
+              <option value="oral_contraceptive">Oral Contraceptive</option>
+              <option value="maoi">MAOI</option>
+              <option value="tyramine">Tyramine</option>
+              <option value="alcohol">Alcohol</option>
+              <option value="azathioprine">Azathioprine</option>
+              <option value="ciclosporin">Ciclosporin</option>
+              <option value="antacid">Antacid (Al/Mg)</option>
+              <option value="cholestyramine">Cholestyramine</option>
+              <option value="furosemide">Furosemide</option>
+              <option value="gentamicin">Gentamicin</option>
+            </select>
+          </div>
+
+          <button class="btn-calculate" onclick="checkDrugInteraction()">Check Interaction</button>
+
+          <div id="interactionResult"></div>
+        </div>
+
+        <!-- IV Infusion Rate Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">💉</div>
+            <h2 class="tool-title">IV Infusion Rate</h2>
+          </div>
+          <p class="tool-description">Calculate IV infusion rates and drop rates</p>
+          
+          <div class="form-group">
+            <label>Volume to Infuse (ml)</label>
+            <input type="number" id="volumeInfuse" placeholder="e.g., 500">
+          </div>
+
+          <div class="form-group">
+            <label>Infusion Time (minutes)</label>
+            <input type="number" id="infusionTime" placeholder="e.g., 60">
+          </div>
+
+          <div class="form-group">
+            <label>Drop Factor (drops/ml)</label>
+            <input type="number" id="dropFactor" placeholder="e.g., 20">
+          </div>
+
+          <button class="btn-calculate" onclick="calculateInfusionRate()">Calculate Rate</button>
+
+          <div id="infusionResult"></div>
+        </div>
+
+        <!-- Body Surface Area (BSA) Calculator -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📐</div>
+            <h2 class="tool-title">BSA Calculator</h2>
+          </div>
+          <p class="tool-description">Calculate body surface area using Mosteller formula</p>
+          
+          <div class="input-row">
+            <div class="form-group">
+              <label>Height (cm)</label>
+              <input type="number" id="bsaHeight" placeholder="e.g., 170">
+            </div>
+            <div class="form-group">
+              <label>Weight (kg)</label>
+              <input type="number" id="bsaWeight" placeholder="e.g., 70">
+            </div>
+          </div>
+
+          <button class="btn-calculate" onclick="calculateBSA()">Calculate BSA</button>
+
+          <div id="bsaResult"></div>
+        </div>
+
+        <!-- Drug Reference Database -->
+        <div class="tool-card">
+          <div class="tool-header">
+            <div class="tool-icon">📖</div>
+            <h2 class="tool-title">Common Drugs Reference</h2>
+          </div>
+          <p class="tool-description">Quick reference for commonly used pharmaceutical drugs</p>
+          
+          <input type="text" id="drugSearch" class="search-box" placeholder="Search drug by name..." onkeyup="searchDrugs()">
+          
+          <div class="drug-reference-list" id="drugReferenceList">
+            <!-- Paracetamol -->
+            <div class="drug-item" data-drug="paracetamol">
+              <div class="drug-name">🔴 Paracetamol (Acetaminophen)</div>
+              <div class="drug-use">Analgesic & Antipyretic</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Safe in pregnancy</div>
+                <div class="drug-disadvantage">Hepatotoxic in overdose</div>
+                <div class="drug-advantage">No GI irritation</div>
+                <div class="drug-disadvantage">Less anti-inflammatory effect</div>
+              </div>
+            </div>
+
+            <!-- Ibuprofen -->
+            <div class="drug-item" data-drug="ibuprofen">
+              <div class="drug-name">🟠 Ibuprofen (NSAIDs)</div>
+              <div class="drug-use">Anti-inflammatory & Analgesic</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Strong anti-inflammatory</div>
+                <div class="drug-disadvantage">GI irritation & ulcers</div>
+                <div class="drug-advantage">Fast pain relief</div>
+                <div class="drug-disadvantage">Renal toxicity risk</div>
+              </div>
+            </div>
+
+            <!-- Aspirin -->
+            <div class="drug-item" data-drug="aspirin">
+              <div class="drug-name">🔴 Aspirin</div>
+              <div class="drug-use">Antiplatelet, Analgesic, Anti-inflammatory</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Prevents blood clots</div>
+                <div class="drug-disadvantage">Bleeding risk</div>
+                <div class="drug-advantage">Anti-inflammatory effect</div>
+                <div class="drug-disadvantage">GI upset common</div>
+              </div>
+            </div>
+
+            <!-- Amoxicillin -->
+            <div class="drug-item" data-drug="amoxicillin">
+              <div class="drug-name">💊 Amoxicillin</div>
+              <div class="drug-use">Antibiotic (Beta-lactam)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Broad-spectrum coverage</div>
+                <div class="drug-disadvantage">Allergic reactions possible</div>
+                <div class="drug-advantage">Well-tolerated orally</div>
+                <div class="drug-disadvantage">Resistance developing</div>
+              </div>
+            </div>
+
+            <!-- Ciprofloxacin -->
+            <div class="drug-item" data-drug="ciprofloxacin">
+              <div class="drug-name">💊 Ciprofloxacin</div>
+              <div class="drug-use">Antibiotic (Fluoroquinolone)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Excellent GI penetration</div>
+                <div class="drug-disadvantage">Tendon rupture risk</div>
+                <div class="drug-advantage">Gram-negative coverage</div>
+                <div class="drug-disadvantage">CNS side effects</div>
+              </div>
+            </div>
+
+            <!-- Metformin -->
+            <div class="drug-item" data-drug="metformin">
+              <div class="drug-name">🩺 Metformin</div>
+              <div class="drug-use">Antidiabetic (Biguanide)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">First-line diabetes therapy</div>
+                <div class="drug-disadvantage">Lactic acidosis risk (rare)</div>
+                <div class="drug-advantage">Weight neutral/loss</div>
+                <div class="drug-disadvantage">GI side effects common</div>
+              </div>
+            </div>
+
+            <!-- Atorvastatin -->
+            <div class="drug-item" data-drug="atorvastatin">
+              <div class="drug-name">💓 Atorvastatin</div>
+              <div class="drug-use">Statin (Lipid-lowering)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Potent cholesterol reduction</div>
+                <div class="drug-disadvantage">Muscle myopathy risk</div>
+                <div class="drug-advantage">CV risk reduction proven</div>
+                <div class="drug-disadvantage">Liver monitoring needed</div>
+              </div>
+            </div>
+
+            <!-- Lisinopril -->
+            <div class="drug-item" data-drug="lisinopril">
+              <div class="drug-name">💓 Lisinopril</div>
+              <div class="drug-use">ACE Inhibitor (Antihypertensive)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Cardioprotective effect</div>
+                <div class="drug-disadvantage">Dry cough common</div>
+                <div class="drug-advantage">Renal protection</div>
+                <div class="drug-disadvantage">Hyperkalemia risk</div>
+              </div>
+            </div>
+
+            <!-- Omeprazole -->
+            <div class="drug-item" data-drug="omeprazole">
+              <div class="drug-name">🔴 Omeprazole</div>
+              <div class="drug-use">Proton Pump Inhibitor (Gastric acid suppression)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Excellent acid control</div>
+                <div class="drug-disadvantage">Hypomagnesemia with long-term use</div>
+                <div class="drug-advantage">GERD relief</div>
+                <div class="drug-disadvantage">Reduced mineral absorption</div>
+              </div>
+            </div>
+
+            <!-- Fluoxetine -->
+            <div class="drug-item" data-drug="fluoxetine">
+              <div class="drug-name">🧠 Fluoxetine</div>
+              <div class="drug-use">SSRI (Antidepressant)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Effective for depression/anxiety</div>
+                <div class="drug-disadvantage">Sexual dysfunction common</div>
+                <div class="drug-advantage">Long half-life (flexible dosing)</div>
+                <div class="drug-disadvantage">Serotonin syndrome risk</div>
+              </div>
+            </div>
+
+            <!-- Metoprolol -->
+            <div class="drug-item" data-drug="metoprolol">
+              <div class="drug-name">💓 Metoprolol</div>
+              <div class="drug-use">Beta-blocker (Antihypertensive)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Post-MI cardioprotection</div>
+                <div class="drug-disadvantage">Bronchospasm in asthmatics</div>
+                <div class="drug-advantage">HR/BP control</div>
+                <div class="drug-disadvantage">Fatigue and ED</div>
+              </div>
+            </div>
+
+            <!-- Digoxin -->
+            <div class="drug-item" data-drug="digoxin">
+              <div class="drug-name">💓 Digoxin</div>
+              <div class="drug-use">Cardiac Glycoside (Arrhythmia)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Dual action (inotropic + chronotropic)</div>
+                <div class="drug-disadvantage">Narrow therapeutic window</div>
+                <div class="drug-advantage">Long half-life (convenient)</div>
+                <div class="drug-disadvantage">Frequent toxicity/monitoring needed</div>
+              </div>
+            </div>
+
+            <!-- Levothyroxine -->
+            <div class="drug-item" data-drug="levothyroxine">
+              <div class="drug-name">🩺 Levothyroxine</div>
+              <div class="drug-use">Thyroid Hormone Replacement</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Stable, once-daily dosing</div>
+                <div class="drug-disadvantage">Slow onset (weeks needed)</div>
+                <div class="drug-advantage">Physiologic replacement</div>
+                <div class="drug-disadvantage">Absorption affected by food/drugs</div>
+              </div>
+            </div>
+
+            <!-- Warfarin -->
+            <div class="drug-item" data-drug="warfarin">
+              <div class="drug-name">🩸 Warfarin</div>
+              <div class="drug-use">Anticoagulant (Vitamin K antagonist)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Potent anticoagulation</div>
+                <div class="drug-disadvantage">Bleeding risk significant</div>
+                <div class="drug-advantage">Oral form available</div>
+                <div class="drug-disadvantage">INR monitoring required</div>
+              </div>
+            </div>
+
+            <!-- Sildenafil -->
+            <div class="drug-item" data-drug="sildenafil">
+              <div class="drug-name">💙 Sildenafil</div>
+              <div class="drug-use">PDE5 Inhibitor (Erectile dysfunction/PAH)</div>
+              <div class="drug-details">
+                <div class="drug-advantage">Fast onset (30-60 min)</div>
+                <div class="drug-disadvantage">Headache and flushing common</div>
+                <div class="drug-advantage">Well-tolerated generally</div>
+                <div class="drug-disadvantage">Contraindicated with nitrates</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Dark Mode Toggle
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    darkModeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark-mode');
+      const isDarkMode = document.documentElement.classList.contains('dark-mode');
+      localStorage.setItem('darkMode', isDarkMode);
+      darkModeToggle.textContent = isDarkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
+    });
+
+    // Load dark mode preference
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.documentElement.classList.add('dark-mode');
+      darkModeToggle.textContent = '☀️ Light Mode';
+    }
+
+    // Unit Converter
+    const conversionFactors = {
+      'mg-mcg': { factor: 1000, from: 'mg', to: 'mcg' },
+      'ml-l': { factor: 0.001, from: 'ml', to: 'L' },
+      'lb-kg': { factor: 0.453592, from: 'lb', to: 'kg' },
+      'F-C': { factor: null, from: 'F', to: 'C', formula: 'Celsius' }
+    };
+
+    function updateConversionUnits() {
+      const type = document.getElementById('conversionType').value;
+      const factors = conversionFactors[type];
+      document.getElementById('fromLabel').textContent = `Value (${factors.from})`;
+      document.getElementById('toLabel').textContent = `Result (${factors.to})`;
+      document.getElementById('conversionInput').value = '';
+      document.getElementById('conversionResult').value = '';
+    }
+
+    function performConversion() {
+      const type = document.getElementById('conversionType').value;
+      const factors = conversionFactors[type];
+      const input = parseFloat(document.getElementById('conversionInput').value);
+
+      if (isNaN(input)) return;
+
+      let result;
+      if (type === 'F-C') {
+        result = ((input - 32) * 5) / 9;
+      } else {
+        result = input * factors.factor;
+      }
+
+      document.getElementById('conversionResult').value = result.toFixed(4);
+    }
+
+    // Dosage Calculator
+    function calculateDosage() {
+      const weight = parseFloat(document.getElementById('weight').value);
+      const dosePerKg = parseFloat(document.getElementById('dosePerKg').value);
+      const concentration = parseFloat(document.getElementById('concentration').value);
+
+      if (isNaN(weight) || isNaN(dosePerKg) || isNaN(concentration)) {
+        showResult('dosageResult', 'Please fill all fields', false);
+        return;
+      }
+
+      const totalDose = weight * dosePerKg;
+      const volumeToGive = totalDose / concentration;
+
+      showResult('dosageResult', `
+        <div class="result-label">Total Dose Required</div>
+        <div class="result-value">${totalDose.toFixed(2)} mg</div>
+        <div class="result-label" style="margin-top: 12px;">Volume to Administer</div>
+        <div class="result-value">${volumeToGive.toFixed(2)} ml</div>
+      `);
+    }
+
+    // BMI Calculator
+    function calculateBMI() {
+      const height = parseFloat(document.getElementById('height').value) / 100;
+      const weight = parseFloat(document.getElementById('bmiWeight').value);
+
+      if (isNaN(height) || isNaN(weight)) {
+        showResult('bmiResult', 'Please fill all fields', false);
+        return;
+      }
+
+      const bmi = weight / (height * height);
+      let category = '';
+
+      if (bmi < 18.5) category = 'Underweight';
+      else if (bmi < 25) category = 'Normal weight';
+      else if (bmi < 30) category = 'Overweight';
+      else category = 'Obese';
+
+      showResult('bmiResult', `
+        <div class="result-label">BMI Value</div>
+        <div class="result-value">${bmi.toFixed(1)}</div>
+        <div class="result-label" style="margin-top: 12px;">Category: ${category}</div>
+      `);
+    }
+
+    // Molarity Calculator
+    function calculateMolarity() {
+      const moles = parseFloat(document.getElementById('moles').value);
+      const volume = parseFloat(document.getElementById('volume').value);
+
+      if (isNaN(moles) || isNaN(volume) || volume === 0) {
+        showResult('molarityResult', 'Please enter valid values', false);
+        return;
+      }
+
+      const molarity = moles / volume;
+
+      showResult('molarityResult', `
+        <div class="result-label">Molarity (M)</div>
+        <div class="result-value">${molarity.toFixed(4)} mol/L</div>
+      `);
+    }
+
+    // pH Calculator
+    function togglePhInputs() {
+      const type = document.getElementById('phType').value;
+      const phInputGroup = document.getElementById('phInputGroup');
+      const hInput = document.getElementById('hConcentration');
+      const phInput = document.getElementById('phValue');
+
+      if (type === 'ph-to-h') {
+        phInputGroup.style.display = 'flex';
+        hInput.style.display = 'none';
+        hInput.parentElement.style.display = 'none';
+      } else {
+        phInputGroup.style.display = 'none';
+        hInput.style.display = 'block';
+        hInput.parentElement.style.display = 'flex';
+      }
+    }
+
+    function calculatePH() {
+      const type = document.getElementById('phType').value;
+
+      if (type === 'h-to-ph') {
+        const hConcentration = parseFloat(document.getElementById('hConcentration').value);
+        if (isNaN(hConcentration) || hConcentration <= 0) {
+          showResult('phResult', 'Please enter a valid H+ concentration', false);
+          return;
+        }
+        const ph = -Math.log10(hConcentration);
+        showResult('phResult', `
+          <div class="result-label">pH Value</div>
+          <div class="result-value">${ph.toFixed(2)}</div>
+        `);
+      } else {
+        const ph = parseFloat(document.getElementById('phValue').value);
+        if (isNaN(ph)) {
+          showResult('phResult', 'Please enter a valid pH value', false);
+          return;
+        }
+        const hConcentration = Math.pow(10, -ph);
+        showResult('phResult', `
+          <div class="result-label">H+ Concentration</div>
+          <div class="result-value">${hConcentration.toExponential(2)} mol/L</div>
+        `);
+      }
+    }
+
+    // Half-Life Calculator
+    function calculateHalfLife() {
+      const initialAmount = parseFloat(document.getElementById('initialAmount').value);
+      const halfLife = parseFloat(document.getElementById('halfLife').value);
+      const timeElapsed = parseFloat(document.getElementById('timeElapsed').value);
+
+      if (isNaN(initialAmount) || isNaN(halfLife) || isNaN(timeElapsed)) {
+        showResult('halfLifeResult', 'Please fill all fields', false);
+        return;
+      }
+
+      const numberOfHalfLives = timeElapsed / halfLife;
+      const remainingAmount = initialAmount * Math.pow(0.5, numberOfHalfLives);
+
+      showResult('halfLifeResult', `
+        <div class="result-label">Remaining Drug Amount</div>
+        <div class="result-value">${remainingAmount.toFixed(2)} mg</div>
+        <div class="result-label" style="margin-top: 12px;">Half-lives elapsed: ${numberOfHalfLives.toFixed(2)}</div>
+      `);
+    }
+
+    // Drug Interaction Checker (uses RxNav API when available)
+    async function checkDrugInteraction() {
+      const drug1 = document.getElementById('drug1').value;
+      const drug2 = document.getElementById('drug2').value;
+
+      if (!drug1 || !drug2) {
+        showResult('interactionResult', 'Please select both drugs', false);
+        return;
+      }
+
+      const staticInteractions = {
+        // Anticoagulants & Antiplatelet
+        'warfarin-aspirin': {
+          severity: 'HIGH',
+          info: 'Additive anticoagulant and antiplatelet effects significantly increase bleeding risk. Monitor INR and bleeding signs.',
+          reference: 'Source: Lexicomp / Warfarin drug interaction guidance.'
+        },
+        'warfarin-ibuprofen': {
+          severity: 'HIGH',
+          info: 'NSAIDs can displace warfarin and impair platelet function, raising bleeding and GI risk.',
+          reference: 'Source: Micromedex / Warfarin and NSAID interaction.'
+        },
+        'warfarin-clopidogrel': {
+          severity: 'HIGH',
+          info: 'Combined anticoagulant and antiplatelet therapy increases major bleeding risk.',
+          reference: 'Source: Lexicomp / Clopidogrel and warfarin interactions.'
+        },
+        'aspirin-ibuprofen': {
+          severity: 'MODERATE',
+          info: 'Concurrent NSAID use increases GI bleeding risk and can reduce aspirin antiplatelet effect.',
+          reference: 'Source: Micromedex / NSAID interaction guidance.'
+        },
+        'clopidogrel-ibuprofen': {
+          severity: 'MODERATE',
+          info: 'NSAIDs increase bleeding risk when used with clopidogrel.',
+          reference: 'Source: Lexicomp / Clopidogrel and NSAID interaction.'
+        },
+
+        // Diabetes Medications
+        'metformin-glibenclamide': {
+          severity: 'MODERATE',
+          info: 'Sulfonylureas plus metformin can increase hypoglycemia risk. Monitor blood glucose.',
+          reference: 'Source: Micromedex / Diabetes drug interaction guidance.'
+        },
+        'insulin-glibenclamide': {
+          severity: 'HIGH',
+          info: 'Concurrent insulin and sulfonylurea therapy raises the risk of severe hypoglycemia.',
+          reference: 'Source: Lexicomp / Hypoglycemia risk with insulin and sulfonylureas.'
+        },
+        'metformin-insulin': {
+          severity: 'MODERATE',
+          info: 'Additive glucose-lowering effect requires close monitoring of blood sugar.',
+          reference: 'Source: Micromedex / Diabetes medication combination guidance.'
+        },
+
+        // Antihypertensives & NSAIDs
+        'lisinopril-ibuprofen': {
+          severity: 'MODERATE',
+          info: 'NSAIDs may reduce ACE inhibitor efficacy and impair renal function.',
+          reference: 'Source: Lexicomp / NSAID and ACE inhibitor interaction.'
+        },
+        'losartan-ibuprofen': {
+          severity: 'MODERATE',
+          info: 'NSAIDs can blunt ARB blood pressure effects and may affect kidney function.',
+          reference: 'Source: Micromedex / ARB and NSAID interaction.'
+        },
+        'metoprolol-verapamil': {
+          severity: 'HIGH',
+          info: 'Both drugs slow heart rate and conduction, risking bradycardia and AV block.',
+          reference: 'Source: Lexicomp / Beta-blocker and calcium channel blocker interaction.'
+        },
+        'amlodipine-simvastatin': {
+          severity: 'MODERATE',
+          info: 'Amlodipine may increase simvastatin exposure, raising myopathy risk especially at higher doses.',
+          reference: 'Source: FDA drug labeling / Simvastatin and amlodipine interaction.'
+        },
+
+        // Statins & Antibiotics
+        'atorvastatin-erythromycin': {
+          severity: 'MODERATE',
+          info: 'Macrolide CYP3A4 inhibition can raise statin levels and increase muscle toxicity risk.',
+          reference: 'Source: FDA labeling / Erythromycin and statin interaction.'
+        },
+        'simvastatin-ketoconazole': {
+          severity: 'HIGH',
+          info: 'Strong CYP3A4 inhibition markedly increases simvastatin levels and rhabdomyolysis risk.',
+          reference: 'Source: FDA labeling / Ketoconazole and simvastatin interaction.'
+        },
+        'atorvastatin-ciprofloxacin': {
+          severity: 'LOW',
+          info: 'Minimal interaction; monitor for muscle pain if other risk factors are present.',
+          reference: 'Source: Lexicomp / Atorvastatin and fluoroquinolone interaction.'
+        },
+
+        // SSRIs & NSAIDs / Anticoagulants
+        'fluoxetine-warfarin': {
+          severity: 'MODERATE',
+          info: 'SSRIs may enhance warfarin effect and bleeding risk. Monitor INR closely.',
+          reference: 'Source: Lexicomp / SSRI and warfarin interaction.'
+        },
+        'sertraline-warfarin': {
+          severity: 'MODERATE',
+          info: 'Sertraline may increase anticoagulant effect of warfarin and bleeding risk.',
+          reference: 'Source: Micromedex / SSRI and warfarin interaction.'
+        },
+        'fluoxetine-ibuprofen': {
+          severity: 'MODERATE',
+          info: 'Combined SSRI and NSAID therapy raises risk of GI bleeding.',
+          reference: 'Source: FDA drug interaction warnings / SSRI and NSAID.'
+        },
+        'sertraline-ibuprofen': {
+          severity: 'MODERATE',
+          info: 'There is increased GI bleeding risk with sertraline plus NSAIDs.',
+          reference: 'Source: Lexicomp / SSRI and NSAID interaction.'
+        },
+
+        // Antibiotics
+        'ciprofloxacin-doxycycline': {
+          severity: 'LOW',
+          info: 'No major pharmacokinetic interaction is expected between these antibiotics.',
+          reference: 'Source: Micromedex / Fluoroquinolone and tetracycline interaction.'
+        },
+        'erythromycin-sildenafil': {
+          severity: 'MODERATE',
+          info: 'CYP3A4 inhibition by erythromycin may raise sildenafil levels and side effects.',
+          reference: 'Source: FDA labeling / Erythromycin and sildenafil interaction.'
+        },
+
+        // Digoxin Interactions (narrow therapeutic index)
+        'digoxin-amoxicillin': {
+          severity: 'MODERATE',
+          info: 'Antibiotics may alter gut flora and increase digoxin absorption, raising levels.',
+          reference: 'Source: Lexicomp / Digoxin and antibiotic interaction.'
+        },
+        'digoxin-verapamil': {
+          severity: 'HIGH',
+          info: 'Verapamil decreases digoxin clearance and raises toxicity risk.',
+          reference: 'Source: Lexicomp / Digoxin and verapamil interaction.'
+        },
+        'digoxin-amlodipine': {
+          severity: 'MODERATE',
+          info: 'Amlodipine may increase digoxin levels. Monitor for signs of toxicity.',
+          reference: 'Source: Micromedex / Digoxin and calcium channel blocker interaction.'
+        },
+
+        // Thyroid Hormone Interactions
+        'levothyroxine-omeprazole': {
+          severity: 'MODERATE',
+          info: 'Reduced gastric acidity can lower levothyroxine absorption. Separate dosing if possible.',
+          reference: 'Source: FDA labeling / Levothyroxine and proton pump inhibitor interaction.'
+        },
+        'levothyroxine-paracetamol': {
+          severity: 'LOW',
+          info: 'No clinically significant interaction; generally considered safe together.',
+          reference: 'Source: Micromedex / Levothyroxine and paracetamol interaction.'
+        },
+
+        // Acid suppression overlap
+        'ranitidine-omeprazole': {
+          severity: 'LOW',
+          info: 'Duplicate acid suppression therapy. Use a single agent unless otherwise indicated.',
+          reference: 'Source: Lexicomp / Acid suppressant interaction guidance.'
+        },
+
+        // Other important interactions
+        'warfarin-paracetamol': {
+          severity: 'MODERATE',
+          info: 'High-dose or prolonged paracetamol use may increase INR in warfarin patients.',
+          reference: 'Source: Lexicomp / Warfarin and acetaminophen interaction.'
+        },
+        'phenytoin-ketoconazole': {
+          severity: 'MODERATE',
+          info: 'Ketoconazole inhibits phenytoin metabolism, increasing risk of toxicity.',
+          reference: 'Source: FDA labeling / Phenytoin and ketoconazole interaction.'
+        },
+        'warfarin-ketoconazole': {
+          severity: 'MODERATE',
+          info: 'Ketoconazole inhibits warfarin metabolism and may raise bleeding risk.',
+          reference: 'Source: Micromedex / Warfarin and ketoconazole interaction.'
+        },
+        'insulin-ciprofloxacin': {
+          severity: 'MODERATE',
+          info: 'Fluoroquinolones can increase hypoglycemia risk in insulin-treated patients.',
+          reference: 'Source: FDA labeling / Fluoroquinolone and insulin interaction.'
+        },
+        'clopidogrel-omeprazole': {
+          severity: 'MODERATE',
+          info: 'Omeprazole can inhibit CYP2C19 and reduce activation of clopidogrel, potentially reducing antiplatelet effect.',
+          reference: 'Source: FDA / Clinical pharmacology guidance.'
+        },
+        'simvastatin-erythromycin': {
+          severity: 'MODERATE',
+          info: 'Macrolide (erythromycin) inhibition of CYP3A4 may raise simvastatin levels and increase myopathy/rhabdomyolysis risk.',
+          reference: 'Source: FDA labeling / Statin and macrolide interactions.'
+        },
+        'fluoxetine-aspirin': {
+          severity: 'MODERATE',
+          info: 'SSRIs may impair platelet aggregation; combined use with aspirin increases bleeding risk. Monitor clinically.',
+          reference: 'Source: Clinical guidance / SSRI and antiplatelet interactions.'
+        },
+        'sertraline-aspirin': {
+          severity: 'MODERATE',
+          info: 'SSRIs may impair platelet aggregation; combined use with aspirin increases bleeding risk. Monitor clinically.',
+          reference: 'Source: Clinical guidance / SSRI and antiplatelet interactions.'
+        },
+        'insulin-metoprolol': {
+          severity: 'MODERATE',
+          info: 'Beta blockers can mask symptoms of hypoglycaemia (e.g., tachycardia) and may potentiate hypoglycaemia; monitor blood glucose closely.',
+          reference: 'Source: Diabetes clinical guidance / Beta blocker interactions.'
+        },
+        'warfarin-metronidazole': {
+          severity: 'HIGH',
+          info: 'Metronidazole inhibits CYP2C9 → increased warfarin levels and bleeding risk. Monitor INR closely and consider adjustment.',
+          reference: 'Source: Micromedex / Warfarin and metronidazole interaction.'
+        },
+        'warfarin-amiodarone': {
+          severity: 'HIGH',
+          info: 'Amiodarone inhibits warfarin metabolism (CYP2C9) → increased warfarin levels and bleeding risk. Monitor INR and dose adjust.',
+          reference: 'Source: Clinical guidance / Warfarin and amiodarone.'
+        },
+        'lisinopril-spironolactone': {
+          severity: 'HIGH',
+          info: 'Additive potassium retention with ACE inhibitors and potassium-sparing diuretics increases risk of hyperkalaemia. Monitor serum potassium.',
+          reference: 'Source: Clinical guidance / ACE inhibitor and potassium-sparing diuretic.'
+        },
+        'losartan-spironolactone': {
+          severity: 'HIGH',
+          info: 'Additive potassium retention with ARBs and potassium-sparing diuretics increases risk of hyperkalaemia. Monitor serum potassium.',
+          reference: 'Source: Clinical guidance / ARB and potassium-sparing diuretic.'
+        },
+        'lithium-hydrochlorothiazide': {
+          severity: 'HIGH',
+          info: 'Thiazide diuretics decrease lithium clearance leading to increased lithium levels and toxicity. Monitor lithium levels closely.',
+          reference: 'Source: Clinical guidance / Lithium and thiazide diuretics.'
+        },
+        'lithium-ibuprofen': {
+          severity: 'HIGH',
+          info: 'NSAIDs can reduce lithium renal clearance and raise lithium concentrations; monitor for signs of toxicity.',
+          reference: 'Source: Clinical guidance / Lithium and NSAIDs.'
+        },
+        'digoxin-amiodarone': {
+          severity: 'HIGH',
+          info: 'Amiodarone can increase digoxin levels (P-gp inhibition) and raise risk of digoxin toxicity (nausea, arrhythmias). Monitor digoxin levels.',
+          reference: 'Source: Lexicomp / Digoxin and amiodarone.'
+        },
+        'simvastatin-clarithromycin': {
+          severity: 'HIGH',
+          info: 'Clarithromycin inhibits CYP3A4, increasing simvastatin exposure and risk of myopathy/rhabdomyolysis. Avoid combination or adjust statin.',
+          reference: 'Source: FDA labeling / Simvastatin and clarithromycin.'
+        },
+        'simvastatin-grapefruit': {
+          severity: 'HIGH',
+          info: 'Grapefruit juice inhibits CYP3A4 and can increase statin levels, raising myopathy risk. Advise avoidance with sensitive statins.',
+          reference: 'Source: FDA / Grapefruit juice and CYP3A4 interactions.'
+        },
+        'theophylline-ciprofloxacin': {
+          severity: 'MODERATE',
+          info: 'Ciprofloxacin can inhibit theophylline metabolism, increasing theophylline concentrations and toxicity risk (nausea, seizures). Monitor levels.',
+          reference: 'Source: Clinical guidance / Theophylline and fluoroquinolones.'
+        },
+        'methotrexate-ibuprofen': {
+          severity: 'MODERATE',
+          info: 'NSAIDs may reduce renal clearance of methotrexate and increase toxicity; use caution and monitor renal function.',
+          reference: 'Source: Clinical guidance / Methotrexate and NSAID interactions.'
+        },
+        'phenytoin-carbamazepine': {
+          severity: 'MODERATE',
+          info: 'Both are enzyme inducers; co-administration can lead to unpredictable changes in levels and effects—monitor concentrations and clinical response.',
+          reference: 'Source: Clinical guidance / Antiepileptic drug interactions.'
+        },
+        'tacrolimus-fluconazole': {
+          severity: 'HIGH',
+          info: 'Azole antifungals inhibit CYP3A4 and can markedly increase tacrolimus levels, risking nephrotoxicity; adjust tacrolimus dose and monitor levels.',
+          reference: 'Source: FDA labeling / Tacrolimus and azole antifungals.'
+        },
+        'levothyroxine-iron': {
+          severity: 'MODERATE',
+          info: 'Iron supplements reduce levothyroxine absorption; separate dosing by several hours for reliable thyroid replacement.',
+          reference: 'Source: Clinical guidance / Levothyroxine administration guidelines.'
+        },
+        'metoprolol-diltiazem': {
+          severity: 'HIGH',
+          info: 'Additive negative chronotropic and conduction effects may cause bradycardia and AV block—monitor heart rate and ECG.',
+          reference: 'Source: Clinical guidance / Beta-blocker and non-DHP CCB interactions.'
+        },
+        'metoprolol-clonidine': {
+          severity: 'HIGH',
+          info: 'Concomitant use increases risk of bradycardia/hypotension; abrupt clonidine withdrawal may cause rebound hypertension that beta-blockers can mask—monitor closely.',
+          reference: 'Source: Clinical guidance / Beta-blocker and clonidine interactions.'
+        },
+        'trimethoprim-lisinopril': {
+          severity: 'MODERATE',
+          info: 'Trimethoprim can cause hyperkalaemia, which may be additive with ACE inhibitors/ARBs—monitor serum potassium.',
+          reference: 'Source: Clinical guidance / Trimethoprim and ACE inhibitor interactions.'
+        },
+        'st_johns_wort-warfarin': {
+          severity: 'MODERATE',
+          info: 'St. John\'s Wort induces CYP enzymes and P-gp, potentially reducing warfarin levels and anticoagulant effect—monitor INR and avoid herbal interactions.',
+          reference: 'Source: Clinical guidance / Herbal medicine interactions.'
+        },
+        'midazolam-grapefruit': {
+          severity: 'MODERATE',
+          info: 'Grapefruit increases midazolam exposure via CYP3A4 inhibition, increasing sedation and respiratory depression risk.',
+          reference: 'Source: FDA / Midazolam and grapefruit interactions.'
+        },
+        'linezolid-fluoxetine': {
+          severity: 'HIGH',
+          info: 'Concurrent linezolid and SSRIs increases risk of serotonin syndrome—avoid combination or monitor closely and consider stopping SSRI before linezolid when possible.',
+          reference: 'Source: FDA / Linezolid and serotonergic drugs.'
+        },
+        'allopurinol-lisinopril': {
+          severity: 'MODERATE',
+          info: 'Rare reports of increased risk of hypersensitivity reactions when allopurinol is combined with ACE inhibitors—monitor and assess risk/benefit.',
+          reference: 'Source: Clinical guidance / Allopurinol cautions.'
+        },
+        'prednisone-ibuprofen': {
+          severity: 'MODERATE',
+          info: 'Concurrent corticosteroid and NSAID therapy increases risk of GI mucosal damage and ulceration—consider gastroprotection.',
+          reference: 'Source: Clinical guidance / Steroid and NSAID coadministration.'
+        },
+        'isoniazid-phenytoin': {
+          severity: 'MODERATE',
+          info: 'Isoniazid can inhibit hepatic metabolism and raise phenytoin concentrations—monitor phenytoin levels and signs of toxicity.',
+          reference: 'Source: Clinical guidance / Isoniazid and antiepileptic interactions.'
+        },
+        'warfarin-metronidazole': {
+          severity: 'HIGH',
+          info: 'Metronidazole inhibits warfarin metabolism (CYP2C9) increasing warfarin levels and bleeding risk. Monitor INR.',
+          reference: 'Source: Clinical guidance / Warfarin and metronidazole interaction.'
+        },
+        'warfarin-amiodarone': {
+          severity: 'HIGH',
+          info: 'Amiodarone inhibits warfarin metabolism and can increase anticoagulant effect; monitor INR frequently.',
+          reference: 'Source: Clinical guidance / Warfarin and amiodarone interaction.'
+        },
+        'lisinopril-spironolactone': {
+          severity: 'HIGH',
+          info: 'Additive potassium retention increases risk of hyperkalemia; monitor serum potassium and renal function.',
+          reference: 'Source: Clinical guidance / ACE inhibitor and potassium-sparing diuretic.'
+        },
+        'losartan-spironolactone': {
+          severity: 'HIGH',
+          info: 'Additive potassium retention increases risk of hyperkalemia; monitor serum potassium and renal function.',
+          reference: 'Source: Clinical guidance / ARB and potassium-sparing diuretic.'
+        },
+        'lithium-hydrochlorothiazide': {
+          severity: 'HIGH',
+          info: 'Thiazide diuretics reduce lithium clearance and can precipitate lithium toxicity; monitor lithium levels closely.',
+          reference: 'Source: Clinical guidance / Lithium and thiazide interaction.'
+        },
+        'lithium-ibuprofen': {
+          severity: 'HIGH',
+          info: 'NSAIDs can decrease renal clearance of lithium leading to toxicity; avoid or monitor levels closely.',
+          reference: 'Source: Clinical guidance / Lithium and NSAID interaction.'
+        },
+        'digoxin-amiodarone': {
+          severity: 'HIGH',
+          info: 'Amiodarone increases digoxin levels by reducing clearance and P-gp effects; monitor for digoxin toxicity.',
+          reference: 'Source: Clinical guidance / Digoxin and amiodarone interaction.'
+        },
+        'simvastatin-clarithromycin': {
+          severity: 'MODERATE',
+          info: 'Clarithromycin inhibits CYP3A4 and can raise simvastatin levels increasing myopathy risk; consider alternative statin or macrolide.',
+          reference: 'Source: FDA labeling / Statin and macrolide interaction.'
+        },
+        'simvastatin-grapefruit': {
+          severity: 'MODERATE',
+          info: 'Grapefruit juice inhibits CYP3A4 and can increase systemic statin exposure; avoid grapefruit with CYP3A4-metabolized statins.',
+          reference: 'Source: FDA labeling / Grapefruit and statin interaction.'
+        },
+        'theophylline-ciprofloxacin': {
+          severity: 'MODERATE',
+          info: 'Fluoroquinolones can inhibit theophylline metabolism leading to toxicity; monitor for theophylline adverse effects.',
+          reference: 'Source: Clinical guidance / Ciprofloxacin and theophylline interaction.'
+        },
+        'carbamazepine-oral_contraceptive': {
+          severity: 'HIGH',
+          info: 'Carbamazepine induces CYP3A4 and can reduce oral contraceptive levels leading to contraceptive failure; counsel and consider alternative contraception.',
+          reference: 'Source: Clinical guidance / Carbamazepine and oral contraceptive interaction.'
+        },
+        'rifampicin-oral_contraceptive': {
+          severity: 'HIGH',
+          info: 'Rifampicin induces hepatic enzymes markedly reducing oral contraceptive efficacy; use alternative contraception.',
+          reference: 'Source: Clinical guidance / Rifampicin and contraceptive interaction.'
+        },
+        'maoi-tyramine': {
+          severity: 'HIGH',
+          info: 'MAO inhibitors prevent breakdown of tyramine which can cause severe hypertensive crisis; avoid tyramine-rich foods/agents.',
+          reference: 'Source: Clinical guidance / MAOI and tyramine interaction.'
+        },
+        'fluoxetine-maoi': {
+          severity: 'HIGH',
+          info: 'Concomitant SSRI and MAOI risk serotonin syndrome; avoid combination and observe washout periods.',
+          reference: 'Source: Clinical guidance / SSRI and MAOI interaction.'
+        },
+        'sertraline-maoi': {
+          severity: 'HIGH',
+          info: 'Concomitant SSRI and MAOI risk serotonin syndrome; avoid combination and observe washout periods.',
+          reference: 'Source: Clinical guidance / SSRI and MAOI interaction.'
+        },
+        'glibenclamide-alcohol': {
+          severity: 'MODERATE',
+          info: 'Alcohol can enhance hypoglycemic effect of sulfonylureas; advise caution and monitor blood glucose.',
+          reference: 'Source: Clinical guidance / Sulfonylurea and alcohol interaction.'
+        },
+        'methotrexate-ibuprofen': {
+          severity: 'HIGH',
+          info: 'NSAIDs may reduce renal excretion of methotrexate and increase toxicity; avoid concomitant use or monitor levels closely.',
+          reference: 'Source: Clinical guidance / Methotrexate and NSAID interaction.'
+        },
+        'azathioprine-allopurinol': {
+          severity: 'HIGH',
+          info: 'Allopurinol inhibits xanthine oxidase leading to accumulation of azathioprine metabolites and bone marrow suppression; avoid or reduce azathioprine dose.',
+          reference: 'Source: Clinical guidance / Azathioprine and allopurinol interaction.'
+        },
+        'phenytoin-carbamazepine': {
+          severity: 'MODERATE',
+          info: 'Both are enzyme inducers and can alter each other’s levels; monitor plasma concentrations and clinical response.',
+          reference: 'Source: Clinical guidance / Anticonvulsant interactions.'
+        },
+        'phenytoin-oral_contraceptive': {
+          severity: 'MODERATE',
+          info: 'Phenytoin induces hepatic enzymes reducing contraceptive effectiveness; counsel on alternate contraception.',
+          reference: 'Source: Clinical guidance / Phenytoin and contraceptive interaction.'
+        },
+        'ciclosporin-clarithromycin': {
+          severity: 'HIGH',
+          info: 'Macrolide inhibition of CYP3A4 can raise ciclosporin levels and nephrotoxicity risk; avoid or monitor levels closely.',
+          reference: 'Source: Clinical guidance / Ciclosporin and macrolide interaction.'
+        },
+        'tacrolimus-fluconazole': {
+          severity: 'HIGH',
+          info: 'Azole antifungals inhibit CYP3A4 and increase tacrolimus exposure leading to nephrotoxicity; avoid or monitor levels.',
+          reference: 'Source: Clinical guidance / Tacrolimus and azole interaction.'
+        },
+        'antacid-doxycycline': {
+          severity: 'MODERATE',
+          info: 'Antacids containing calcium, magnesium, or aluminium chelate tetracyclines and fluoroquinolones reducing absorption; separate dosing.',
+          reference: 'Source: Clinical guidance / Antacid and antibiotic absorption.'
+        },
+        'iron-levothyroxine': {
+          severity: 'MODERATE',
+          info: 'Iron supplements reduce levothyroxine absorption; separate dosing by several hours and monitor thyroid function.',
+          reference: 'Source: Clinical guidance / Iron and levothyroxine interaction.'
+        },
+        'cholestyramine-warfarin': {
+          severity: 'MODERATE',
+          info: 'Cholestyramine binds other drugs in the gut reducing their absorption; may decrease warfarin effect; separate dosing where possible.',
+          reference: 'Source: Clinical guidance / Cholestyramine drug-binding interactions.'
+        },
+        'cholestyramine-digoxin': {
+          severity: 'MODERATE',
+          info: 'Cholestyramine can reduce digoxin absorption; monitor drug levels and therapeutic effect.',
+          reference: 'Source: Clinical guidance / Cholestyramine interactions.'
+        },
+        'cholestyramine-levothyroxine': {
+          severity: 'MODERATE',
+          info: 'Cholestyramine reduces levothyroxine absorption; separate dosing and monitor thyroid function.',
+          reference: 'Source: Clinical guidance / Cholestyramine and levothyroxine.'
+        },
+        'metoprolol-diltiazem': {
+          severity: 'HIGH',
+          info: 'Beta-blocker plus non-dihydropyridine CCB can cause bradycardia and AV block; monitor heart rate and ECG.',
+          reference: 'Source: Clinical guidance / Cardiac drug interactions.'
+        },
+        'metoprolol-clonidine': {
+          severity: 'HIGH',
+          info: 'Concurrent beta-blocker and clonidine may worsen bradycardia and hypotension; careful monitoring needed; abrupt clonidine withdrawal can cause rebound hypertension.',
+          reference: 'Source: Clinical guidance / Clonidine and beta-blocker interaction.'
+        },
+        'furosemide-gentamicin': {
+          severity: 'HIGH',
+          info: 'Loop diuretics and aminoglycosides have additive ototoxic and nephrotoxic effects; avoid combination or monitor closely.',
+          reference: 'Source: Clinical guidance / Ototoxicity interactions.'
+        },
+        'trimethoprim-lisinopril': {
+          severity: 'MODERATE',
+          info: 'Trimethoprim may increase potassium leading to additive hyperkalemia when combined with ACE inhibitors; monitor potassium.',
+          reference: 'Source: Clinical guidance / Trimethoprim and ACE inhibitor interaction.'
+        },
+        'sulfamethoxazole-lisinopril': {
+          severity: 'MODERATE',
+          info: 'Sulfonamides may contribute to hyperkalemia with ACE inhibitors; monitor potassium and renal function.',
+          reference: 'Source: Clinical guidance / Sulfonamide and ACE inhibitor interaction.'
+        },
+        'st_johns_wort-warfarin': {
+          severity: 'MODERATE',
+          info: "St. John's Wort induces CYP3A4 and P-gp causing reduced effectiveness of many drugs including warfarin and oral contraceptives; avoid combination or monitor closely.",
+          reference: 'Source: Clinical guidance / St. John\'s Wort interactions.'
+        },
+        'midazolam-grapefruit': {
+          severity: 'HIGH',
+          info: 'Grapefruit juice inhibits CYP3A4 and can increase midazolam exposure leading to prolonged sedation and respiratory depression; avoid grapefruit.',
+          reference: 'Source: Clinical guidance / Grapefruit and benzodiazepine interaction.'
+        },
+        'linezolid-fluoxetine': {
+          severity: 'HIGH',
+          info: 'Combining linezolid with SSRIs increases serotonin syndrome risk; avoid or monitor for neuromuscular excitation and autonomic instability.',
+          reference: 'Source: Clinical guidance / Linezolid and SSRI interaction.'
+        },
+        'ciprofloxacin-theophylline': {
+          severity: 'MODERATE',
+          info: 'Ciprofloxacin can reduce the clearance of theophylline and increase toxicity risk; monitor theophylline levels.',
+          reference: 'Source: Clinical guidance / Ciprofloxacin and theophylline.'
+        },
+        'allopurinol-lisinopril': {
+          severity: 'MODERATE',
+          info: 'Concomitant allopurinol and ACE inhibitor use has been associated with increased risk of severe hypersensitivity reactions in some reports; monitor closely.',
+          reference: 'Source: Clinical reports / Allopurinol and ACE inhibitor interaction.'
+        },
+        'prednisone-ibuprofen': {
+          severity: 'MODERATE',
+          info: 'Concomitant corticosteroids and NSAIDs increase risk of GI mucosal damage and bleeding; use gastroprotection when needed.',
+          reference: 'Source: Clinical guidance / Steroid and NSAID interaction.'
+        },
+        'isoniazid-phenytoin': {
+          severity: 'HIGH',
+          info: 'Isoniazid can inhibit phenytoin metabolism leading to elevated phenytoin levels and toxicity; monitor levels and adjust dose as necessary.',
+          reference: 'Source: Clinical guidance / Isoniazid and phenytoin interaction.'
+        },
+
+        // end additions
+      };
+
+      const keyA = `${drug1}-${drug2}`;
+      const keyB = `${drug2}-${drug1}`;
+
+      // Try RxNav (NIH) interaction lookup first; fall back to static map on failure
+      const _synonyms = {
+        paracetamol: 'acetaminophen',
+        glibenclamide: 'glyburide',
+        'ibuprofen': 'ibuprofen'
+      };
+
+      const getRxcui = async (name) => {
+        const lookupName = (_synonyms[name.toLowerCase()] || name).trim();
+        try {
+          // Try exact name lookup first
+          let res = await fetch(`https://rxnav.nlm.nih.gov/REST/rxcui.json?name=${encodeURIComponent(lookupName)}`);
+          if (res && res.ok) {
+            const data = await res.json();
+            const id = data.idGroup && data.idGroup.rxnormId && data.idGroup.rxnormId[0] ? data.idGroup.rxnormId[0] : null;
+            if (id) return id;
+          }
+
+          // Fallback to approximate term search (better for synonyms/local names)
+          res = await fetch(`https://rxnav.nlm.nih.gov/REST/approximateTerm.json?term=${encodeURIComponent(lookupName)}&maxEntries=1`);
+          if (res && res.ok) {
+            const data2 = await res.json();
+            const candidate = data2.approximateGroup && data2.approximateGroup.candidate && data2.approximateGroup.candidate[0];
+            if (candidate && candidate.rxcui) return candidate.rxcui;
+          }
+
+          return null;
+        } catch (e) {
+          return null;
+        }
+      };
+
+      const searchRxNavForPair = async (rxcuiA, rxcuiB) => {
+        try {
+          const res = await fetch(`https://rxnav.nlm.nih.gov/REST/interaction/interaction.json?rxcui=${encodeURIComponent(rxcuiA)}`);
+          if (!res.ok) return null;
+          const data = await res.json();
+          const groups = data.interactionTypeGroup || data.fullInteractionTypeGroup || [];
+          for (const g of groups) {
+            const types = g.interactionType || g.fullInteractionType || [];
+            for (const t of types) {
+              const pairs = t.interactionPair || [];
+              for (const p of pairs) {
+                const concepts = p.interactionConcept || [];
+                const ids = concepts.map(c => (c.minConceptItem && c.minConceptItem.rxcui) || (c.sourceConceptItem && c.sourceConceptItem.rxcui) || null).filter(Boolean);
+                if (ids.includes(rxcuiA) && ids.includes(rxcuiB)) {
+                  return {
+                    severity: p.severity || 'UNKNOWN',
+                    info: p.description || 'Interaction found; consult reference.',
+                    reference: 'Source: RxNav (NIH)'
+                  };
+                }
+              }
+            }
+          }
+          return null;
+        } catch (e) {
+          return null;
+        }
+      };
+
+      try {
+        const [r1, r2] = await Promise.all([getRxcui(drug1), getRxcui(drug2)]);
+        let found = null;
+        if (r1 && r2) {
+          found = await searchRxNavForPair(r1, r2) || await searchRxNavForPair(r2, r1);
+        }
+
+        if (found) {
+          let severityColor = 'var(--red)';
+          if (found.severity && found.severity.toUpperCase() === 'MODERATE') severityColor = 'var(--yellow)';
+          if (found.severity && (found.severity.toUpperCase() === 'LOW' || found.severity.toUpperCase() === 'MINOR')) severityColor = 'var(--green)';
+
+          showResult('interactionResult', `
+            <div class="result-label">Interaction Found</div>
+            <div style="color: ${severityColor}; font-weight: 600; font-size: 1.1rem; margin: 8px 0;">
+              ${found.severity} SEVERITY
+            </div>
+            <div class="result-label" style="margin-top: 12px;">${found.info}</div>
+            <div style="color: var(--text-muted); margin-top: 10px; font-size: 0.9rem;">${found.reference}</div>
+          `);
+          return;
+        }
+      } catch (e) {
+        // ignore and fall back to static map
+      }
+
+      let interaction = staticInteractions[keyA] || staticInteractions[keyB];
+
+      // Heuristic rules for common, clinically significant interactions
+      if (!interaction) {
+        const heuristicInteraction = (a, b) => {
+          const pair = a < b ? `${a}-${b}` : `${b}-${a}`;
+          const rules = {
+            'warfarin-aspirin': {
+              severity: 'HIGH',
+              info: 'Additive anticoagulant and antiplatelet effects significantly increase bleeding risk. Monitor INR and bleeding signs.',
+              reference: 'Source: Clinical guidance / anticoagulant interactions.'
+            },
+            'warfarin-ibuprofen': {
+              severity: 'HIGH',
+              info: 'NSAIDs can displace warfarin and impair platelet function, raising bleeding and GI risk.',
+              reference: 'Source: Clinical guidance / warfarin and NSAIDs.'
+            },
+            'warfarin-clopidogrel': {
+              severity: 'HIGH',
+              info: 'Combined anticoagulant and antiplatelet therapy increases major bleeding risk.',
+              reference: 'Source: Clinical guidance / combined antithrombotic therapy.'
+            },
+            'clopidogrel-omeprazole': {
+              severity: 'MODERATE',
+              info: 'Omeprazole inhibits CYP2C19 and can reduce clopidogrel activation; consider alternative PPI if antiplatelet effect is critical.',
+              reference: 'Source: FDA / Clinical pharmacology.'
+            },
+            'simvastatin-erythromycin': {
+              severity: 'MODERATE',
+              info: 'Macrolide CYP3A4 inhibition can raise statin levels and increase muscle toxicity risk.',
+              reference: 'Source: FDA labeling / statin interactions.'
+            },
+            'simvastatin-ketoconazole': {
+              severity: 'HIGH',
+              info: 'Strong CYP3A4 inhibition markedly increases simvastatin levels and rhabdomyolysis risk.',
+              reference: 'Source: FDA labeling / statin and azole interaction.'
+            },
+            'digoxin-verapamil': {
+              severity: 'HIGH',
+              info: 'Verapamil decreases digoxin clearance and raises toxicity risk.',
+              reference: 'Source: Clinical guidance / digoxin interactions.'
+            },
+            'metformin-glibenclamide': {
+              severity: 'MODERATE',
+              info: 'Sulfonylureas plus metformin can increase hypoglycemia risk. Monitor blood glucose.',
+              reference: 'Source: Diabetes medication guidance.'
+            },
+            'insulin-ciprofloxacin': {
+              severity: 'MODERATE',
+              info: 'Fluoroquinolones can increase hypoglycemia risk in insulin-treated patients.',
+              reference: 'Source: FDA labeling / fluoroquinolone interactions.'
+            },
+            'ciprofloxacin-doxycycline': {
+              severity: 'LOW',
+              info: 'No major pharmacokinetic interaction is expected between these antibiotics; monitor clinically.',
+              reference: 'Source: Microbiology / antibiotic interaction guidance.'
+            },
+            'erythromycin-sildenafil': {
+              severity: 'MODERATE',
+              info: 'CYP3A4 inhibition by erythromycin may raise sildenafil levels and side effects.',
+              reference: 'Source: FDA labeling / macrolide interactions.'
+            }
+          };
+
+          if (rules[pair]) return rules[pair];
+
+          // Category-based heuristics
+          const nsaids = ['ibuprofen'];
+          if ((a === 'warfarin' && nsaids.includes(b)) || (b === 'warfarin' && nsaids.includes(a))) {
+            return {
+              severity: 'HIGH',
+              info: 'NSAIDs increase bleeding risk when combined with warfarin. Monitor closely and avoid if possible.',
+              reference: 'Source: Clinical guidance / NSAID and warfarin.'
+            };
+          }
+
+          const ssris = ['fluoxetine', 'sertraline'];
+          if ((ssris.includes(a) && b === 'warfarin') || (ssris.includes(b) && a === 'warfarin')) {
+            return {
+              severity: 'MODERATE',
+              info: 'SSRIs may enhance warfarin effect and increase bleeding risk. Monitor INR closely.',
+              reference: 'Source: Clinical guidance / SSRI and anticoagulant interactions.'
+            };
+          }
+
+          const betaCalciumBlockers = ['metoprolol'];
+          const ccb = ['verapamil', 'diltiazem'];
+          if ((betaCalciumBlockers.includes(a) && ccb.includes(b)) || (betaCalciumBlockers.includes(b) && ccb.includes(a))) {
+            return {
+              severity: 'HIGH',
+              info: 'Concomitant beta-blocker and non-dihydropyridine calcium channel blocker may cause bradycardia and AV block.',
+              reference: 'Source: Clinical guidance / cardiac drug interactions.'
+            };
+          }
+
+          const statins = ['simvastatin', 'atorvastatin'];
+          const strongCYP3A4 = ['ketoconazole', 'erythromycin'];
+          if ((statins.includes(a) && strongCYP3A4.includes(b)) || (statins.includes(b) && strongCYP3A4.includes(a))) {
+            return {
+              severity: 'MODERATE',
+              info: 'CYP3A4 inhibitors increase statin exposure and myopathy/rhabdomyolysis risk; consider dose adjustment or alternative statin.',
+              reference: 'Source: FDA labeling / statin interactions.'
+            };
+          }
+
+          const digoxinSelectors = ['digoxin'];
+          const ccbAll = ['verapamil', 'diltiazem', 'amlodipine'];
+          if ((digoxinSelectors.includes(a) && ccbAll.includes(b)) || (digoxinSelectors.includes(b) && ccbAll.includes(a))) {
+            return {
+              severity: 'HIGH',
+              info: 'Calcium channel blockers can increase digoxin levels or potentiate bradycardia; monitor for toxicity.',
+              reference: 'Source: Clinical guidance / digoxin interactions.'
+            };
+          }
+
+          const p450Inducers = ['phenytoin'];
+          if ((p450Inducers.includes(a) && a === 'phenytoin' && b === 'ketoconazole') || (p450Inducers.includes(b) && ((a === 'ketoconazole')))) {
+            return {
+              severity: 'MODERATE',
+              info: 'Azoles may inhibit metabolism of other drugs (e.g., phenytoin), increasing toxicity risk.',
+              reference: 'Source: FDA labeling / enzyme interactions.'
+            };
+          }
+
+          return null;
+        };
+
+        interaction = heuristicInteraction(drug1, drug2);
+      }
+
+      if (interaction) {
+        let severityColor = 'var(--red)';
+        if (interaction.severity === 'MODERATE') severityColor = 'var(--yellow)';
+        if (interaction.severity === 'LOW') severityColor = 'var(--green)';
+        
+        showResult('interactionResult', `
+          <div class="result-label">Interaction Found</div>
+          <div style="color: ${severityColor}; font-weight: 600; font-size: 1.1rem; margin: 8px 0;">
+            ${interaction.severity} SEVERITY
+          </div>
+          <div class="result-label" style="margin-top: 12px;">${interaction.info}</div>
+          <div style="color: var(--text-muted); margin-top: 10px; font-size: 0.9rem;">${interaction.reference}</div>
+        `);
+      } else {
+        showResult('interactionResult', `
+          <div class="result-label">Interaction Status</div>
+          <div style="color: var(--green); font-weight: 600; font-size: 1.05rem;">✓ No major interaction found</div>
+          <div style="color: var(--text-muted); margin-top: 8px; font-size: 0.9rem;">This combination appears safe. Always consult a healthcare professional or official drug database for confirmation.</div>
+        `);
+      }
+    }
+
+    // IV Infusion Rate Calculator
+    function calculateInfusionRate() {
+      const volume = parseFloat(document.getElementById('volumeInfuse').value);
+      const time = parseFloat(document.getElementById('infusionTime').value);
+      const dropFactor = parseFloat(document.getElementById('dropFactor').value);
+
+      if (isNaN(volume) || isNaN(time) || isNaN(dropFactor)) {
+        showResult('infusionResult', 'Please fill all fields', false);
+        return;
+      }
+
+      const mlPerMin = volume / time;
+      const dropsPerMin = (volume * dropFactor) / time;
+
+      showResult('infusionResult', `
+        <div class="result-label">Infusion Rate</div>
+        <div class="result-value">${mlPerMin.toFixed(2)} ml/min</div>
+        <div class="result-label" style="margin-top: 12px;">Drop Rate</div>
+        <div class="result-value">${dropsPerMin.toFixed(0)} drops/min</div>
+      `);
+    }
+
+    // BSA Calculator (Mosteller Formula)
+    function calculateBSA() {
+      const height = parseFloat(document.getElementById('bsaHeight').value);
+      const weight = parseFloat(document.getElementById('bsaWeight').value);
+
+      if (isNaN(height) || isNaN(weight)) {
+        showResult('bsaResult', 'Please fill all fields', false);
+        return;
+      }
+
+      const bsa = Math.sqrt((height * weight) / 3600);
+
+      showResult('bsaResult', `
+        <div class="result-label">Body Surface Area</div>
+        <div class="result-value">${bsa.toFixed(2)} m²</div>
+      `);
+    }
+
+    // Drug Search
+    function searchDrugs() {
+      const searchTerm = document.getElementById('drugSearch').value.toLowerCase();
+      const drugItems = document.querySelectorAll('.drug-item');
+
+      drugItems.forEach(item => {
+        const drugName = item.getAttribute('data-drug').toLowerCase();
+        const drugDisplay = item.querySelector('.drug-name').textContent.toLowerCase();
+        const drugUse = item.querySelector('.drug-use').textContent.toLowerCase();
+        
+        if (drugName.includes(searchTerm) || drugDisplay.includes(searchTerm) || drugUse.includes(searchTerm)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Helper function to show results
+    function showResult(elementId, content, isSuccess = true) {
+      const element = document.getElementById(elementId);
+      const resultBox = document.createElement('div');
+      resultBox.className = 'result-box';
+      resultBox.innerHTML = content;
+      element.innerHTML = '';
+      element.appendChild(resultBox);
+    }
+  </script>
+</body>
+</html>

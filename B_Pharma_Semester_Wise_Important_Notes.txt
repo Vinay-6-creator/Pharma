@@ -1,0 +1,464 @@
+📚 B.PHARM SYLLABUS - SEMESTER WISE IMPORTANT NOTES
+===================================================================
+Pharmacy Council of India (Regulations 2014, CBCS)
+===================================================================
+
+🎯 PROGRAM STRUCTURE:
+- Duration: 8 Semesters (4 Academic Years)
+- Total Credits: 208
+- Minimum Attendance: 80% in each course
+- Medium of Instruction: English
+
+===================================================================
+SEMESTER I (Odd Semester - June/July to November/December)
+===================================================================
+
+COURSES:
+
+1. BP101T - Human Anatomy and Physiology I – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Introduction to human body and homeostasis
+   • Cell biology and tissues
+   • Cardiovascular system
+   • Respiratory system
+   • Nervous system basics
+
+2. BP102T - Pharmaceutical Analysis I – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Analytical chemistry fundamentals
+   • Gravimetric analysis
+   • Volumetric analysis
+   • Titrimetry principles
+   • Acid-base titrations
+
+3. BP103T - Pharmaceutics I – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Introduction to pharmaceutics
+   • Pharmaceutical processes
+   • Particle size and distribution
+   • Powders
+   • Granules and granulation
+
+4. BP104T - Pharmaceutical Inorganic Chemistry – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Atomic structure and chemical bonding
+   • Periodic table
+   • Inorganic pharmaceuticals
+   • Electrolytes and non-electrolytes
+   • Dosage forms of inorganic drugs
+
+5. BP105T - Communication Skills – Theory (2L, 2 Credits)*
+   KEY TOPICS:
+   • Professional communication
+   • Written communication
+   • Presentation skills
+   • Interpersonal communication
+
+6. BP106RBT/RMT - Remedial Biology/Mathematics – Theory (2L, 2 Credits)*
+   • For students requiring remedial support
+
+PRACTICAL COURSES:
+- BP107P: Human Anatomy and Physiology Practical (4P, 2 Credits)
+- BP108P: Pharmaceutical Analysis I Practical (4P, 2 Credits)
+- BP109P: Pharmaceutics I Practical (4P, 2 Credits)
+- BP110P: Pharmaceutical Inorganic Chemistry Practical (4P, 2 Credits)
+- BP111P: Communication Skills Practical (2P, 1 Credit)*
+
+TOTAL CREDITS: 27-30
+
+===================================================================
+SEMESTER II (Even Semester - December/January to May/June)
+===================================================================
+
+COURSES:
+
+1. BP201T - Human Anatomy and Physiology II – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Gastrointestinal system
+   • Endocrine system
+   • Urinary system
+   • Reproductive system
+   • Immune system
+
+2. BP202T - Pharmaceutical Analysis II – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Optical methods of analysis
+   • UV-Visible spectroscopy
+   • Fluorimetry
+   • Chromatography fundamentals
+   • Gas chromatography
+
+3. BP203T - Pharmaceutics II – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Liquid dosage forms
+   • Solutions
+   • Suspensions and emulsions
+   • Semi-solid dosage forms (creams, gels, pastes)
+   • Evaluation of semisolids
+
+4. BP204T - Pharmaceutical Organic Chemistry I – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Nomenclature and isomerism
+   • Reaction mechanisms
+   • Alkanes, alkenes, alkynes
+   • Aromatic compounds
+   • Functional groups
+
+5. BP205T - Biochemistry – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Carbohydrates metabolism
+   • Lipid metabolism
+   • Protein metabolism
+   • Nucleic acids
+   • Enzyme kinetics
+
+PRACTICAL COURSES:
+- BP206P: Human Anatomy and Physiology II Practical (4P, 2 Credits)
+- BP207P: Pharmaceutical Analysis II Practical (4P, 2 Credits)
+- BP208P: Pharmaceutics II Practical (4P, 2 Credits)
+- BP209P: Pharmaceutical Organic Chemistry I Practical (4P, 2 Credits)
+- BP210P: Biochemistry Practical (4P, 2 Credits)
+
+TOTAL CREDITS: 30
+
+===================================================================
+SEMESTER III (Odd Semester)
+===================================================================
+
+COURSES:
+
+1. BP301T - Pathophysiology – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Disease mechanisms
+   • Inflammation and immunity
+   • Cardiovascular diseases
+   • Respiratory diseases
+   • Metabolic disorders
+
+2. BP302T - Pharmaceutical Organic Chemistry II – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Heterocyclic compounds
+   • Reduction reactions
+   • Oxidation reactions
+   • Synthesis of pharmaceutical compounds
+   • Structure-activity relationships
+
+3. BP303T - Biochemistry II – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Advanced enzyme kinetics
+   • Bioenergetics
+   • Signal transduction
+   • Gene expression
+   • Recombinant DNA technology
+
+4. BP304T - Pharmacology I – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • General pharmacology principles
+   • Pharmacokinetics
+   • Pharmacodynamics
+   • Drug-receptor interactions
+   • Autonomic nervous system drugs
+
+5. BP305T - Social Pharmacy – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Pharmacy practice
+   • Healthcare systems
+   • Community pharmacy
+   • Epidemiology basics
+   • Drug utilization studies
+
+PRACTICAL COURSES:
+- BP306P: Pathophysiology Practical (4P, 2 Credits)
+- BP307P: Pharmaceutical Organic Chemistry II Practical (4P, 2 Credits)
+- BP308P: Biochemistry II Practical (4P, 2 Credits)
+- BP309P: Pharmacology I Practical (4P, 2 Credits)
+
+TOTAL CREDITS: 30
+
+===================================================================
+SEMESTER V (Odd Semester)
+===================================================================
+
+COURSES:
+
+1. BP501T - Pharmacology III – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • CNS drugs (psychopharmacology)
+   • Antipsychotics
+   • Antidepressants
+   • Anxiolytics
+   • Anticonvulsants
+
+2. BP502T - Medicinal Chemistry II – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Drug metabolism
+   • Metablic pathways
+   • Phase I, II, III reactions
+   • Drug-drug interactions
+   • Personalized medicine
+
+3. BP503T - Pharmacognosy II – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Secondary metabolites
+   • Alkaloids
+   • Glycosides
+   • Terpenes and essential oils
+   • Phytochemical analysis
+
+4. BP504T - Pharmaceutics III – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Dosage form design
+   • Bioavailability
+   • Biopharmaceutics
+   • Formulation development
+   • Advanced drug delivery systems
+
+5. BP505T - Pharmaceutical Analysis III – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • HPLC techniques
+   • Mass spectrometry
+   • NMR spectroscopy
+   • Thermal analysis
+   • Method validation
+
+PRACTICAL COURSES:
+- BP506P: Pharmacology III Practical (4P, 2 Credits)
+- BP507P: Medicinal Chemistry II Practical (4P, 2 Credits)
+- BP508P: Pharmacognosy II Practical (4P, 2 Credits)
+- BP509P: Pharmaceutics III Practical (4P, 2 Credits)
+
+TOTAL CREDITS: 30
+
+===================================================================
+SEMESTER VI (Even Semester)
+===================================================================
+
+COURSES:
+
+1. BP601T - Pharmacology IV – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Gastrointestinal drugs
+   • Respiratory drugs
+   • Antimicrobial agents
+   • Antiinfectives
+   • Antiparasitic drugs
+
+2. BP602T - Biopharmaceutics and Pharmacokinetics – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Absorption mechanisms
+   • Distribution
+   • Metabolism
+   • Excretion (ADME)
+   • Non-compartmental models
+   • Compartmental models
+
+3. BP603T - Pharmaceutical Microbiology – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Microorganisms and infection
+   • Sterilization methods
+   • Disinfection
+   • Preservation of pharmaceutical products
+   • Microbial contamination control
+
+4. BP604T - Pharmaceutical Economics and Management – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Pharmacy management
+   • Economics of healthcare
+   • Cost-benefit analysis
+   • Pharmaceutical pricing
+   • Insurance and reimbursement
+
+5. BP605T - Regulatory Affairs – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Drug approval process
+   • GMP (Good Manufacturing Practice)
+   • Quality standards
+   • Documentation
+   • Compliance and audits
+
+PRACTICAL COURSES:
+- BP606P: Biopharmaceutics and Pharmacokinetics Practical (4P, 2 Credits)
+- BP607P: Pharmaceutical Microbiology Practical (4P, 2 Credits)
+- BP608P: Pharmaceutical Economics and Management Practical (4P, 2 Credits)
+
+TOTAL CREDITS: 30
+
+===================================================================
+SEMESTER VII (Odd Semester - With Practice School)
+===================================================================
+
+COURSES:
+
+1. BP701T - Pharmacology V – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Endocrine drugs
+   • Hormonal therapy
+   • Immunosuppressive agents
+   • Anti-inflammatory drugs
+   • Chemotherapy agents
+
+2. BP702T - Advanced Pharmacology – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Drug interactions
+   • Adverse drug reactions
+   • Toxicology
+   • Pharmacovigilance
+   • Clinical pharmacology
+
+3. BP703T - Pharmacy Practice – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Clinical pharmacy
+   • Therapeutic drug monitoring
+   • Drug information services
+   • Patient counseling
+   • Medication error prevention
+
+4. BP704T - Novel Drug Delivery Systems – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Nanoparticles
+   • Liposomes
+   • Microspheres
+   • Transdermal systems
+   • Targeted drug delivery
+
+5. BP705T - Medicinal Chemistry III – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Antimicrobial agents synthesis
+   • Anticancer agents
+   • Cardiovascular drugs synthesis
+   • SAR studies
+   • Lead optimization
+
+PRACTICAL COURSES & INTERNSHIP:
+- BP706P: Advanced Pharmacology Practical (4P, 2 Credits)
+- BP707P: Pharmacy Practice Practical (4P, 2 Credits)
+- BP708P: Novel Drug Delivery Systems Practical (4P, 2 Credits)
+- PRACTICE SCHOOL: 150 hours (4 Credits)
+  - Hospital Pharmacy (50 hours) OR
+  - Community Pharmacy (50 hours) OR
+  - Clinical Research Organization (50 hours) OR
+  - Research Organization (50 hours)
+
+TOTAL CREDITS: 30
+
+===================================================================
+SEMESTER VIII (Even Semester - With Project)
+===================================================================
+
+COURSES:
+
+1. BP801T - Pharmaceutical Project/Research – Theory (2L, 4 Credits)
+   KEY TOPICS:
+   • Research methodology
+   • Project planning and execution
+   • Data analysis and interpretation
+   • Scientific writing
+   • Project presentation and defense
+
+2. BP802T - Biopharmaceutics and Pharmacokinetics (Advanced) – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Nonlinear pharmacokinetics
+   • DDI (Drug-Drug Interactions)
+   • Population pharmacokinetics
+   • Bioequivalence studies
+   • Clinical trial designs
+
+3. BP803T - Pharmaceutical Product Development – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • Product development process
+   • Formulation development
+   • Process optimization
+   • Stability testing
+   • Tech transfer
+
+4. BP804T - Drug Regulatory Affairs – Theory (3L+1T, 4 Credits)
+   KEY TOPICS:
+   • CDSCO regulations
+   • WHO guidelines
+   • ICH guidelines
+   • Dossier preparation
+   • Clinical trial regulations
+
+5. ELECTIVE COURSE (Any one) – Theory (3L+1T, 4 Credits)
+   Options:
+   • Pharmaceutical Product Development
+   • Advanced Pharmaceutical Analysis
+   • Cosmetics Formulation
+   • Clinical Pharmacology
+   • Pharmaceutical Entrepreneurship
+
+PRACTICAL COURSES:
+- BP805P: Pharmaceutical Project Practical (8P, 4 Credits)
+  (Group project: Max 5 students, dissertation/research work)
+- BP806P: Elective Practical (4P, 2 Credits)
+
+CAPSTONE PROJECT:
+- Research/Product Development Project (4 Credits)
+
+TOTAL CREDITS: 30
+
+===================================================================
+✅ ASSESSMENT SCHEME (Per Semester)
+===================================================================
+
+Internal Assessment:
+- Class Tests/Quizzes: 5 marks
+- Assignments: 5 marks
+- Practical Evaluation: 10 marks
+Total Internal: 20 marks (Theory), 10 marks (Practical)
+
+End Semester Examinations:
+- Theory Exam: 80 marks (3 hours)
+- Practical Exam: 40 marks (4 hours)
+Total External: 120 marks
+
+TOTAL PER COURSE: 150 marks
+
+===================================================================
+📊 GRADING SYSTEM
+===================================================================
+
+Grade | Grade Points | Percentage
+------|--------------|------------
+  A+  |     10       |  90-100%
+  A   |     9        |  80-89%
+  B+  |     8        |  70-79%
+  B   |     7        |  60-69%
+  C   |     6        |  50-59%
+  P   |     5        |  40-49%
+  F   |     0        |  <40%
+  AB  |     0        |  Absent
+
+SGPA = Σ(Credit × Grade Point) / Σ Credits
+CGPA = (Σ SGPA of all 8 semesters × corresponding credits) / Total Credits
+
+===================================================================
+📋 IMPORTANT REGULATIONS
+===================================================================
+
+1. ATTENDANCE: Minimum 80% required in each course
+2. ELIGIBILITY: 
+   - I-II sem courses must be completed before attending III sem
+   - III-IV sem courses must be completed before attending V sem
+   - V-VI sem courses must be completed before attending VII sem
+3. PASS CRITERIA: Minimum 50% in each course (40% with internal)
+4. PRACTICE SCHOOL: 150 hours (Semester VII)
+5. PROJECT: 8 Credits (Semester VIII)
+
+===================================================================
+KEY COMPETENCIES TO DEVELOP
+===================================================================
+
+✓ Pharmaceutical knowledge and skills
+✓ Problem-solving abilities
+✓ Research and analytical thinking
+✓ Communication and interpersonal skills
+✓ Ethical practice and professional responsibility
+✓ Leadership and teamwork
+✓ Knowledge of regulations and compliance
+✓ Patient care and community health awareness
+
+===================================================================
+Created: May 2026
+Source: Pharmacy Council of India - B.Pharm Regulations 2014
+===================================================================

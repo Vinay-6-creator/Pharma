@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B Pharm Semester 5 - Notes & PYQs</title>
+  <style>
+    :root { --bg: #eef6ff; --surface: #ffffff; --surface-strong: #f7fbff; --text: #1d314f; --text-muted: #64748b; --blue: #2563eb; --blue-dark: #1d4ed8; --green: #22c55e; --red: #ef4444; --border: rgba(148, 163, 184, 0.16); }
+    html.dark-mode { --bg: #0f172a; --surface: #1e293b; --surface-strong: #172038; --text: #f1f5f9; --text-muted: #cbd5e1; --blue: #3b82f6; --green: #10b981; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%); color: var(--text); }
+    .page { width: min(1200px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 64px; }
+    header { padding: 24px 0; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; }
+    .back-link { color: var(--blue); font-weight: 600; cursor: pointer; text-decoration: none; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 12px; }
+    h2 { font-size: 1.4rem; margin: 40px 0 24px; color: var(--blue); padding-bottom: 12px; border-bottom: 3px solid var(--blue); }
+    .unit-section { background: var(--surface); border: 2px solid var(--border); border-radius: 20px; padding: 28px; margin-bottom: 32px; }
+    .unit-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--blue); }
+    .unit-number { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); color: white; font-weight: 700; }
+    .unit-title h2 { margin: 0; border: none; padding: 0; font-size: 1.25rem; }
+    .topics-list { display: grid; gap: 12px; margin-bottom: 24px; }
+    .topic-item { display: flex; gap: 12px; padding: 12px 16px; background: var(--surface-strong); border-radius: 12px; border-left: 4px solid var(--green); }
+    .topic-bullet { color: var(--green); font-weight: 700; }
+    .pyq-section { margin-top: 24px; padding-top: 24px; border-top: 2px solid var(--border); }
+    .pyq-section h3 { color: var(--red); }
+    .pyq-card { background: var(--surface-strong); border-left: 4px solid var(--red); border-radius: 12px; padding: 18px; margin-bottom: 16px; }
+    .pyq-question { font-weight: 600; margin-bottom: 12px; display: flex; gap: 8px; }
+    .q-number { color: var(--red); font-weight: 700; }
+    .answer-toggle { padding: 8px 12px; margin-top: 8px; background: rgba(37, 99, 235, 0.1); border: none; border-radius: 8px; color: var(--blue); font-weight: 600; cursor: pointer; }
+    .answer-text { margin-top: 12px; padding: 12px; background: rgba(34, 197, 94, 0.1); border-left: 3px solid var(--green); display: none; }
+    .answer-text.show { display: block; }
+    footer { margin-top: 60px; padding-top: 26px; border-top: 1px solid var(--border); text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="study-hub.html" class="back-link">← Back to Study Hub</a>
+        <div class="brand"><div style="font-size: 1.8rem;">📚</div><span>B Pharm - Semester 5</span></div>
+      </div>
+    </header>
+    <main>
+      <h1>Pharmaceutical Formulation & Technology</h1>
+      <p style="color: var(--text-muted); margin-bottom: 24px;">Formulation principles, processing methods, and manufacturing of dosage forms.</p>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">I</div>
+          <div class="unit-title"><h2>Dosage Form Fundamentals</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Solid Dosage Forms:</strong> Tablets, capsules, powders, granules classification</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Liquid Dosage Forms:</strong> Solutions, suspensions, emulsions principles</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Semi-solid Dosage Forms:</strong> Ointments, creams, gels formulation</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> Differentiate between suspension and emulsion</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> Suspension: Insoluble solid particles in liquid (e.g., antacid suspension). Emulsion: Two immiscible liquids stabilized together (e.g., oil-in-water or water-in-oil)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">II</div>
+          <div class="unit-title"><h2>Tablet Technology</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Tablet Excipients:</strong> Binders, diluents, disintegrants, lubricants</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Tablet Manufacturing:</strong> Wet granulation, dry granulation processes</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Tablet Compression:</strong> Machine parameters, compression problems and solutions</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> Explain why disintegrants are added to tablets</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> Disintegrants break down tablets into smaller particles upon contact with water/GI fluids, facilitating drug dissolution and absorption. Examples: Croscarmellose sodium, sodium starch glycolate.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">III</div>
+          <div class="unit-title"><h2>Capsules & Other Dosage Forms</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Capsule Types:</strong> Hard gelatin, soft gelatin, HPMC capsules</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Capsule Filling:</strong> Manual and machine filling methods</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Powder Formulations:</strong> Bulk powders, divided powders manufacturing</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> Why are HPMC capsules preferred over gelatin capsules?</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> HPMC capsules are vegetarian, stable at higher humidity, compatible with moisture-sensitive drugs, and not affected by formaldehyde cross-linking.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">IV</div>
+          <div class="unit-title"><h2>Quality Control in Formulation</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Tablet Testing:</strong> Hardness, friability, dissolution tests</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Content Uniformity:</strong> Weight variation, content assay</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Stability Testing:</strong> ICH guidelines, accelerated stability studies</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> What is dissolution testing and its significance?</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> Dissolution testing measures the rate and extent of drug release from dosage form in simulated GI fluids. It correlates in vitro release with in vivo bioavailability.</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer><span>📚 PharmaX Study Hub</span><span>•</span><span>© 2026 All Rights Reserved</span></footer>
+  </div>
+  <script>
+    function toggleAnswer(button) {
+      const answerText = button.nextElementSibling;
+      answerText.classList.toggle('show');
+      button.textContent = answerText.classList.contains('show') ? 'Hide Answer ▲' : 'Show Answer ▼';
+    }
+  </script>
+</body>
+</html>

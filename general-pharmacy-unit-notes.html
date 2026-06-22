@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>General Pharmacy - Unit Wise Notes</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #d1d5db;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --blue: #1d4ed8;
+      --accent: #2563eb;
+      --shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--text); line-height: 1.75; }
+    .page { max-width: 1040px; margin: 0 auto; padding: 26px 22px 42px; }
+    .header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
+    .header h1 { margin: 0; font-size: clamp(2rem, 2.6vw, 2.8rem); letter-spacing: -0.04em; }
+    .header .back-link { text-decoration: none; color: var(--accent); font-weight: 700; background: rgba(37, 99, 235, 0.08); padding: 12px 16px; border-radius: 999px; border: 1px solid rgba(37, 99, 235, 0.18); }
+    .intro { margin-bottom: 30px; padding: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: 26px; box-shadow: var(--shadow); }
+    .intro h2 { margin-top: 0; color: var(--blue); }
+    .unit-card { margin-bottom: 28px; padding: 26px; background: var(--surface); border: 1px solid var(--border); border-radius: 26px; box-shadow: var(--shadow); }
+    .unit-card h3 { margin-top: 0; color: var(--blue); }
+    .unit-card ul { margin: 0; padding-left: 20px; }
+    .unit-card li { margin-bottom: 10px; }
+    .solution-box { margin-top: 20px; padding: 18px 20px; background: #eff6ff; border-left: 4px solid var(--accent); border-radius: 16px; color: var(--text-muted); }
+    pre { margin: 16px 0 0; padding: 18px; background: #111827; color: #f8fafc; border-radius: 16px; overflow-x: auto; font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; font-size: 0.95rem; }
+    code { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; }
+    .note-group { margin: 16px 0 0; }
+    @media (max-width: 780px) { .page { padding: 18px 14px 30px; } .header { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        <p style="margin:0; font-size:0.82rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted);">B Pharm Semester 1</p>
+        <h1>General Pharmacy - Unit Wise Notes</h1>
+      </div>
+      <a class="back-link" href="bpharm-sem1-notes.html">← Back to Semester 1 Notes</a>
+    </header>
+
+    <section class="intro">
+      <h2>Clear unit-wise notes with practical pharmacy solutions</h2>
+      <p>Ye page General Pharmacy ke unit wise topics ko detail mein cover karta hai, jaisa image mein diya gaya hai. Har unit ke important concepts, definitions, examples aur solved explanations yahan milenge.</p>
+    </section>
+
+    <article class="unit-card">
+      <h3>Unit I: Introduction to the Profession of Pharmacy</h3>
+      <ul>
+        <li>History of Pharmacy in India: evolution of pharmacy education, pharmaceutical industries, and professional milestones.</li>
+        <li>Scope of Pharmacy Profession: retail/community pharmacy, hospital pharmacy, clinical pharmacy, industrial pharmacy, research and development.</li>
+        <li>Pharmacopoeias: IP, BP, USP, BPC, International Pharmacopoeia; National Formulary of India; structure of Indian Pharmacopoeia; model IP monograph.</li>
+        <li>Prescription basics: structure and parts of a prescription, Latin pharmacy terms, proper handling and interpretation.</li>
+      </ul>
+      <div class="solution-box">
+        <strong>Clear example:</strong> Agar prescription mein <code>R 100 ml</code> likha ho, iska matlab hai "Recipe 100 millilitres". Doctor ke order ko properly interpret karne ke liye strengths aur dosage forms ki understanding zaroori hai.
+      </div>
+    </article>
+
+    <article class="unit-card">
+      <h3>Unit II: Introduction to Pharmaceutical Calculations and Dosage Forms</h3>
+      <ul>
+        <li>Metric system of weights and measures; calculating alligation, proof spirit, isotonic solutions, dilute solutions (percentage and ratio), geometric dilution.</li>
+        <li>Scientific notation for units and measures.</li>
+        <li>Posology: dose calculation based on age, body weight, and body surface area.</li>
+        <li>Dosage forms: routes of administration, oral, parenteral, topical; classification of dosage forms.</li>
+        <li>Active pharmaceutical ingredients and excipients: definitions, ideal characteristics, and importance.</li>
+      </ul>
+      <div class="solution-box">
+        <strong>Clear solution:</strong> Patient ke liye dose calculate karne ke liye formula use karein.
+        <div class="note-group">
+          <strong>Example:</strong> 5 mg/kg dose agar patient 55 kg ho.
+          <pre><code>weight = 55
+rate = 5
+required_dose = weight * rate
+print(required_dose)  # 275 mg
+</code></pre>
+        </div>
+      </div>
+    </article>
+
+    <article class="unit-card">
+      <h3>Unit III: Solid Dosage Forms</h3>
+      <ul>
+        <li>Powders: classification, advantages, disadvantages, dusting powders, effervescent powder, efflorescent powder, hygroscopic powder, eutectic mixtures, and methods of preparation.</li>
+        <li>Tablets: definition, types of tablets (compressed, multiple compressed, coated, delayed release), advantages and disadvantages, excipients and methods of preparation.</li>
+        <li>Capsules: definition, types, advantages, disadvantages, capsule sizes, and preparation methods.</li>
+      </ul>
+      <div class="solution-box">
+        <strong>Clear example:</strong> A tablet formulation mein diluent, binder, disintegrant, lubricant, aur glidant include kiye jaate hain. Agar formulations mein lactose as diluent use ho raha ho, tablet hardness aur disintegration time dono depend karte hain powder flow aur compression par.
+      </div>
+    </article>
+
+    <article class="unit-card">
+      <h3>Unit IV: Monophasic and Biphasic Liquids</h3>
+      <ul>
+        <li>Internal use liquids: aromatic waters, syrups, elixirs, and linctus: definitions, preparation, and examples.</li>
+        <li>External use liquids and body cavity preparations: liniments, lotions, throat paints, gargles, mouthwashes, enemas, eye drops, ear drops, nasal drops, and tinctures.</li>
+        <li>Official preparations: introduction to excipients and methods of preparation for liquid dosage forms.</li>
+      </ul>
+      <div class="solution-box">
+        <strong>Clear example:</strong> Syrup prepare karne mein sugar concentration ko balance karke preservative effect aur palatability dono maintain karte hain. Eye drop solution banate waqt isotonicity aur sterility dono critical hote hain.
+      </div>
+    </article>
+
+    <article class="unit-card">
+      <h3>Unit V: Semisolid Dosage Forms</h3>
+      <ul>
+        <li>Definitions, classification, advantages, disadvantages of semisolid dosage forms.</li>
+        <li>Ointment bases and excipients used in semisolids; preparation methods for ointments, pastes, creams, and gels.</li>
+        <li>Suppositories/Pessaries: definition, types, advantages, disadvantages, formulation excipients, displacement value, and preparation methods.</li>
+      </ul>
+      <div class="solution-box">
+        <strong>Clear solution:</strong> Suppository formulation mein base ka displacement value calculate karna zaroori hota hai. Agar base ka displacement value 0.2 g ho aur active drug ka mass 0.1 g ho, toh total suppository weight 0.3 g hona chahiye.
+      </div>
+    </article>
+  </div>
+</body>
+</html>

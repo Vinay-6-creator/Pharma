@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B.Pharm Semester-wise Important Notes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .nav {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 2px solid #667eea;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .nav a {
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        
+        .nav a:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .semester {
+            margin: 30px 0;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f9f9f9;
+        }
+        
+        .sem-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            font-size: 1.8em;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .sem-credits {
+            background: rgba(255,255,255,0.3);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .sem-body {
+            padding: 25px;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 20px;
+        }
+        
+        .course-card {
+            background: white;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        
+        .course-card:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+        }
+        
+        .course-code {
+            background: #667eea;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+        
+        .course-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #333;
+            margin: 8px 0;
+        }
+        
+        .course-details {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 12px;
+        }
+        
+        .topics {
+            background: #e8f4f8;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 12px;
+        }
+        
+        .topics strong {
+            color: #667eea;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .topic-item {
+            margin: 6px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .topic-item:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            font-size: 1.5em;
+            color: #667eea;
+            margin: 30px 0 20px 0;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .info-box {
+            background: #e8f4f8;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .info-box strong {
+            color: #667eea;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+        
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 2px solid #667eea;
+        }
+        
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .practical-badge {
+            background: #28a745;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+        
+        @media (max-width: 768px) {
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            .sem-header {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📚 Bachelor of Pharmacy (B.Pharm)</h1>
+            <p>Semester-wise Important Notes & Syllabus</p>
+            <p style="font-size: 0.9em; margin-top: 10px;">Pharmacy Council of India - Regulations 2014 (CBCS)</p>
+        </header>
+        
+        <div class="nav">
+            <a href="#overview">Overview</a>
+            <a href="#sem1">Sem 1</a>
+            <a href="#sem2">Sem 2</a>
+            <a href="#sem3">Sem 3</a>
+            <a href="#sem5">Sem 5</a>
+            <a href="#sem6">Sem 6</a>
+            <a href="#sem7">Sem 7</a>
+            <a href="#sem8">Sem 8</a>
+        </div>
+        
+        <div class="content">
+            <!-- OVERVIEW -->
+            <div id="overview">
+                <div class="section-title">Program Overview</div>
+                
+                <div class="info-box">
+                    <strong>📋 Program Structure:</strong>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Duration: 8 Semesters (4 Academic Years)</li>
+                        <li>Total Credits: 208</li>
+                        <li>Minimum Attendance: 80% in each course</li>
+                        <li>Medium of Instruction: English</li>
+                        <li>Odd Semesters: June/July to November/December</li>
+                        <li>Even Semesters: December/January to May/June</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight">
+                    <strong>⚠️ Important Regulations:</strong>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>I-II sem courses must be completed before attending III sem</li>
+                        <li>III-IV sem courses must be completed before attending V sem</li>
+                        <li>V-VI sem courses must be completed before attending VII sem</li>
+                        <li>Minimum 50% pass criteria in each course</li>
+                        <li>Practice School: 150 hours (Semester VII)</li>
+                        <li>Research Project: 8 Credits (Semester VIII)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- SEMESTER 1 -->
+            <div id="sem1" class="semester">
+                <div class="sem-header">
+                    <span>Semester I (Odd)</span>
+                    <span class="sem-credits">27-30 Credits</span>
+                </div>
+                <div class="sem-body">
+                    <p style="color: #666; margin-bottom: 20px;">First semester foundation courses focusing on basic sciences and pharmaceutical fundamentals.</p>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <span class="course-code">BP101T</span>
+                            <div class="course-title">Human Anatomy & Physiology I</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Introduction to human body and homeostasis</div>
+                                <div class="topic-item">Cell biology and tissues</div>
+                                <div class="topic-item">Cardiovascular system</div>
+                                <div class="topic-item">Respiratory system</div>
+                                <div class="topic-item">Nervous system basics</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP102T</span>
+                            <div class="course-title">Pharmaceutical Analysis I</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Analytical chemistry fundamentals</div>
+                                <div class="topic-item">Gravimetric analysis</div>
+                                <div class="topic-item">Volumetric analysis & titrimetry</div>
+                                <div class="topic-item">Acid-base titrations</div>
+                                <div class="topic-item">Redox titrations</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP103T</span>
+                            <div class="course-title">Pharmaceutics I</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Introduction to pharmaceutics</div>
+                                <div class="topic-item">Pharmaceutical processes</div>
+                                <div class="topic-item">Particle size distribution</div>
+                                <div class="topic-item">Powders and granules</div>
+                                <div class="topic-item">Granulation processes</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP104T</span>
+                            <div class="course-title">Pharmaceutical Inorganic Chemistry</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Atomic structure & chemical bonding</div>
+                                <div class="topic-item">Periodic table properties</div>
+                                <div class="topic-item">Inorganic pharmaceuticals</div>
+                                <div class="topic-item">Electrolytes & non-electrolytes</div>
+                                <div class="topic-item">Dosage forms of inorganic drugs</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP105T</span>
+                            <div class="course-title">Communication Skills</div>
+                            <div class="course-details">2L (2 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Professional communication</div>
+                                <div class="topic-item">Written communication skills</div>
+                                <div class="topic-item">Presentation skills</div>
+                                <div class="topic-item">Interpersonal communication</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; background: #e8f4f8; padding: 15px; border-radius: 5px;">
+                        <strong>Practical Courses:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>BP107P: Anatomy & Physiology Practical (4P, 2 Cr)</li>
+                            <li>BP108P: Pharmaceutical Analysis I Practical (4P, 2 Cr)</li>
+                            <li>BP109P: Pharmaceutics I Practical (4P, 2 Cr)</li>
+                            <li>BP110P: Inorganic Chemistry Practical (4P, 2 Cr)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEMESTER 2 -->
+            <div id="sem2" class="semester">
+                <div class="sem-header">
+                    <span>Semester II (Even)</span>
+                    <span class="sem-credits">30 Credits</span>
+                </div>
+                <div class="sem-body">
+                    <p style="color: #666; margin-bottom: 20px;">Continuation of basic sciences with introduction to analytical methods and organic chemistry.</p>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <span class="course-code">BP201T</span>
+                            <div class="course-title">Anatomy & Physiology II</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Gastrointestinal system</div>
+                                <div class="topic-item">Endocrine system</div>
+                                <div class="topic-item">Urinary system</div>
+                                <div class="topic-item">Reproductive system</div>
+                                <div class="topic-item">Immune system</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP202T</span>
+                            <div class="course-title">Pharmaceutical Analysis II</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">UV-Visible spectroscopy</div>
+                                <div class="topic-item">Fluorimetry</div>
+                                <div class="topic-item">Chromatography fundamentals</div>
+                                <div class="topic-item">Gas chromatography basics</div>
+                                <div class="topic-item">Optical methods</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP203T</span>
+                            <div class="course-title">Pharmaceutics II</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Liquid dosage forms</div>
+                                <div class="topic-item">Solutions & suspensions</div>
+                                <div class="topic-item">Emulsions</div>
+                                <div class="topic-item">Semi-solid dosage forms</div>
+                                <div class="topic-item">Evaluation of formulations</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP204T</span>
+                            <div class="course-title">Organic Chemistry I</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Nomenclature & isomerism</div>
+                                <div class="topic-item">Reaction mechanisms</div>
+                                <div class="topic-item">Alkanes, alkenes, alkynes</div>
+                                <div class="topic-item">Aromatic compounds</div>
+                                <div class="topic-item">Functional groups</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP205T</span>
+                            <div class="course-title">Biochemistry I</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Carbohydrate metabolism</div>
+                                <div class="topic-item">Lipid metabolism</div>
+                                <div class="topic-item">Protein metabolism</div>
+                                <div class="topic-item">Nucleic acids</div>
+                                <div class="topic-item">Enzyme kinetics</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; background: #e8f4f8; padding: 15px; border-radius: 5px;">
+                        <strong>Practical Courses:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>BP206P: Anatomy & Physiology II Practical (4P, 2 Cr)</li>
+                            <li>BP207P: Pharmaceutical Analysis II Practical (4P, 2 Cr)</li>
+                            <li>BP208P: Pharmaceutics II Practical (4P, 2 Cr)</li>
+                            <li>BP209P: Organic Chemistry I Practical (4P, 2 Cr)</li>
+                            <li>BP210P: Biochemistry Practical (4P, 2 Cr)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEMESTER 3 -->
+            <div id="sem3" class="semester">
+                <div class="sem-header">
+                    <span>Semester III (Odd)</span>
+                    <span class="sem-credits">30 Credits</span>
+                </div>
+                <div class="sem-body">
+                    <p style="color: #666; margin-bottom: 20px;">Introduction to pharmacology, pathophysiology, and specialized pharmaceutical sciences.</p>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <span class="course-code">BP301T</span>
+                            <div class="course-title">Pathophysiology</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Disease mechanisms</div>
+                                <div class="topic-item">Inflammation & immunity</div>
+                                <div class="topic-item">Cardiovascular diseases</div>
+                                <div class="topic-item">Respiratory diseases</div>
+                                <div class="topic-item">Metabolic disorders</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP302T</span>
+                            <div class="course-title">Organic Chemistry II</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Heterocyclic compounds</div>
+                                <div class="topic-item">Reduction reactions</div>
+                                <div class="topic-item">Oxidation reactions</div>
+                                <div class="topic-item">Pharmaceutical synthesis</div>
+                                <div class="topic-item">Structure-activity relationships</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP303T</span>
+                            <div class="course-title">Biochemistry II</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Advanced enzyme kinetics</div>
+                                <div class="topic-item">Bioenergetics</div>
+                                <div class="topic-item">Signal transduction</div>
+                                <div class="topic-item">Gene expression</div>
+                                <div class="topic-item">Recombinant DNA technology</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP304T</span>
+                            <div class="course-title">Pharmacology I</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">General pharmacology principles</div>
+                                <div class="topic-item">Pharmacokinetics</div>
+                                <div class="topic-item">Pharmacodynamics</div>
+                                <div class="topic-item">Drug-receptor interactions</div>
+                                <div class="topic-item">ANS drugs</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP305T</span>
+                            <div class="course-title">Social Pharmacy</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Pharmacy practice</div>
+                                <div class="topic-item">Healthcare systems</div>
+                                <div class="topic-item">Community pharmacy</div>
+                                <div class="topic-item">Epidemiology basics</div>
+                                <div class="topic-item">Drug utilization studies</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; background: #e8f4f8; padding: 15px; border-radius: 5px;">
+                        <strong>Practical Courses:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>BP306P: Pathophysiology Practical (4P, 2 Cr)</li>
+                            <li>BP307P: Organic Chemistry II Practical (4P, 2 Cr)</li>
+                            <li>BP308P: Biochemistry II Practical (4P, 2 Cr)</li>
+                            <li>BP309P: Pharmacology I Practical (4P, 2 Cr)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEMESTER 5 -->
+            <div id="sem5" class="semester">
+                <div class="sem-header">
+                    <span>Semester V (Odd)</span>
+                    <span class="sem-credits">30 Credits</span>
+                </div>
+                <div class="sem-body">
+                    <p style="color: #666; margin-bottom: 20px;">Advanced courses in pharmacology, drug delivery, and analytical techniques.</p>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <span class="course-code">BP501T</span>
+                            <div class="course-title">Pharmacology III</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">CNS drugs & psychopharmacology</div>
+                                <div class="topic-item">Antipsychotics</div>
+                                <div class="topic-item">Antidepressants</div>
+                                <div class="topic-item">Anxiolytics</div>
+                                <div class="topic-item">Anticonvulsants</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP502T</span>
+                            <div class="course-title">Medicinal Chemistry II</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Drug metabolism</div>
+                                <div class="topic-item">Metabolic pathways</div>
+                                <div class="topic-item">Phase I, II, III reactions</div>
+                                <div class="topic-item">Drug-drug interactions</div>
+                                <div class="topic-item">Personalized medicine</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP503T</span>
+                            <div class="course-title">Pharmacognosy II</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Secondary metabolites</div>
+                                <div class="topic-item">Alkaloids</div>
+                                <div class="topic-item">Glycosides</div>
+                                <div class="topic-item">Terpenes & essential oils</div>
+                                <div class="topic-item">Phytochemical analysis</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP504T</span>
+                            <div class="course-title">Pharmaceutics III</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Dosage form design</div>
+                                <div class="topic-item">Bioavailability</div>
+                                <div class="topic-item">Biopharmaceutics</div>
+                                <div class="topic-item">Formulation development</div>
+                                <div class="topic-item">Advanced drug delivery</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP505T</span>
+                            <div class="course-title">Pharmaceutical Analysis III</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">HPLC techniques</div>
+                                <div class="topic-item">Mass spectrometry</div>
+                                <div class="topic-item">NMR spectroscopy</div>
+                                <div class="topic-item">Thermal analysis</div>
+                                <div class="topic-item">Method validation</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; background: #e8f4f8; padding: 15px; border-radius: 5px;">
+                        <strong>Practical Courses:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>BP506P: Pharmacology III Practical (4P, 2 Cr)</li>
+                            <li>BP507P: Medicinal Chemistry II Practical (4P, 2 Cr)</li>
+                            <li>BP508P: Pharmacognosy II Practical (4P, 2 Cr)</li>
+                            <li>BP509P: Pharmaceutics III Practical (4P, 2 Cr)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEMESTER 6 -->
+            <div id="sem6" class="semester">
+                <div class="sem-header">
+                    <span>Semester VI (Even)</span>
+                    <span class="sem-credits">30 Credits</span>
+                </div>
+                <div class="sem-body">
+                    <p style="color: #666; margin-bottom: 20px;">Clinical and industrial pharmacy with regulatory and management aspects.</p>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <span class="course-code">BP601T</span>
+                            <div class="course-title">Pharmacology IV</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">GI tract drugs</div>
+                                <div class="topic-item">Respiratory drugs</div>
+                                <div class="topic-item">Antimicrobial agents</div>
+                                <div class="topic-item">Antiinfective drugs</div>
+                                <div class="topic-item">Antiparasitic drugs</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP602T</span>
+                            <div class="course-title">Biopharmaceutics & Pharmacokinetics</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Absorption mechanisms</div>
+                                <div class="topic-item">Distribution</div>
+                                <div class="topic-item">Metabolism & excretion (ADME)</div>
+                                <div class="topic-item">Compartmental models</div>
+                                <div class="topic-item">Non-compartmental models</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP603T</span>
+                            <div class="course-title">Pharmaceutical Microbiology</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Microorganisms & infection</div>
+                                <div class="topic-item">Sterilization methods</div>
+                                <div class="topic-item">Disinfection techniques</div>
+                                <div class="topic-item">Product preservation</div>
+                                <div class="topic-item">Contamination control</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP604T</span>
+                            <div class="course-title">Pharmaceutical Economics & Management</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Pharmacy management</div>
+                                <div class="topic-item">Healthcare economics</div>
+                                <div class="topic-item">Cost-benefit analysis</div>
+                                <div class="topic-item">Pharmaceutical pricing</div>
+                                <div class="topic-item">Insurance & reimbursement</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP605T</span>
+                            <div class="course-title">Regulatory Affairs</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Drug approval process</div>
+                                <div class="topic-item">GMP standards</div>
+                                <div class="topic-item">Quality standards</div>
+                                <div class="topic-item">Documentation</div>
+                                <div class="topic-item">Compliance & audits</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; background: #e8f4f8; padding: 15px; border-radius: 5px;">
+                        <strong>Practical Courses:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>BP606P: Biopharmaceutics & Pharmacokinetics Practical (4P, 2 Cr)</li>
+                            <li>BP607P: Pharmaceutical Microbiology Practical (4P, 2 Cr)</li>
+                            <li>BP608P: Economics & Management Practical (4P, 2 Cr)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEMESTER 7 -->
+            <div id="sem7" class="semester">
+                <div class="sem-header">
+                    <span>Semester VII (Odd) - With Practice School</span>
+                    <span class="sem-credits">30 Credits</span>
+                </div>
+                <div class="sem-body">
+                    <p style="color: #666; margin-bottom: 20px;">Advanced clinical pharmacy with mandatory 150-hour practice school internship.</p>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <span class="course-code">BP701T</span>
+                            <div class="course-title">Pharmacology V</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Endocrine drugs</div>
+                                <div class="topic-item">Hormonal therapy</div>
+                                <div class="topic-item">Immunosuppressive agents</div>
+                                <div class="topic-item">Anti-inflammatory drugs</div>
+                                <div class="topic-item">Chemotherapy agents</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP702T</span>
+                            <div class="course-title">Advanced Pharmacology</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Drug interactions</div>
+                                <div class="topic-item">Adverse drug reactions</div>
+                                <div class="topic-item">Toxicology</div>
+                                <div class="topic-item">Pharmacovigilance</div>
+                                <div class="topic-item">Clinical pharmacology</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP703T</span>
+                            <div class="course-title">Pharmacy Practice</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Clinical pharmacy</div>
+                                <div class="topic-item">Therapeutic drug monitoring</div>
+                                <div class="topic-item">Drug information services</div>
+                                <div class="topic-item">Patient counseling</div>
+                                <div class="topic-item">Error prevention</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP704T</span>
+                            <div class="course-title">Novel Drug Delivery Systems</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Nanoparticles</div>
+                                <div class="topic-item">Liposomes</div>
+                                <div class="topic-item">Microspheres</div>
+                                <div class="topic-item">Transdermal systems</div>
+                                <div class="topic-item">Targeted drug delivery</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP705T</span>
+                            <div class="course-title">Medicinal Chemistry III</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Antimicrobial agents synthesis</div>
+                                <div class="topic-item">Anticancer agents</div>
+                                <div class="topic-item">Cardiovascular synthesis</div>
+                                <div class="topic-item">SAR studies</div>
+                                <div class="topic-item">Lead optimization</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; background: #e8f4f8; padding: 15px; border-radius: 5px;">
+                        <strong>Practical Courses & Internship:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>BP706P: Advanced Pharmacology Practical (4P, 2 Cr)</li>
+                            <li>BP707P: Pharmacy Practice Practical (4P, 2 Cr)</li>
+                            <li>BP708P: Novel Drug Delivery Practical (4P, 2 Cr)</li>
+                            <li style="background: #fff3cd; padding: 8px; margin-top: 10px;"><strong>⭐ PRACTICE SCHOOL: 150 hours (4 Credits)</strong>
+                                <ul style="margin-left: 20px; margin-top: 8px;">
+                                    <li>Hospital Pharmacy (50 hrs) OR</li>
+                                    <li>Community Pharmacy (50 hrs) OR</li>
+                                    <li>Clinical Research Organization (50 hrs) OR</li>
+                                    <li>Research Organization (50 hrs)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SEMESTER 8 -->
+            <div id="sem8" class="semester">
+                <div class="sem-header">
+                    <span>Semester VIII (Even) - With Project</span>
+                    <span class="sem-credits">30 Credits</span>
+                </div>
+                <div class="sem-body">
+                    <p style="color: #666; margin-bottom: 20px;">Final semester with research project/dissertation and advanced specialized courses.</p>
+                    <div class="courses-grid">
+                        <div class="course-card">
+                            <span class="course-code">BP801T</span>
+                            <div class="course-title">Pharmaceutical Research</div>
+                            <div class="course-details">2L (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Research methodology</div>
+                                <div class="topic-item">Project planning & execution</div>
+                                <div class="topic-item">Data analysis & interpretation</div>
+                                <div class="topic-item">Scientific writing</div>
+                                <div class="topic-item">Project presentation</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP802T</span>
+                            <div class="course-title">Biopharmaceutics & Pharmacokinetics (Adv)</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Nonlinear pharmacokinetics</div>
+                                <div class="topic-item">DDI & drug interactions</div>
+                                <div class="topic-item">Population pharmacokinetics</div>
+                                <div class="topic-item">Bioequivalence studies</div>
+                                <div class="topic-item">Clinical trial designs</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP803T</span>
+                            <div class="course-title">Pharmaceutical Product Development</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">Product development process</div>
+                                <div class="topic-item">Formulation development</div>
+                                <div class="topic-item">Process optimization</div>
+                                <div class="topic-item">Stability testing</div>
+                                <div class="topic-item">Tech transfer</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">BP804T</span>
+                            <div class="course-title">Drug Regulatory Affairs</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Key Topics:</strong>
+                                <div class="topic-item">CDSCO regulations</div>
+                                <div class="topic-item">WHO guidelines</div>
+                                <div class="topic-item">ICH guidelines</div>
+                                <div class="topic-item">Dossier preparation</div>
+                                <div class="topic-item">Clinical trial regulations</div>
+                            </div>
+                        </div>
+                        
+                        <div class="course-card">
+                            <span class="course-code">ELECTIVE</span>
+                            <div class="course-title">Elective Course (Any One)</div>
+                            <div class="course-details">3L+1T (4 Credits) | Theory</div>
+                            <div class="topics">
+                                <strong>Options:</strong>
+                                <div class="topic-item">Pharmaceutical Product Development</div>
+                                <div class="topic-item">Advanced Analysis</div>
+                                <div class="topic-item">Cosmetics Formulation</div>
+                                <div class="topic-item">Clinical Pharmacology</div>
+                                <div class="topic-item">Pharmaceutical Entrepreneurship</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 20px; background: #e8f4f8; padding: 15px; border-radius: 5px;">
+                        <strong>Practical Courses & Project:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>BP805P: Pharmaceutical Research Practical (8P, 4 Cr)</li>
+                            <li>BP806P: Elective Practical (4P, 2 Cr)</li>
+                            <li style="background: #fff3cd; padding: 8px; margin-top: 10px;"><strong>⭐ CAPSTONE PROJECT: Research/Product Development (4 Credits)</strong>
+                                <ul style="margin-left: 20px; margin-top: 8px;">
+                                    <li>Group project (Max 5 students)</li>
+                                    <li>Dissertation/Research work</li>
+                                    <li>Evaluated by internal & external examiners</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GRADING SYSTEM -->
+            <div class="section-title">Assessment & Grading System</div>
+            
+            <table>
+                <tr>
+                    <th>Grade</th>
+                    <th>Grade Points</th>
+                    <th>Percentage Range</th>
+                </tr>
+                <tr>
+                    <td>A+</td>
+                    <td>10</td>
+                    <td>90-100%</td>
+                </tr>
+                <tr>
+                    <td>A</td>
+                    <td>9</td>
+                    <td>80-89%</td>
+                </tr>
+                <tr>
+                    <td>B+</td>
+                    <td>8</td>
+                    <td>70-79%</td>
+                </tr>
+                <tr>
+                    <td>B</td>
+                    <td>7</td>
+                    <td>60-69%</td>
+                </tr>
+                <tr>
+                    <td>C</td>
+                    <td>6</td>
+                    <td>50-59%</td>
+                </tr>
+                <tr>
+                    <td>P (Pass)</td>
+                    <td>5</td>
+                    <td>40-49%</td>
+                </tr>
+                <tr>
+                    <td>F (Fail)</td>
+                    <td>0</td>
+                    <td>&lt;40%</td>
+                </tr>
+                <tr>
+                    <td>AB (Absent)</td>
+                    <td>0</td>
+                    <td>-</td>
+                </tr>
+            </table>
+            
+            <div class="info-box" style="margin-top: 30px;">
+                <strong>📊 GPA Calculation:</strong>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>SGPA</strong> = Σ(Credit × Grade Point) / Σ Credits</li>
+                    <li><strong>CGPA</strong> = (Σ SGPA of all 8 semesters × corresponding credits) / Total Credits</li>
+                </ul>
+            </div>
+            
+            <!-- COMPETENCIES -->
+            <div class="section-title" style="margin-top: 40px;">Key Competencies to Develop</div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 20px 0;">
+                <div style="background: #e8f4f8; padding: 15px; border-radius: 5px; border-left: 4px solid #667eea;">
+                    <strong>✓ Pharmaceutical Knowledge</strong>
+                    <p style="margin-top: 8px; font-size: 0.95em;">Advanced knowledge of drugs, formulations, and therapeutic applications</p>
+                </div>
+                <div style="background: #e8f4f8; padding: 15px; border-radius: 5px; border-left: 4px solid #667eea;">
+                    <strong>✓ Research & Analysis</strong>
+                    <p style="margin-top: 8px; font-size: 0.95em;">Problem-solving, experimentation, and data interpretation skills</p>
+                </div>
+                <div style="background: #e8f4f8; padding: 15px; border-radius: 5px; border-left: 4px solid #667eea;">
+                    <strong>✓ Clinical Practice</strong>
+                    <p style="margin-top: 8px; font-size: 0.95em;">Patient care, drug therapy monitoring, and clinical judgment</p>
+                </div>
+                <div style="background: #e8f4f8; padding: 15px; border-radius: 5px; border-left: 4px solid #667eea;">
+                    <strong>✓ Communication</strong>
+                    <p style="margin-top: 8px; font-size: 0.95em;">Professional writing, presentations, and patient counseling</p>
+                </div>
+                <div style="background: #e8f4f8; padding: 15px; border-radius: 5px; border-left: 4px solid #667eea;">
+                    <strong>✓ Ethics & Compliance</strong>
+                    <p style="margin-top: 8px; font-size: 0.95em;">Professional responsibility, regulations, and ethical practice</p>
+                </div>
+                <div style="background: #e8f4f8; padding: 15px; border-radius: 5px; border-left: 4px solid #667eea;">
+                    <strong>✓ Leadership & Teamwork</strong>
+                    <p style="margin-top: 8px; font-size: 0.95em;">Collaboration, project management, and professional development</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>B.Pharm Syllabus - Semester Wise Important Notes</strong></p>
+            <p>Source: Pharmacy Council of India - Bachelor of Pharmacy (B.Pharm) Regulations 2014</p>
+            <p>Created: May 2026 | Updated: Comprehensive Edition</p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: #999;">This document is for educational purposes and contains key topics from the official PCI syllabus.</p>
+        </footer>
+    </div>
+</body>
+</html>

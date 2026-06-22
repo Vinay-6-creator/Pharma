@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Virtual Lab - Pharmacy Practicals | PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: none;
+      padding: 14px 22px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(34, 197, 94, 0.24);
+    }
+
+    .practicals-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .practical-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .practical-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.12);
+    }
+
+    .practical-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      color: var(--blue);
+    }
+
+    .practical-card p {
+      margin: 0 0 16px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .practical-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .hero-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-section p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--surface);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 900px;
+      width: 90%;
+      max-height: 85vh;
+      overflow-y: auto;
+      box-shadow: var(--shadow);
+      position: relative;
+      animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 16px;
+    }
+
+    .modal-header h2 {
+      margin: 0;
+      color: var(--blue);
+      font-size: 1.8rem;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .close-btn:hover {
+      color: var(--text);
+    }
+
+    .practicals-list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .practical-item {
+      background: var(--surface-strong);
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .practical-item:hover {
+      border-color: var(--blue);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.15);
+    }
+
+    .practical-item h3 {
+      margin: 0 0 8px;
+      color: var(--blue);
+      font-size: 1.2rem;
+    }
+
+    .practical-item .experiment-number {
+      display: inline-block;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+
+    .procedure-section {
+      margin-top: 16px;
+    }
+
+    .procedure-section strong {
+      color: var(--blue);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .procedure-section ol {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .procedure-section li {
+      margin-bottom: 8px;
+    }
+
+    .materials-section {
+      margin-top: 12px;
+    }
+
+    .materials-section strong {
+      color: var(--green);
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .materials-section p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <!-- Modal for Practicals -->
+  <div class="modal" id="practicalModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modalTitle">Practicals</h2>
+        <button class="close-btn" onclick="closePracticalModal()">✕</button>
+      </div>
+      <div class="practicals-list" id="practicalsList"></div>
+    </div>
+  </div>
+
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="brand">
+          <div class="brand-icon">Px</div>
+          PharmaX
+        </a>
+        <nav>
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="study-hub.html" class="nav-link">Study Hub</a>
+          <a href="virtual-lab.html" class="nav-link">Virtual Lab</a>
+          <a href="ai-chat.html" class="nav-link">AI Chat</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero-section">
+        <h1>Virtual Lab - Pharmacy Practicals</h1>
+        <p>Master essential pharmacy practicals through interactive simulations and step-by-step guides. Practice safely and effectively before real lab work.</p>
+      </section>
+
+      <div class="practicals-grid">
+        <div class="practical-card">
+          <h3>💊 Tablet Formulation</h3>
+          <p>Learn the process of tablet manufacturing, including granulation, compression, and quality control testing.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+
+        <div class="practical-card">
+          <h3>🧴 Cream & Ointment Preparation</h3>
+          <p>Practice preparing various topical formulations, understanding emulsification and stability testing.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+
+        <div class="practical-card">
+          <h3>💉 Sterile Solutions</h3>
+          <p>Master aseptic techniques for preparing injectable solutions and parenteral products.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+
+        <div class="practical-card">
+          <h3>🧪 Quality Control Testing</h3>
+          <p>Perform essential QC tests including dissolution, disintegration, and content uniformity.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+
+        <div class="practical-card">
+          <h3>🌿 Herbal Extraction</h3>
+          <p>Learn various extraction methods for herbal medicines and phytochemical analysis.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+
+        <div class="practical-card">
+          <h3>📊 Drug Analysis</h3>
+          <p>Practice spectroscopic and chromatographic techniques for drug identification and quantification.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+
+        <div class="practical-card">
+          <h3>🦠 Microbiological Testing</h3>
+          <p>Conduct sterility testing, microbial limit tests, and antibiotic assay procedures.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+
+        <div class="practical-card">
+          <h3>⚗️ Chemical Synthesis</h3>
+          <p>Explore organic synthesis of pharmaceutical compounds and reaction monitoring.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+
+        <div class="practical-card">
+          <h3>📏 Calibration & Validation</h3>
+          <p>Learn instrument calibration procedures and analytical method validation techniques.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+
+        <div class="practical-card">
+          <h3>🏥 Hospital Pharmacy Practice</h3>
+          <p>Simulate hospital pharmacy operations including drug dispensing and patient counseling.</p>
+          <button class="btn btn-primary">Start Practical</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const practicalsData = {
+      0: {
+        title: "💊 Tablet Formulation",
+        practicals: [
+          {
+            name: "Direct Compression Tablet",
+            materials: "Microcrystalline cellulose, Paracetamol, Magnesium stearate, Tablet press",
+            procedure: [
+              "Weigh all raw materials accurately",
+              "Mix paracetamol with microcrystalline cellulose in a mortar",
+              "Add magnesium stearate as lubricant and mix gently",
+              "Fill the mixture into tablet press",
+              "Set compression force to 500-600 kg",
+              "Press tablets at controlled speed",
+              "Collect tablets and perform hardness test",
+              "Check for capping and lamination defects"
+            ]
+          },
+          {
+            name: "Wet Granulation Tablet",
+            materials: "Paracetamol, Glucose, PVP, Distilled water, Magnesium stearate",
+            procedure: [
+              "Mix paracetamol and glucose in a planetary mixer",
+              "Prepare binder solution with PVP in distilled water",
+              "Gradually add binder to the dry mix",
+              "Granulate using granulation equipment",
+              "Dry granules in a hot air oven at 60°C",
+              "Pass through sieve #40 to break large granules",
+              "Add magnesium stearate to granules",
+              "Compress using tablet press at optimized parameters"
+            ]
+          },
+          {
+            name: "Multi-layer Tablet",
+            materials: "Different drug powders, Excipients, Layer tablet press",
+            procedure: [
+              "Prepare three different layer mixtures separately",
+              "Compress first layer bottom in tablet press",
+              "Add second layer mixture on top",
+              "Press with appropriate force",
+              "Add final layer and compress",
+              "Verify layer separation visually",
+              "Check thickness and hardness",
+              "Perform dissolution test for each layer"
+            ]
+          },
+          {
+            name: "Effervescent Tablet",
+            materials: "Citric acid, Sodium bicarbonate, Aspirin, Mannitol, Isopropyl alcohol",
+            procedure: [
+              "Weigh citric acid and sodium bicarbonate in molar ratio 1:1.5",
+              "Mix dry aspirin with mannitol",
+              "Add binders and wet agents gradually",
+              "Dry the granules completely",
+              "Sieve to uniform size",
+              "Press at low compression force to prevent decomposition",
+              "Store in moisture-proof container",
+              "Test effervescence by dissolving in water"
+            ]
+          }
+        ]
+      },
+      1: {
+        title: "🧴 Cream & Ointment Preparation",
+        practicals: [
+          {
+            name: "O/W Emulsion Cream",
+            materials: "Liquid paraffin, Cetyl alcohol, Tween 80, Water, Preservatives",
+            procedure: [
+              "Heat liquid paraffin and cetyl alcohol to 70°C",
+              "Dissolve Tween 80 in the heated oil phase",
+              "Heat distilled water to 70°C separately",
+              "Add water phase slowly to oil phase with continuous stirring",
+              "Cool to 40°C while stirring",
+              "Cool to room temperature",
+              "Add preservatives and mix",
+              "Check consistency and stability"
+            ]
+          },
+          {
+            name: "W/O Emulsion Cream",
+            materials: "Beeswax, Liquid paraffin, Glycerin, Span 80, Water",
+            procedure: [
+              "Melt beeswax and liquid paraffin at 70°C",
+              "Dissolve Span 80 in the melted wax-oil mixture",
+              "Heat glycerin and water separately to 70°C",
+              "Add aqueous phase dropwise to oil phase",
+              "Stir continuously during addition",
+              "Cool the mixture gradually",
+              "Test for type of emulsion using electrical conductivity",
+              "Verify consistency and spreadability"
+            ]
+          },
+          {
+            name: "Simple Ointment Base",
+            materials: "Hard paraffin, Soft paraffin, Beeswax, Medicinal agent",
+            procedure: [
+              "Weigh hard paraffin, soft paraffin, and beeswax in ratio 2:7:1",
+              "Heat in water bath at 70-80°C until melted",
+              "Mix thoroughly to uniform consistency",
+              "Add medicinal agent (5-10%) if required",
+              "Cool on a clean surface while stirring",
+              "Test consistency at room temperature",
+              "Check for greasiness and spreadability",
+              "Store in airtight containers"
+            ]
+          },
+          {
+            name: "Medicated Cream Preparation",
+            materials: "Lanolin, Cetostearyl alcohol, Liquid paraffin, Drug powder, Water",
+            procedure: [
+              "Weigh all materials accurately",
+              "Prepare oil phase: Heat lanolin, cetostearyl alcohol, and liquid paraffin",
+              "Prepare aqueous phase: Dissolve preservatives in water",
+              "Heat both phases to 75°C",
+              "Add aqueous phase to oil phase with vigorous stirring",
+              "Cool to 45°C while stirring continuously",
+              "Dissolve drug powder in small amount of cream base",
+              "Mix drug suspension into main batch and cool"
+            ]
+          }
+        ]
+      },
+      2: {
+        title: "💉 Sterile Solutions",
+        practicals: [
+          {
+            name: "Aseptic Technique Practice",
+            materials: "Culture media, Petri dishes, Bunsen burner, Inoculation loop",
+            procedure: [
+              "Sterilize inoculation loop in flame until red hot",
+              "Cool the loop near flame for 2-3 seconds",
+              "Dip loop in culture suspension",
+              "Flame the mouth of culture tube for 2 seconds",
+              "Remove cooled loop from culture",
+              "Streake on sterilized agar plate using zigzag motion",
+              "Flame the agar plate mouth again",
+              "Incubate plates at 37°C for 24 hours"
+            ]
+          },
+          {
+            name: "Preparation of Normal Saline",
+            materials: "Sodium chloride, Distilled water, Volumetric flask, Filter papers",
+            procedure: [
+              "Calculate amount of NaCl needed for 0.9% solution",
+              "Weigh NaCl accurately",
+              "Dissolve in 50 mL distilled water",
+              "Transfer to 100 mL volumetric flask",
+              "Add distilled water up to mark",
+              "Mix thoroughly",
+              "Filter through membrane filter (0.22 µm)",
+              "Sterilize by autoclave at 121°C for 15 minutes"
+            ]
+          },
+          {
+            name: "Preparation of Injection Solutions",
+            materials: "Drug powder, Isotonic buffer, Sterile vials, Sterile needles",
+            procedure: [
+              "Calculate drug dose for desired concentration",
+              "Weigh drug powder in Class A balance",
+              "Dissolve drug in sterile isotonic buffer",
+              "Filter through 0.22 µm syringe filter",
+              "Transfer to sterile vials",
+              "Cap and crimp seals",
+              "Autoclave at 121°C for 15 minutes at 15 PSI",
+              "Perform sterility test after cooling"
+            ]
+          },
+          {
+            name: "Laminar Flow Cabinet Operation",
+            materials: "Laminar flow cabinet, Culture media, Petri dishes, Pipettes",
+            procedure: [
+              "Switch on laminar flow 5 minutes before use",
+              "Verify airflow using smoke test",
+              "Surface-sterilize workspace with 70% ethanol",
+              "Arrange all materials inside cabinet",
+              "Work within 15 cm from front of cabinet",
+              "Minimize hand movements in airflow",
+              "Flame mouth of all media bottles before opening",
+              "Complete all aseptic operations within cabinet"
+            ]
+          }
+        ]
+      },
+      3: {
+        title: "🧪 Quality Control Testing",
+        practicals: [
+          {
+            name: "Dissolution Test",
+            materials: "Dissolution apparatus, Test tablets, Dissolution medium, Spectrophotometer",
+            procedure: [
+              "Prepare dissolution medium (0.1 N HCl or pH 6.8 buffer)",
+              "Fill dissolution vessel with 900 mL medium",
+              "Heat medium to 37°C ± 0.5°C",
+              "Place tablet in dissolution apparatus basket",
+              "Rotate paddle at 50-100 RPM",
+              "Withdraw samples at 15, 30, 45, 60 minutes",
+              "Filter samples through 0.45 µm filter",
+              "Analyze by HPLC or UV spectrophotometry"
+            ]
+          },
+          {
+            name: "Disintegration Test",
+            materials: "Disintegration apparatus, Test tablets, 0.1 N HCl, Distilled water",
+            procedure: [
+              "Place six tablets in disintegration apparatus",
+              "Add 0.1 N HCl at 37°C ± 2°C",
+              "Start the apparatus",
+              "Record time when all tablets disintegrate",
+              "Repeat test for distilled water at room temperature",
+              "For coated tablets, conduct in pH 6.8 buffer first",
+              "Calculate average disintegration time",
+              "Compare with pharmacopeial limits"
+            ]
+          },
+          {
+            name: "Content Uniformity Test",
+            materials: "Individual tablets, Analytical balance, HPLC system, Reference standard",
+            procedure: [
+              "Select 10 tablets randomly from batch",
+              "Weigh each tablet individually",
+              "Dissolve each tablet separately in mobile phase",
+              "Prepare serial dilutions of standard drug",
+              "Inject standards in HPLC and create calibration curve",
+              "Inject tablet solutions in HPLC",
+              "Calculate drug content in each tablet",
+              "Calculate RSD and check acceptance criteria"
+            ]
+          },
+          {
+            name: "Hardness and Friability Test",
+            materials: "Tablet hardness tester, Friability tester, Test tablets",
+            procedure: [
+              "HARDNESS: Place tablet between jaws of hardness tester",
+              "Apply increasing pressure until tablet breaks",
+              "Record breaking force in kg",
+              "Test 6 tablets and calculate average",
+              "FRIABILITY: Weigh 6-10 tablets (W1)",
+              "Place in friability tester drum",
+              "Rotate 100 times at 25 RPM",
+              "Weigh tablets again (W2)",
+              "Calculate % friability = (W1-W2)/W1 × 100"
+            ]
+          }
+        ]
+      },
+      4: {
+        title: "🌿 Herbal Extraction",
+        practicals: [
+          {
+            name: "Cold Maceration",
+            materials: "Medicinal plant material, Solvent (ethanol/water), Glass container, Filter",
+            procedure: [
+              "Coarsely powder dried plant material",
+              "Calculate maceration liquid based on 1:5 drug:solvent ratio",
+              "Pour solvent into glass container",
+              "Add powdered material gradually",
+              "Stir well to ensure saturation",
+              "Cover container and keep for 7 days",
+              "Stir daily to enhance extraction",
+              "Filter using Whatman filter paper",
+              "Concentrate extract under reduced pressure if needed"
+            ]
+          },
+          {
+            name: "Hot Water Extraction (Decoction)",
+            materials: "Plant material, Distilled water, Heating apparatus, Filter",
+            procedure: [
+              "Coarsely chop dried plant material",
+              "Add 1 part plant material to 4 parts water",
+              "Bring to boil in stainless steel container",
+              "Reduce heat and simmer for 30 minutes",
+              "Filter the hot extract through muslin cloth",
+              "Cool the filtrate to room temperature",
+              "Store in amber-colored bottles",
+              "Perform phytochemical screening"
+            ]
+          },
+          {
+            name: "Soxhlet Extraction",
+            materials: "Plant material, Organic solvent, Soxhlet apparatus, Rotary evaporator",
+            procedure: [
+              "Pack finely ground plant material in thimble",
+              "Place thimble in Soxhlet extractor",
+              "Add solvent (ethanol/acetone) to round bottom flask",
+              "Fit the extraction apparatus to condenser",
+              "Heat at controlled temperature for 8-10 hours",
+              "Allow 15-20 extraction cycles",
+              "Cool the apparatus",
+              "Evaporate solvent using rotary evaporator at reduced pressure"
+            ]
+          },
+          {
+            name: "Ultrasound-Assisted Extraction",
+            materials: "Plant material, Solvent, Ultrasonic bath, Filter",
+            procedure: [
+              "Weigh required amount of plant material",
+              "Mix with solvent in 1:10 ratio",
+              "Place container in ultrasonic bath",
+              "Set frequency to 40 kHz and temperature to 25-35°C",
+              "Sonicate for 30-45 minutes",
+              "Cool to room temperature",
+              "Filter through Whatman filter paper",
+              "Concentrate extract if needed"
+            ]
+          }
+        ]
+      },
+      5: {
+        title: "📊 Drug Analysis",
+        practicals: [
+          {
+            name: "HPLC Analysis of Paracetamol",
+            materials: "HPLC system, Mobile phase buffer, Reference standard, Acetonitrile",
+            procedure: [
+              "Prepare mobile phase: pH 3 buffer:acetonitrile (80:20)",
+              "Filter mobile phase through 0.45 µm filter",
+              "Prepare reference standard solution (100 µg/mL)",
+              "Prepare sample solution from tablet extract",
+              "Condition HPLC column with mobile phase",
+              "Inject standard solution and record chromatogram",
+              "Inject sample and identify paracetamol peak",
+              "Calculate concentration using peak area"
+            ]
+          },
+          {
+            name: "UV-Visible Spectroscopy",
+            materials: "Spectrophotometer, Cuvettes, Reference standard, Sample solution",
+            procedure: [
+              "Scan reference standard from 200-400 nm",
+              "Note λmax (wavelength of maximum absorption)",
+              "Prepare serial dilutions of standard (10-50 µg/mL)",
+              "Measure absorbance of each dilution at λmax",
+              "Plot standard calibration curve",
+              "Prepare sample solution from drug formulation",
+              "Measure absorbance of sample at λmax",
+              "Calculate concentration using calibration curve"
+            ]
+          },
+          {
+            name: "Thin Layer Chromatography (TLC)",
+            materials: "TLC plates, Solvent system, Spotting solution, UV chamber",
+            procedure: [
+              "Mark baseline on TLC plate 1.5 cm from bottom",
+              "Prepare solvent system (e.g., hexane:ethanol 7:3)",
+              "Spot reference standard and sample on baseline",
+              "Place plate in chromatography chamber with solvent",
+              "Allow solvent to rise to 1 cm from top",
+              "Remove plate and dry in air",
+              "Visualize under UV 254 nm",
+              "Calculate Rf values for each spot"
+            ]
+          },
+          {
+            name: "FTIR Spectroscopy",
+            materials: "FTIR spectrometer, KBr pellets, Sample powder, Reference standard",
+            procedure: [
+              "Dry sample and reference standard",
+              "Prepare KBr pellet: Mix sample with KBr (1:100)",
+              "Press mixture at 10 kg/cm² pressure",
+              "Record IR spectrum from 4000-400 cm⁻¹",
+              "Identify characteristic peaks for functional groups",
+              "Compare sample spectrum with reference",
+              "Note positions of O-H, C=O, C-H stretches",
+              "Verify identity and purity of sample"
+            ]
+          }
+        ]
+      },
+      6: {
+        title: "🦠 Microbiological Testing",
+        practicals: [
+          {
+            name: "Sterility Testing",
+            materials: "Culture media, Test solution, Incubator, Petri dishes, Membrane filter",
+            procedure: [
+              "Prepare thioglycollate broth (for anaerobes)",
+              "Prepare soybean casein digest medium (for aerobes)",
+              "Sterilize all media by autoclave",
+              "Add test solution (0.5-1 mL) to each medium",
+              "Incubate thioglycollate at 30-35°C for 14 days",
+              "Incubate soybean medium at 20-25°C for 14 days",
+              "Daily observe for turbidity or growth",
+              "Record results (growth indicates failure)"
+            ]
+          },
+          {
+            name: "Microbial Limit Test",
+            materials: "Test suspension, Culture media, Dilution bottles, Petri dishes",
+            procedure: [
+              "Prepare decimal dilutions (10⁻¹, 10⁻², 10⁻³) of sample",
+              "Inoculate 1 mL of each dilution on agar plates",
+              "Spread using L-shaped spreader",
+              "Incubate at 32-35°C for 3 days",
+              "Count colonies on plates with 30-300 colonies",
+              "Calculate CFU/mL",
+              "Compare with pharmacopeial limits",
+              "Record organism types and numbers"
+            ]
+          },
+          {
+            name: "Antibiotic Assay (Cylinder Plate Method)",
+            materials: "Antibiotic reference standard, Culture medium, Petri plates, Cylinders",
+            procedure: [
+              "Pour cooled agar medium on plates (2 mm thick base layer)",
+              "Inoculate lawn with bacterial culture (0.02 mL per plate)",
+              "Place sterile cylinders on agar surface",
+              "Fill cylinders with antibiotic solution and standard",
+              "Allow diffusion at 4°C for 1-2 hours",
+              "Incubate at 37°C for 18-24 hours",
+              "Measure inhibition zones in mm",
+              "Calculate potency using standard curve"
+            ]
+          },
+          {
+            name: "Identification of Microorganisms",
+            materials: "Culture plates, Gram stain materials, Biochemical test kits",
+            procedure: [
+              "Prepare smear from isolated colonies",
+              "Perform Gram staining",
+              "Observe morphology (cocci/bacilli) and arrangement",
+              "Conduct biochemical tests: oxidase, catalase, TSI",
+              "Perform motility test using hanging drop",
+              "Conduct fermentation tests for various sugars",
+              "Use API strips or identification kits if needed",
+              "Compare with reference strain characteristics"
+            ]
+          }
+        ]
+      },
+      7: {
+        title: "⚗️ Chemical Synthesis",
+        practicals: [
+          {
+            name: "Acetylation of Salicylic Acid",
+            materials: "Salicylic acid, Acetic anhydride, Concentrated H2SO4, Ethanol",
+            procedure: [
+              "Weigh 1 g of salicylic acid",
+              "Add 3 mL acetic anhydride in round-bottom flask",
+              "Add 1 drop concentrated H2SO4 as catalyst",
+              "Heat mixture in water bath at 50°C for 2 minutes",
+              "Pour into 50 mL ice water with stirring",
+              "Filter the white precipitate formed",
+              "Wash with cold water",
+              "Recrystallize from hot ethanol"
+            ]
+          },
+          {
+            name: "Imine Formation Reaction",
+            materials: "Aldehyde/ketone, Primary amine, Ethanol, Molecular sieves",
+            procedure: [
+              "Add aldehyde (1 equiv) to reaction flask",
+              "Add primary amine (1.2 equiv)",
+              "Add molecular sieves (3Å or 4Å)",
+              "Stir at room temperature for 2-4 hours",
+              "Monitor progress using TLC",
+              "Filter off molecular sieves",
+              "Evaporate solvent under vacuum",
+              "Purify by column chromatography"
+            ]
+          },
+          {
+            name: "Esterification Reaction",
+            materials: "Carboxylic acid, Alcohol, Concentrated H2SO4, Sodium bicarbonate",
+            procedure: [
+              "Add acid (1 equiv) and alcohol (2 equiv) to flask",
+              "Add concentrated H2SO4 as catalyst (5-10% w/w)",
+              "Attach condenser and heat at 65°C for 4-6 hours",
+              "Cool to room temperature",
+              "Transfer to separatory funnel",
+              "Wash organic layer with sodium bicarbonate solution",
+              "Dry over anhydrous Na2SO4",
+              "Evaporate and purify by distillation"
+            ]
+          },
+          {
+            name: "Reduction Reaction with Sodium Borohydride",
+            materials: "Ketone/aldehyde, NaBH4, Ethanol, HCl, Ether",
+            procedure: [
+              "Dissolve ketone in ethanol (0.1 M solution)",
+              "Cool to 0°C in ice bath",
+              "Add NaBH4 (2 equiv) portionwise slowly",
+              "Stir for 30 minutes while warming to RT",
+              "Quench excess NaBH4 with dilute HCl",
+              "Extract product with ether",
+              "Wash organic layer with water and saturated NaCl",
+              "Dry over Na2SO4 and evaporate"
+            ]
+          }
+        ]
+      },
+      8: {
+        title: "📏 Calibration & Validation",
+        practicals: [
+          {
+            name: "Balance Calibration",
+            materials: "Calibrated weights, Analytical balance, Reference weights",
+            procedure: [
+              "Check level of balance using bubble level",
+              "Perform zero balance (tare) test",
+              "Test with standard weights (5g, 10g, 20g)",
+              "Check linearity across range",
+              "Verify repeatability by weighing same object 10 times",
+              "Calculate standard deviation",
+              "Check accuracy against certified weights",
+              "Perform calibration and document results"
+            ]
+          },
+          {
+            name: "Thermometer Calibration",
+            materials: "Thermometer under test, Reference thermometer, Ice, Boiling water",
+            procedure: [
+              "Prepare ice bath (0°C reference point)",
+              "Immerse thermometer to center of flask",
+              "Record reading at steady state",
+              "Prepare boiling water bath (100°C reference)",
+              "Record thermometer reading at steady state",
+              "Calculate calibration error",
+              "Prepare intermediate temperatures (25°C, 37°C)",
+              "Verify linearity and create calibration certificate"
+            ]
+          },
+          {
+            name: "HPLC Method Validation",
+            materials: "HPLC system, Reference standards, Test sample, Mobile phase",
+            procedure: [
+              "LINEARITY: Prepare 5-6 concentrations (50-250%)",
+              "Inject each concentration 3 times",
+              "Plot peak area vs concentration",
+              "Calculate R² (should be >0.99)",
+              "PRECISION: Prepare standard, inject 6 times",
+              "Calculate RSD (should be <2%)",
+              "ACCURACY: Add known amount of drug to sample",
+              "Recover and calculate % recovery (98-102%)"
+            ]
+          },
+          {
+            name: "UV Spectrophotometer Validation",
+            materials: "Spectrophotometer, Standard solutions, Cuvettes, Validation filters",
+            procedure: [
+              "WAVELENGTH ACCURACY: Use rare earth filter standards",
+              "Verify λmax matches certificate values",
+              "ABSORBANCE ACCURACY: Use calibrated standard solutions",
+              "Measure absorbance and verify against certificate",
+              "LINEARITY: Prepare serial dilutions",
+              "Measure absorbance and plot calibration curve",
+              "REPEATABILITY: Measure same solution 10 times",
+              "Calculate mean and RSD"
+            ]
+          }
+        ]
+      },
+      9: {
+        title: "🏥 Hospital Pharmacy Practice",
+        practicals: [
+          {
+            name: "Prescription Dispensing",
+            materials: "Patient prescription, Drug inventory, Dispensing labels, Counseling form",
+            procedure: [
+              "Receive and verify prescription details",
+              "Check patient allergies in pharmacy system",
+              "Verify drug-drug interactions",
+              "Check stock availability",
+              "Count/measure required quantity",
+              "Prepare dispensing label with directions",
+              "Verify prescription is for correct patient",
+              "Provide patient counseling and documents"
+            ]
+          },
+          {
+            name: "IV Admixture Preparation",
+            materials: "IV solution, Drug vial, Syringes, Needles, Alcohol wipe",
+            procedure: [
+              "Verify IV solution type and expiration",
+              "Confirm drug vial and concentration",
+              "Calculate required volume of drug",
+              "Swab injection port of IV bag with alcohol",
+              "Draw required volume of drug using syringe",
+              "Inject into IV bag port using sterile technique",
+              "Mix solution by gentle agitation",
+              "Label with drug name, concentration, expiration time"
+            ]
+          },
+          {
+            name: "Drug Inventory Management",
+            materials: "Inventory records, Drug stock, Computer system, Labels",
+            procedure: [
+              "Receive drug shipment and verify purchase order",
+              "Check drugs for damage and expiration date",
+              "Scan and input data into pharmacy system",
+              "Arrange drugs in stock following FIFO method",
+              "Update inventory count in system",
+              "Check for drugs nearing expiration",
+              "Maintain par levels for high-demand drugs",
+              "Record stock transfers between departments"
+            ]
+          },
+          {
+            name: "Patient Counseling",
+            materials: "Patient file, Drug information, Counseling checklist, Evaluation form",
+            procedure: [
+              "Review patient's medical history and allergies",
+              "Identify medication-related problems",
+              "Explain drug name and indication",
+              "Demonstrate correct administration method",
+              "Discuss side effects and precautions",
+              "Clarify drug-food and drug-drug interactions",
+              "Provide written information sheet",
+              "Encourage patient questions and assess understanding"
+            ]
+          }
+        ]
+      }
+    };
+
+    function openPracticalModal(index, title) {
+      const modal = document.getElementById('practicalModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const practicalsList = document.getElementById('practicalsList');
+
+      modalTitle.textContent = title;
+      practicalsList.innerHTML = '';
+
+      const practicals = practicalsData[index].practicals;
+      practicals.forEach((practical, idx) => {
+        const practicalHtml = `
+          <div class="practical-item">
+            <div>
+              <span class="experiment-number">Experiment ${idx + 1}</span>
+              <h3>${practical.name}</h3>
+            </div>
+            <div class="materials-section">
+              <strong>📦 Required Materials:</strong>
+              <p>${practical.materials}</p>
+            </div>
+            <div class="procedure-section">
+              <strong>⚙️ Procedure:</strong>
+              <ol>
+                ${practical.procedure.map(step => `<li>${step}</li>`).join('')}
+              </ol>
+            </div>
+          </div>
+        `;
+        practicalsList.innerHTML += practicalHtml;
+      });
+
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePracticalModal() {
+      const modal = document.getElementById('practicalModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    document.getElementById('practicalModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closePracticalModal();
+      }
+    });
+
+    // Attach click handlers to buttons
+    document.addEventListener('DOMContentLoaded', function() {
+      const buttons = document.querySelectorAll('.btn-primary');
+      buttons.forEach((button, index) => {
+        button.addEventListener('click', function() {
+          const card = this.closest('.practical-card');
+          const title = card.querySelector('h3').textContent;
+          openPracticalModal(index, title);
+        });
+      });
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closePracticalModal();
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Guide - Pharmacy Career Paths | PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 999px;
+      border: none;
+      padding: 14px 22px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      box-shadow: 0 18px 38px rgba(34, 197, 94, 0.24);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(148,163,184,0.3);
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .section-block {
+      margin-top: 36px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .section-header h2 {
+      margin: 0;
+      font-size: 1.6rem;
+      color: var(--text);
+    }
+
+    .section-header p {
+      margin: 4px 0 0;
+      color: var(--text-muted);
+      max-width: 760px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .info-card,
+    .topic-card,
+    .chip-card {
+      background: var(--surface);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .info-card:hover,
+    .topic-card:hover,
+    .chip-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 60px rgba(15, 23, 42, 0.1);
+    }
+
+    .info-card h3,
+    .chip-card h3,
+    .topic-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+      color: var(--blue);
+    }
+
+    .info-card p,
+    .chip-card p,
+    .topic-card p {
+      margin: 0 0 16px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .info-card ul {
+      margin: 0 0 18px;
+      padding-left: 18px;
+      color: var(--text-muted);
+    }
+
+    .info-card li {
+      margin-bottom: 8px;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .topic-card {
+      min-height: 180px;
+    }
+
+    .topic-card h3 {
+      color: #1d4ed8;
+    }
+
+    .chip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .chip-card {
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .chip-card h3 {
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .chip-card p {
+      font-size: 0.95rem;
+    }
+
+    .chip-card.purple {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(168, 85, 247, 0.12));
+      border-color: rgba(99, 102, 241, 0.25);
+    }
+
+    .info-card.blue h3 {
+      color: #1d4ed8;
+    }
+
+    .info-card.green h3 {
+      color: #047857;
+    }
+
+    .topic-label {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .tags {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .hero-section {
+      text-align: center;
+      margin-bottom: 32px;
+      padding: 20px 0;
+    }
+
+    .hero-section h1 {
+      font-size: clamp(2rem, 3vw, 3rem);
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #2563eb, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-section p {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto;
+      line-height: 1.75;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .stat-card {
+      border-radius: 20px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
+    }
+
+    .stat-number {
+      font-size: 2.1rem;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    .info-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-card ul {
+      list-style: disc;
+    }
+
+    .section-block:last-of-type {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="index.html" class="brand">
+          <div class="brand-icon">Px</div>
+          PharmaX
+        </a>
+        <nav>
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="study-hub.html" class="nav-link">Study Hub</a>
+          <a href="virtual-lab.html" class="nav-link">Virtual Lab</a>
+          <a href="career-guide.html" class="nav-link">Career Guide</a>
+          <a href="ai-chat.html" class="nav-link">AI Chat</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-body">
+      <section class="hero-section">
+        <h1>Opportunities After B.Pharm / M.Pharm in 2026</h1>
+        <p>Pharmacy careers are growing fast. Learn the best career paths, top exams, in-demand skills, and key topics to master for a successful future.</p>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">2026</div>
+            <div class="stat-label">High growth year for pharmacy careers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Top B.Pharm career options</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Popular M.Pharm roles</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">9</div>
+            <div class="stat-label">Must-have pharmacy skills</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-header">
+          <span class="section-tag">1</span>
+          <div>
+            <h2>After B.Pharm</h2>
+            <p>Career paths you can join immediately after B.Pharm, covering government jobs, pharmacy practice, and lab roles.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="info-card blue">
+            <h3>Government Pharmacist</h3>
+            <p>Serve in public health centres, hospitals, and state pharmacy departments.</p>
+            <ul>
+              <li>Drug stocking and distribution</li>
+              <li>Hospital pharmacy services</li>
+              <li>Government exam preparation</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Hospital Pharmacy, Pharmacology, Drug Management</p>
+          </article>
+
+          <article class="info-card blue">
+            <h3>Drug Inspector</h3>
+            <p>Inspect drug manufacturing and retail units for quality and compliance.</p>
+            <ul>
+              <li>Factory inspections</li>
+              <li>GMP audits</li>
+              <li>Regulatory enforcement</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Pharmacy Laws, QA/QC, GMP, Regulatory Affairs</p>
+          </article>
+
+          <article class="info-card blue">
+            <h3>Drug Analyst</h3>
+            <p>Work in analytical labs testing drug quality and purity.</p>
+            <ul>
+              <li>Sample analysis</li>
+              <li>Instrument operation</li>
+              <li>Result reporting</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Pharmaceutical Analysis, Analytical Chemistry, Lab Methods</p>
+          </article>
+
+          <article class="info-card blue">
+            <h3>QA / QC Officer</h3>
+            <p>Ensure pharmaceutical products meet quality standards before release.</p>
+            <ul>
+              <li>Quality audits</li>
+              <li>Batch testing</li>
+              <li>Documentation control</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Quality Assurance, Quality Control, SOPs, GMP</p>
+          </article>
+
+          <article class="info-card blue">
+            <h3>Production Executive</h3>
+            <p>Support manufacturing operations and manage production workflows.</p>
+            <ul>
+              <li>Batch planning</li>
+              <li>Process monitoring</li>
+              <li>Safety checks</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Industrial Pharmacy, Production Technology, Process Control</p>
+          </article>
+
+          <article class="info-card blue">
+            <h3>Hospital Pharmacist</h3>
+            <p>Provide patient care and clinical pharmacy support in hospital settings.</p>
+            <ul>
+              <li>Patient counselling</li>
+              <li>Medication review</li>
+              <li>Clinical collaborations</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Clinical Pharmacy, Therapeutics, Patient Communication</p>
+          </article>
+
+          <article class="info-card blue">
+            <h3>Retail / Wholesale Pharmacy</h3>
+            <p>Manage sales, stock, and customer service in pharmacy outlets or wholesale distribution.</p>
+            <ul>
+              <li>Inventory management</li>
+              <li>Customer counselling</li>
+              <li>Supply planning</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Pharmacy Business, Retail Operations, Supply Chain</p>
+          </article>
+
+          <article class="info-card blue">
+            <h3>Clinical Research</h3>
+            <p>Assist with clinical trials, patient monitoring, and study documentation.</p>
+            <ul>
+              <li>Trial coordination</li>
+              <li>Data collection</li>
+              <li>Regulatory records</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Clinical Trials, GCP, Biostatistics</p>
+          </article>
+
+          <article class="info-card blue">
+            <h3>Pharmacovigilance</h3>
+            <p>Monitor adverse events and ensure medicine safety after launch.</p>
+            <ul>
+              <li>Safety reporting</li>
+              <li>Risk assessment</li>
+              <li>Regulatory follow-up</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Drug Safety, ADR Reporting, Regulatory Guidelines</p>
+          </article>
+
+          <article class="info-card blue">
+            <h3>Regulatory Affairs</h3>
+            <p>Support drug registrations and compliance with government law.</p>
+            <ul>
+              <li>Documentation preparation</li>
+              <li>Approval tracking</li>
+              <li>Regulator communication</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Drug Laws, Submission Writing, Compliance</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-header">
+          <span class="section-tag">2</span>
+          <div>
+            <h2>After M.Pharm</h2>
+            <p>Advance into research, academia, leadership, and specialist industry roles.</p>
+          </div>
+        </div>
+
+        <div class="grid">
+          <article class="info-card green">
+            <h3>Research Scientist</h3>
+            <p>Lead drug discovery, formulation research, and innovation projects.</p>
+            <ul>
+              <li>Research planning</li>
+              <li>Formulation development</li>
+              <li>Data analysis</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Research Methods, Formulation, Analytical Science</p>
+          </article>
+
+          <article class="info-card green">
+            <h3>Assistant Professor</h3>
+            <p>Teach pharmacy students and contribute to academic research.</p>
+            <ul>
+              <li>Lectures and labs</li>
+              <li>Student mentoring</li>
+              <li>Research supervision</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Pharmacy Education, Research Writing, Academic Skills</p>
+          </article>
+
+          <article class="info-card green">
+            <h3>Formulation Scientist</h3>
+            <p>Develop new dosage forms and optimize drug delivery systems.</p>
+            <ul>
+              <li>Product design</li>
+              <li>Stability testing</li>
+              <li>Scale-up support</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Pharmaceutics, Drug Delivery, Biopharmaceutics</p>
+          </article>
+
+          <article class="info-card green">
+            <h3>QA / QC Manager</h3>
+            <p>Oversee quality systems and ensure regulatory compliance in production.</p>
+            <ul>
+              <li>Audit management</li>
+              <li>Quality leadership</li>
+              <li>Policy enforcement</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">GMP, Quality Systems, Audit, Risk Management</p>
+          </article>
+
+          <article class="info-card green">
+            <h3>Regulatory Affairs Manager</h3>
+            <p>Drive approval strategies and manage global regulatory filings.</p>
+            <ul>
+              <li>Submission strategy</li>
+              <li>Compliance review</li>
+              <li>Regulator liaison</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">International Regulations, Drug Approval, Documentation</p>
+          </article>
+
+          <article class="info-card green">
+            <h3>Clinical Research Manager</h3>
+            <p>Coordinate clinical studies and ensure trial integrity.</p>
+            <ul>
+              <li>Study execution</li>
+              <li>Site supervision</li>
+              <li>Data quality</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Clinical Operations, GCP, Biostatistics</p>
+          </article>
+
+          <article class="info-card green">
+            <h3>Pharmacovigilance Scientist</h3>
+            <p>Monitor post-market safety and manage risk for marketed drugs.</p>
+            <ul>
+              <li>Safety signal detection</li>
+              <li>Case analysis</li>
+              <li>Risk mitigation</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Drug Safety, PV Guidelines, Case Processing</p>
+          </article>
+
+          <article class="info-card green">
+            <h3>PhD / NIPER Pathway</h3>
+            <p>Pursue doctoral research or specialized studies at top institutes.</p>
+            <ul>
+              <li>Research project work</li>
+              <li>Entrance exam prep</li>
+              <li>Scientific publishing</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Research Design, Advanced Pharmacology, Biotech</p>
+          </article>
+
+          <article class="info-card green">
+            <h3>Medical Writing</h3>
+            <p>Produce scientific documents, regulatory content, and educational material.</p>
+            <ul>
+              <li>Document drafting</li>
+              <li>Clinical writing</li>
+              <li>Review editing</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Medical Writing, Scientific Communication, Documentation</p>
+          </article>
+
+          <article class="info-card green">
+            <h3>Pharma Industry Specialist</h3>
+            <p>Lead specialized roles in strategy, product management, and technical operations.</p>
+            <ul>
+              <li>Business planning</li>
+              <li>Market analysis</li>
+              <li>Product lifecycle</li>
+            </ul>
+            <p class="topic-label">Topics:</p>
+            <p class="tags">Pharma Business, Marketing, Product Strategy</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-header">
+          <span class="section-tag">3</span>
+          <div>
+            <h2>Important Exams</h2>
+            <p>High-value exams that boost your eligibility for government and research roles.</p>
+          </div>
+        </div>
+
+        <div class="chip-grid">
+          <article class="chip-card">
+            <h3>GPAT</h3>
+            <p>Entry to M.Pharm and fellowship programs.</p>
+          </article>
+          <article class="chip-card">
+            <h3>NIPER JEE</h3>
+            <p>Pathway to top pharmaceutical research institutes.</p>
+          </article>
+          <article class="chip-card">
+            <h3>Drug Inspector</h3>
+            <p>Competitive exam for regulatory inspection roles.</p>
+          </article>
+          <article class="chip-card">
+            <h3>Drug Analyst</h3>
+            <p>Exam for positions in quality analysis labs.</p>
+          </article>
+          <article class="chip-card">
+            <h3>Railway Pharmacist</h3>
+            <p>Government role in Indian Railways medical services.</p>
+          </article>
+          <article class="chip-card">
+            <h3>ESIC Pharmacist</h3>
+            <p>Jobs within the Employee State Insurance Corporation.</p>
+          </article>
+          <article class="chip-card">
+            <h3>AIIMS Pharmacist</h3>
+            <p>Pharmacy jobs at premier medical institutes.</p>
+          </article>
+          <article class="chip-card">
+            <h3>State PSC Pharmacist</h3>
+            <p>State-level government recruitment for pharmacists.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-header">
+          <span class="section-tag">4</span>
+          <div>
+            <h2>High-Demand Skills in 2026</h2>
+            <p>Skills employers want most across pharmacy and healthcare roles.</p>
+          </div>
+        </div>
+
+        <div class="chip-grid skill-grid">
+          <article class="chip-card purple"><h3>GMP / GLP</h3></article>
+          <article class="chip-card purple"><h3>ICH Guidelines</h3></article>
+          <article class="chip-card purple"><h3>Regulatory Affairs</h3></article>
+          <article class="chip-card purple"><h3>Pharmacovigilance</h3></article>
+          <article class="chip-card purple"><h3>Clinical Research</h3></article>
+          <article class="chip-card purple"><h3>QA / QC</h3></article>
+          <article class="chip-card purple"><h3>Pharma Documentation</h3></article>
+          <article class="chip-card purple"><h3>Communication Skills</h3></article>
+          <article class="chip-card purple"><h3>AI & Data Handling</h3></article>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <div class="section-header">
+          <span class="section-tag">5</span>
+          <div>
+            <h2>Topics to Master</h2>
+            <p>Subjects that support both exams and practical pharmacy careers.</p>
+          </div>
+        </div>
+
+        <div class="topic-grid">
+          <article class="topic-card">
+            <h3>Pharmacology</h3>
+            <p>Understand drug effects, mechanisms, and clinical uses.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Pharmaceutics</h3>
+            <p>Learn dosage form design and manufacturing technology.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Pharmaceutical Analysis</h3>
+            <p>Master testing methods, instrumentation, and quality evaluation.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Regulatory Science</h3>
+            <p>Study drug laws, approvals, and compliance requirements.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Clinical Research</h3>
+            <p>Know trial design, ethics, monitoring, and data handling.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Pharmacovigilance</h3>
+            <p>Learn adverse event reporting and drug safety workflows.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Pharma Management</h3>
+            <p>Build skills in operations, inventory, marketing, and leadership.</p>
+          </article>
+          <article class="topic-card">
+            <h3>Biotechnology</h3>
+            <p>Explore biologics, digital health, and tech-driven pharma solutions.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+</body>
+</html>

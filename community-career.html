@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Advice - Community - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --orange: #f97316;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --orange: #fb923c;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      font-weight: 600;
+      color: var(--blue);
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    main {
+      margin-top: 32px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0 0 24px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .section-divider {
+      margin: 48px 0;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .advice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .advice-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .advice-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .advice-header {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+
+    .advice-icon {
+      font-size: 2.5rem;
+      flex-shrink: 0;
+    }
+
+    .advice-meta {
+      flex-grow: 1;
+    }
+
+    .advice-category {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--blue);
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .advice-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .advice-description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .advice-author {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .author-avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(37, 99, 235, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .interviews-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .interviews-section h3 {
+      margin: 0 0 24px;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .interview-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .interview-card {
+      background: linear-gradient(135deg, var(--surface-strong) 0%, var(--surface) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .interview-card:hover {
+      box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .interview-title {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .interview-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab {
+      padding: 10px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .tab:hover,
+    .tab.active {
+      background: var(--orange);
+      color: #fff;
+      border-color: var(--orange);
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+      padding: 40px;
+      border-radius: 24px;
+      text-align: center;
+      color: #fff;
+      margin-top: 48px;
+    }
+
+    .cta-section h2 {
+      margin: 0 0 16px;
+      font-size: 1.8rem;
+    }
+
+    .cta-section p {
+      margin: 0 0 24px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: var(--orange);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      margin-top: 64px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--blue);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--blue-dark);
+    }
+
+    .profile-icon {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .profile-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .advice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .interview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tabs {
+        flex-direction: column;
+      }
+
+      .cta-section {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="community.html" class="back-link">← Back to Community</a>
+        <div class="brand">
+          <div class="brand-icon">🌐</div>
+          <span>Career Advice</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>Career Guidance & Professional Development</h1>
+        <p>Get expert advice from successful pharmacy professionals, discuss internships and job opportunities, and plan your career path with guidance from seniors and mentors.</p>
+      </div>
+
+      <section class="section-divider">
+        <h2 class="section-title">💼 Career Topics & Discussions</h2>
+        <div class="tabs">
+          <button class="tab active" onclick="filterAdvice('all')">All Topics</button>
+          <button class="tab" onclick="filterAdvice('internship')">Internships</button>
+          <button class="tab" onclick="filterAdvice('interview')">Interviews</button>
+          <button class="tab" onclick="filterAdvice('jobs')">Job Search</button>
+          <button class="tab" onclick="filterAdvice('specialization')">Specialization</button>
+        </div>
+
+        <div class="advice-grid">
+          <div class="advice-card">
+            <div class="advice-header">
+              <div class="advice-icon">💼</div>
+              <div class="advice-meta">
+                <span class="advice-category">Internship</span>
+              </div>
+            </div>
+            <h3>How to Land the Best Pharmacy Internship?</h3>
+            <p class="advice-description">Complete guide on preparing for internships, applying to top companies, and making the most of your internship experience.</p>
+            <div class="advice-author">
+              <div class="author-avatar">RK</div>
+              <span>By Rohit Kumar (Senior Pharmacist at Apollo)</span>
+            </div>
+          </div>
+
+          <div class="advice-card">
+            <div class="advice-header">
+              <div class="advice-icon">🎯</div>
+              <div class="advice-meta">
+                <span class="advice-category">Interview</span>
+              </div>
+            </div>
+            <h3>Cracking Pharmacy Job Interviews</h3>
+            <p class="advice-description">Learn what interviewers expect, common questions, and strategies to impress in pharmaceutical interviews and assessments.</p>
+            <div class="advice-author">
+              <div class="author-avatar">MP</div>
+              <span>By Meera Patel (HR Manager, Cipla)</span>
+            </div>
+          </div>
+
+          <div class="advice-card">
+            <div class="advice-header">
+              <div class="advice-icon">📊</div>
+              <div class="advice-meta">
+                <span class="advice-category">Career Planning</span>
+              </div>
+            </div>
+            <h3>Pharmacy Career Paths & Specializations</h3>
+            <p class="advice-description">Explore different career options - clinical pharmacy, research, regulatory, hospital, and retail paths with pros and cons.</p>
+            <div class="advice-author">
+              <div class="author-avatar">DS</div>
+              <span>By Dr. Sharma (Academic Advisor)</span>
+            </div>
+          </div>
+
+          <div class="advice-card">
+            <div class="advice-header">
+              <div class="advice-icon">💰</div>
+              <div class="advice-meta">
+                <span class="advice-category">Salary & Growth</span>
+              </div>
+            </div>
+            <h3>Salary Expectations & Salary Negotiation Tips</h3>
+            <p class="advice-description">Understand pharmacy salary ranges, negotiation strategies, and how to maximize your earning potential in the industry.</p>
+            <div class="advice-author">
+              <div class="author-avatar">AV</div>
+              <span>By Arun Verma (Senior Manager)</span>
+            </div>
+          </div>
+
+          <div class="advice-card">
+            <div class="advice-header">
+              <div class="advice-icon">📚</div>
+              <div class="advice-meta">
+                <span class="advice-category">Skill Building</span>
+              </div>
+            </div>
+            <h3>Essential Skills Employers Look For</h3>
+            <p class="advice-description">Develop technical and soft skills that make you a competitive candidate. Learn what pharmaceutical companies prioritize.</p>
+            <div class="advice-author">
+              <div class="author-avatar">NJ</div>
+              <span>By Neha Joshi (Recruiter)</span>
+            </div>
+          </div>
+
+          <div class="advice-card">
+            <div class="advice-header">
+              <div class="advice-icon">🌟</div>
+              <div class="advice-meta">
+                <span class="advice-category">Professional Growth</span>
+              </div>
+            </div>
+            <h3>First Job & Beyond: Career Growth Strategy</h3>
+            <p class="advice-description">Tips for succeeding in your first job, building relationships, getting promotions, and advancing your pharmacy career.</p>
+            <div class="advice-author">
+              <div class="author-avatar">SK</div>
+              <span>By Sanjay Kapoor (Director, Pharmacy)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-divider">
+        <div class="interviews-section">
+          <h3>🎤 Student Success Stories & Interviews</h3>
+          <p style="color: var(--text-muted); margin-bottom: 24px;">Learn from successful pharmacy graduates about their journey, placements, and career achievements.</p>
+          <div class="interview-grid">
+            <div class="interview-card">
+              <div class="interview-title">Success at Apollo Pharmacy</div>
+              <div class="interview-meta">
+                <span>👤 Priya Sharma</span>
+                <span>📅 6 months into role</span>
+              </div>
+              <p style="margin: 12px 0 0 0; color: var(--text-muted); font-size: 0.9rem;">Clinical pharmacist at Apollo Hospitals. Got placed directly after internship with ₹5.5 LPA package.</p>
+            </div>
+
+            <div class="interview-card">
+              <div class="interview-title">Research Scientist at Pharmatech</div>
+              <div class="interview-meta">
+                <span>👤 Akshay Singh</span>
+                <span>📅 8 months into role</span>
+              </div>
+              <p style="margin: 12px 0 0 0; color: var(--text-muted); font-size: 0.9rem;">Working in drug discovery and development. Earning ₹6.2 LPA with opportunities to lead projects.</p>
+            </div>
+
+            <div class="interview-card">
+              <div class="interview-title">Regulatory Affairs in Regulatory Authority</div>
+              <div class="interview-meta">
+                <span>👤 Anjali Gupta</span>
+                <span>📅 1 year into role</span>
+              </div>
+              <p style="margin: 12px 0 0 0; color: var(--text-muted); font-size: 0.9rem;">Government sector role with excellent work-life balance. Strong growth prospects and stability.</p>
+            </div>
+
+            <div class="interview-card">
+              <div class="interview-title">Retail Pharmacy Management</div>
+              <div class="interview-meta">
+                <span>👤 Rohit Verma</span>
+                <span>📅 9 months into role</span>
+              </div>
+              <p style="margin: 12px 0 0 0; color: var(--text-muted); font-size: 0.9rem;">Store manager at leading retail pharmacy chain. Fast-track management career path available.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-divider">
+        <h2 class="section-title">📈 Career Development Resources</h2>
+        <div class="advice-grid">
+          <div class="advice-card">
+            <div class="advice-header">
+              <div class="advice-icon">📋</div>
+              <div class="advice-meta">
+                <span class="advice-category">Resource</span>
+              </div>
+            </div>
+            <h3>Resume & Cover Letter Templates</h3>
+            <p class="advice-description">Download professionally designed templates and get tips on what pharmacy employers want to see in your documents.</p>
+          </div>
+
+          <div class="advice-card">
+            <div class="advice-header">
+              <div class="advice-icon">🎬</div>
+              <div class="advice-meta">
+                <span class="advice-category">Resource</span>
+              </div>
+            </div>
+            <h3>Interview Preparation Videos</h3>
+            <p class="advice-description">Watch mock interviews, learn common questions, and see real examples from successful pharmacy candidates.</p>
+          </div>
+
+          <div class="advice-card">
+            <div class="advice-header">
+              <div class="advice-icon">📱</div>
+              <div class="advice-meta">
+                <span class="advice-category">Resource</span>
+              </div>
+            </div>
+            <h3>LinkedIn Profile Optimization Guide</h3>
+            <p class="advice-description">Create a powerful LinkedIn profile that gets you noticed by recruiters in the pharmaceutical industry.</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="cta-section">
+        <h2>Get Personalized Career Mentoring</h2>
+        <p>Connect with experienced pharmacy professionals for personalized guidance on your career path.</p>
+        <button class="btn btn-primary" onclick="alert('Mentoring platform coming soon! Check back later.')">Find a Mentor</button>
+      </div>
+    </main>
+
+    <footer>
+      <span>© 2026 PharmaX - Community</span>
+      <div>
+        <a href="community.html">Back to Community</a>
+        <a href="index.html" style="margin-left: 20px;">Home</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="profile-icon" id="profileIcon">👤</div>
+
+  <script>
+    function filterAdvice(category) {
+      const tabs = document.querySelectorAll('.tab');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      event.target.classList.add('active');
+      console.log('Filtering career advice by: ' + category);
+    }
+
+    document.getElementById('profileIcon').addEventListener('click', function() {
+      alert('Profile feature coming soon! Navigate back to home to manage your account.');
+    });
+  </script>
+</body>
+</html>

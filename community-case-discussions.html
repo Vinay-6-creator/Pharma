@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Discussions - Community - PharmaX</title>
+  <style>
+    :root {
+      --bg: #eef6ff;
+      --surface: #ffffff;
+      --surface-strong: #f7fbff;
+      --text: #1d314f;
+      --text-muted: #64748b;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --green: #22c55e;
+      --orange: #f97316;
+      --border: rgba(148, 163, 184, 0.16);
+      --shadow: 0 24px 80px rgba(15, 23, 42, 0.08);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html.dark-mode {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-strong: #172038;
+      --text: #f1f5f9;
+      --text-muted: #cbd5e1;
+      --blue: #3b82f6;
+      --blue-dark: #60a5fa;
+      --green: #10b981;
+      --orange: #fb923c;
+      --border: rgba(148, 163, 184, 0.2);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    html.dark-mode body {
+      background: linear-gradient(180deg, #0f172a 0%, #1a202c 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 32px 0 64px;
+    }
+
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .back-link {
+      font-weight: 600;
+      color: var(--blue);
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 8px;
+      transition: background 0.2s ease;
+    }
+
+    .back-link:hover {
+      background: rgba(37, 99, 235, 0.1);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 35%, #22c55e, #1e40af 75%);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    main {
+      margin-top: 32px;
+    }
+
+    .hero {
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 4vw, 3.5rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .hero p {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      margin: 0 0 24px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .section-divider {
+      margin: 48px 0;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .case-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
+      border-color: var(--blue);
+    }
+
+    .case-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .case-title {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .case-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 12px;
+      background: rgba(249, 115, 22, 0.1);
+      color: var(--orange);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .difficulty {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .difficulty.easy {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+    }
+
+    .difficulty.medium {
+      background: rgba(249, 115, 22, 0.1);
+      color: var(--orange);
+    }
+
+    .difficulty.hard {
+      background: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+    }
+
+    .case-description {
+      margin: 0 0 20px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .case-section {
+      margin-bottom: 20px;
+    }
+
+    .case-section-title {
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .case-section-content {
+      background: var(--surface-strong);
+      padding: 16px;
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .case-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .discussion-count {
+      background: rgba(37, 99, 235, 0.1);
+      color: var(--blue);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+
+    .learning-outcomes {
+      background: linear-gradient(135deg, var(--blue) 0%, #1d4ed8 100%);
+      padding: 32px;
+      border-radius: 20px;
+      color: #fff;
+      margin-top: 48px;
+    }
+
+    .learning-outcomes h2 {
+      margin: 0 0 20px;
+      font-size: 1.5rem;
+    }
+
+    .outcomes-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .outcome-item {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 16px;
+      border-radius: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .outcome-item::before {
+      content: '✓';
+      flex-shrink: 0;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--orange) 0%, #ea580c 100%);
+      padding: 40px;
+      border-radius: 24px;
+      text-align: center;
+      color: #fff;
+      margin-top: 48px;
+    }
+
+    .cta-section h2 {
+      margin: 0 0 16px;
+      font-size: 1.8rem;
+    }
+
+    .cta-section p {
+      margin: 0 0 24px;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 1.05rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border-radius: 8px;
+      border: none;
+      padding: 12px 28px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: #fff;
+      color: var(--orange);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      margin-top: 64px;
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    footer a {
+      color: var(--blue);
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--blue-dark);
+    }
+
+    .profile-icon {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(37, 99, 235, 0.3);
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .profile-icon:hover {
+      transform: scale(1.1);
+      box-shadow: 0 15px 40px rgba(37, 99, 235, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .case-header {
+        flex-direction: column;
+      }
+
+      .case-meta {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .learning-outcomes {
+        padding: 24px;
+      }
+
+      .cta-section {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="community.html" class="back-link">← Back to Community</a>
+        <div class="brand">
+          <div class="brand-icon">🎯</div>
+          <span>Case Discussions</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="hero">
+        <h1>Real-World Pharmaceutical Cases</h1>
+        <p>Engage in clinical scenarios and pharmaceutical case studies. Learn how to apply theoretical concepts to practical situations with guidance from mentors and peers.</p>
+      </div>
+
+      <section class="section-divider">
+        <h2 class="section-title">📋 Active Case Discussions</h2>
+        <div class="case-grid">
+          <div class="case-card">
+            <div class="case-header">
+              <div>
+                <h3 class="case-title">Case 1: Drug Dosage Adjustment in Renal Failure</h3>
+                <span class="case-badge">Pharmacokinetics</span>
+              </div>
+              <span class="difficulty medium">⭐ Medium</span>
+            </div>
+
+            <div class="case-description">
+              A 65-year-old male patient with chronic kidney disease (Stage 4) presents with hypertension. How should you adjust the dosage of Lisinopril (ACE inhibitor) for this patient?
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-title">Patient Details:</div>
+              <div class="case-section-content">
+                • Age: 65 years old<br>
+                • Condition: Stage 4 Chronic Kidney Disease (GFR: 25 ml/min)<br>
+                • Current Medication: Lisinopril 10mg daily<br>
+                • BP: 160/95 mmHg<br>
+                • Other: Diabetes, Hyperuricemia
+              </div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-title">Key Questions:</div>
+              <div class="case-section-content">
+                • How does renal function affect drug clearance?<br>
+                • Should the dose be reduced or interval increased?<br>
+                • What are the risks of not adjusting the dose?<br>
+                • Are there alternative antihypertensives better suited?
+              </div>
+            </div>
+
+            <div class="case-meta">
+              <span class="meta-item">💬 <span class="discussion-count">23 Discussions</span></span>
+              <span class="meta-item">👥 45 Participants</span>
+              <span class="meta-item">📅 Posted 2 weeks ago</span>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-header">
+              <div>
+                <h3 class="case-title">Case 2: Drug-Drug Interaction Management</h3>
+                <h3 style="font-size: 1rem; color: var(--text-muted); margin: 4px 0 0 0;">Elderly Patient on Multiple Medications</h3>
+              </div>
+              <span class="difficulty hard">🔥 Hard</span>
+            </div>
+
+            <div class="case-description">
+              A 72-year-old female on Warfarin therapy for atrial fibrillation is prescribed Amoxicillin for a UTI. What are the potential interactions and how would you manage this?
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-title">Clinical Scenario:</div>
+              <div class="case-section-content">
+                • Warfarin 5mg daily (INR: 2.5)<br>
+                • Amoxicillin 500mg TDS prescribed<br>
+                • Also taking: Metformin, Atorvastatin, Aspirin<br>
+                • Concerns: Increased bleeding risk
+              </div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-title">Discussion Topics:</div>
+              <div class="case-section-content">
+                • Mechanism of Warfarin-Antibiotic interaction<br>
+                • Should Amoxicillin be substituted?<br>
+                • How often should INR be monitored?<br>
+                • What patient counseling is needed?
+              </div>
+            </div>
+
+            <div class="case-meta">
+              <span class="meta-item">💬 <span class="discussion-count">31 Discussions</span></span>
+              <span class="meta-item">👥 58 Participants</span>
+              <span class="meta-item">📅 Posted 1 week ago</span>
+            </div>
+          </div>
+
+          <div class="case-card">
+            <div class="case-header">
+              <div>
+                <h3 class="case-title">Case 3: Side Effects vs. Disease Progression</h3>
+                <span class="case-badge">Clinical Practice</span>
+              </div>
+              <span class="difficulty easy">✨ Easy</span>
+            </div>
+
+            <div class="case-description">
+              A patient on Metformin therapy reports increased gastrointestinal symptoms. How would you differentiate between medication side effects and disease-related complications?
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-title">Patient Presentation:</div>
+              <div class="case-section-content">
+                • Metformin 1500mg daily for Type 2 Diabetes<br>
+                • Symptoms: Nausea, diarrhea, abdominal discomfort<br>
+                • Duration: Last 2 weeks<br>
+                • Blood glucose: Well controlled
+              </div>
+            </div>
+
+            <div class="case-section">
+              <div class="case-section-title">Learn About:</div>
+              <div class="case-section-content">
+                • Metformin side effect profile<br>
+                • Strategies to minimize GI effects<br>
+                • When to consider medication changes<br>
+                • Patient compliance and persistence
+              </div>
+            </div>
+
+            <div class="case-meta">
+              <span class="meta-item">💬 <span class="discussion-count">18 Discussions</span></span>
+              <span class="meta-item">👥 32 Participants</span>
+              <span class="meta-item">📅 Posted 3 days ago</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="learning-outcomes">
+        <h2>What You'll Learn From Case Discussions</h2>
+        <div class="outcomes-list">
+          <div class="outcome-item">Apply pharmacokinetics to real clinical situations</div>
+          <div class="outcome-item">Identify and manage drug interactions effectively</div>
+          <div class="outcome-item">Make evidence-based medication recommendations</div>
+          <div class="outcome-item">Develop clinical reasoning and critical thinking</div>
+          <div class="outcome-item">Understand patient-specific factors in dosing</div>
+          <div class="outcome-item">Communicate recommendations to healthcare teams</div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h2>Join Case Discussions Today</h2>
+        <p>Apply your knowledge to real scenarios and learn from industry experts and peers.</p>
+        <button class="btn btn-primary" onclick="alert('Case discussion forum coming soon! Check back later.')">Participate Now</button>
+      </div>
+    </main>
+
+    <footer>
+      <span>© 2026 PharmaX - Community</span>
+      <div>
+        <a href="community.html">Back to Community</a>
+        <a href="index.html" style="margin-left: 20px;">Home</a>
+      </div>
+    </footer>
+  </div>
+
+  <div class="profile-icon" id="profileIcon">👤</div>
+
+  <script>
+    document.getElementById('profileIcon').addEventListener('click', function() {
+      alert('Profile feature coming soon! Navigate back to home to manage your account.');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B Pharm Semester 4 - Notes & PYQs</title>
+  <style>
+    :root { --bg: #eef6ff; --surface: #ffffff; --surface-strong: #f7fbff; --text: #1d314f; --text-muted: #64748b; --blue: #2563eb; --blue-dark: #1d4ed8; --green: #22c55e; --red: #ef4444; --border: rgba(148, 163, 184, 0.16); }
+    html.dark-mode { --bg: #0f172a; --surface: #1e293b; --surface-strong: #172038; --text: #f1f5f9; --text-muted: #cbd5e1; --blue: #3b82f6; --blue-dark: #60a5fa; --green: #10b981; --border: rgba(148, 163, 184, 0.2); }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: linear-gradient(180deg, #eef6ff 0%, #f8fbff 100%); color: var(--text); }
+    .page { width: min(1200px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 64px; }
+    header { padding: 24px 0; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .back-link { display: inline-flex; align-items: center; gap: 8px; color: var(--blue); font-weight: 600; cursor: pointer; text-decoration: none; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 1.1rem; }
+    h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin: 0 0 12px; }
+    h2 { font-size: 1.4rem; margin: 40px 0 24px; color: var(--blue); padding-bottom: 12px; border-bottom: 3px solid var(--blue); }
+    .unit-section { background: var(--surface); border: 2px solid var(--border); border-radius: 20px; padding: 28px; margin-bottom: 32px; }
+    .unit-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 16px; border-bottom: 2px solid var(--blue); }
+    .unit-number { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-dark)); color: white; font-weight: 700; }
+    .unit-title h2 { margin: 0; border: none; padding: 0; color: var(--text); font-size: 1.25rem; }
+    .topics-list { display: grid; gap: 12px; margin-bottom: 24px; }
+    .topic-item { display: flex; gap: 12px; padding: 12px 16px; background: var(--surface-strong); border-radius: 12px; border-left: 4px solid var(--green); }
+    .topic-bullet { color: var(--green); font-weight: 700; }
+    .pyq-section { margin-top: 24px; padding-top: 24px; border-top: 2px solid var(--border); }
+    .pyq-section h3 { color: var(--red); margin-top: 0; }
+    .pyq-card { background: var(--surface-strong); border-left: 4px solid var(--red); border-radius: 12px; padding: 18px; margin-bottom: 16px; }
+    .pyq-question { font-weight: 600; color: var(--text); margin-bottom: 12px; display: flex; gap: 8px; }
+    .q-number { color: var(--red); font-weight: 700; }
+    .answer-toggle { display: inline-flex; gap: 6px; padding: 8px 12px; margin-top: 8px; background: rgba(37, 99, 235, 0.1); border: none; border-radius: 8px; color: var(--blue); font-weight: 600; cursor: pointer; }
+    .answer-text { margin-top: 12px; padding: 12px; background: rgba(34, 197, 94, 0.1); border-left: 3px solid var(--green); border-radius: 8px; display: none; }
+    .answer-text.show { display: block; }
+    footer { margin-top: 60px; padding-top: 26px; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="topbar">
+        <a href="study-hub.html" class="back-link">← Back to Study Hub</a>
+        <div class="brand"><div style="font-size: 1.8rem;">📚</div><span>B Pharm - Semester 4</span></div>
+      </div>
+    </header>
+    <main>
+      <h1>Medicinal Chemistry</h1>
+      <p style="color: var(--text-muted); font-size: 1.05rem; margin-bottom: 24px;">Structure-activity relationships, drug design principles, and synthesis of important therapeutic agents.</p>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">I</div>
+          <div class="unit-title"><h2>Drug Design Principles & SAR</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Structure-Activity Relationship (SAR):</strong> How molecular structure affects drug activity</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Lead Compound Selection:</strong> Identification and optimization of drug candidates</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Molecular Modification:</strong> Isosteric replacement, bioisosteres in drug design</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> Explain what is a bioisostere and give pharmaceutical examples</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> Bioisosteres are atoms/groups with similar size and chemical properties that can be substituted to improve drug properties. Example: -OH replaced by -NH₂ in various drugs while maintaining activity.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">II</div>
+          <div class="unit-title"><h2>Quantitative Structure-Activity Relationships</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>QSAR Models:</strong> Hansch equation, Free-Wilson model</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Lipophilicity:</strong> LogP, partition coefficient and drug absorption</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Electronic Effects:</strong> Hammett constants, Taft's steric constants</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> What is LogP and how does it affect drug bioavailability?</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> LogP is octanol-water partition coefficient. Optimal LogP (2-5) ensures good membrane permeability and absorption. Too high LogP decreases solubility; too low decreases membrane penetration.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">III</div>
+          <div class="unit-title"><h2>Pharmaceutical Analysis Methods</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Qualitative Analysis:</strong> Identification tests, physical methods</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Quantitative Analysis:</strong> Titrimetry, gravimetry, instrumental methods</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Chromatographic Techniques:</strong> TLC, HPLC, GC principles</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> Explain the principle and application of HPLC in drug analysis</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> HPLC separates components based on different affinities for mobile and stationary phases. Applications: purity testing, content determination, impurity analysis of pharmaceuticals.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="unit-section">
+        <div class="unit-header">
+          <div class="unit-number">IV</div>
+          <div class="unit-title"><h2>Important Drug Classes & Synthesis</h2></div>
+        </div>
+        <div class="topics-list">
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Analgesics & NSAIDs:</strong> Aspirin, paracetamol, ibuprofen synthesis and mechanism</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Antibiotics:</strong> Penicillins, cephalosporins structure and activity</div></div>
+          <div class="topic-item"><div class="topic-bullet">•</div><div><strong>Antihistamines:</strong> H₁ and H₂ receptor antagonists</div></div>
+        </div>
+        <div class="pyq-section">
+          <h3>❓ Important Previous Year Questions</h3>
+          <div class="pyq-card">
+            <div class="pyq-question"><span class="q-number">Q1.</span> Why is the β-lactam ring essential for antibiotic activity of penicillins?</div>
+            <button class="answer-toggle" onclick="toggleAnswer(this)">Show Answer ▼</button>
+            <div class="answer-text"><strong>Answer:</strong> β-lactam ring forms covalent bonds with penicillin-binding proteins, inhibiting bacterial cell wall synthesis. Loss of this ring results in loss of antibiotic activity.</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer><span>📚 PharmaX Study Hub</span><span>•</span><span>© 2026 All Rights Reserved</span></footer>
+  </div>
+  <script>
+    function toggleAnswer(button) {
+      const answerText = button.nextElementSibling;
+      answerText.classList.toggle('show');
+      button.textContent = answerText.classList.contains('show') ? 'Hide Answer ▲' : 'Show Answer ▼';
+    }
+  </script>
+</body>
+</html>

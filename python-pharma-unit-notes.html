@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Programming for Pharma Sciences - Unit Wise Notes</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-strong: #eef2ff;
+      --border: #d1d5db;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --blue: #1d4ed8;
+      --green: #16a34a;
+      --card-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 24px 48px;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: clamp(2rem, 2.5vw, 2.5rem);
+      letter-spacing: -0.04em;
+    }
+
+    .header .back-link {
+      text-decoration: none;
+      color: var(--blue);
+      font-weight: 700;
+      background: rgba(37, 99, 235, 0.08);
+      padding: 12px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(37, 99, 235, 0.18);
+    }
+
+    .intro {
+      margin-bottom: 32px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .intro h2 {
+      margin-top: 0;
+      color: var(--blue);
+    }
+
+    .unit-card {
+      margin-bottom: 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .unit-card h3 {
+      margin-top: 0;
+      font-size: 1.45rem;
+      color: var(--blue);
+    }
+
+    .unit-card h4 {
+      margin: 22px 0 12px;
+      font-size: 1.15rem;
+      color: var(--text);
+    }
+
+    .unit-card ul {
+      padding-left: 20px;
+      margin: 0;
+    }
+
+    .unit-card li {
+      margin-bottom: 10px;
+    }
+
+    .note-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      background: #eff6ff;
+      border-left: 4px solid var(--blue);
+      border-radius: 16px;
+      color: var(--text-muted);
+    }
+
+    pre {
+      margin: 0;
+      padding: 18px;
+      background: #111827;
+      color: #f8fafc;
+      border-radius: 16px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    @media (max-width: 768px) {
+      .page {
+        padding: 18px 16px 36px;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="header">
+      <div>
+        <p style="margin:0; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.14em; font-size:0.8rem;">B Pharm Semester 1</p>
+        <h1>Python Programming for Pharma Sciences</h1>
+      </div>
+      <a class="back-link" href="bpharm-sem1-notes.html">← Back to Semester 1 Notes</a>
+    </header>
+
+    <section class="intro">
+      <h2>Unit-wise notes with solved examples</h2>
+      <p>Ye page Python Programming ke subject ke liye unit wise detailed notes aur clear solutions provide karta hai, bilkul image ke hisaab se.</p>
+      <p>Har unit mein important topics, practice code, output explanation, aur pharmaceutical examples diya gaya hai.</p>
+    </section>
+
+    <article class="unit-card">
+      <h3>Unit I: Introduction to Python programming</h3>
+      <ul>
+        <li>Installing Python and choosing an IDE: Jupyter Notebook, PyCharm, VS Code.</li>
+        <li>Advantages of IDEs and using console vs script mode.</li>
+        <li>Python variables and data types: integers, floats, strings, booleans.</li>
+        <li>Type casting, arithmetic operators, comparison operators, logical operators.</li>
+        <li>Input and output: <code>input()</code>, <code>print()</code>.</li>
+      </ul>
+
+      <h4>Clear solution example: dosage calculation</h4>
+      <p>Yeh example patient ke weight aur dose rate se total dose calculate karta hai.</p>
+      <pre><code>weight = float(input("Patient weight (kg): "))
+dose_rate = float(input("Dose rate (mg/kg): "))
+total_dose = weight * dose_rate
+print(f"Total dose required: {total_dose} mg")
+</code></pre>
+      <div class="note-box">
+        <strong>Solution explanation:</strong> agar patient ka weight 60 kg ho aur dose rate 5 mg/kg ho, output hoga <code>300 mg</code>. Conversion <code>float()</code> zaroori hai taaki decimal values bhi correct handle ho.
+      </div>
+    </article>
+
+    <article class="unit-card">
+      <h3>Unit II: Control Structures & Functions</h3>
+      <ul>
+        <li>Conditional statements: <code>if</code>, <code>if-else</code>, <code>elif</code>.</li>
+        <li>Nested conditions for pharmacy decision logic.</li>
+        <li>Loops: <code>for</code> and <code>while</code>.</li>
+        <li><code>break</code> and <code>continue</code>.</li>
+        <li>Functions: defining, calling, arguments, return values.</li>
+        <li>Modular programs for dosage calculation and BMI labeling.</li>
+      </ul>
+
+      <h4>Clear solution example: BMI calculation and category</h4>
+      <pre><code>def calculate_bmi(weight_kg, height_m):
+    return weight_kg / (height_m ** 2)
+
+weight = float(input("Weight (kg): "))
+height = float(input("Height (m): "))
+
+bmi = calculate_bmi(weight, height)
+print(f"BMI: {bmi:.2f}")
+
+if bmi &lt; 18.5:
+    category = "Underweight"
+elif bmi &lt; 25:
+    category = "Normal"
+elif bmi &lt; 30:
+    category = "Overweight"
+else:
+    category = "Obese"
+
+print(f"Category: {category}")
+</code></pre>
+      <div class="note-box">
+        <strong>Solution explanation:</strong> function <code>calculate_bmi</code> return kar rahi hai BMI value, phir conditions check karte hain patient ko category assign karne ke liye.
+      </div>
+    </article>
+
+    <article class="unit-card">
+      <h3>Unit III: Data Structures & File Handling</h3>
+      <ul>
+        <li>Lists, tuples, and dictionaries.</li>
+        <li>Indexing/slicing lists and basic list operations.</li>
+        <li>String manipulation and standard libraries.</li>
+        <li>Introduction to NumPy arrays, creation and arithmetic operations.</li>
+        <li>Reading and writing CSV files.</li>
+        <li>Understanding structured healthcare datasets.</li>
+      </ul>
+
+      <h4>Clear solution example: drug dose dictionary and list operations</h4>
+      <pre><code>drugs = {
+    "Paracetamol": 500,
+    "Ibuprofen": 200,
+    "Amoxicillin": 250
+}
+
+patient_name = input("Patient name: ")
+selected = input("Choose drug: ")
+
+if selected in drugs:
+    dose = drugs[selected]
+    print(f"{patient_name} should take {dose} mg of {selected}.")
+else:
+    print("Selected drug not available.")
+</code></pre>
+      <div class="note-box">
+        <strong>Solution explanation:</strong> dictionary se drug ki dose read karenge. Agar drug available nahi hai, user ko message milega.
+      </div>
+
+      <h4>Clear solution example: read a CSV file with healthcare data</h4>
+      <pre><code>import csv
+
+with open('pharma_data.csv', mode='r', newline='') as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(row['PatientID'], row['Age'], row['Diagnosis'])
+</code></pre>
+      <div class="note-box">
+        <strong>Solution explanation:</strong> CSV file ko <code>DictReader</code> se read karte hain, jisme column names keys ke roop mein milte hain.
+      </div>
+    </article>
+
+    <article class="unit-card">
+      <h3>Unit IV: Data Handling with Pandas</h3>
+      <ul>
+        <li>Introduction to the Pandas library.</li>
+        <li>Pandas Series and DataFrame structures.</li>
+        <li>Reading CSV and Excel files.</li>
+        <li>Inspecting datasets with <code>head()</code>, <code>tail()</code>, <code>info()</code>, <code>describe()</code>.</li>
+        <li>Data cleaning and handling missing values.</li>
+        <li>Filtering, selecting data, and aggregation functions.</li>
+      </ul>
+
+      <h4>Clear solution example: inspect and clean dataset</h4>
+      <pre><code>import pandas as pd
+
+df = pd.read_csv('pharmacy_records.csv')
+print(df.head())
+print(df.info())
+print(df.describe())
+
+# Drop rows with missing dose values
+clean_df = df.dropna(subset=['Dose'])
+
+# Filter patients older than 60
+elderly = clean_df[clean_df['Age'] &gt;= 60]
+print(elderly)
+</code></pre>
+      <div class="note-box">
+        <strong>Solution explanation:</strong> dataset inspect karne ke baad missing values remove kiye, phir age filter apply kiya for elderly patients.
+      </div>
+
+      <h4>Clear solution example: group by drug type and count</h4>
+      <pre><code>grouped = clean_df.groupby('DrugName').size()
+print(grouped)
+</code></pre>
+      <div class="note-box">
+        <strong>Solution explanation:</strong> <code>groupby</code> se drug wise patient count milta hai, jo clinical reporting aur inventory planning mein useful hai.
+      </div>
+    </article>
+
+    <article class="unit-card">
+      <h3>Unit V: Data Visualization with Matplotlib</h3>
+      <ul>
+        <li>Introduction to Matplotlib.</li>
+        <li>Creating line plots, histograms, scatter plots, and box plots.</li>
+        <li>Labeling axes, titles, and legends.</li>
+        <li>Plotting pharmaceutical datasets like concentration-time curves.</li>
+        <li>ADR reporting rate charts, dissolution profile plots, and scientific interpretation.</li>
+      </ul>
+
+      <h4>Clear solution example: plot drug concentration over time</h4>
+      <pre><code>import matplotlib.pyplot as plt
+
+time = [0, 1, 2, 4, 6, 8]
+concentration = [0, 8.5, 15.2, 20.3, 14.8, 8.2]
+
+plt.plot(time, concentration, marker='o', color='#2563eb')
+plt.title('Drug Concentration vs Time')
+plt.xlabel('Time (hours)')
+plt.ylabel('Concentration (mg/L)')
+plt.grid(True)
+plt.show()
+</code></pre>
+      <div class="note-box">
+        <strong>Solution explanation:</strong> line plot se drug absorption aur elimination phase clearly nazar aata hai. Axes labels aur title report ko readable banate hain.
+      </div>
+    </article>
+  </div>
+</body>
+</html>

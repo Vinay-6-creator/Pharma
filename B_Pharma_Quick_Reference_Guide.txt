@@ -1,0 +1,305 @@
+B.PHARM SYLLABUS - QUICK REFERENCE GUIDE
+=========================================
+
+📌 PROGRAM STRUCTURE
+====================
+Duration: 8 Semesters (4 Years)
+Credits: 208 Total
+Attendance: 80% Minimum
+Language: English
+
+📚 SEMESTER BREAKDOWN
+====================
+
+SEM I (ODD) - 27-30 Credits
+────────────────────────────
+BP101T - Anatomy & Physiology I (3L+1T, 4Cr)
+  → Human body, cells, tissues, cardiovascular, respiratory, nervous systems
+  
+BP102T - Pharmaceutical Analysis I (3L+1T, 4Cr)
+  → Gravimetric analysis, volumetric analysis, titrimetry, acid-base titrations
+  
+BP103T - Pharmaceutics I (3L+1T, 4Cr)
+  → Dosage forms, particle size, powders, granules, granulation
+  
+BP104T - Pharmaceutical Inorganic Chemistry (3L+1T, 4Cr)
+  → Atomic structure, periodic table, inorganic pharmaceuticals
+  
+BP105T - Communication Skills (2L, 2Cr)
+  → Professional & written communication, presentations
+
+Practicals: Anatomy, Analysis, Pharmaceutics, Inorganic Chemistry
+
+
+SEM II (EVEN) - 30 Credits
+────────────────────────────
+BP201T - Anatomy & Physiology II (3L+1T, 4Cr)
+  → GI system, endocrine, urinary, reproductive, immune systems
+  
+BP202T - Pharmaceutical Analysis II (3L+1T, 4Cr)
+  → UV-Vis spectroscopy, fluorimetry, chromatography, GC basics
+  
+BP203T - Pharmaceutics II (3L+1T, 4Cr)
+  → Liquid dosage forms, solutions, suspensions, emulsions, semi-solids
+  
+BP204T - Organic Chemistry I (3L+1T, 4Cr)
+  → Nomenclature, mechanisms, alkanes, aromatic compounds, functional groups
+  
+BP205T - Biochemistry I (3L+1T, 4Cr)
+  → Carbohydrate, lipid, protein metabolism, nucleic acids, enzyme kinetics
+
+Practicals: All 5 theory courses
+
+
+SEM III (ODD) - 30 Credits
+────────────────────────────
+BP301T - Pathophysiology (3L+1T, 4Cr)
+  → Disease mechanisms, inflammation, cardiovascular/respiratory/metabolic diseases
+  
+BP302T - Organic Chemistry II (3L+1T, 4Cr)
+  → Heterocyclics, reduction, oxidation, pharmaceutical synthesis, SAR
+  
+BP303T - Biochemistry II (3L+1T, 4Cr)
+  → Advanced kinetics, bioenergetics, signal transduction, gene expression
+  
+BP304T - Pharmacology I (3L+1T, 4Cr)
+  → General principles, pharmacokinetics, pharmacodynamics, ANS drugs
+  
+BP305T - Social Pharmacy (3L+1T, 4Cr)
+  → Healthcare systems, community pharmacy, epidemiology, drug utilization
+
+Practicals: Pathophysiology, Organic Chem II, Biochem II, Pharmacology I
+
+
+SEM IV (EVEN) - 30 Credits
+────────────────────────────
+BP401T - Pharmacology II (3L+1T, 4Cr)
+  → CVS drugs, antihypertensives, diuretics, anti-arrhythmics
+  
+BP402T - Pharmaceutical Jurisprudence (3L+1T, 4Cr)
+  → Pharmacy Act, Drugs & Cosmetics Act, IP, professional ethics
+  
+BP403T - Medicinal Chemistry I (3L+1T, 4Cr)
+  → Drug discovery, lead identification, structure optimization, prodrugs
+  
+BP404T - Pharmacognosy I (3L+1T, 4Cr)
+  → Plant ID, extraction, phytochemistry, medicinal plants, herbal evaluation
+  
+BP405T - Pharmaceutical Biotechnology (3L+1T, 4Cr)
+  → Fermentation, recombinant DNA, biopharmaceuticals, bioassays
+
+Practicals: Pharmacology II, Medicinal Chem I, Pharmacognosy I, Biotech
+
+
+SEM V (ODD) - 30 Credits
+────────────────────────────
+BP501T - Pharmacology III (3L+1T, 4Cr)
+  → CNS drugs, antipsychotics, antidepressants, anxiolytics, anticonvulsants
+  
+BP502T - Medicinal Chemistry II (3L+1T, 4Cr)
+  → Drug metabolism, phases, DDI, personalized medicine
+  
+BP503T - Pharmacognosy II (3L+1T, 4Cr)
+  → Secondary metabolites, alkaloids, glycosides, terpenes, essential oils
+  
+BP504T - Pharmaceutics III (3L+1T, 4Cr)
+  → Bioavailability, biopharmaceutics, formulation, advanced delivery
+  
+BP505T - Pharmaceutical Analysis III (3L+1T, 4Cr)
+  → HPLC, mass spectrometry, NMR, thermal analysis, method validation
+
+Practicals: Pharmacology III, Medicinal Chem II, Pharmacognosy II, Pharma III
+
+
+SEM VI (EVEN) - 30 Credits
+────────────────────────────
+BP601T - Pharmacology IV (3L+1T, 4Cr)
+  → GI, respiratory, antimicrobial, antiinfective, antiparasitic drugs
+  
+BP602T - Biopharmaceutics & Pharmacokinetics (3L+1T, 4Cr)
+  → ADME, absorption, distribution, metabolism, excretion, models
+  
+BP603T - Pharmaceutical Microbiology (3L+1T, 4Cr)
+  → Microorganisms, sterilization, disinfection, preservation, contamination
+  
+BP604T - Pharmaceutical Economics & Management (3L+1T, 4Cr)
+  → Management, healthcare economics, cost analysis, pricing, insurance
+  
+BP605T - Regulatory Affairs (3L+1T, 4Cr)
+  → Drug approval, GMP, quality standards, documentation, compliance
+
+Practicals: BioPharm & PK, Microbiology, Economics & Management
+
+
+SEM VII (ODD) - 30 Credits + 150 Hours Practice School
+────────────────────────────────────────────────────
+BP701T - Pharmacology V (3L+1T, 4Cr)
+  → Endocrine, hormonal, immunosuppressant, anti-inflammatory, chemotherapy
+  
+BP702T - Advanced Pharmacology (3L+1T, 4Cr)
+  → Interactions, adverse reactions, toxicology, pharmacovigilance
+  
+BP703T - Pharmacy Practice (3L+1T, 4Cr)
+  → Clinical pharmacy, TDM, drug info, patient counseling, error prevention
+  
+BP704T - Novel Drug Delivery Systems (3L+1T, 4Cr)
+  → Nanoparticles, liposomes, microspheres, transdermal, targeted delivery
+  
+BP705T - Medicinal Chemistry III (3L+1T, 4Cr)
+  → Antimicrobial, anticancer, cardiovascular synthesis, SAR, optimization
+
+⭐ PRACTICE SCHOOL (150 Hours - 4 Credits):
+   Choose ONE:
+   • Hospital Pharmacy
+   • Community Pharmacy
+   • Clinical Research Organization
+   • Research Organization
+
+Practicals: Pharmacology V, Pharmacy Practice, Novel Delivery
+
+
+SEM VIII (EVEN) - 30 Credits + Research Project
+────────────────────────────────────────────────
+BP801T - Pharmaceutical Research (2L, 4Cr)
+  → Methodology, planning, data analysis, scientific writing, presentation
+  
+BP802T - Biopharmaceutics & PK (Advanced) (3L+1T, 4Cr)
+  → Nonlinear PK, DDI, population PK, bioequivalence, clinical trials
+  
+BP803T - Pharmaceutical Product Development (3L+1T, 4Cr)
+  → Development process, formulation, optimization, stability, tech transfer
+  
+BP804T - Drug Regulatory Affairs (3L+1T, 4Cr)
+  → CDSCO, WHO guidelines, ICH, dossiers, clinical trial regulations
+
+ELECTIVE (Choose ONE) (3L+1T, 4Cr):
+  • Pharmaceutical Product Development
+  • Advanced Pharmaceutical Analysis
+  • Cosmetics Formulation
+  • Clinical Pharmacology
+  • Pharmaceutical Entrepreneurship
+
+⭐ CAPSTONE PROJECT (8-12 Credits):
+   Research or Product Development
+   Group project (Max 5 students)
+   Dissertation work
+   Internal & External Evaluation
+
+Practicals: Research, Elective
+
+
+✅ KEY REGULATIONS
+==================
+→ 80% Attendance Mandatory
+→ Pass: 50% (40% with internal assessment)
+→ I-II must be completed before III semester
+→ III-IV must be completed before V semester
+→ V-VI must be completed before VII semester
+→ No "Odd Batch" allowed (must follow semester sequence)
+→ Practice School: Mandatory 150 hours (Sem VII)
+→ Research Project: Mandatory 8-12 Credits (Sem VIII)
+
+
+📊 GRADING SYSTEM
+==================
+A+  = 90-100%  (Grade Point: 10)
+A   = 80-89%   (Grade Point: 9)
+B+  = 70-79%   (Grade Point: 8)
+B   = 60-69%   (Grade Point: 7)
+C   = 50-59%   (Grade Point: 6)
+P   = 40-49%   (Grade Point: 5)
+F   = <40%     (Grade Point: 0)
+AB  = Absent   (Grade Point: 0)
+
+SGPA = Σ(Credits × Grade Points) / Total Credits
+CGPA = Overall GPA for entire program
+
+
+🎯 COMPETENCIES DEVELOPED
+===========================
+1. Advanced Pharmaceutical Knowledge
+2. Research & Analytical Thinking
+3. Clinical Practice & Patient Care
+4. Professional Communication
+5. Ethical Practice & Compliance
+6. Leadership & Teamwork
+7. Regulatory & Quality Knowledge
+8. Scientific Problem-Solving
+
+
+💼 CAREER PROSPECTS
+====================
+• Pharmaceutical Industry (Formulation, QA/QC, Production)
+• Hospital Pharmacy (Clinical Pharmacy, Drug Distribution)
+• Community Pharmacy (Retail Pharmacy, Dispensing)
+• Regulatory Affairs (Approvals, Compliance)
+• Clinical Research (CRO, Clinical Trials)
+• Academics & Research
+• Government Pharmacy
+• Pharmaceutical Marketing
+• Drug Store Management
+
+
+📖 ASSESSMENT METHOD
+====================
+Per Course (150 Marks):
+  Internal Assessment: 20 marks (Theory) + 10 marks (Practical)
+  End Semester Exam: 80 marks (Theory) + 40 marks (Practical)
+
+Projects (Sem VIII):
+  Evaluated by internal & external examiners
+  Presentation & viva voce
+
+
+⏰ SEMESTER DURATION
+====================
+Odd Semesters:  June/July - November/December
+Even Semesters: December/January - May/June
+Each Semester: Minimum 100 working days
+
+
+🌟 SPECIAL FEATURES
+====================
+• CBCS (Choice Based Credit System)
+• 80% Attendance Requirement
+• Continuous Internal Assessment
+• Practical Emphasis
+• Internship & Industrial Training
+• Research Project
+• Skill Development Focus
+• Industry-Oriented Curriculum
+• Clinical Exposure
+
+
+📚 IMPORTANT DOCUMENTS
+=======================
+→ Pharmacy Council of India (PCI) - B.Pharm Regulations 2014
+→ CBCS Framework
+→ Academic Calendar
+→ Evaluation Scheme
+→ Syllabus (Subject-wise)
+→ Practical Guidelines
+→ Assessment Criteria
+
+
+✨ TIPS FOR SUCCESS
+====================
+1. Maintain 80%+ Attendance
+2. Balance Theory & Practicals
+3. Regular Study Schedule
+4. Active Lab Participation
+5. Practice Questions Regularly
+6. Group Studies
+7. Consult Faculty & Mentors
+8. Read Beyond Textbooks
+9. Document Everything (Research)
+10. Develop Research Skills
+11. Focus on Practical Applications
+12. Maintain Professional Ethics
+
+
+==========================================
+Document Created: May 2026
+Source: PCI B.Pharm Regulations 2014 (CBCS)
+For: Comprehensive Pharma Education
+==========================================
