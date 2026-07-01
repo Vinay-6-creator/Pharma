@@ -770,7 +770,7 @@
 
           <div class="form-group">
             <label>Drug 2</label>
-            <select id="drug2">
+            <select id= "drug2">
               <option value="">Select drug...</option>
               <option value="warfarin">Warfarin</option>
               <option value="aspirin">Aspirin</option>
@@ -1287,23 +1287,401 @@
         'warfarin-aspirin': {
           severity: 'HIGH',
           info: 'Additive anticoagulant and antiplatelet effects significantly increase bleeding risk. Monitor INR and bleeding signs.',
+          prevention:'Request a Prescription Review,Request a Prescription Review',
           reference: 'Source: Lexicomp / Warfarin drug interaction guidance.'
         },
         'warfarin-ibuprofen': {
           severity: 'HIGH',
           info: 'NSAIDs can displace warfarin and impair platelet function, raising bleeding and GI risk.',
+          prevention: 'Monitor for bleeding signs (black stools, unusual bruising, bleeding gums) and check INR regularly.',
           reference: 'Source: Micromedex / Warfarin and NSAID interaction.'
         },
         'warfarin-clopidogrel': {
           severity: 'HIGH',
           info: 'Combined anticoagulant and antiplatelet therapy increases major bleeding risk.',
+          prevention:'Use together only under close medical supervision.',
           reference: 'Source: Lexicomp / Clopidogrel and warfarin interactions.'
+        },
+        'warfarin-lisinopril':{
+          severity: 'low',
+          info: 'generally has no clinically significant interaction.',
+          prevention:''
+        },
+        'warfarin-atorwastatin':{
+          severity:'Medium',
+          info: 'Atorwastatin may increase warfarin anticoagulant',
+          prevention:'Continue routine clinical monitoring',
+        },
+        'warfarin-amoxicillin':{
+          severity:'Medium',
+          info:'Amoxicillin may increase warfarin effect by altering intestinal flora',
+          prevention:'Moniter INR and observe for signal of bleeding',
+        },
+        'warfarin-ciprofloxacin':{
+          severity:'high',
+          info:'Ciprofloxacin may inhibit warfarin metabolism, increasing bleeding risk',
+          prevention:'Dose adjustment may be required',
         },
         'aspirin-ibuprofen': {
           severity: 'MODERATE',
           info: 'Concurrent NSAID use increases GI bleeding risk and can reduce aspirin antiplatelet effect.',
           reference: 'Source: Micromedex / NSAID interaction guidance.'
         },
+        'warfarin-metformin':{
+          severity: 'low',
+          info: 'blood glucose and anticoagulation response may occasionally vary.',
+          prevention:'Monitor INR regularly when starting or stopping either drug.Continue routine blood glucose monitoring as advised.'
+        },
+        'warfarin-paracetamol':{
+          severity:'Medium',   
+          info:'Prolonged high dose paracetamol use may enhance warfarin antyicoagulant effect',
+          prevention:'Avoid excess or prolonged use',
+        },
+        'warfarin-metaprolol':{            
+          severity:'Low',
+          info:'NO clinically signified interaction is generally reported',
+          prevention: 'Continue routine monitering',
+        },
+        'warfarin-amlodipin':{
+          severity:'Low',
+          info:'Clinically important interactions are uncommon',
+          prevention:'maintain routine follow up',
+        },
+        'warfarin-fluoxetine':{
+          severity:'High',
+          info:'Fluoxetine may increase warfarin effect and elevate the bleeding risk',
+          prevention:'Moniter INR frequently',
+        },
+        'warfarin-sertraline':{
+          severity:'Medium',
+          info:'Sertraline may increase bleeding risk by affecting platelet function',
+          prevention:'Moniter for signs of bleeding',
+        },
+        'warfarin-clopidogrel':{
+          severity:'High',
+          info:'Combined anti-coagulant and antiplatelet therapy substantially increase risk of major bleeding',
+          prevention:'Use together only under close medical supervision. Moniter carefully for bleeding complications',
+        },
+        'warfarin-digoxin':{
+          severity:'LOw',
+          info:'No clinically significant interaction is generally expected',
+          prevention:'Continue routine monitering',
+        },
+        'warfarin-simvastatin':{
+          severity:'Medium',
+          info:'Simvastatin may increase INR bleeding risk in some patients',
+          prevention:'Continue routine follow up.',
+        },
+        'warfarin-losartin':{
+          severity:'low',
+          info:'Clinically significant ineractions are uncommon',
+          prevention:'Continue routine folow up',
+        },
+        'warfarin-glibenclamide':{
+          severity:'Low',
+          info:'Significant interactions are rarely reported',
+          prevention:'Moniter Blood glucose and INR regularly',
+        },
+        'warfarin-insulin':{
+          severity:'Low',
+          info:'No direct clinically interactions is known',
+          prevention:'Continue regular blood glucose monitering',
+        },
+        'wafarin-doxycycline':{
+          severity:'HIgh',
+          info:'Doxycycline may potentials wafarin anticoagulant effect, increasing INR and bleeding risk',
+          prevention:'Moniter INR closely',
+        },
+        'warfarin-ranitidin':{
+          severity:'Low',
+          info:'Clinically significant interactions are uncommon',
+          prevention:'Continue routine monitering',
+        },
+        'wafarin-sildenafil':{
+          severity:'Low',
+          info:'No major interactions is generally expected',
+          prevention:'Use according to prescribed dosage',
+        },
+        'warfarin-levothyroxin':{
+          severity:'High',
+          info:'Levothyroxin may enhance wafarin anticoagulant effect and increase INR',
+          prevention:'Moniter INR closely',
+        },
+        'warfarin-ketoconazole':{
+          severity:'High',
+          info:'Ketoconazole may inhibit warfarin metabolism, significanlty increasing bleeding risk',
+          prevention:'Perform frequent INR monitering',
+        },
+        'warfarin-phenytoin':{
+          severity:'High',
+          info:'This combination may alter both INR and phenytoin concentrations, resulting in unpredictable effects',
+          prevention:'Moniter INR and phenytoin levels closely',
+        },
+        'warfarin-erythromycin':{
+          severity:'High',
+          info:'Erythromycin may inhibit warfarin metabolism, increasing INR and bleeding risk',
+          prevention:'Moniter INR regularly',
+        },
+        'warfarin-diltiazem':{
+          severity:'Medium',
+          info:'Diltiazem may mildly increase warfarin anticoagulant effect',
+          prevention:'Moniter INR regularly',
+        },
+          'aspirin-ibuprofen': {
+            severity: 'High',
+            info: 'Ibuprofen reduces the antiplatelet effect of aspirin and increases GI bleeding risk.',
+            prevention:'Avoid concurrent use if possible; if necessary, take aspirin at least 30 minutes before ibuprofen.',
+          },
+          'aspirin-metformin': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for GI upset.',
+            prevention:'Monitor for signs of GI discomfort or bleeding.',
+          },
+          'aspirin-lisinopril': {
+            severity: 'Moderate',
+            info: 'Aspirin may reduce the antihypertensive effect of lisinopril and increase risk of renal impairment.',
+            prevention:'Monitor blood pressure and kidney function; consider alternative pain management.',
+          },
+          'aspirin-atorvastatin': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for muscle pain or weakness.',
+            prevention:'Report any unexplained muscle pain or weakness to your healthcare provider.',
+          },
+          'aspirin-amoxicillin': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for allergic reactions.',
+            prevention:'Report any signs of allergic reaction (rash, itching, swelling) to your healthcare provider.',
+          },
+          'aspirin-ciprofloxacin': {
+            severity: 'Moderate',
+            info: 'Ciprofloxacin may increase the risk of bleeding when taken with aspirin.',
+            prevention:'Monitor for signs of bleeding (bruising, blood in stool) and report to your healthcare provider.',
+          },
+          'aspirin-omeprazole': {
+            severity: 'Low',
+            info: 'Omeprazole may reduce the effectiveness of aspirin in preventing heart attacks.',
+            prevention:'Discuss with your healthcare provider about alternative medications if you are at high risk for heart disease.',
+          },
+          'aspirin-paracetamol': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for liver function if used long-term.',
+            prevention:'Avoid excessive use of paracetamol and report any signs of liver issues (jaundice, dark urine) to your healthcare provider.',
+          },
+          'aspirin-metoprolol': {
+            severity: 'Moderate',
+            info: 'Aspirin may reduce the antihypertensive effect of metoprolol.',
+            prevention:'Monitor blood pressure regularly and report any significant changes to your healthcare provider.',
+          },
+          'aspirin-amlodipine': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor blood pressure.',
+            prevention:'Report any significant changes in blood pressure to your healthcare provider.',
+          },
+          'aspirin-fluoxetine': {
+            severity: 'High',
+            info: 'Fluoxetine may increase the risk of bleeding when taken with aspirin.',
+            prevention:'Monitor for signs of bleeding and report to your healthcare provider.',
+          },
+          'aspirin-sertraline': {
+            severity: 'High',
+            info: 'Sertraline may increase the risk of bleeding when taken with aspirin.',
+            prevention:'Monitor for signs of bleeding and report to your healthcare provider.',
+          },
+          'aspirin-clopidogrel': {
+            severity: 'High',
+            info: 'Concurrent use of aspirin and clopidogrel significantly increases bleeding risk.',
+            prevention:'Use together only under close medical supervision; monitor for signs of bleeding.',
+          },
+          'aspirin-digoxin': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for signs of digoxin toxicity.',
+            prevention:'Report any symptoms of digoxin toxicity (nausea, vomiting, dizziness) to your healthcare provider.',
+          },
+          'aspirin-simvastatin': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for muscle pain or weakness.',
+            prevention:'Report any unexplained muscle pain or weakness to your healthcare provider.',
+          },
+          'aspirin-losartan': {
+            severity: 'Moderate',
+            info: 'Aspirin may reduce the antihypertensive effect of losartan and increase risk of renal impairment.',
+            prevention:'Monitor blood pressure and kidney function; consider alternative pain management.',
+          },
+          'aspirin-glibenclamide': {
+            severity: 'Moderate',
+            info: 'Aspirin may enhance the hypoglycemic effect of glibenclamide, increasing risk of low blood sugar.',
+            prevention:'Monitor blood glucose levels closely and adjust glibenclamide dose if necessary.',
+          },
+          'aspirin-insulin': {
+            severity: 'Moderate',
+            info: 'Aspirin may enhance the hypoglycemic effect of insulin, increasing risk of low blood sugar.',
+            prevention:'Monitor blood glucose levels closely and adjust insulin dose if necessary.',
+          },
+          'aspirin-doxycycline': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for signs of antibiotic effectiveness.',
+            prevention:'Report any lack of improvement in infection symptoms to your healthcare provider.',
+          },
+          'aspirin-ranitidine': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for signs of GI discomfort.',
+            prevention:'Report any persistent GI symptoms to your healthcare provider.',
+          },
+          'aspirin-sildenafil': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for blood pressure changes.',
+            prevention:'Report any significant changes in blood pressure to your healthcare provider.',
+          },
+          'aspirin-levothyroxine': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor thyroid function.',
+            prevention:'Report any symptoms of thyroid imbalance (fatigue, weight changes) to your healthcare provider.',
+          },
+          'aspirin-ketoconazole': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for signs of liver function.',
+            prevention:'Report any signs of liver issues (jaundice, dark urine) to your healthcare provider.',
+          },
+          'aspirin-phenytoin': {
+            severity: 'Moderate',
+            info: 'Aspirin may increase phenytoin levels, raising risk of toxicity.',
+            prevention:'Monitor phenytoin levels and report any signs of toxicity (nystagmus, ataxia) to your healthcare provider.',
+          },
+          'aspirin-erythromycin': {
+            severity: 'Low',
+            info: 'No significant interaction expected, but monitor for signs of antibiotic effectiveness.',
+            prevention:'Report any lack of improvement in infection symptoms to your healthcare provider.',
+          },
+          'aspirin-diltiazem': {
+            severity: 'Moderate',
+            info: 'Aspirin may enhance the antihypertensive effect of diltiazem, leading to low blood pressure.',
+            prevention:'Monitor blood pressure regularly and report any significant changes to your healthcare provider.',
+          },
+          'ibuprofen-metformin': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for GI upset.',
+            reference: 'Source: Micromedex / NSAID and metformin interaction.'
+          },
+          'ibuprofen-lisinopril': {
+            severity: 'MODERATE',
+            info: 'NSAIDs may reduce the antihypertensive effect of lisinopril and increase risk of renal impairment.',
+            reference: 'Source: Lexicomp / NSAID and ACE inhibitor interaction.'
+          },
+          'ibuprofen-atorvastatin': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for muscle pain or weakness.',
+            reference: 'Source: Micromedex / NSAID and statin interaction.'
+          },
+          'ibuprofen-amoxicillin': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for allergic reactions.',
+            reference: 'Source: Lexicomp / NSAID and antibiotic interaction.'
+          },
+          'ibuprofen-ciprofloxacin': {
+            severity: 'MODERATE',
+            info: 'NSAIDs may increase the risk of CNS side effects when used with ciprofloxacin.',
+            reference: 'Source: Micromedex / NSAID and fluoroquinolone interaction.'
+          },
+          'ibuprofen-omeprazole': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for GI discomfort.',
+            reference: 'Source: Lexicomp / NSAID and PPI interaction.'
+          },
+          'ibuprofen-paracetamol': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for liver function if used long-term.',
+            reference: 'Source: Micromedex / NSAID and acetaminophen interaction.'
+          },
+          'ibuprofen-metoprolol': {
+            severity: 'MODERATE',
+            info: 'NSAIDs may reduce the antihypertensive effect of metoprolol.',
+            reference: 'Source: Lexicomp / NSAID and beta-blocker interaction.'
+          },
+          'ibuprofen-amlodipine': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor blood pressure.',
+            reference: 'Source: Micromedex / NSAID and calcium channel blocker interaction.'
+          },
+          'ibuprofen-fluoxetine': {
+            severity: 'MODERATE',
+            info: 'Concurrent use may increase risk of GI bleeding.',
+            reference: 'Source: Lexicomp / NSAID and SSRI interaction.'
+          },
+          'ibuprofen-sertraline': {
+            severity: 'MODERATE',
+            info: 'Concurrent use may increase risk of GI bleeding.',
+            reference: 'Source: Micromedex / NSAID and SSRI interaction.'
+          },
+          'ibuprofen-clopidogrel': {
+            severity: 'HIGH',
+            info: 'Concurrent use significantly increases risk of GI bleeding.',
+            reference: 'Source: Lexicomp / NSAID and antiplatelet interaction.'
+          },
+          'ibuprofen-digoxin': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for signs of digoxin toxicity.',
+            reference: 'Source: Micromedex / NSAID and digoxin interaction.'
+          },
+          'ibuprofen-simvastatin': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for muscle pain or weakness.',
+            reference: 'Source: Lexicomp / NSAID and statin interaction.'
+          },
+          'ibuprofen-losartan': {
+            severity: 'MODERATE',
+            info: 'NSAIDs may reduce the antihypertensive effect of losartan and increase risk of renal impairment.',
+            reference: 'Source: Micromedex / NSAID and ARB interaction.'
+          },
+          'ibuprofen-glibenclamide': {
+            severity: 'MODERATE',
+            info: 'NSAIDs may enhance the hypoglycemic effect of glibenclamide, increasing risk of low blood sugar.',
+            reference: 'Source: Lexicomp / NSAID and sulfonylurea interaction.'
+          },
+          'ibuprofen-insulin': {
+            severity: 'MODERATE',
+            info: 'NSAIDs may enhance the hypoglycemic effect of insulin, increasing risk of low blood sugar.',
+            reference: 'Source: Micromedex / NSAID and insulin interaction.'
+          },
+          'ibuprofen-doxycycline': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for signs of antibiotic effectiveness.',
+            reference: 'Source: Lexicomp / NSAID and tetracycline interaction.'
+          },
+          'ibuprofen-ranitidine': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for GI discomfort.',
+            reference: 'Source: Micromedex / NSAID and H2 blocker interaction.'
+          },
+          'ibuprofen-sildenafil': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for blood pressure changes.',
+            reference: 'Source: Lexicomp / NSAID and PDE5 inhibitor interaction.'
+          },
+          'ibuprofen-levothyroxine': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor thyroid function.',
+            reference: 'Source: Micromedex / NSAID and thyroid hormone interaction.'
+          },
+          'ibuprofen-ketoconazole': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for signs of liver function.',
+            reference: 'Source: Lexicomp / NSAID and antifungal interaction.'
+          },
+          'ibuprofen-phenytoin': {
+            severity: 'MODERATE',
+            info: 'NSAIDs may increase phenytoin levels, raising risk of toxicity.',
+            reference: 'Source: Micromedex / NSAID and anticonvulsant interaction.'
+          },
+          'ibuprofen-erythromycin': {
+            severity: 'LOW',
+            info: 'No significant interaction expected, but monitor for signs of antibiotic effectiveness.',
+            reference: 'Source: Lexicomp / NSAID and macrolide interaction.'
+          },
+          'ibuprofen-diltiazem': {
+            severity: 'MODERATE',
+            info: 'NSAIDs may enhance the antihypertensive effect of diltiazem, leading to low blood pressure.',
+            reference: 'Source: Micromedex / NSAID and calcium channel blocker interaction.'
+          },
         'clopidogrel-ibuprofen': {
           severity: 'MODERATE',
           info: 'NSAIDs increase bleeding risk when used with clopidogrel.',
