@@ -1,0 +1,77 @@
+/* PharmaConnect AI - simplified stylesheet for redesigned homepage */
+:root{
+  --bg:#071126;
+  --card:#0f1b2b;
+  --muted:#9fb0c8;
+  --accent1:#6ee7b7;
+  --accent2:#7c3aed;
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.02);
+  --text:#e6f0fb;
+  --radius:18px;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:linear-gradient(180deg,#061327 0%, #08172b 60%);color:var(--text);-webkit-font-smoothing:antialiased}
+.pc-container{width:min(1200px,96%);margin:24px auto;padding:20px}
+.pc-header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.pc-brand{display:flex;align-items:center;gap:12px}
+.pc-logo{width:56px;height:56px;border-radius:14px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:grid;place-items:center;font-weight:800;color:#042033}
+.pc-title{font-size:1.15rem;font-weight:800}
+.pc-nav{display:flex;gap:18px;align-items:center}
+.pc-nav a{color:var(--muted);text-decoration:none;font-weight:600}
+.pc-nav a:hover{color:var(--text)}
+.pc-cta{display:flex;gap:12px}
+.btn-primary{background:linear-gradient(90deg,var(--accent1),#34d399);padding:12px 18px;border-radius:999px;color:#042033;text-decoration:none;font-weight:700}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 16px;border-radius:999px;color:var(--muted);text-decoration:none;font-weight:700}
+
+.pc-main{margin-top:28px}
+.hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+.eyebrow{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,0.04);color:var(--accent1);font-weight:700;margin-bottom:14px}
+.hero-left h1{font-size:2.6rem;margin:6px 0 12px;line-height:1}
+.lead{color:var(--muted);max-width:620px;font-size:1.05rem}
+.hero-actions{display:flex;gap:12px;margin-top:18px}
+.trust-row{display:flex;gap:18px;margin-top:22px;list-style:none;padding:0}
+.trust-row li{background:var(--glass);padding:10px 14px;border-radius:14px;color:var(--muted);font-weight:700;display:flex;flex-direction:column;align-items:flex-start}
+.trust-row li strong{color:var(--text);font-size:1.05rem}
+
+.hero-right{display:grid;place-items:center}
+.robot-card{width:360px;background:linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01));border-radius:22px;padding:28px;box-shadow:0 30px 60px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+.robot-face{font-size:48px;display:grid;place-items:center;width:88px;height:88px;border-radius:20px;background:linear-gradient(180deg,#0ea5a0,#7c3aed);margin:0 auto}
+.feature-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;justify-content:center}
+.feature-pills span{background:var(--glass-2);padding:8px 10px;border-radius:999px;font-weight:700;color:var(--muted);font-size:0.9rem}
+
+.features{margin-top:48px}
+.features h2{text-align:center;font-size:1.6rem;margin-bottom:22px}
+.feature-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:20px;border-radius:16px;border:1px solid rgba(255,255,255,0.03)}
+.card .ico{font-size:28px;margin-bottom:10px}
+.card h3{margin:0 0 8px}
+.card p{color:var(--muted);margin:0}
+
+.dashboard-preview{margin-top:36px}
+.dashboard-preview h2{text-align:center;margin-bottom:18px}
+.dashboard-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.panel{background:var(--card);padding:18px;border-radius:14px;text-align:center}
+.panel strong{display:block;margin-top:6px;font-size:1.4rem;color:var(--accent1)}
+
+.semester-cards{margin-top:34px}
+.semester-cards h2{text-align:center;margin-bottom:14px}
+.sem-grid{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.sem{display:inline-block;padding:10px 14px;background:rgba(255,255,255,0.03);border-radius:12px;color:var(--muted);text-decoration:none}
+
+.pc-footer{margin-top:42px;padding:18px;border-top:1px solid rgba(255,255,255,0.02)}
+.footer-inner{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.footer-links a{color:var(--muted);margin-left:12px;text-decoration:none}
+
+@media (max-width:980px){
+  .hero{grid-template-columns:1fr}
+  .feature-cards{grid-template-columns:repeat(2,1fr)}
+  .dashboard-grid{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .feature-cards{grid-template-columns:1fr}
+  .pc-nav{display:none}
+  .hero-left h1{font-size:1.8rem}
+}
