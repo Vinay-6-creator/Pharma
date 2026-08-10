@@ -1,20 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Student Dashboard - PharmaConnect AI</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #0b0f19; color: #fff; padding: 2rem; }
-        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1e293b; padding-bottom: 1rem; }
-        .btn-logout { background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; }
+        :root {
+            color-scheme: dark;
+            --bg: #081126;
+            --panel: #121b34;
+            --panel-soft: #16213a;
+            --panel-strong: #1e2d55;
+            --primary: #6b76ff;
+            --primary-cta: #5d7dff;
+            --accent: #7ce1ff;
+            --text: #eef2ff;
+            --muted: #9bb0d5;
+            --border: rgba(255,255,255,.08);
+            --shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            --radius: 24px;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+        html, body { margin: 0; min-height: 100%; background: radial-gradient(circle at top right, rgba(107,118,255,.16), transparent 28%), linear-gradient(180deg, #06101f 0%, #081126 100%); color: var(--text); }
+        body { font-size: 14px; line-height: 1.6; }
+        button, a { font: inherit; }
+        a { color: inherit; text-decoration: none; }
+
+        .page { display: grid; grid-template-columns: 280px minmax(0, 1fr); min-height: 100vh; gap: 24px; padding: 24px; }
+        .sidebar { display: flex; flex-direction: column; gap: 24px; }
+        .brand { display: flex; flex-direction: column; gap: 12px; padding: 24px; background: linear-gradient(180deg, rgba(107,118,255,.16), rgba(48,65,163,.12)); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius); }
+        .brand-title { display: flex; align-items: center; gap: 12px; }
+        .brand-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 20px rgba(124,225,255,.45); }
+        .brand h1 { margin: 0; font-size: 1.1rem; letter-spacing: .03em; }
+        .brand p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+        .nav-links { display: grid; gap: 12px; }
+        .nav-link { display: flex; align-items: center; gap: 14px; padding: 14px 18px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 18px; cursor: pointer; transition: transform .18s ease, background .18s ease; }
+        .nav-link:hover, .nav-link.active { background: rgba(107,118,255,.14); transform: translateX(2px); }
+        .nav-link svg { width: 18px; height: 18px; fill: currentColor; }
+        .nav-link span { font-weight: 600; }
+        .nav-link .badge { margin-left: auto; background: #ff6b6b; padding: 2px 10px; border-radius: 999px; font-size: 11px; color: #fff; }
+
+        .upgrade-card, .profile-card { padding: 24px; border-radius: var(--radius); background: linear-gradient(180deg, rgba(107,118,255,.08), rgba(16,28,56,.95)); border: 1px solid rgba(255,255,255,.08); }
+        .upgrade-card h2, .profile-card h2 { margin: 0 0 12px; font-size: 1rem; }
+        .upgrade-card p, .profile-card p { margin: 0; color: var(--muted); }
+        .upgrade-btn { margin-top: 16px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; border: none; background: linear-gradient(90deg, #6b76ff, #5d7dff); color: #fff; padding: 14px 20px; border-radius: 16px; cursor: pointer; transition: transform .18s ease; }
+        .upgrade-btn:hover { transform: translateY(-1px); }
+        .profile-status { margin-top: 18px; display: grid; gap: 10px; }
+        .status-chip { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06); }
+        .status-chip span:last-child { color: var(--accent); font-weight: 700; }
+
+        .content { display: grid; gap: 24px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+        .search-box { flex: 1; display: flex; gap: 12px; align-items: center; padding: 14px 18px; border-radius: 18px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+        .search-box input { flex: 1; border: none; outline: none; background: transparent; color: var(--text); font-size: .95rem; }
+        .search-box button { border: none; background: none; color: var(--accent); cursor: pointer; width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; }
+        .top-actions { display: flex; align-items: center; gap: 12px; }
+        .icon-btn { width: 44px; height: 44px; border-radius: 14px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.03); display: grid; place-items: center; cursor: pointer; position: relative; }
+        .icon-btn:hover { background: rgba(255,255,255,.08); }
+        .notification-badge { position: absolute; top: 10px; right: 10px; width: 10px; height: 10px; border-radius: 50%; background: #ff6b6b; box-shadow: 0 0 0 4px rgba(255,107,107,.16); }
+        .user-chip { display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 16px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
+        .user-chip img { width: 38px; height: 38px; border-radius: 50%; object-fit: cover; }
+        .user-chip div strong { display: block; }
+        .user-chip div span { color: var(--muted); font-size: .85rem; }
+
+        .hero-panel { padding: 28px; border-radius: 32px; background: linear-gradient(180deg, rgba(16,30,66,.95), rgba(10,13,28,.95)); border: 1px solid rgba(255,255,255,.06); display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+        .hero-panel h2 { margin: 0 0 12px; font-size: 1.8rem; }
+        .hero-panel p { margin: 0; color: var(--muted); max-width: 520px; }
+        .hero-metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+        .metric-card { padding: 18px 20px; border-radius: 22px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+        .metric-card strong { display: block; font-size: 1.6rem; margin-bottom: 8px; }
+        .metric-card span { color: var(--muted); font-size: .9rem; }
+        .hero-image { width: 200px; height: 200px; border-radius: 28px; background: radial-gradient(circle at top left, rgba(107,118,255,.55), transparent 35%), linear-gradient(180deg, rgba(42,47,105,.95), rgba(23,33,70,.95)); display: grid; place-items: center; position: relative; overflow: hidden; }
+        .hero-image::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at top right, rgba(124,225,255,.24), transparent 28%); }
+        .illustration { width: 110%; max-width: 280px; filter: drop-shadow(0 20px 50px rgba(0, 0, 0, .2)); }
+
+        .grid-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, .8fr); gap: 24px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+        .panel { padding: 24px; border-radius: var(--radius); background: var(--panel); border: 1px solid rgba(255,255,255,.06); box-shadow: var(--shadow); }
+        .panel h3 { margin: 0 0 18px; font-size: 1.1rem; }
+        .panel .panel-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 18px; }
+        .panel .panel-row small { color: var(--muted); }
+        .panel .pill { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); cursor: pointer; }
+        .panel .pill.active { border-color: rgba(107,118,255,.45); color: var(--accent); }
+
+        .quick-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+        .quick-card { display: flex; flex-direction: column; gap: 12px; padding: 18px; border-radius: 24px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); cursor: pointer; transition: transform .18s ease, background .18s ease; }
+        .quick-card:hover { transform: translateY(-2px); background: rgba(107,118,255,.08); }
+        .quick-card svg { width: 28px; height: 28px; color: var(--accent); }
+        .quick-card strong { font-size: .95rem; }
+        .quick-card span { color: var(--muted); font-size: .88rem; }
+
+        .progress-track { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+        .track-step { position: relative; flex: 1; height: 12px; background: rgba(255,255,255,.06); border-radius: 999px; overflow: hidden; }
+        .track-step::after { content: ""; position: absolute; inset: 0; width: 65%; background: linear-gradient(90deg, #6b76ff, #7ce1ff); border-radius: inherit; }
+        .track-point { width: 14px; height: 14px; border-radius: 50%; background: #0c1222; border: 3px solid #6b76ff; position: relative; }
+
+        .task-list, .subject-grid, .recommended-grid, .activity-list, .achievement-list, .leaderboard-list { display: grid; gap: 14px; }
+        .task-item, .activity-item, .achievement-item, .leaderboard-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; border-radius: 20px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); }
+        .task-item .task-detail, .activity-item .activity-detail { display: grid; gap: 4px; }
+        .task-item .task-detail small, .activity-item .activity-detail small { color: var(--muted); }
+        .task-item button, .subject-card button, .recommend-card button { border: none; background: rgba(255,255,255,.06); color: var(--text); padding: 10px 14px; border-radius: 14px; cursor: pointer; transition: background .2s ease; }
+        .task-item button:hover, .subject-card button:hover, .recommend-card button:hover { background: rgba(107,118,255,.16); }
+
+        .subject-card { display: flex; flex-direction: column; gap: 14px; padding: 20px; background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.06); border-radius: 28px; }
+        .subject-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .subject-avatar { width: 58px; height: 58px; border-radius: 20px; display: grid; place-items: center; background: rgba(107,118,255,.12); color: var(--accent); font-size: 1.5rem; }
+        .subject-progress { height: 8px; width: 100%; border-radius: 999px; background: rgba(255,255,255,.06); overflow: hidden; }
+        .subject-progress span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #6b76ff, #7ce1ff); }
+        .subject-footer { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+
+        .recommend-card { display: grid; gap: 14px; padding: 18px; border-radius: 24px; background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); }
+        .recommend-card .tag { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; background: rgba(107,118,255,.12); color: #9ccaff; font-size: .82rem; }
+        .recommend-card h4 { margin: 0; font-size: 1rem; }
+        .recommend-card .meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--muted); font-size: .82rem; }
+
+        .goal-meter { display: grid; gap: 14px; }
+        .goal-item { padding: 16px; border-radius: 22px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); }
+        .goal-item .goal-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 10px; }
+        .goal-progress { height: 10px; width: 100%; border-radius: 999px; background: rgba(255,255,255,.06); overflow: hidden; }
+        .goal-progress span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #6b76ff, #7ce1ff); transition: width .4s ease; }
+
+        .assistant-card { display: grid; gap: 16px; padding: 22px; border-radius: var(--radius); background: linear-gradient(180deg, rgba(28,38,72,.95), rgba(18,25,49,.98)); border: 1px solid rgba(255,255,255,.08); }
+        .assistant-card .assistant-header { display: flex; justify-content: space-between; gap: 12px; }
+        .assistant-card .assistant-title { display: grid; gap: 6px; }
+        .assistant-card .assistant-title strong { display: block; font-size: 1.05rem; }
+        .assistant-card .assistant-title span { color: var(--muted); }
+        .assistant-actions { display: grid; gap: 12px; }
+        .assistant-actions button { width: 100%; padding: 14px; border-radius: 18px; border: none; background: rgba(255,255,255,.05); color: var(--text); display: flex; align-items: center; justify-content: space-between; gap: 10px; cursor: pointer; transition: transform .18s ease, background .18s ease; }
+        .assistant-actions button:hover { transform: translateY(-1px); background: rgba(107,118,255,.1); }
+        .assistant-start { background: linear-gradient(90deg, #6b76ff, #5d7dff); border: none; color: #fff; padding: 16px; border-radius: 18px; cursor: pointer; width: 100%; }
+
+        .announcements { display: grid; gap: 12px; }
+        .announcement { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 18px; border-radius: 20px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); }
+        .announcement strong { display: block; }
+        .announcement small { color: var(--muted); }
+
+        .achievements { display: grid; gap: 12px; }
+        .achievement-card { display: flex; gap: 14px; align-items: center; padding: 16px 18px; border-radius: 20px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); }
+        .achievement-icon { width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; background: rgba(107,118,255,.12); color: var(--accent); font-size: 1.2rem; }
+
+        .leaderboard-list { gap: 12px; }
+        .leaderboard-item { gap: 14px; padding: 16px 18px; }
+        .leaderboard-item span { color: var(--muted); }
+        .leaderboard-item strong { font-size: .96rem; }
+        .user-highlight { color: #5d7dff; font-weight: 700; }
+
+        .bottom-nav { display: none; }
+        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.65); display: none; align-items: center; justify-content: center; z-index: 20; }
+        .modal-overlay.active { display: flex; }
+        .modal { width: min(480px, calc(100% - 48px)); padding: 28px; border-radius: 28px; background: #091226; border: 1px solid rgba(255,255,255,.08); }
+        .modal h4 { margin-top: 0; }
+        .modal button { margin-top: 18px; width: 100%; }
+
+        @media (max-width: 1280px) {
+            .page { grid-template-columns: 1fr; }
+            .grid-2, .grid-3, .quick-grid { grid-template-columns: 1fr; }
+            .hero-panel { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>Welcome to Student Dashboard</h1>
-        <a href="/api/logout" class="btn-logout">Logout</a>
+    <div class="page">
+        <aside class="sidebar">
+            <section class="brand">
+                <div class="brand-title">
+                    <span class="brand-dot"></span>
+                    <div>
+                        <h1>PharmaConnect AI</h1>
+                        <p>Your Pharmacy Learning Companion</p>
+                    </div>
+                </div>
+            </section>
+
+            <nav class="nav-links" aria-label="Sidebar navigation">
+                <button class="nav-link active" data-section="dashboard">
+                    <svg viewBox="0 0 24 24"><path d="M4 6h16v4H4zM4 14h8v4H4zM14 14h6v4h-6z"/></svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-link" data-section="ai">
+                    <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7v3a1 1 0 001 1h1v3a3 3 0 006 0v-3h1a1 1 0 001-1V9a7 7 0 00-7-7z"/></svg>
+                    <span>AI Assistant</span>
+                    <span class="badge">New</span>
+                </button>
+                <button class="nav-link" data-section="materials">
+                    <svg viewBox="0 0 24 24"><path d="M5 4h14v2H5zm0 5h14v2H5zm0 5h14v2H5zm0 5h14v2H5z"/></svg>
+                    <span>Study Materials</span>
+                </button>
+                <button class="nav-link" data-section="subjects">
+                    <svg viewBox="0 0 24 24"><path d="M4 5h16v4H4zm0 6h10v4H4zm0 6h16v4H4z"/></svg>
+                    <span>Subjects</span>
+                </button>
+                <button class="nav-link" data-section="quiz">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l-9 4v12l9 4 9-4V6zm0 2.18l6 2.67v8.3l-6 2.67-6-2.67V6.85zM11 9h2v4h-2zm0 6h2v2h-2z"/></svg>
+                    <span>Quiz & Tests</span>
+                </button>
+                <button class="nav-link" data-section="assignments">
+                    <svg viewBox="0 0 24 24"><path d="M6 4h12v2H6zm0 4h12v2H6zm0 4h8v2H6zm0 4h8v2H6z"/></svg>
+                    <span>Assignments</span>
+                </button>
+                <button class="nav-link" data-section="classes">
+                    <svg viewBox="0 0 24 24"><path d="M4 5h16v3H4zm0 5h10v3H4zm0 5h16v3H4z"/></svg>
+                    <span>My Classes</span>
+                </button>
+                <button class="nav-link" data-section="community">
+                    <svg viewBox="0 0 24 24"><path d="M7 10a3 3 0 106 0 3 3 0 00-6 0zM15 10a3 3 0 106 0 3 3 0 00-6 0zM5 19a3 3 0 116 0 3 3 0 01-6 0zm10 0a3 3 0 116 0 3 3 0 01-6 0z"/></svg>
+                    <span>Community</span>
+                </button>
+            </nav>
+
+            <section class="upgrade-card">
+                <h2>Upgrade to Premium</h2>
+                <p>Unlock unlimited AI usage, premium content, and study tools.</p>
+                <button class="upgrade-btn" onclick="showModal('Premium features are coming soon!')">Upgrade Now</button>
+            </section>
+
+            <section class="profile-card">
+                <div class="profile-header">
+                    <h2 id="profileName">Vinay Sharma</h2>
+                    <p id="profileSemester">B.Pharm 3rd Sem</p>
+                </div>
+                <div class="status-chip">
+                    <span id="profileCollege">Delhi Pharmacy College</span>
+                    <strong id="profileCompletion">75% Complete</strong>
+                </div>
+            </section>
+        </aside>
+
+        <main class="content">
+            <div class="topbar">
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M10 4a6 6 0 104.472 10.01l4.56 4.56 1.414-1.414-4.56-4.56A6 6 0 0010 4zm0 2a4 4 0 110 8 4 4 0 010-8z"/></svg>
+                    <input id="searchInput" type="search" placeholder="Search for subjects, materials, questions..." aria-label="Search" />
+                    <button onclick="searchDashboard()" aria-label="Search button">
+                        <svg viewBox="0 0 24 24"><path d="M10 4a6 6 0 104.472 10.01l4.56 4.56 1.414-1.414-4.56-4.56A6 6 0 0010 4zm0 2a4 4 0 110 8 4 4 0 010-8z"/></svg>
+                    </button>
+                </div>
+                <div class="top-actions">
+                    <button class="icon-btn" onclick="showModal('Notifications are up to date.')" aria-label="Notifications">
+                        <div class="notification-badge"></div>
+                        <svg viewBox="0 0 24 24"><path d="M12 22a2.5 2.5 0 002.45-2h-4.9A2.5 2.5 0 0012 22zm6.5-6V11c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 00-3 0v.68C7.13 5.36 5.5 7.92 5.5 11v5l-1.5 1.5v.5h16v-.5L18.5 16z"/></svg>
+                    </button>
+                    <button class="icon-btn" onclick="showModal('Please visit your profile settings.')" aria-label="Messages">
+                        <svg viewBox="0 0 24 24"><path d="M21 6v12H5.17L3 20.17V6a2 2 0 012-2h14a2 2 0 012 2zM7 8h10v2H7zm0 4h7v2H7z"/></svg>
+                    </button>
+                    <div class="user-chip" onclick="showModal('Vinay Sharma – B.Pharm 3rd Sem')" style="cursor:pointer;">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80" alt="Profile" />
+                        <div>
+                            <strong>Vinay Sharma</strong>
+                            <span>B.Pharm 3rd Sem</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="hero-panel">
+                <div>
+                    <h2 id="heroTitle">Welcome back, Vinay! 👋</h2>
+                    <p>Let's continue your learning journey today with smart study choices, AI support, and daily progress tracking.</p>
+                    <div class="hero-metrics">
+                        <article class="metric-card"><strong id="metricSemester">3rd</strong><span>Semester</span></article>
+                        <article class="metric-card"><strong id="metricSubjects">8</strong><span>Subjects</span></article>
+                        <article class="metric-card"><strong id="metricProgress">72%</strong><span>Overall Progress</span></article>
+                        <article class="metric-card"><strong id="metricStreak">15</strong><span>Day Streak</span></article>
+                    </div>
+                </div>
+                <div class="hero-image" aria-hidden="true">
+                    <img class="illustration" src="https://images.unsplash.com/photo-1517520287167-4bbf64a00d66?auto=format&fit=crop&w=400&q=80" alt="Study illustration" />
+                </div>
+            </section>
+                <div class="hero-image" aria-hidden="true">
+                    <img class="illustration" src="https://images.unsplash.com/photo-1517520287167-4bbf64a00d66?auto=format&fit=crop&w=400&q=80" alt="Study illustration" />
+                </div>
+            </section>
+
+            <section class="panel">
+                <div class="panel-row">
+                    <div>
+                        <h3>Quick Access</h3>
+                        <small>Jump to the tools you use most.</small>
+                    </div>
+                    <button class="pill active" onclick="toggleQuickAccess('all')">Customize</button>
+                </div>
+                <div class="quick-grid">
+                    <button class="quick-card" onclick="showModal('AI Doubt Solver opened.')">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7v3a1 1 0 001 1h1v3a3 3 0 006 0v-3h1a1 1 0 001-1V9a7 7 0 00-7-7z"/></svg>
+                        <strong>AI Doubt Solver</strong>
+                        <span>Get instant answers</span>
+                    </button>
+                    <button class="quick-card" onclick="showModal('Opening Study Materials...')">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>
+                        <strong>Study Materials</strong>
+                        <span>Notes & lectures</span>
+                    </button>
+                    <button class="quick-card" onclick="showModal('Launching Quiz panel...')">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm1 14.5h-2V16h2zm0-11H11v8h2z"/></svg>
+                        <strong>Quiz</strong>
+                        <span>Practice tests</span>
+                    </button>
+                    <button class="quick-card" onclick="showModal('Opening Assignments...')">
+                        <svg viewBox="0 0 24 24"><path d="M6 4h12v2H6zm0 4h12v2H6zm0 4h8v2H6z"/></svg>
+                        <strong>My Assignments</strong>
+                        <span>Due dates & files</span>
+                    </button>
+                    <button class="quick-card" onclick="showModal('Viewing Mock Tests...')">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h16v3H4zm0 6h16v3H4zm0 6h16v3H4z"/></svg>
+                        <strong>Mock Tests</strong>
+                        <span>Exam practice</span>
+                    </button>
+                </div>
+            </section>
+
+            <div class="grid-2">
+                <section class="panel">
+                    <div class="panel-row">
+                        <div>
+                            <h3>My Progress</h3>
+                            <small>Overview of your weekly performance.</small>
+                        </div>
+                        <div>
+                            <button class="pill active" onclick="setProgressTab(event, 'week')">This Week</button>
+                            <button class="pill" onclick="setProgressTab(event, 'month')">This Month</button>
+                        </div>
+                    </div>
+                    <div class="progress-track" aria-label="Study hours progress bar">
+                        <div class="track-step"></div>
+                        <div class="track-point"></div>
+                    </div>
+                    <div class="goal-item" style="margin-top:22px;">
+                        <div class="goal-row">
+                            <div>
+                                <strong>Study Hours</strong>
+                                <small>12.5 hrs</small>
+                            </div>
+                            <strong>+15%</strong>
+                        </div>
+                        <div class="goal-progress"><span style="width: 75%"></span></div>
+                    </div>
+                    <div class="goal-item">
+                        <div class="goal-row">
+                            <div>
+                                <strong>Subject Mastery</strong>
+                                <small>Average scores and learning pace</small>
+                            </div>
+                            <strong>80%</strong>
+                        </div>
+                        <div class="goal-progress"><span style="width: 80%"></span></div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-row">
+                        <div>
+                            <h3>Upcoming Tasks</h3>
+                            <small>Stay on schedule with deadlines.</small>
+                        </div>
+                        <button class="pill" onclick="showModal('Viewing calendar and deadlines...')">View All</button>
+                    </div>
+                    <div class="task-list" id="upcomingTasks"></div>
+                </section>
+            </div>
+
+            <div class="grid-3">
+                <section class="panel">
+                    <div class="panel-row">
+                        <div>
+                            <h3>My Subjects</h3>
+                            <small>Subjects in your 3rd semester.</small>
+                        </div>
+                        <button class="pill" onclick="showModal('Opening all subjects...')">View All</button>
+                    </div>
+                    <div class="subject-grid" id="subjectGrid"></div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-row">
+                        <div>
+                            <h3>Recommended for You</h3>
+                            <small>Based on your progress and subjects.</small>
+                        </div>
+                        <button class="pill" onclick="showModal('Showing recommendations...')">View All</button>
+                    </div>
+                    <div class="recommended-grid" id="recommendedGrid"></div>
+                </section>
+
+                <section class="assistant-card">
+                    <div class="assistant-header">
+                        <div class="assistant-title">
+                            <strong>AI Study Assistant</strong>
+                            <span>Hello Vinay! How can I help you learn today?</span>
+                        </div>
+                    </div>
+                    <div class="assistant-actions">
+                        <button onclick="showModal('Solve a doubt opened.')">Solve a Doubt</button>
+                        <button onclick="showModal('Explain a concept opened.')">Explain a Concept</button>
+                        <button onclick="showModal('Generate notes opened.')">Generate Notes</button>
+                        <button onclick="showModal('Create MCQs opened.')">Create MCQs</button>
+                        <button onclick="showModal('Summarize PDF opened.')">Summarize PDF</button>
+                    </div>
+                    <button class="assistant-start" onclick="showModal('Starting AI chat session...')">Start Chat</button>
+                </section>
+            </div>
+
+            <div class="grid-3">
+                <section class="panel">
+                    <div class="panel-row">
+                        <div>
+                            <h3>Daily Goals</h3>
+                            <small>Track your study targets.</small>
+                        </div>
+                        <button class="pill" onclick="toggleGoals()">Edit Goals</button>
+                    </div>
+                    <div class="goal-meter">
+                        <div class="goal-item">
+                            <div class="goal-row"><strong>Study Hours</strong><span id="studyHours">12.5 / 15 hrs</span></div>
+                            <div class="goal-progress"><span style="width: 83%"></span></div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-row"><strong>MCQs Solved</strong><span id="mcqsSolved">45 / 60</span></div>
+                            <div class="goal-progress"><span style="width: 75%"></span></div>
+                        </div>
+                        <div class="goal-item">
+                            <div class="goal-row"><strong>Topics Completed</strong><span id="topicsCompleted">8 / 10</span></div>
+                            <div class="goal-progress"><span style="width: 80%"></span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-row">
+                        <div>
+                            <h3>Recent Activity</h3>
+                            <small>Latest study actions.</small>
+                        </div>
+                        <button class="pill" onclick="showModal('Displaying all recent activity...')">View All</button>
+                    </div>
+                    <div class="activity-list" id="activityList"></div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-row">
+                        <div>
+                            <h3>Announcements</h3>
+                            <small>Important course updates.</small>
+                        </div>
+                        <button class="pill" onclick="showModal('Opening announcements...')">View All</button>
+                    </div>
+                    <div class="announcements" id="announcementList"></div>
+                </section>
+            </div>
+
+            <div class="grid-3">
+                <section class="panel achievements">
+                    <div class="panel-row">
+                        <h3>Achievements</h3>
+                        <button class="pill" onclick="showModal('Viewing all achievements...')">View All</button>
+                    </div>
+                    <div class="achievement-list">
+                        <div class="achievement-card"><span class="achievement-icon">🏆</span><div><strong>Quiz Master</strong><small>Completed 5 quizzes</small></div></div>
+                        <div class="achievement-card"><span class="achievement-icon">🤖</span><div><strong>AI Learner</strong><small>Used AI assistant 10 times</small></div></div>
+                        <div class="achievement-card"><span class="achievement-icon">🔥</span><div><strong>Top Performer</strong><small>Scored 90%+ in tests</small></div></div>
+                        <div class="achievement-card"><span class="achievement-icon">⭐</span><div><strong>Consistency King</strong><small>15-day study streak</small></div></div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-row">
+                        <h3>Leaderboard</h3>
+                        <button class="pill" onclick="showModal('Viewing full leaderboard...')">This Week</button>
+                    </div>
+                    <div class="leaderboard-list">
+                        <div class="leaderboard-item"><strong>Rahul Verma</strong><span>2500 XP</span></div>
+                        <div class="leaderboard-item"><strong>Anjali Sharma</strong><span>2300 XP</span></div>
+                        <div class="leaderboard-item user-highlight"><strong>You (Vinay)</strong><span>2100 XP</span></div>
+                        <div class="leaderboard-item"><strong>Karan Patel</strong><span>1800 XP</span></div>
+                        <div class="leaderboard-item"><strong>Neha Singh</strong><span>1600 XP</span></div>
+                    </div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-row">
+                        <div>
+                            <h3>Your Learning Journey</h3>
+                            <small>Keep learning and achieve your goals.</small>
+                        </div>
+                    </div>
+                    <div style="padding: 20px; border-radius: 28px; background: linear-gradient(180deg, rgba(107,118,255,.12), rgba(13,22,40,.94)); display:grid; gap: 18px;">
+                        <p>You're doing great! Keep learning and achieve your goals.</p>
+                        <button class="upgrade-btn" onclick="showModal('Exploring study path...')">Explore Study Path</button>
+                    </div>
+                </section>
+            </div>
+        </main>
     </div>
-    <p>Aapke B.Pharm courses, study materials, aur AI assistant yahan accessible hain.</p>
+
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <h4 id="modalTitle">Action</h4>
+            <p id="modalMessage">Working on it...</p>
+            <button onclick="hideModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => link.addEventListener('click', () => {
+            navLinks.forEach(item => item.classList.remove('active'));
+            link.classList.add('active');
+            showModal(`${link.querySelector('span').textContent} page is selected.`);
+        }));
+
+        function searchDashboard() {
+            const query = document.getElementById('searchInput').value.trim();
+            showModal(query ? `Searching for \"${query}\"...` : 'Please enter a search term.');
+        }
+
+        function showModal(message) {
+            const overlay = document.getElementById('modalOverlay');
+            document.getElementById('modalMessage').textContent = message;
+            overlay.classList.add('active');
+        }
+
+        function hideModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        function closeModal(event) {
+            if (event.target.id === 'modalOverlay') {
+                hideModal();
+            }
+        }
+
+        function setProgressTab(event, tab) {
+            document.querySelectorAll('.pill').forEach(button => button.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            const message = tab === 'month' ? 'Monthly progress updated.' : 'Weekly progress displayed.';
+            showModal(message);
+        }
+
+        function toggleQuickAccess(mode) {
+            showModal('Customize quick access options coming soon.');
+        }
+
+        function toggleGoals() {
+            showModal('Edit your daily goal targets in the next update.');
+        }
+
+        async function loadDashboard() {
+            try {
+                const response = await fetch('/api/student/dashboard');
+                if (!response.ok) {
+                    if (response.status === 401 || response.status === 403) {
+                        window.location.href = '/login.html';
+                        return;
+                    }
+                    throw new Error('Unable to load dashboard');
+                }
+
+                const data = await response.json();
+                document.getElementById('heroTitle').textContent = `Welcome back, ${data.studentName}! 👋`;
+                document.getElementById('profileName').textContent = data.profile.name;
+                document.getElementById('profileSemester').textContent = data.profile.semester;
+                document.getElementById('profileCollege').textContent = data.profile.college;
+                document.getElementById('profileCompletion').textContent = data.profile.completion;
+                document.getElementById('metricSemester').textContent = data.metrics.semester;
+                document.getElementById('metricSubjects').textContent = data.metrics.subjectsCount;
+                document.getElementById('metricProgress').textContent = `${data.metrics.overallProgress}%`;
+                document.getElementById('metricStreak').textContent = data.metrics.streak;
+                document.getElementById('studyHours').textContent = data.dailyGoals.studyHours;
+                document.getElementById('mcqsSolved').textContent = data.dailyGoals.mcqsSolved;
+                document.getElementById('topicsCompleted').textContent = data.dailyGoals.topicsCompleted;
+
+                const upcomingTasks = document.getElementById('upcomingTasks');
+                upcomingTasks.innerHTML = data.upcomingTasks.map(task => `
+                    <article class="task-item">
+                        <div class="task-detail">
+                            <strong>${task.title}</strong>
+                            <small>Due: ${task.due}</small>
+                        </div>
+                        <button onclick="showModal('Opening ${task.title}...')">Open</button>
+                    </article>
+                `).join('');
+
+                const subjectGrid = document.getElementById('subjectGrid');
+                subjectGrid.innerHTML = data.subjects.map(subject => {
+                    const avatar = subject.name.split(' ').map(word => word[0]).join('').slice(0, 2).toUpperCase();
+                    return `
+                        <article class="subject-card">
+                            <div class="subject-header">
+                                <div>
+                                    <h4>${subject.name}</h4>
+                                    <small>Progress ${subject.progress}%</small>
+                                </div>
+                                <div class="subject-avatar">${avatar}</div>
+                            </div>
+                            <div class="subject-progress"><span style="width:${subject.progress}%"></span></div>
+                            <div class="subject-footer">
+                                <span>Continue</span>
+                                <button onclick="showModal('Continuing ${subject.name}...')">Continue</button>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+                const recommendedGrid = document.getElementById('recommendedGrid');
+                recommendedGrid.innerHTML = data.recommended.map(item => `
+                    <article class="recommend-card">
+                        <span class="tag">${item.type}</span>
+                        <h4>${item.title}</h4>
+                        <div class="meta"><span>${item.author}</span><span>${item.rating} · ${item.reviews}</span></div>
+                        <button onclick="showModal('Opening ${item.title}...')">Open</button>
+                    </article>
+                `).join('');
+
+                const activityList = document.getElementById('activityList');
+                activityList.innerHTML = data.activity.map(item => `
+                    <article class="activity-item">
+                        <div class="activity-detail">
+                            <strong>${item.title}</strong>
+                            <small>${item.time}</small>
+                        </div>
+                    </article>
+                `).join('');
+
+                const announcementList = document.getElementById('announcementList');
+                announcementList.innerHTML = data.announcements.map(item => `
+                    <article class="announcement">
+                        <div>
+                            <strong>${item.title}</strong>
+                            <small>${item.message}${item.created_at ? ' • ' + item.created_at : ''}</small>
+                        </div>
+                        <button onclick="showModal('Opening announcement: ${item.title}...')">View</button>
+                    </article>
+                `).join('');
+            } catch (error) {
+                console.error(error);
+                showModal('Unable to load dashboard data. Please try again later.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
 </body>
 </html>

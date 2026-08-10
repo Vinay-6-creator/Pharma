@@ -83,6 +83,12 @@ schema.forEach(sql => db.prepare(sql).run());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(session({
+    secret: 'pharma-connect-secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { secure: false }
+}));
 
 const ensureAuthenticated = (req, res, next) => {
     if (req.session && req.session.user) {
@@ -254,6 +260,95 @@ app.get('/api/logout', (req, res) => {
 
 app.get('/api/user', ensureAuthenticated, (req, res) => {
     res.json({ user: req.session.user });
+});
+
+app.get('/api/student/dashboard', ensureAuthenticated, (req, res) => {
+    const user = req.session.user;
+    const studentName = user.email.split('@')[0].replace('.', ' ');
+    const semester = 'B.Pharm 3rd Sem';
+    const subjects = db.prepare('SELECT name, semester, progress FROM subjects WHERE semester LIKE ? ORDER BY progress DESC LIMIT 4').all('%3rd Semester%');
+    const assignments = db.prepare('SELECT title, subject, due_date FROM assignments WHERE due_date >= ? ORDER BY due_date ASC LIMIT 4').all(new Date().toISOString().slice(0, 10));
+    const materials = db.prepare('SELECT title, subject, link FROM materials ORDER BY uploaded_at DESC LIMIT 4').all();
+    const announcements = db.prepare('SELECT title, message, created_at FROM announcements ORDER BY created_at DESC LIMIT 3').all();
+    const doubts = db.prepare('SELECT student_name, subject, question, status FROM doubts ORDER BY created_at DESC LIMIT 3').all();
+
+    const upcomingTasks = assignments.length ? assignments.map(item => ({
+        title: item.title,
+        subject: item.subject,
+        due: item.due_date
+    })) : [
+        { title: 'Pharmaceutics Assignment', subject: 'Pharmaceutics I', due: '2025-05-22' },
+        { title: 'Pharmaceutical Chemistry Quiz', subject: 'Pharmaceutical Chemistry', due: '2025-05-25' }
+    ];
+
+    const defaultSubjects = subjects.length ? subjects : [
+        { name: 'Pharmaceutics I', semester, progress: 80 },
+        { name: 'Pharmaceutical Chemistry', semester, progress: 65 },
+        { name: 'Pharmacology I', semester, progress: 70 },
+        { name: 'Pharmacognosy', semester, progress: 60 }
+    ];
+
+    const recommended = materials.length ? materials.slice(0, 3).map((item, index) => ({
+        title: item.title,
+        subject: item.subject,
+        type: ['PDF', 'Video', 'MCQs'][index] || 'Notes',
+        author: ['Dr. Ramesh Verma', 'Dr. Anjali Sharma', 'Dr. Mohit Bansal'][index] || 'Dr. Priya Singh',
+        rating: ['4.8', '4.7', '4.6'][index] || '4.5',
+        reviews: ['4.7k', '890', '1.5k'][index] || '1.1k',
+        link: item.link || '#'
+    })) : [
+        { title: 'Pharmaceutics I Notes', subject: 'Pharmaceutics I', type: 'PDF', author: 'Dr. Ramesh Verma', rating: '4.8', reviews: '4.7k', link: '#' },
+        { title: 'Pharmaceutical Chemistry Reactions', subject: 'Pharmaceutical Chemistry', type: 'Video', author: 'Dr. Anjali Sharma', rating: '4.7', reviews: '890', link: '#' },
+        { title: 'Pharmacology MCQs Practice Set - 2', subject: 'Pharmacology I', type: 'MCQs', author: 'Dr. Mohit Bansal', rating: '4.6', reviews: '1.5k', link: '#' }
+    ];
+
+    const activity = [
+        { title: 'You solved a doubt on Hypertension', time: '2 min ago' },
+        { title: 'You completed quiz on Pharmaceutical Chemistry', time: '1 hour ago' },
+        { title: 'You downloaded Pharmaceutics I Notes', time: '3 hours ago' },
+        { title: 'You attended live class on Pharmacology', time: 'Yesterday' }
+    ];
+
+    const leaderboard = [
+        { name: 'Rahul Verma', score: '2500 XP' },
+        { name: 'Anjali Sharma', score: '2300 XP' },
+        { name: 'You (Vinay)', score: '2100 XP' },
+        { name: 'Karan Patel', score: '1800 XP' },
+        { name: 'Neha Singh', score: '1600 XP' }
+    ];
+
+    res.json({
+        studentName,
+        semester,
+        metrics: {
+            semester: '3rd',
+            subjectsCount: defaultSubjects.length,
+            overallProgress: 72,
+            streak: 15
+        },
+        quickAccess: [],
+        upcomingTasks,
+        subjects: defaultSubjects,
+        recommended,
+        dailyGoals: {
+            studyHours: '12.5 / 15 hrs',
+            mcqsSolved: '45 / 60',
+            topicsCompleted: '8 / 10'
+        },
+        activity,
+        announcements: announcements.length ? announcements : [
+            { title: 'GPAT 2025 Crash Course is Live!', message: 'Enroll now and get access to live classes, tests & study materials.', created_at: '2025-05-15' },
+            { title: 'Live Session: Pharmaceutical Analysis', message: 'Join Dr. Priya Sharma tomorrow at 7:00 PM.', created_at: '2025-05-14' },
+            { title: 'Quiz of the Week', message: 'Participate and win exciting rewards!', created_at: '2025-05-13' }
+        ],
+        leaderboard,
+        profile: {
+            name: studentName,
+            semester,
+            college: 'Delhi Pharmacy College',
+            completion: '75%'
+        }
+    });
 });
 
 app.get('/api/faculty/dashboard', ensureAuthenticated, ensureFaculty, (req, res) => {
