@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Study Materials - PharmaConnect AI</title>
+    <style>
+        :root{--bg:#081126;--panel:#121b34;--text:#eef2ff;--muted:#9bb0d5;--accent:#7ce1ff}
+        body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#06101f 0%,#081126 100%);color:var(--text);padding:28px}
+        a.back{color:var(--accent);text-decoration:none}
+        .panel{background:var(--panel);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,.06)}
+        .list{display:grid;gap:12px;margin-top:12px}
+        .item{padding:12px;border-radius:8px;background:rgba(255,255,255,.02);display:flex;justify-content:space-between;align-items:center}
+        button{padding:8px 12px;border-radius:8px;border:none;background:linear-gradient(90deg,#6b76ff,#5d7dff);color:#fff;cursor:pointer}
+    </style>
+</head>
+<body>
+    <div style="margin-bottom:12px">
+        <a href="student-dashboard.html" class="back">← Back to Dashboard</a>
+        <h1 style="margin:6px 0 0">Study Materials</h1>
+        <small style="color:var(--muted)">Notes, lectures, and resources</small>
+    </div>
+    <section class="panel">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Available Materials</strong>
+            <button onclick="addMaterial()">Add Demo Material</button>
+        </div>
+        <div id="materialsList" class="list"></div>
+    </section>
+    <script>
+        const materialsKey = 'materials_demo';
+        function render(){
+            const list = document.getElementById('materialsList');
+            const items = JSON.parse(localStorage.getItem(materialsKey) || '[]');
+            list.innerHTML = '';
+            if(items.length===0){ list.innerHTML = '<div style="color:var(--muted)">No materials yet — add a demo item.</div>'; return; }
+            items.forEach((m,idx)=>{
+                const el = document.createElement('div'); el.className='item';
+                el.innerHTML = '<div><strong>'+m.title+'</strong><div style="color:var(--muted);font-size:0.9rem">'+m.meta+'</div></div>';
+                const btn = document.createElement('button'); btn.textContent='Open'; btn.onclick=()=>alert('Opening: '+m.title);
+                el.appendChild(btn);
+                list.appendChild(el);
+            });
+        }
+        function addMaterial(){
+            const items = JSON.parse(localStorage.getItem(materialsKey) || '[]');
+            items.unshift({title:'Sample Lecture Notes', meta:'Pharmacology - 12 pages', created:Date.now()});
+            localStorage.setItem(materialsKey, JSON.stringify(items)); render();
+        }
+        render();
+    </script>
+</body>
+</html>

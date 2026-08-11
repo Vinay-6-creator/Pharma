@@ -7,6 +7,34 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const db = new Database('database.db');
+const nodemailer = require('nodemailer');
+
+const emailTransporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST || 'smtp.example.com',
+    port: Number(process.env.EMAIL_PORT || 587),
+    secure: process.env.EMAIL_SECURE === 'true',
+    auth: {
+        user: process.env.EMAIL_USER || 'your-email@example.com',
+        pass: process.env.EMAIL_PASS || 'your-email-password'
+    }
+});
+
+const sendLoginNotification = async (email, role) => {
+    if (!process.env.EMAIL_HOST || !process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+        console.warn('Email notification skipped: EMAIL_HOST, EMAIL_USER, or EMAIL_PASS is not configured.');
+        return;
+    }
+
+    const info = await emailTransporter.sendMail({
+        from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
+        to: email,
+        subject: 'Login Notification from PharmaConnect AI',
+        text: `A new login to PharmaConnect AI occurred using this email address (${email}) as ${role}. If this was not you, please secure your account.`,
+        html: `<p>A new login to <strong>PharmaConnect AI</strong> occurred using this email address (<strong>${email}</strong>) as <strong>${role}</strong>.</p><p>If this was not you, please change your password or contact support immediately.</p>`
+    });
+
+    console.log('Login notification email sent:', info.messageId);
+};
 
 // Create schema
 const schema = [
@@ -114,6 +142,20 @@ const sendFacultyDashboard = (req, res) => {
 app.get('/faculty-dashboard.html', ensureAuthenticated, sendFacultyDashboard);
 app.get('/student-dashboard.html', ensureAuthenticated, (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'student-dashboard.html'));
+});
+
+const studentPages = [
+    '/ai-doubt-solver.html',
+    '/study-materials.html',
+    '/quiz.html',
+    '/assignments.html',
+    '/mock-tests.html'
+];
+
+studentPages.forEach(page => {
+    app.get(page, ensureAuthenticated, (req, res) => {
+        res.sendFile(path.join(__dirname, 'public', page.slice(1)));
+    });
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -229,7 +271,7 @@ app.post('/api/register', (req, res) => {
     }
 });
 
-app.post('/api/login', (req, res) => {
+app.post('/api/login', async (req, res) => {
     const { email, password, role } = req.body;
 
     try {
@@ -245,6 +287,11 @@ app.post('/api/login', (req, res) => {
 
         req.session.user = { id: user.id, email: user.email, role: user.role };
         const redirectUrl = user.role === 'faculty' ? '/faculty-dashboard.html' : '/student-dashboard.html';
+
+        sendLoginNotification(user.email, user.role).catch((emailErr) => {
+            console.error('Login notification email failed:', emailErr);
+        });
+
         res.status(200).json({ message: 'Login Successful', redirectUrl });
     } catch (err) {
         console.error(err);

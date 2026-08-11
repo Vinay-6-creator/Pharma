@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AI Doubt Solver - PharmaConnect AI</title>
+    <style>
+        :root{--bg:#081126;--panel:#121b34;--text:#eef2ff;--muted:#9bb0d5;--accent:#7ce1ff}
+        body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#06101f 0%,#081126 100%);color:var(--text);padding:28px}
+        .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+        a.back{color:var(--accent);text-decoration:none}
+        .panel{background:var(--panel);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,.06)}
+        textarea{width:100%;min-height:160px;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:transparent;color:var(--text)}
+        button{padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,#6b76ff,#5d7dff);color:#fff;cursor:pointer}
+        .answer{margin-top:12px;padding:12px;border-radius:8px;background:rgba(255,255,255,.03);color:var(--muted)}
+    </style>
+</head>
+<body>
+    <div class="bar">
+        <div>
+            <a href="student-dashboard.html" class="back">← Back to Dashboard</a>
+            <h1 style="margin:6px 0 0">AI Doubt Solver</h1>
+            <small style="color:var(--muted)">Ask questions and get instant suggestions (demo)</small>
+        </div>
+    </div>
+    <section class="panel">
+        <label style="display:block;font-weight:600;margin-bottom:8px">Your Question</label>
+        <textarea id="question"></textarea>
+        <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
+            <button id="askBtn">Ask</button>
+            <button onclick="document.getElementById('question').value=''" style="background:transparent;border:1px solid rgba(255,255,255,.06);color:var(--text)">Clear</button>
+        </div>
+        <div id="answer" class="answer" style="display:none"></div>
+    </section>
+
+    <script>
+        document.getElementById('askBtn').addEventListener('click', function(){
+            const q = document.getElementById('question').value.trim();
+            const ans = document.getElementById('answer');
+            if(!q){ ans.style.display='block'; ans.textContent='Please type a question.'; return; }
+            ans.style.display='block'; ans.textContent='Thinking...';
+            // Demo: simulated answer
+            setTimeout(()=>{
+                ans.textContent = 'Demo answer for: "' + q + '"\n\nTip: This is a client-side demo. Integrate with your AI API to get real responses.';
+            },700);
+        });
+    </script>
+</body>
+</html>

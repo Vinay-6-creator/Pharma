@@ -239,18 +239,52 @@
                     </button>
                 </div>
                 <div class="top-actions">
-                    <button class="icon-btn" onclick="showModal('Notifications are up to date.')" aria-label="Notifications">
-                        <div class="notification-badge"></div>
-                        <svg viewBox="0 0 24 24"><path d="M12 22a2.5 2.5 0 002.45-2h-4.9A2.5 2.5 0 0012 22zm6.5-6V11c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 00-3 0v.68C7.13 5.36 5.5 7.92 5.5 11v5l-1.5 1.5v.5h16v-.5L18.5 16z"/></svg>
-                    </button>
+                    <div style="position:relative">
+                        <button id="notifBtn" class="icon-btn" onclick="toggleNotificationDropdown()" aria-label="Notifications">
+                            <div id="notifBadge" class="notification-badge" style="display:none;"></div>
+                            <svg viewBox="0 0 24 24"><path d="M12 22a2.5 2.5 0 002.45-2h-4.9A2.5 2.5 0 0012 22zm6.5-6V11c0-3.07-1.63-5.64-4.5-6.32V4a1.5 1.5 0 00-3 0v.68C7.13 5.36 5.5 7.92 5.5 11v5l-1.5 1.5v.5h16v-.5L18.5 16z"/></svg>
+                        </button>
+                        <div id="notifDropdown" class="dropdown-panel" style="display:none; position:absolute; right:0; top:54px; width:320px; z-index:30;">
+                            <div style="padding:12px 14px; border-radius:12px; background:var(--panel-soft); border:1px solid var(--border);">
+                                <strong style="display:block; margin-bottom:8px;">Recent Notifications</strong>
+                                <div id="notifList" style="max-height:260px; overflow:auto; display:grid; gap:8px;"></div>
+                                <button style="margin-top:10px; width:100%;" onclick="clearNotifications()">Mark all read</button>
+                            </div>
+                        </div>
+                    </div>
                     <button class="icon-btn" onclick="showModal('Please visit your profile settings.')" aria-label="Messages">
                         <svg viewBox="0 0 24 24"><path d="M21 6v12H5.17L3 20.17V6a2 2 0 012-2h14a2 2 0 012 2zM7 8h10v2H7zm0 4h7v2H7z"/></svg>
                     </button>
-                    <div class="user-chip" onclick="showModal('Vinay Sharma – B.Pharm 3rd Sem')" style="cursor:pointer;">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80" alt="Profile" />
-                        <div>
-                            <strong>Vinay Sharma</strong>
-                            <span>B.Pharm 3rd Sem</span>
+                    <div style="position:relative">
+                        <button id="profileBtn" class="user-chip" onclick="toggleProfileDropdown()" aria-haspopup="true" aria-expanded="false" style="cursor:pointer;">
+                            <img id="profileImage" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=80&q=80" alt="Profile" />
+                            <div>
+                                <strong id="profileBtnName">Vinay Sharma</strong>
+                                <span id="profileBtnMeta">B.Pharm 3rd Sem</span>
+                            </div>
+                        </button>
+                        <div id="profileDropdown" class="dropdown-panel" style="display:none; position:absolute; right:0; top:58px; width:360px; z-index:30;">
+                            <div style="padding:14px; border-radius:12px; background:var(--panel-soft); border:1px solid var(--border); display:grid; gap:10px;">
+                                <div style="display:flex; gap:12px; align-items:center;">
+                                    <img id="profilePreview" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80" alt="Preview"   />
+                                    <div>
+                                        <strong id="dropName">Vinay Sharma</strong>
+                                        <small id="dropMeta">B.Pharm 3rd Sem • Delhi Pharmacy College</small>
+                                    </div>
+                                </div>
+                                <form id="profileForm" onsubmit="saveProfile(event)" style="display:grid; gap:8px;">
+                                    <label style="font-size:0.9rem; color:var(--muted);">Name</label>
+                                    <input id="inputName" type="text" style="padding:10px; border-radius:8px; border:1px solid var(--border); background:transparent; color:var(--text);" />
+                                    <label style="font-size:0.9rem; color:var(--muted);">Semester / Meta</label>
+                                    <input id="inputMeta" type="text" style="padding:10px; border-radius:8px; border:1px solid var(--border); background:transparent; color:var(--text);" />
+                                    <div style="display:flex; gap:8px; align-items:center;">
+                                        <label for="fileInput" style="cursor:pointer; padding:8px 12px; border-radius:8px; background:linear-gradient(90deg,#6b76ff,#5d7dff); color:#fff;">Choose image</label>
+                                        <input id="fileInput" type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event)" />
+                                        <button type="submit" style="margin-left:auto;">Save</button>
+                                    </div>
+                                </form>
+                                <button onclick="closeProfileDropdown()">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -271,10 +305,6 @@
                     <img class="illustration" src="https://images.unsplash.com/photo-1517520287167-4bbf64a00d66?auto=format&fit=crop&w=400&q=80" alt="Study illustration" />
                 </div>
             </section>
-                <div class="hero-image" aria-hidden="true">
-                    <img class="illustration" src="https://images.unsplash.com/photo-1517520287167-4bbf64a00d66?auto=format&fit=crop&w=400&q=80" alt="Study illustration" />
-                </div>
-            </section>
 
             <section class="panel">
                 <div class="panel-row">
@@ -285,27 +315,27 @@
                     <button class="pill active" onclick="toggleQuickAccess('all')">Customize</button>
                 </div>
                 <div class="quick-grid">
-                    <button class="quick-card" onclick="showModal('AI Doubt Solver opened.')">
+                    <button class="quick-card" data-page="ai-doubt-solver.html" onclick="navigateQuickAccess('ai-doubt-solver.html')">
                         <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 7v3a1 1 0 001 1h1v3a3 3 0 006 0v-3h1a1 1 0 001-1V9a7 7 0 00-7-7z"/></svg>
                         <strong>AI Doubt Solver</strong>
                         <span>Get instant answers</span>
                     </button>
-                    <button class="quick-card" onclick="showModal('Opening Study Materials...')">
+                    <button class="quick-card" data-page="study-materials.html" onclick="navigateQuickAccess('study-materials.html')">
                         <svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg>
                         <strong>Study Materials</strong>
                         <span>Notes & lectures</span>
                     </button>
-                    <button class="quick-card" onclick="showModal('Launching Quiz panel...')">
+                    <button class="quick-card" data-page="quiz.html" onclick="navigateQuickAccess('quiz.html')">
                         <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm1 14.5h-2V16h2zm0-11H11v8h2z"/></svg>
                         <strong>Quiz</strong>
                         <span>Practice tests</span>
                     </button>
-                    <button class="quick-card" onclick="showModal('Opening Assignments...')">
+                    <button class="quick-card" data-page="assignments.html" onclick="navigateQuickAccess('assignments.html')">
                         <svg viewBox="0 0 24 24"><path d="M6 4h12v2H6zm0 4h12v2H6zm0 4h8v2H6z"/></svg>
                         <strong>My Assignments</strong>
                         <span>Due dates & files</span>
                     </button>
-                    <button class="quick-card" onclick="showModal('Viewing Mock Tests...')">
+                    <button class="quick-card" data-page="mock-tests.html" onclick="navigateQuickAccess('mock-tests.html')">
                         <svg viewBox="0 0 24 24"><path d="M4 4h16v3H4zm0 6h16v3H4zm0 6h16v3H4z"/></svg>
                         <strong>Mock Tests</strong>
                         <span>Exam practice</span>
@@ -544,6 +574,10 @@
             showModal('Customize quick access options coming soon.');
         }
 
+        function navigateQuickAccess(page) {
+            window.location.href = page;
+        }
+
         function toggleGoals() {
             showModal('Edit your daily goal targets in the next update.');
         }
@@ -642,6 +676,146 @@
         }
 
         document.addEventListener('DOMContentLoaded', loadDashboard);
+        // --- Profile & Notification functionality ---
+        const USER_ID = 'student_123'; // replace with real logged-in id when available
+
+        function toggleProfileDropdown() {
+            const drop = document.getElementById('profileDropdown');
+            const expanded = drop.style.display === 'block';
+            drop.style.display = expanded ? 'none' : 'block';
+            document.getElementById('profileBtn').setAttribute('aria-expanded', String(!expanded));
+            if (!expanded) populateProfile();
+        }
+
+        function closeProfileDropdown() {
+            document.getElementById('profileDropdown').style.display = 'none';
+            document.getElementById('profileBtn').setAttribute('aria-expanded', 'false');
+        }
+
+        function populateProfile() {
+            const saved = JSON.parse(localStorage.getItem(`profile:${USER_ID}`) || '{}');
+            const name = saved.name || document.getElementById('profileBtnName').textContent;
+            const meta = saved.meta || document.getElementById('profileBtnMeta').textContent;
+            const image = saved.image || document.getElementById('profileImage').src;
+            document.getElementById('inputName').value = name;
+            document.getElementById('inputMeta').value = meta;
+            document.getElementById('profilePreview').src = image;
+            document.getElementById('dropName').textContent = name;
+            document.getElementById('dropMeta').textContent = meta + ' • ' + (saved.college || document.getElementById('profileCollege').textContent);
+        }
+
+        function saveProfile(e) {
+            e.preventDefault();
+            const name = document.getElementById('inputName').value.trim();
+            const meta = document.getElementById('inputMeta').value.trim();
+            const preview = document.getElementById('profilePreview').src;
+            const payload = { name, meta, image: preview, college: document.getElementById('profileCollege').textContent };
+            localStorage.setItem(`profile:${USER_ID}`, JSON.stringify(payload));
+            // Update UI
+            document.getElementById('profileBtnName').textContent = name;
+            document.getElementById('profileBtnMeta').textContent = meta;
+            document.getElementById('profileImage').src = preview;
+            document.getElementById('profileName').textContent = name;
+            document.getElementById('profileSemester').textContent = meta;
+            document.getElementById('dropName').textContent = name;
+            document.getElementById('dropMeta').textContent = meta + ' • ' + payload.college;
+            closeProfileDropdown();
+        }
+
+        function handleImageUpload(event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = () => {
+                const dataUrl = reader.result;
+                document.getElementById('profilePreview').src = dataUrl;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // --- Notifications ---
+        function toggleNotificationDropdown() {
+            const drop = document.getElementById('notifDropdown');
+            const expanded = drop.style.display === 'block';
+            drop.style.display = expanded ? 'none' : 'block';
+            if (!expanded) markNotificationsSeen(false);
+            renderNotifications();
+        }
+
+        function getNotifications() {
+            return JSON.parse(localStorage.getItem(`notifications:${USER_ID}`) || '[]');
+        }
+
+        function setNotifications(list) {
+            localStorage.setItem(`notifications:${USER_ID}`, JSON.stringify(list));
+            updateNotifBadge();
+        }
+
+        function renderNotifications() {
+            const list = getNotifications();
+            const container = document.getElementById('notifList');
+            if (!container) return;
+            if (list.length === 0) {
+                container.innerHTML = '<div style="color:var(--muted)">No notifications</div>';
+                return;
+            }
+            container.innerHTML = list.map(n => `
+                <div style="padding:10px; border-radius:8px; background:rgba(255,255,255,.02); display:flex; justify-content:space-between; gap:8px;">
+                    <div>
+                        <strong style="display:block">${n.title}</strong>
+                        <small style="color:var(--muted)">${n.body}</small>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:6px; align-items:flex-end;">
+                        <small style="color:var(--muted);">${n.time || ''}</small>
+                        <button onclick="removeNotification('${n.id}')">x</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addNotification(title, body) {
+            const list = getNotifications();
+            const item = { id: 'n_' + Date.now(), title, body, time: new Date().toLocaleString(), read: false };
+            list.unshift(item);
+            setNotifications(list);
+            updateNotifBadge();
+        }
+
+        function removeNotification(id) {
+            const list = getNotifications().filter(n => n.id !== id);
+            setNotifications(list);
+            renderNotifications();
+        }
+
+        function clearNotifications() {
+            setNotifications([]);
+            renderNotifications();
+            document.getElementById('notifDropdown').style.display = 'none';
+        }
+
+        function updateNotifBadge() {
+            const list = getNotifications();
+            const unread = list.filter(n => !n.read).length;
+            const badge = document.getElementById('notifBadge');
+            if (!badge) return;
+            if (unread > 0) badge.style.display = 'block'; else badge.style.display = 'none';
+        }
+
+        function markNotificationsSeen(markAll = true) {
+            const list = getNotifications().map(n => ({ ...n, read: markAll ? true : n.read }));
+            setNotifications(list);
+        }
+
+        // Demo: pre-populate a notification if none exist
+        (function initProfileNotifications() {
+            if (!localStorage.getItem(`profile:${USER_ID}`)) {
+                localStorage.setItem(`profile:${USER_ID}`, JSON.stringify({ name: 'Vinay Sharma', meta: 'B.Pharm 3rd Sem', image: document.getElementById('profileImage').src, college: document.getElementById('profileCollege').textContent }));
+            }
+            if (!localStorage.getItem(`notifications:${USER_ID}`)) {
+                setNotifications([{ id: 'n_welcome', title: 'Welcome back!', body: 'Your dashboard is ready.', time: new Date().toLocaleString(), read: false }]);
+            }
+            updateNotifBadge();
+        })();
     </script>
 </body>
 </html>
