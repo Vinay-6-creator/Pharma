@@ -284,7 +284,10 @@
                                         <button type="submit" style="margin-left:auto;">Save</button>
                                     </div>
                                 </form>
-                                <button onclick="closeProfileDropdown()">Close</button>
+                                <div style="display:flex; gap:8px; margin-top:10px;">
+                                    <button onclick="closeProfileDropdown()" style="flex:1;">Close</button>
+                                    <button onclick="logoutUser()" style="flex:1; background:#ff6b6b; color:#fff; border:none; border-radius:12px; padding:10px 12px;">Logout</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -728,6 +731,10 @@
         function closeProfileDropdown() {
             document.getElementById('profileDropdown').style.display = 'none';
             document.getElementById('profileBtn').setAttribute('aria-expanded', 'false');
+        }
+
+        function logoutUser() {
+            window.location.href = '/api/logout';
         }
 
         function populateProfile() {
