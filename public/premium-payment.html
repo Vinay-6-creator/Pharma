@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Premium Payment - PharmaConnect AI</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #03070f;
+            --panel: #0e1a34;
+            --accent: #6b76ff;
+            --accent-soft: #7ce1ff;
+            --text: #eef2ff;
+            --muted: #9bb0d5;
+            --border: rgba(255,255,255,.08);
+            --radius: 24px;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+        body { margin: 0; min-height: 100vh; background: radial-gradient(circle at top right, rgba(107,118,255,.14), transparent 20%), linear-gradient(180deg, #020311 0%, #03070f 100%); color: var(--text); }
+        button, input, select { font: inherit; }
+        button { cursor: pointer; }
+
+        .page { width: min(1100px, 100%); margin: 0 auto; padding: 32px 24px; }
+        .topbar { display: flex; justify-content: space-between; align-items: center; gap: 18px; flex-wrap: wrap; margin-bottom: 30px; }
+        .topbar h1 { margin: 0; font-size: clamp(2rem, 3vw, 2.4rem); }
+        .topbar a { color: var(--accent-soft); text-decoration: none; }
+
+        .checkout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; }
+        .panel { padding: 28px; border-radius: var(--radius); background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+        .panel h2 { margin: 0 0 18px; }
+        .panel p { margin: 0 0 20px; color: var(--muted); line-height: 1.75; }
+
+        .plan-card { border-radius: 24px; padding: 24px; background: linear-gradient(180deg, rgba(107,118,255,.12), rgba(10,16,32,.95)); border: 1px solid rgba(255,255,255,.08); margin-bottom: 20px; }
+        .plan-card strong { display: block; font-size: 2.4rem; margin-bottom: 6px; }
+        .plan-card span { color: var(--muted); }
+        .plan-card ul { margin: 18px 0 0; padding-left: 18px; color: var(--muted); }
+        .plan-card li { margin-bottom: 10px; }
+
+        .form-group { display: grid; gap: 10px; margin-bottom: 18px; }
+        .form-group label { font-size: .92rem; color: var(--muted); }
+        .form-group input, .form-group select { width: 100%; padding: 14px 16px; border-radius: 16px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.04); color: var(--text); outline: none; }
+        .form-grid { display: grid; gap: 18px; }
+        .form-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .submit-btn { width: 100%; border: none; border-radius: 16px; padding: 16px; background: linear-gradient(90deg, var(--accent), #5d7dff); color: #fff; font-size: 1rem; transition: transform .18s ease; }
+        .submit-btn:hover { transform: translateY(-1px); }
+
+        .summary-card { display: grid; gap: 18px; margin-top: 8px; }
+        .summary-item { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+        .summary-item span { color: var(--muted); }
+        .summary-total { font-size: 1.4rem; font-weight: 700; }
+        .small-note { color: var(--muted); font-size: .9rem; }
+
+        .checkout-note { margin-top: 20px; padding: 18px; border-radius: 18px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); }
+        .checkout-note p { margin: 0; color: var(--muted); line-height: 1.7; }
+
+        @media (max-width: 900px) {
+            .checkout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="topbar">
+            <h1>Premium Checkout</h1>
+            <a href="premium.html">← Back to Premium details</a>
+        </div>
+
+        <div class="checkout">
+            <section class="panel">
+                <h2>Complete your upgrade</h2>
+                <p>Choose your plan and securely enter your payment details to unlock all premium study tools, live support, and advanced analytics.</p>
+
+                <div class="plan-card">
+                    <strong>Premium Plan</strong>
+                    <span>Best for pharmacy students ready for exam-level preparation.</span>
+                    <ul>
+                        <li>Unlimited AI doubt support</li>
+                        <li>Premium content library</li>
+                        <li>Weekly mentorship sessions</li>
+                        <li>Personalized study roadmap</li>
+                    </ul>
+                </div>
+
+                <form id="paymentForm" onsubmit="submitPayment(event)">
+                    <div class="form-group">
+                        <label for="cardName">Cardholder name</label>
+                        <input id="cardName" name="cardName" type="text" placeholder="Enter name on card" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="cardNumber">Card number</label>
+                        <input id="cardNumber" name="cardNumber" type="text" placeholder="1234 5678 9012 3456" maxlength="19" required />
+                    </div>
+                    <div class="form-grid form-grid-2">
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry date</label>
+                            <input id="expiryDate" name="expiryDate" type="text" placeholder="MM/YY" maxlength="5" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="cvc">CVC</label>
+                            <input id="cvc" name="cvc" type="text" placeholder="123" maxlength="4" required />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="planDuration">Billing option</label>
+                        <select id="planDuration" name="planDuration">
+                            <option value="monthly">Monthly - ₹499 / month</option>
+                            <option value="yearly">Yearly - ₹4999 / year</option>
+                        </select>
+                    </div>
+                    <button class="submit-btn" type="submit">Pay Securely</button>
+                </form>
+            </section>
+
+            <aside class="panel">
+                <h2>Order summary</h2>
+                <div class="summary-card">
+                    <div class="summary-item"><span>Premium plan</span><strong>₹499</strong></div>
+                    <div class="summary-item"><span>Platform fee</span><strong>₹0</strong></div>
+                    <div class="summary-item summary-total"><span>Total due today</span><strong id="totalAmount">₹499</strong></div>
+                </div>
+                <p class="small-note">You will receive access immediately after payment. This is a demo checkout page; cards are not processed here.</p>
+                <div class="checkout-note">
+                    <p>Your premium upgrade includes access to exclusive notes, advanced analytics, doubt solving, and weekly mentorship sessions. Changes are secure and your data stays protected.</p>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <script>
+        const planDuration = document.getElementById('planDuration');
+        const totalAmount = document.getElementById('totalAmount');
+
+        function updateTotal() {
+            const value = planDuration.value;
+            totalAmount.textContent = value === 'yearly' ? '₹4999' : '₹499';
+        }
+
+        planDuration.addEventListener('change', updateTotal);
+
+        function submitPayment(event) {
+            event.preventDefault();
+            alert('Payment successful! Premium access unlocked.');
+            window.location.href = 'student-dashboard.html';
+        }
+    </script>
+</body>
+</html>
