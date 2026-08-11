@@ -51,12 +51,19 @@
                     ans.textContent = data.message || 'Unable to get an answer. Please try again.';
                     return;
                 }
-                ans.textContent = data.answer;
+                const escaped = escapeHTML(data.answer);
+                ans.innerHTML = escaped.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
             })
             .catch(() => {
                 ans.textContent = 'Unable to connect to the AI service. Please try again later.';
             });
         });
+
+        function escapeHTML(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
     </script>
 </body>
 </html>

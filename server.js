@@ -321,9 +321,9 @@ const getMockAIAnswer = (question) => {
         return 'Stability refers to how long a drug product maintains its identity, purity, and potency under specified storage conditions. Shelf life is the time period during which the drug remains within specifications.';
     }
     if (q.includes('adverse') || q.includes('side effect')) {
-        return 'Adverse effects are unintended responses to a drug. Always weigh benefits against risks, monitor patients for common reactions, and counsel them on what to do if symptoms occur.';
+        return 'Adverse effects are unintended responses to a drug. Monitor patients carefully, counsel on common reactions, and manage supportively if they occur.\n\n- Identify severity and stop the drug if needed\n- Report serious reactions immediately\n- Use supportive therapy as indicated\n\nRelated topics: drug safety, pharmacovigilance, patient counselling';
     }
-    return `PharmaConnect AI suggests reviewing the latest syllabus and textbooks, then focusing on the key concepts in your question: "${question}". If you need help with a specific subject, provide the drug name or topic for a more focused explanation.`;
+    return `Search result summary: ${question} can be approached by focusing on the key pharmacy principles behind the topic.\n\n- Review the core definition or mechanism first\n- Highlight the most relevant drug or process\n- Give a concise clinical or exam tip\n\nRelated topics: pharmacology overview, exam preparation, concept revision`;
 };
 
 app.post('/api/ai/solve', ensureAuthenticated, async (req, res) => {
@@ -332,7 +332,7 @@ app.post('/api/ai/solve', ensureAuthenticated, async (req, res) => {
         return res.status(400).json({ message: 'Question is required.' });
     }
 
-    const prompt = `You are PharmaConnect AI, a helpful assistant for pharmacy students. Answer the question briefly and clearly, focusing on pharmacy concepts. Question: ${question}`;
+    const prompt = `You are PharmaConnect AI. Answer like a Google Search result: first give a concise summary, then provide 2-3 brief bullet points, and finish with a short "Related topics" section when appropriate. Keep the response clear, direct, and helpful for pharmacy students. Question: ${question}`;
 
     try {
         if (process.env.OPENAI_API_KEY) {
