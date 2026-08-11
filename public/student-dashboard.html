@@ -94,10 +94,10 @@
         .quick-card strong { font-size: .95rem; }
         .quick-card span { color: var(--muted); font-size: .88rem; }
 
-        .progress-track { display: flex; align-items: center; gap: 12px; margin-top: 16px; }
+        .progress-track { display: flex; align-items: center; gap: 12px; margin-top: 16px; position: relative; }
         .track-step { position: relative; flex: 1; height: 12px; background: rgba(255,255,255,.06); border-radius: 999px; overflow: hidden; }
-        .track-step::after { content: ""; position: absolute; inset: 0; width: 65%; background: linear-gradient(90deg, #6b76ff, #7ce1ff); border-radius: inherit; }
-        .track-point { width: 14px; height: 14px; border-radius: 50%; background: #0c1222; border: 3px solid #6b76ff; position: relative; }
+        .progress-fill { position: absolute; inset: 0; width: 65%; background: linear-gradient(90deg, #6b76ff, #7ce1ff); border-radius: inherit; transition: width .4s ease; }
+        .track-point { width: 14px; height: 14px; border-radius: 50%; background: #0c1222; border: 3px solid #6b76ff; position: absolute; top: 50%; transform: translate(-50%, -50%); transition: left .4s ease; }
 
         .task-list, .subject-grid, .recommended-grid, .activity-list, .achievement-list, .leaderboard-list { display: grid; gap: 14px; }
         .task-item, .activity-item, .achievement-item, .leaderboard-item { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; border-radius: 20px; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); }
@@ -349,36 +349,38 @@
                     <div class="panel-row">
                         <div>
                             <h3>My Progress</h3>
-                            <small>Overview of your weekly performance.</small>
+                            <small id="progressSubtitle">Overview of your weekly performance.</small>
                         </div>
                         <div>
-                            <button class="pill active" onclick="setProgressTab(event, 'week')">This Week</button>
-                            <button class="pill" onclick="setProgressTab(event, 'month')">This Month</button>
+                            <button class="pill progress-tab active" onclick="setProgressTab(event, 'week')">This Week</button>
+                            <button class="pill progress-tab" onclick="setProgressTab(event, 'month')">This Month</button>
                         </div>
                     </div>
                     <div class="progress-track" aria-label="Study hours progress bar">
-                        <div class="track-step"></div>
-                        <div class="track-point"></div>
+                        <div class="track-step">
+                            <div id="progressFill" class="progress-fill" style="width: 75%;"></div>
+                        </div>
+                        <div id="progressPoint" class="track-point" style="left: 75%;"></div>
                     </div>
                     <div class="goal-item" style="margin-top:22px;">
                         <div class="goal-row">
                             <div>
                                 <strong>Study Hours</strong>
-                                <small>12.5 hrs</small>
+                                <small id="studyHoursDisplay">12.5 hrs</small>
                             </div>
-                            <strong>+15%</strong>
+                            <strong id="studyChange">+15%</strong>
                         </div>
-                        <div class="goal-progress"><span style="width: 75%"></span></div>
+                        <div class="goal-progress"><span id="studyProgress" style="width: 75%"></span></div>
                     </div>
                     <div class="goal-item">
                         <div class="goal-row">
                             <div>
                                 <strong>Subject Mastery</strong>
-                                <small>Average scores and learning pace</small>
+                                <small id="subjectMasteryDisplay">Average scores and learning pace</small>
                             </div>
-                            <strong>80%</strong>
+                            <strong id="subjectMasteryPercent">80%</strong>
                         </div>
-                        <div class="goal-progress"><span style="width: 80%"></span></div>
+                        <div class="goal-progress"><span id="masteryProgress" style="width: 80%"></span></div>
                     </div>
                 </section>
 
@@ -431,7 +433,7 @@
                         <button onclick="showModal('Create MCQs opened.')">Create MCQs</button>
                         <button onclick="showModal('Summarize PDF opened.')">Summarize PDF</button>
                     </div>
-                    <button class="assistant-start" onclick="showModal('Starting AI chat session...')">Start Chat</button>
+                    <button class="assistant-start" onclick="window.location.href='ai-doubt-solver.html'">Start Chat</button>
                 </section>
             </div>
 
@@ -564,11 +566,46 @@
             }
         }
 
+        const progressValues = {
+            week: {
+                subtitle: 'Overview of your weekly performance.',
+                studyHours: '12.5 hrs',
+                studyPercent: 75,
+                studyChange: '+15%',
+                subjectDescription: 'Average scores and learning pace',
+                masteryPercent: '80%',
+                masteryWidth: 80,
+            },
+            month: {
+                subtitle: 'Overview of your monthly performance.',
+                studyHours: '48.0 hrs',
+                studyPercent: 92,
+                studyChange: '+28%',
+                subjectDescription: 'Month-long review of progress',
+                masteryPercent: '78%',
+                masteryWidth: 78,
+            }
+        };
+
         function setProgressTab(event, tab) {
-            document.querySelectorAll('.pill').forEach(button => button.classList.remove('active'));
+            document.querySelectorAll('.progress-tab').forEach(button => button.classList.remove('active'));
             event.currentTarget.classList.add('active');
+            updateProgressSection(tab);
             const message = tab === 'month' ? 'Monthly progress updated.' : 'Weekly progress displayed.';
             showModal(message);
+        }
+
+        function updateProgressSection(tab) {
+            const values = progressValues[tab];
+            document.getElementById('progressSubtitle').textContent = values.subtitle;
+            document.getElementById('studyHoursDisplay').textContent = values.studyHours;
+            document.getElementById('studyChange').textContent = values.studyChange;
+            document.getElementById('subjectMasteryDisplay').textContent = values.subjectDescription;
+            document.getElementById('subjectMasteryPercent').textContent = values.masteryPercent;
+            document.getElementById('studyProgress').style.width = values.studyPercent + '%';
+            document.getElementById('masteryProgress').style.width = values.masteryWidth + '%';
+            document.getElementById('progressFill').style.width = values.studyPercent + '%';
+            document.getElementById('progressPoint').style.left = values.studyPercent + '%';
         }
 
         function toggleQuickAccess(mode) {
