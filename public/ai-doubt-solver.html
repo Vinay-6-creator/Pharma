@@ -39,10 +39,23 @@
             const ans = document.getElementById('answer');
             if(!q){ ans.style.display='block'; ans.textContent='Please type a question.'; return; }
             ans.style.display='block'; ans.textContent='Thinking...';
-            // Demo: simulated answer
-            setTimeout(()=>{
-                ans.textContent = 'Demo answer for: "' + q + '"\n\nTip: This is a client-side demo. Integrate with your AI API to get real responses.';
-            },700);
+
+            fetch('/api/ai/solve', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: q })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.answer) {
+                    ans.textContent = data.message || 'Unable to get an answer. Please try again.';
+                    return;
+                }
+                ans.textContent = data.answer;
+            })
+            .catch(() => {
+                ans.textContent = 'Unable to connect to the AI service. Please try again later.';
+            });
         });
     </script>
 </body>

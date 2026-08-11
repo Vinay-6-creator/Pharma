@@ -309,6 +309,69 @@ app.get('/api/user', ensureAuthenticated, (req, res) => {
     res.json({ user: req.session.user });
 });
 
+const getMockAIAnswer = (question) => {
+    const q = question.toLowerCase();
+    if (q.includes('dose') || q.includes('dosage')) {
+        return 'Dosage depends on the drug, patient weight, and indication. Generally, always refer to the standard pharmacopeia dosing table and adjust for age, renal function, and contraindications. For example, paracetamol is usually 15 mg/kg per dose in children.';
+    }
+    if (q.includes('pharmacokinetics') || q.includes('absorption') || q.includes('distribution')) {
+        return 'Pharmacokinetics describes how the body handles a drug through absorption, distribution, metabolism, and excretion. Absorption is how the drug enters the bloodstream, while distribution describes how it reaches tissues.';
+    }
+    if (q.includes('stability') || q.includes('shelf life')) {
+        return 'Stability refers to how long a drug product maintains its identity, purity, and potency under specified storage conditions. Shelf life is the time period during which the drug remains within specifications.';
+    }
+    if (q.includes('adverse') || q.includes('side effect')) {
+        return 'Adverse effects are unintended responses to a drug. Always weigh benefits against risks, monitor patients for common reactions, and counsel them on what to do if symptoms occur.';
+    }
+    return `PharmaConnect AI suggests reviewing the latest syllabus and textbooks, then focusing on the key concepts in your question: "${question}". If you need help with a specific subject, provide the drug name or topic for a more focused explanation.`;
+};
+
+app.post('/api/ai/solve', ensureAuthenticated, async (req, res) => {
+    const { question } = req.body;
+    if (!question || !question.trim()) {
+        return res.status(400).json({ message: 'Question is required.' });
+    }
+
+    const prompt = `You are PharmaConnect AI, a helpful assistant for pharmacy students. Answer the question briefly and clearly, focusing on pharmacy concepts. Question: ${question}`;
+
+    try {
+        if (process.env.OPENAI_API_KEY) {
+            const openAIResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: 'gpt-3.5-turbo',
+                    messages: [
+                        { role: 'system', content: 'You are a helpful study assistant for pharmacy students.' },
+                        { role: 'user', content: prompt }
+                    ],
+                    max_tokens: 450,
+                    temperature: 0.7
+                })
+            });
+
+            if (!openAIResponse.ok) {
+                const errorText = await openAIResponse.text();
+                console.error('OpenAI API error:', errorText);
+                throw new Error('AI service error.');
+            }
+
+            const data = await openAIResponse.json();
+            const answer = data.choices?.[0]?.message?.content?.trim();
+            return res.json({ answer: answer || getMockAIAnswer(question), source: 'openai' });
+        }
+
+        const fallbackAnswer = getMockAIAnswer(question);
+        return res.json({ answer: fallbackAnswer, source: 'local-demo' });
+    } catch (err) {
+        console.error('AI solve failed:', err);
+        return res.status(500).json({ message: 'Unable to generate an answer at this time.' });
+    }
+});
+
 app.get('/api/student/dashboard', ensureAuthenticated, (req, res) => {
     const user = req.session.user;
     const studentName = user.email.split('@')[0].replace('.', ' ');
