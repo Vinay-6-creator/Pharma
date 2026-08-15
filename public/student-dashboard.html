@@ -542,10 +542,24 @@
 
     <script>
         const navLinks = document.querySelectorAll('.nav-link');
-        navLinks.forEach(link => link.addEventListener('click', () => {
+        const sectionToPage = {
+            dashboard: '/student-dashboard.html',
+            ai: '/ai-doubt-solver.html',
+            materials: '/study-materials.html',
+            subjects: '/subjects.html',
+            quiz: '/quiz.html',
+            assignments: '/assignments.html',
+            classes: '/classes.html',
+            community: '/community.html'
+        };
+
+        navLinks.forEach(link => link.addEventListener('click', (e) => {
             navLinks.forEach(item => item.classList.remove('active'));
             link.classList.add('active');
-            showModal(`${link.querySelector('span').textContent} page is selected.`);
+            const section = link.getAttribute('data-section');
+            const target = sectionToPage[section] || '/student-dashboard.html';
+            // Navigate to the mapped page
+            window.location.href = target;
         }));
 
         function searchDashboard() {

@@ -3,67 +3,603 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>AI Doubt Solver - PharmaConnect AI</title>
+    <title>DobtWise AI - Solution Chatbot</title>
     <style>
-        :root{--bg:#081126;--panel:#121b34;--text:#eef2ff;--muted:#9bb0d5;--accent:#7ce1ff}
-        body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:linear-gradient(180deg,#06101f 0%,#081126 100%);color:var(--text);padding:28px}
-        .bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-        a.back{color:var(--accent);text-decoration:none}
-        .panel{background:var(--panel);padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,.06)}
-        textarea{width:100%;min-height:160px;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:transparent;color:var(--text)}
-        button{padding:10px 14px;border-radius:10px;border:none;background:linear-gradient(90deg,#6b76ff,#5d7dff);color:#fff;cursor:pointer}
-        .answer{margin-top:12px;padding:12px;border-radius:8px;background:rgba(255,255,255,.03);color:var(--muted)}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+
+        header {
+            background: white;
+            padding: 16px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: #2e7d32;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #666;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #2e7d32;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 32px auto;
+            padding: 0 20px;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 32px;
+        }
+
+        .chat-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            padding: 24px;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #1b5e20;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            max-height: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            padding: 12px 16px;
+            border-radius: 8px;
+            word-wrap: break-word;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.student {
+            background: #c8e6c9;
+            color: #1b5e20;
+            align-self: flex-end;
+            max-width: 80%;
+        }
+
+        .message.ai {
+            background: #f1f5f4;
+            color: #333;
+            align-self: flex-start;
+            max-width: 80%;
+        }
+
+        .message.loading {
+            background: #f1f5f4;
+            color: #999;
+            align-self: flex-start;
+        }
+
+        .input-area {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 8px;
+            align-items: stretch;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        #messageInput {
+            flex: 1;
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            resize: none;
+            max-height: 80px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 14px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-send {
+            background: #4caf50;
+            color: white;
+        }
+
+        .btn-send:hover {
+            background: #45a049;
+        }
+
+        .btn-send:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .btn-upload, .btn-paste {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #c8e6c9;
+        }
+
+        .btn-upload:hover, .btn-paste:hover {
+            background: #c8e6c9;
+        }
+
+        .icon {
+            width: 16px;
+            height: 16px;
+        }
+
+        #imageInput {
+            display: none;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-section {
+            background: white;
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .sidebar-title {
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1b5e20;
+            font-size: 14px;
+        }
+
+        .topic-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .topic-item {
+            padding: 8px 12px;
+            background: #f1f5f4;
+            border-radius: 6px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .topic-item:hover {
+            background: #c8e6c9;
+            border-color: #2e7d32;
+        }
+
+        .explore-topics {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .topic-btn {
+            padding: 10px 12px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+        }
+
+        .topic-btn:hover {
+            background: #f1f5f4;
+            border-color: #2e7d32;
+            color: #2e7d32;
+        }
+
+        .topic-icon {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .input-group {
+                flex-direction: column;
+                min-width: auto;
+            }
+
+            .message.student,
+            .message.ai {
+                max-width: 95%;
+            }
+        }
+
+        .example-questions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .example-q {
+            padding: 8px 12px;
+            background: #f1f5f4;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 1px solid #ddd;
+        }
+
+        .example-q:hover {
+            background: #e8f5e9;
+            border-color: #2e7d32;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 12px;
+            margin-top: 40px;
+        }
+
+        .loading-dots {
+            display: inline-block;
+        }
+
+        .loading-dots span {
+            animation: bounce 1.4s infinite;
+        }
+
+        .loading-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .loading-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .image-preview {
+            margin-top: 8px;
+            padding: 8px;
+            background: #f1f5f4;
+            border-radius: 6px;
+            display: none;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
-    <div class="bar">
-        <div>
-            <a href="student-dashboard.html" class="back">← Back to Dashboard</a>
-            <h1 style="margin:6px 0 0">AI Doubt Solver</h1>
-            <small style="color:var(--muted)">Ask questions and get instant suggestions (demo)</small>
+    <header>
+        <div class="logo">🔬 DobtWise</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="#how">How It Works</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="chat-section">
+                <div class="chat-title">Solution Chatbot</div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message ai">
+                        👋 Hello! I'm your AI doubt solver. Ask me any academic question and I'll help you understand it better!
+                    </div>
+                </div>
+
+                <div class="input-area">
+                    <div class="input-group">
+                        <textarea id="messageInput" placeholder="Tell me your doubt, ask a question, or upload a photo of your textbook. I'm here to solve it..." rows="3"></textarea>
+                    </div>
+                    <div class="btn-group">
+                        <button class="btn-send" id="sendBtn" title="Send Message">
+                            <span>Send</span>
+                        </button>
+                        <button class="btn-upload" id="uploadBtn" title="Upload Photo">
+                            📷 Photo
+                        </button>
+                        <button class="btn-paste" id="pasteBtn" title="Paste Image">
+                            📋 Paste
+                        </button>
+                    </div>
+                </div>
+
+                <div class="image-preview" id="imagePreview">
+                    <img id="previewImg" alt="Preview">
+                    <button onclick="clearImage()" style="margin-top: 8px; background: #ff9800; color: white; width: 100%;">Remove Image</button>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">📌 Related Topics</div>
+                    <div class="topic-list">
+                        <div class="topic-item">Cell Biology</div>
+                        <div class="topic-item">Meiosis Stages</div>
+                        <div class="topic-item">DNA Replication</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">🔍 Explore Other Topics</div>
+                    <div class="explore-topics">
+                        <div class="topic-btn"><div class="topic-icon">🧬</div>Cell Biology</div>
+                        <div class="topic-btn"><div class="topic-icon">📖</div>Textbook</div>
+                        <div class="topic-btn"><div class="topic-icon">📊</div>Meiosis</div>
+                        <div class="topic-btn"><div class="topic-icon">🔬</div>DNA</div>
+                        <div class="topic-btn"><div class="topic-icon">➕</div>Math</div>
+                        <div class="topic-btn"><div class="topic-icon">🧪</div>Science</div>
+                        <div class="topic-btn"><div class="topic-icon">📚</div>English</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <div class="sidebar-title">💡 Example Questions</div>
+                    <div class="example-questions">
+                        <div class="example-q" onclick="askQuestion('Can you explain the difference between mitosis and meiosis?')">
+                            📝 Mitosis vs Meiosis
+                        </div>
+                        <div class="example-q" onclick="askQuestion('How does DNA replication work?')">
+                            📝 DNA Replication
+                        </div>
+                        <div class="example-q" onclick="askQuestion('What is cell biology?')">
+                            📝 Cell Biology
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <section class="panel">
-        <label style="display:block;font-weight:600;margin-bottom:8px">Your Question</label>
-        <textarea id="question"></textarea>
-        <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
-            <button id="askBtn">Ask</button>
-            <button onclick="document.getElementById('question').value=''" style="background:transparent;border:1px solid rgba(255,255,255,.06);color:var(--text)">Clear</button>
-        </div>
-        <div id="answer" class="answer" style="display:none"></div>
-    </section>
+
+    <footer>
+        © Copyright 2025, DobtWise Inc. | <a href="#" style="color: #999; text-decoration: none;">Privacy Policy</a> | <a href="#" style="color: #999; text-decoration: none;">Terms</a>
+    </footer>
+
+    <input type="file" id="imageInput" accept="image/*" />
 
     <script>
-        document.getElementById('askBtn').addEventListener('click', function(){
-            const q = document.getElementById('question').value.trim();
-            const ans = document.getElementById('answer');
-            if(!q){ ans.style.display='block'; ans.textContent='Please type a question.'; return; }
-            ans.style.display='block'; ans.textContent='Thinking...';
+        let selectedImage = null;
 
-            fetch('/api/ai/solve', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ question: q })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (!data.answer) {
-                    ans.textContent = data.message || 'Unable to get an answer. Please try again.';
-                    return;
-                }
-                const escaped = escapeHTML(data.answer);
-                ans.innerHTML = escaped.replace(/\n\n/g, '<br><br>').replace(/\n/g, '<br>');
-            })
-            .catch(() => {
-                ans.textContent = 'Unable to connect to the AI service. Please try again later.';
-            });
+        const sendBtn = document.getElementById('sendBtn');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const pasteBtn = document.getElementById('pasteBtn');
+        const messageInput = document.getElementById('messageInput');
+        const chatMessages = document.getElementById('chatMessages');
+        const imageInput = document.getElementById('imageInput');
+        const imagePreview = document.getElementById('imagePreview');
+        const previewImg = document.getElementById('previewImg');
+
+        // Auto-resize textarea
+        messageInput.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = Math.min(this.scrollHeight, 120) + 'px';
         });
 
-        function escapeHTML(text) {
-            const div = document.createElement('div');
-            div.textContent = text;
-            return div.innerHTML;
+        sendBtn.addEventListener('click', sendMessage);
+        messageInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+
+        uploadBtn.addEventListener('click', () => imageInput.click());
+        imageInput.addEventListener('change', handleImageUpload);
+        pasteBtn.addEventListener('click', handlePaste);
+
+        async function sendMessage() {
+            const message = messageInput.value.trim();
+            if (!message && !selectedImage) return;
+
+            // Add user message to chat
+            addMessage(message || '📷 Image sent', 'student');
+            messageInput.value = '';
+            messageInput.style.height = 'auto';
+
+            // Show loading message
+            const loadingId = addMessage('Thinking...', 'ai loading');
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        question: message,
+                        image: selectedImage
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    removeMessage(loadingId);
+                    addMessage(data.answer, 'ai');
+                } else {
+                    removeMessage(loadingId);
+                    addMessage('Sorry, I couldn\'t process your request. Please try again.', 'ai');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                removeMessage(loadingId);
+                addMessage('Error connecting to the AI service. Please try again.', 'ai');
+            }
+
+            clearImage();
+            sendBtn.disabled = false;
         }
+
+        function addMessage(text, role) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${role}`;
+            msgDiv.id = `msg-${Date.now()}`;
+            
+            if (role.includes('loading')) {
+                msgDiv.innerHTML = `<span class="loading-dots"><span>.</span><span>.</span><span>.</span></span>`;
+            } else {
+                msgDiv.textContent = text;
+            }
+            
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return msgDiv.id;
+        }
+
+        function removeMessage(id) {
+            const msg = document.getElementById(id);
+            if (msg) msg.remove();
+        }
+
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    selectedImage = event.target.result;
+                    previewImg.src = selectedImage;
+                    imagePreview.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function handlePaste() {
+            try {
+                const items = await navigator.clipboard.read();
+                for (const item of items) {
+                    if (item.types.includes('image/png')) {
+                        const blob = await item.getType('image/png');
+                        const reader = new FileReader();
+                        reader.onload = (event) => {
+                            selectedImage = event.target.result;
+                            previewImg.src = selectedImage;
+                            imagePreview.style.display = 'block';
+                        };
+                        reader.readAsDataURL(blob);
+                        return;
+                    }
+                }
+                alert('No image found in clipboard. Please copy an image and try again.');
+            } catch (error) {
+                alert('Paste feature not supported or permission denied.');
+            }
+        }
+
+        function clearImage() {
+            selectedImage = null;
+            imagePreview.style.display = 'none';
+            imageInput.value = '';
+        }
+
+        function askQuestion(question) {
+            messageInput.value = question;
+            messageInput.style.height = 'auto';
+            messageInput.style.height = messageInput.scrollHeight + 'px';
+            messageInput.focus();
+            sendMessage();
+        }
+
+        // Topic buttons
+        document.querySelectorAll('.topic-item, .topic-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const topic = this.textContent.trim();
+                if (!topic.includes('📱')) {
+                    askQuestion(`Tell me about ${topic}`);
+                }
+            });
+        });
     </script>
 </body>
 </html>

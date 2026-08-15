@@ -3,6 +3,8 @@ const Database = require('better-sqlite3');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
 const path = require('path');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -149,7 +151,10 @@ const studentPages = [
     '/study-materials.html',
     '/quiz.html',
     '/assignments.html',
-    '/mock-tests.html'
+    '/mock-tests.html',
+    '/subjects.html',
+    '/classes.html',
+    '/community.html'
 ];
 
 studentPages.forEach(page => {
@@ -620,6 +625,107 @@ app.post('/api/faculty/doubts/answer', ensureAuthenticated, ensureFaculty, (req,
 
     db.prepare('UPDATE doubts SET status = ?, answer = ? WHERE id = ?').run('Answered', answer, id);
     res.json({ message: 'Doubt answered successfully.' });
+});
+
+// Google Gemini AI Chatbot Endpoint
+app.post('/api/chat', async (req, res) => {
+    try {
+        const { question, image } = req.body;
+
+        if (!question && !image) {
+            return res.status(400).json({ success: false, message: 'Question or image is required.' });
+        }
+
+        const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+        if (!GEMINI_API_KEY) {
+            console.warn('GEMINI_API_KEY not configured. Using mock response.');
+            return res.json({
+                success: true,
+                answer: getMockAIAnswer(question || 'Image analysis'),
+                source: 'mock'
+            });
+        }
+
+        const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+        let prompt = '';
+        let messageParts = [];
+
+        // Create system instruction
+        const systemInstruction = `You are DobtWise AI, an expert educational assistant for students studying pharmacy, biology, chemistry, and other academic subjects. 
+Your role is to:
+- Answer academic questions clearly and comprehensively
+- Explain concepts in simple, understandable language
+- Provide real examples when applicable
+- Help students understand difficult topics
+- If an image is provided, analyze it and answer questions about it
+- Always be helpful, encouraging, and professional
+
+Format your responses clearly with bullet points where appropriate.`;
+
+        // Handle text-only questions
+        if (question && !image) {
+            messageParts.push(question);
+            prompt = question;
+        }
+
+        // Handle image with optional question
+        if (image) {
+            const base64Data = image.split(',')[1] || image;
+            const imageData = {
+                inlineData: {
+                    data: base64Data,
+                    mimeType: 'image/jpeg'
+                }
+            };
+
+            messageParts.push(imageData);
+
+            if (question) {
+                messageParts.push(question);
+                prompt = question;
+            } else {
+                messageParts.push('Please analyze this image and explain what you see. If it\'s from an academic subject, provide relevant information.');
+                prompt = 'Image analysis requested';
+            }
+        }
+
+        // Call Gemini API
+        const result = await model.generateContent({
+            contents: [
+                {
+                    role: 'user',
+                    parts: messageParts
+                }
+            ],
+            systemInstruction: systemInstruction,
+            generationConfig: {
+                maxOutputTokens: 1024,
+                temperature: 0.7,
+            }
+        });
+
+        const response = await result.response;
+        const answer = response.text();
+
+        res.json({
+            success: true,
+            answer: answer,
+            source: 'gemini-1.5-flash'
+        });
+
+    } catch (error) {
+        console.error('Chat API Error:', error);
+
+        // Provide fallback response
+        const fallbackAnswer = getMockAIAnswer(req.body.question || 'Your question');
+        res.json({
+            success: true,
+            answer: fallbackAnswer,
+            source: 'fallback'
+        });
+    }
 });
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
