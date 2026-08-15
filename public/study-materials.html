@@ -185,6 +185,14 @@
             border-bottom: 3px solid #4a9eff;
         }
 
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         .content-header {
             display: flex;
             justify-content: space-between;
@@ -465,7 +473,15 @@
             <button class="tab" onclick="switchTab('mpharm')">M Pharm</button>
         </div>
 
-        <div id="content">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="switchTab('bpharm', event)">B Pharm</button>
+            <button class="tab" onclick="switchTab('dpharm', event)">D Pharm</button>
+            <button class="tab" onclick="switchTab('mpharm', event)">M Pharm</button>
+        </div>
+
+        <!-- B PHARM CONTENT -->
+        <div id="bpharm-content" class="tab-content active">
             <div class="content-header">
                 <div>
                     <div class="content-title">B Pharm (Bachelor of Pharmacy) Study Materials</div>
@@ -485,7 +501,6 @@
                         <!-- Semester 1 -->
                         <div class="semester-column">
                             <div class="semester-header">Semester 1</div>
-                            
                             <div class="subject-card">
                                 <div class="subject-name">Anatomy & Physiology I</div>
                                 <div class="subject-type">PDF Notes, Video Lectures</div>
@@ -497,7 +512,6 @@
                                     <div class="progress-fill" style="width: 75%;"></div>
                                 </div>
                             </div>
-
                             <div class="subject-card">
                                 <div class="subject-name">Pharmaceutics I</div>
                                 <div class="subject-type">Theory & Practicals</div>
@@ -509,7 +523,6 @@
                                     <div class="progress-fill" style="width: 60%;"></div>
                                 </div>
                             </div>
-
                             <div class="subject-card">
                                 <div class="subject-name">Pharmaceutical Chemistry I</div>
                                 <div class="subject-type">Lectures & Practicals</div>
@@ -525,7 +538,6 @@
                         <!-- Semester 2 -->
                         <div class="semester-column">
                             <div class="semester-header">Semester 2</div>
-                            
                             <div class="subject-card">
                                 <div class="subject-name">Anatomy & Physiology II</div>
                                 <div class="subject-type">PDF Notes, Video Lectures</div>
@@ -537,7 +549,6 @@
                                     <div class="progress-fill" style="width: 80%;"></div>
                                 </div>
                             </div>
-
                             <div class="subject-card">
                                 <div class="subject-name">Biochemistry</div>
                                 <div class="subject-type">Theory & Lab Work</div>
@@ -549,10 +560,9 @@
                                     <div class="progress-fill" style="width: 70%;"></div>
                                 </div>
                             </div>
-
                             <div class="subject-card">
-                                <div class="subject-name">Pathophysiology</div>
-                                <div class="subject-type">Clinical Lectures</div>
+                                <div class="subject-name">Pharmaceutical Chemistry II</div>
+                                <div class="subject-type">Synthesis & Reactions</div>
                                 <div class="subject-links">
                                     <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
                                     <a href="#" class="subject-link">📝 Practice MCQs</a>
@@ -566,7 +576,6 @@
                         <!-- Semester 3 -->
                         <div class="semester-column">
                             <div class="semester-header">Semester 3</div>
-                            
                             <div class="subject-card">
                                 <div class="subject-name">Pharmacology I</div>
                                 <div class="subject-type">Theory & Clinical Cases</div>
@@ -577,7 +586,6 @@
                                     <div class="progress-fill" style="width: 65%;"></div>
                                 </div>
                             </div>
-
                             <div class="subject-card">
                                 <div class="subject-name">Medicinal Chemistry</div>
                                 <div class="subject-type">Synthesis & Analysis</div>
@@ -589,24 +597,493 @@
                                     <div class="progress-fill" style="width: 50%;"></div>
                                 </div>
                             </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pathophysiology</div>
+                                <div class="subject-type">Clinical Lectures</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Mock Tests</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 72%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Semesters 4-6 in second row -->
+                    <div class="semesters-grid" style="margin-top: 30px;">
+                        <!-- Semester 4 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Semester 4</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmacology II</div>
+                                <div class="subject-type">Clinical & Drug Studies</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 68%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmacognosy & Phytochemistry</div>
+                                <div class="subject-type">Natural Products</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Mock Tests</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 58%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmaceutical Analysis</div>
+                                <div class="subject-type">Analytical Methods</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📄 Previous Year QP</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 63%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Semester 5 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Semester 5</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmaceutical Jurisprudence</div>
+                                <div class="subject-type">Regulatory & Legal</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmacy Practice</div>
+                                <div class="subject-type">Clinical & Hospital</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Mock Tests</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Biopharmaceutics & Pharmacokinetics</div>
+                                <div class="subject-type">Drug Dynamics</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📄 Previous Year QP</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 52%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Semester 6 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Semester 6</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Medicinal Chemistry II</div>
+                                <div class="subject-type">Drug Design & Synthesis</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 61%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmaceutical Microbiology</div>
+                                <div class="subject-type">Microbial Testing</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Mock Tests</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 74%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmaceutics II</div>
+                                <div class="subject-type">Dosage Forms</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📄 Previous Year QP</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 59%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semesters 7-8 in third row -->
+                    <div class="semesters-grid" style="margin-top: 30px;">
+                        <!-- Semester 7 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Semester 7</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmacoepidemiology & Social Pharmacy</div>
+                                <div class="subject-type">Public Health & Pharmacy</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 67%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Quality Assurance & Regulatory Affairs</div>
+                                <div class="subject-type">GMP & Standards</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Mock Tests</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 56%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmaceutics Practicals</div>
+                                <div class="subject-type">Lab Experiments</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📄 Previous Year QP</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Semester 8 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Semester 8</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmacotherapy</div>
+                                <div class="subject-type">Disease & Drug Management</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 71%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Clinical Pharmacy & Therapeutics</div>
+                                <div class="subject-type">Patient Counseling</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Mock Tests</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 64%;"></div>
+                                </div>
+                            </div>
                             <div class="ai-note-box">
                                 <div class="ai-icon">🤖</div>
                                 <div class="ai-title">AI Note</div>
-                                <div class="ai-description">Get AI-generated summaries and practice MCQs for all subjects</div>
-                                <a href="#" class="ai-link">📚 Practice MCQs</a>
+                                <div class="ai-description">Master all 8 semesters with AI-powered summaries and practice material</div>
+                                <a href="ai-doubt-solver.html" class="ai-link">📚 Practice MCQs</a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- AI Tools Sidebar (for larger screens) -->
-                <div style="display: none;" id="ai-sidebar-large">
-                    <div class="ai-note-box">
-                        <div class="ai-icon">🤖</div>
-                        <div class="ai-title">AI Note</div>
-                        <div class="ai-description">Leverage our powerful AI to get instant summaries, practice MCQs, and exam prep</div>
-                        <a href="ai-doubt-solver.html" class="ai-link">📚 Practice MCQs</a>
+        <!-- D PHARM CONTENT -->
+        <div id="dpharm-content" class="tab-content">
+            <div class="content-header">
+                <div>
+                    <div class="content-title">D Pharm (Diploma in Pharmacy) Study Materials</div>
+                    <div class="content-subtitle">(Year 1 & Year 2)</div>
+                </div>
+                <select class="filter-dropdown">
+                    <option>Poporation</option>
+                    <option>Popular</option>
+                    <option>Recent</option>
+                    <option>Rating</option>
+                </select>
+            </div>
+
+            <div class="main-with-sidebar">
+                <div>
+                    <div class="semesters-grid">
+                        <!-- Year 1 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Year 1</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmacy Practice</div>
+                                <div class="subject-type">Fundamentals & Operations</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmaceutics I</div>
+                                <div class="subject-type">Dosage Forms & Formulations</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Mock Tests</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 68%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmacology & Toxicology</div>
+                                <div class="subject-type">Drug Actions & Effects</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 62%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmaceutical Chemistry</div>
+                                <div class="subject-type">Chemical Principles & Drugs</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📄 Previous Year QP</a>
+                                    <a href="#" class="subject-link">🧪 Mock Tests</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 55%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Year 2 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Year 2</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmacology II & Clinical Pharmacy</div>
+                                <div class="subject-type">Advanced Drug Therapy</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 73%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmaceutics II</div>
+                                <div class="subject-type">Advanced Formulations</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Mock Tests</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Biochemistry & Clinical Biochemistry</div>
+                                <div class="subject-type">Molecular & Diagnostic</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Practice MCQs</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 66%;"></div>
+                                </div>
+                            </div>
+                            <div class="ai-note-box">
+                                <div class="ai-icon">🤖</div>
+                                <div class="ai-title">AI Note</div>
+                                <div class="ai-description">Complete your D Pharm course with comprehensive AI-generated notes</div>
+                                <a href="ai-doubt-solver.html" class="ai-link">📚 Practice MCQs</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- M PHARM CONTENT -->
+        <div id="mpharm-content" class="tab-content">
+            <div class="content-header">
+                <div>
+                    <div class="content-title">M Pharm (Master of Pharmacy) Study Materials</div>
+                    <div class="content-subtitle">(Semester 1 to 4)</div>
+                </div>
+                <select class="filter-dropdown">
+                    <option>Poporation</option>
+                    <option>Popular</option>
+                    <option>Recent</option>
+                    <option>Rating</option>
+                </select>
+            </div>
+
+            <div class="main-with-sidebar">
+                <div>
+                    <div class="semesters-grid">
+                        <!-- Semester 1 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Semester 1</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Advanced Pharmacology</div>
+                                <div class="subject-type">Research & Development</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Research Papers</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Advanced Pharmaceutics</div>
+                                <div class="subject-type">Nanotechnology & Targeting</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Lab Protocols</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 71%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Research Methodology</div>
+                                <div class="subject-type">Statistical & Analytical Methods</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Case Studies</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 65%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Semester 2 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Semester 2</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Advanced Medicinal Chemistry</div>
+                                <div class="subject-type">Drug Discovery & Design</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Research Papers</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 72%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Bioavailability & Bioequivalence</div>
+                                <div class="subject-type">IVIVC & Dissolution</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Lab Protocols</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 68%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmacoeconomics</div>
+                                <div class="subject-type">Cost & Clinical Outcomes</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Case Studies</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Semester 3 -->
+                        <div class="semester-column">
+                            <div class="semester-header">Semester 3</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Advanced Pharmaceutical Analysis</div>
+                                <div class="subject-type">Instrumental & Chromatography</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">🧪 Lab Protocols</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 74%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Drug Metabolism & Toxicology</div>
+                                <div class="subject-type">Pharmacogenomics & Safety</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Research Papers</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 69%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Pharmaceutical Biotechnology</div>
+                                <div class="subject-type">Biopharmaceuticals & GMOs</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Case Studies</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 63%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semester 4 -->
+                    <div class="semesters-grid" style="margin-top: 30px;">
+                        <div class="semester-column">
+                            <div class="semester-header">Semester 4</div>
+                            <div class="subject-card">
+                                <div class="subject-name">Clinical Pharmacy & Therapeutics</div>
+                                <div class="subject-type">Advanced Patient Care</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Case Studies</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 76%;"></div>
+                                </div>
+                            </div>
+                            <div class="subject-card">
+                                <div class="subject-name">Regulatory Affairs & Quality</div>
+                                <div class="subject-type">GxP & Compliance</div>
+                                <div class="subject-links">
+                                    <a href="#" class="subject-link">📋 Detailed Notes (AI Summaries)</a>
+                                    <a href="#" class="subject-link">📝 Guidelines</a>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 70%;"></div>
+                                </div>
+                            </div>
+                            <div class="ai-note-box" style="grid-column: auto;">
+                                <div class="ai-icon">🤖</div>
+                                <div class="ai-title">AI Note</div>
+                                <div class="ai-description">Ace your M Pharm degree with research-focused AI summaries</div>
+                                <a href="ai-doubt-solver.html" class="ai-link">📚 Practice MCQs</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -614,17 +1091,35 @@
     </div>
 
     <script>
-        function switchTab(tabName) {
+        function switchTab(tabName, event) {
+            event.preventDefault();
+            
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
             const tabs = document.querySelectorAll('.tab');
             tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected content
+            const selectedContent = document.getElementById(tabName + '-content');
+            if (selectedContent) {
+                selectedContent.classList.add('active');
+            }
+            
+            // Add active class to clicked tab
             event.target.classList.add('active');
+            
             console.log('Switched to:', tabName);
         }
 
         // Ensure first tab is active on load
         document.addEventListener('DOMContentLoaded', () => {
             const firstTab = document.querySelector('.tab');
+            const firstContent = document.querySelector('.tab-content');
             if (firstTab) firstTab.classList.add('active');
+            if (firstContent) firstContent.classList.add('active');
         });
     </script>
 </body>
